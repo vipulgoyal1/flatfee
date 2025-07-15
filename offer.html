@@ -29,34 +29,24 @@
   
 </head>
 <body>
-  <!-- Welcome banner for visitors who just came from cashbackagent.net -->
+  
 <script>
 (function () {
-  /* ─── 1 .  Detect the referrer host safely ─── */
-  const ref = document.referrer;
-  if (!ref) return;                             // no referrer at all
-  let host;
-  try { host = new URL(ref).hostname.replace(/^www\./, ''); }
-  catch { return; }                             // malformed referrer
+  console.log('[banner] script loaded');                // 1 – sanity log
+  if (!document.referrer) { console.log('[banner] no referrer'); return; }
 
-  if (host !== 'cashbackagent.net') return;     // came from somewhere else
+  const host = new URL(document.referrer).hostname.replace(/^www\./,'');
+  console.log('[banner] referrer host =', host);        // 2 – watch this
+  if (host !== 'cashbackagent.net') return;
 
-  /* ─── 2 .  Build the banner ─── */
-  const bar = Object.assign(document.createElement('div'), {
-    innerHTML: `
-      Cashbackagent has moved to a new URL! Please bookmark flatfee-realtor.com
-      <button aria-label="Close notice" style="margin-left:.8rem;
-                background:transparent;border:0;font-size:20px;cursor:pointer">×</button>`
-  });
-  bar.style.cssText = `
-    position:fixed;top:0;left:0;right:0;z-index:9999;
-    padding:12px 8px;background:#fffae6;font:16px/1.5 sans-serif;
-    color:#222;text-align:center;box-shadow:0 2px 4px rgba(0,0,0,.15)`;
-
-  /* ─── 3 .  Show + hide ─── */
-  bar.querySelector('button').onclick = () => bar.remove();
-  setTimeout(() => bar.remove(), 5000);          // auto-hide after 5 s
-  (document.body || document.documentElement).appendChild(bar);
+  const bar = document.createElement('div');
+  bar.textContent = 'Cashbackagent has moved to a new URL! Please bookmark flatfee-realtor.com.';
+  bar.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9999;' +
+                      'background:#fffae6;padding:12px;text-align:center;' +
+                      'font:16px/1.5 sans-serif;box-shadow:0 2px 4px rgba(0,0,0,.15)';
+  setTimeout(()=>bar.remove(), 5000);
+  (document.body || document.documentElement).append(bar);
+  console.log('[banner] shown');                        // 3 – confirmation
 })();
 </script>
 
@@ -120,7 +110,7 @@
         <div class="row">
             <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
 <!--Formbuilder Form-->
-<form action="https://mobirise.eu/" method="POST" class="mbr-form form-with-styler" data-form-title="Request Offer"><input type="hidden" name="email" data-form-email="true" value="q28wZGcjeciy+XWfn2cWkeyo54JIU0+f3RskLo3hoeilhO1bEnPsIudNOA6vxSAPgqX/FZl7exeqoxrFMHQ8Hi6dsfAzkcT1VWsvKW5OI4TbLglBWfqL4U2bg22N/zSL.GbhN1p6d+qo+yki6+gAJkKJ6CKAKQjOZhUkVvetrEWK3EkJtrXc/vxWpDB14UBHd+QBPu3OGbjQcXRtBCkV1w0BbpHgWswSrxsRDy1qyZaXeKpI/E1uYOZvQjvUztuUg">
+<form action="https://mobirise.eu/" method="POST" class="mbr-form form-with-styler" data-form-title="Request Offer"><input type="hidden" name="email" data-form-email="true" value="pD0Xli/m2zYNi55xvfUzgDsAccVhLe3x4BqauZGMUSsi4YB+akqsNjLKAxQs5k4e6f3Zj/VV3fe9odJxpF5yTLqto5koY5TOU+AZejbuNmlWu1vM3vS1k/MjivtYB/d5.jg+HpZfwVw429Y9LknyizyA3tFfE9j95ZF9L/uYVTbrFWnY8gKIey96yRJ+X5VUZSWetTbeKAndwjid7yVJQ/fZBV+i+KGn7RccMolWe4QPWx09UzkhLJ1k1B2LoKaxD">
 <div class="form-row">
 <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Thanks, we will work on the offer! Please email preapproval and proof of funds if you didn't.</div>
 <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">Oops...! some problem!</div>

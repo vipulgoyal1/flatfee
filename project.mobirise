@@ -51,7 +51,7 @@
     ],
     "imageResize": true,
     "favicon": "@PROJECT_PATH@/assets/images/logo-48x48.png",
-    "mbrsiteDomain": "lalnrr5fwt",
+    "mbrsiteDomain": "p0b8nxfb6b",
     "usedWebp": false,
     "robotsSwitcher": false,
     "sitemapSwitcher": false,
@@ -65,7 +65,7 @@
     "global_footer_custom": "<!-- Default Statcounter code for flatfee\nhttp://flatfee-realtor.com -->\n<script type=\"text/javascript\">\nvar sc_project=13140329; \nvar sc_invisible=1; \nvar sc_security=\"04536c4a\"; \n</script>\n<script type=\"text/javascript\"\nsrc=\"https://www.statcounter.com/counter/counter.js\"\nasync></script>\n<noscript><div class=\"statcounter\"><a title=\"Web Analytics\"\nhref=\"https://statcounter.com/\" target=\"_blank\"><img\nclass=\"statcounter\"\nsrc=\"https://c.statcounter.com/13140329/0/04536c4a/1/\"\nalt=\"Web Analytics\"\nreferrerPolicy=\"no-referrer-when-downgrade\"></a></div></noscript>\n<!-- End of Statcounter Code -->",
     "global_header_custom": "",
     "publishChangesOnly": true,
-    "global_after_body": "<!-- Welcome banner for visitors who just came from cashbackagent.net -->\n<script>\n(function () {\n  /* ─── 1 .  Detect the referrer host safely ─── */\n  const ref = document.referrer;\n  if (!ref) return;                             // no referrer at all\n  let host;\n  try { host = new URL(ref).hostname.replace(/^www\\./, ''); }\n  catch { return; }                             // malformed referrer\n\n  if (host !== 'cashbackagent.net') return;     // came from somewhere else\n\n  /* ─── 2 .  Build the banner ─── */\n  const bar = Object.assign(document.createElement('div'), {\n    innerHTML: `\n      Cashbackagent has moved to a new URL! Please bookmark flatfee-realtor.com\n      <button aria-label=\"Close notice\" style=\"margin-left:.8rem;\n                background:transparent;border:0;font-size:20px;cursor:pointer\">×</button>`\n  });\n  bar.style.cssText = `\n    position:fixed;top:0;left:0;right:0;z-index:9999;\n    padding:12px 8px;background:#fffae6;font:16px/1.5 sans-serif;\n    color:#222;text-align:center;box-shadow:0 2px 4px rgba(0,0,0,.15)`;\n\n  /* ─── 3 .  Show + hide ─── */\n  bar.querySelector('button').onclick = () => bar.remove();\n  setTimeout(() => bar.remove(), 5000);          // auto-hide after 5 s\n  (document.body || document.documentElement).appendChild(bar);\n})();\n</script>\n"
+    "global_after_body": "\n<script>\n(function () {\n  console.log('[banner] script loaded');                // 1 – sanity log\n  if (!document.referrer) { console.log('[banner] no referrer'); return; }\n\n  const host = new URL(document.referrer).hostname.replace(/^www\\./,'');\n  console.log('[banner] referrer host =', host);        // 2 – watch this\n  if (host !== 'cashbackagent.net') return;\n\n  const bar = document.createElement('div');\n  bar.textContent = 'Cashbackagent has moved to a new URL! Please bookmark flatfee-realtor.com.';\n  bar.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9999;' +\n                      'background:#fffae6;padding:12px;text-align:center;' +\n                      'font:16px/1.5 sans-serif;box-shadow:0 2px 4px rgba(0,0,0,.15)';\n  setTimeout(()=>bar.remove(), 5000);\n  (document.body || document.documentElement).append(bar);\n  console.log('[banner] shown');                        // 3 – confirmation\n})();\n</script>\n"
   },
   "pages": {
     "index.html": {
