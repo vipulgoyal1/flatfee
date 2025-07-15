@@ -51,7 +51,7 @@
     ],
     "imageResize": true,
     "favicon": "@PROJECT_PATH@/assets/images/logo-48x48.png",
-    "mbrsiteDomain": "step6orrv0",
+    "mbrsiteDomain": "fx5ojcxvpg",
     "usedWebp": false,
     "robotsSwitcher": false,
     "sitemapSwitcher": false,
@@ -64,7 +64,8 @@
     "screenshot": "screenshot.png",
     "global_footer_custom": "<!-- Default Statcounter code for flatfee\nhttp://flatfee-realtor.com -->\n<script type=\"text/javascript\">\nvar sc_project=13140329; \nvar sc_invisible=1; \nvar sc_security=\"04536c4a\"; \n</script>\n<script type=\"text/javascript\"\nsrc=\"https://www.statcounter.com/counter/counter.js\"\nasync></script>\n<noscript><div class=\"statcounter\"><a title=\"Web Analytics\"\nhref=\"https://statcounter.com/\" target=\"_blank\"><img\nclass=\"statcounter\"\nsrc=\"https://c.statcounter.com/13140329/0/04536c4a/1/\"\nalt=\"Web Analytics\"\nreferrerPolicy=\"no-referrer-when-downgrade\"></a></div></noscript>\n<!-- End of Statcounter Code -->",
     "global_header_custom": "",
-    "publishChangesOnly": true
+    "publishChangesOnly": true,
+    "global_after_body": "<!-- Show banner only to visitors coming from cashbackagent.net -->\n<script>\n(function () {\n  /* referrer check is case-insensitive and ignores protocol */\n  const cameFromOldSite = /\\/\\/(?:www\\.)?cashbackagent\\.net/i.test(document.referrer);\n  if (!cameFromOldSite) return;        // bail if user came directly or from elsewhere\n\n  /* ----------  styling  ---------- */\n  const bar = document.createElement('div');\n  bar.innerHTML = `\n      Cashbackagent has moved to a new website! Please bookmark flatfee-realtor.com\n      <button aria-label=\"close notice\" style=\"margin-left:1rem;border:none;background:transparent;font-size:20px;cursor:pointer;\">×</button>`;\n  bar.style.cssText = `\n      position:fixed;top:0;left:0;right:0;z-index:9999;\n      background:#fffae6;color:#222;font:16px/1.5 -apple-system,blinkmacsystemfont,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif;\n      text-align:center;padding:12px 8px;box-shadow:0 2px 4px rgba(0,0,0,.15)`;\n\n  /* ----------  behaviour  ---------- */\n  const hide = () => bar.remove();\n  bar.querySelector('button').onclick = hide;          // manual dismiss\n  setTimeout(hide, 5000);                              // auto-hide after 5 s\n\n  /* inject as soon as body is ready */\n  (document.body || document.documentElement).prepend(bar);\n})();\n</script>\n"
   },
   "pages": {
     "index.html": {

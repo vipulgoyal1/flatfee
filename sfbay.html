@@ -26,7 +26,33 @@
   
 </head>
 <body>
-  
+  <!-- Show banner only to visitors coming from cashbackagent.net -->
+<script>
+(function () {
+  /* referrer check is case-insensitive and ignores protocol */
+  const cameFromOldSite = /\/\/(?:www\.)?cashbackagent\.net/i.test(document.referrer);
+  if (!cameFromOldSite) return;        // bail if user came directly or from elsewhere
+
+  /* ----------  styling  ---------- */
+  const bar = document.createElement('div');
+  bar.innerHTML = `
+      Cashbackagent has moved to a new website! Please bookmark flatfee-realtor.com
+      <button aria-label="close notice" style="margin-left:1rem;border:none;background:transparent;font-size:20px;cursor:pointer;">×</button>`;
+  bar.style.cssText = `
+      position:fixed;top:0;left:0;right:0;z-index:9999;
+      background:#fffae6;color:#222;font:16px/1.5 -apple-system,blinkmacsystemfont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      text-align:center;padding:12px 8px;box-shadow:0 2px 4px rgba(0,0,0,.15)`;
+
+  /* ----------  behaviour  ---------- */
+  const hide = () => bar.remove();
+  bar.querySelector('button').onclick = hide;          // manual dismiss
+  setTimeout(hide, 5000);                              // auto-hide after 5 s
+
+  /* inject as soon as body is ready */
+  (document.body || document.documentElement).prepend(bar);
+})();
+</script>
+
   <section data-bs-version="5.1" class="menu menu2 cid-uMLaWeticH" once="menu" id="menu2-2o">
     
     <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
