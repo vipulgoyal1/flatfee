@@ -30,24 +30,42 @@
   
 </head>
 <body>
-  
+  <!-- ========== Welcome banner for visitors from cashbackagent.net ========== -->
 <script>
 (function () {
-  console.log('[banner] script loaded');                // 1 – sanity log
-  if (!document.referrer) { console.log('[banner] no referrer'); return; }
+  /* 1 Detect ?src=cb ------------------------------------------------------- */
+  const url = new URL(window.location.href);
+  if (url.searchParams.get('src') !== 'cb') return;              // bail if flag absent
 
-  const host = new URL(document.referrer).hostname.replace(/^www\./,'');
-  console.log('[banner] referrer host =', host);        // 2 – watch this
-  if (host !== 'cashbackagent.net') return;
+  /* Optional: strip the flag so it doesn’t linger in the address bar -------- */
+  if (history.replaceState) {
+    url.searchParams.delete('src');
+    history.replaceState(null, '', url.pathname + url.search + url.hash);
+  }
 
+  /* Avoid re-showing in this tab ------------------------------------------- */
+  if (sessionStorage.getItem('welcomeDismissed')) return;
+  sessionStorage.setItem('welcomeDismissed', '1');
+
+  /* 2 Build the bar --------------------------------------------------------- */
   const bar = document.createElement('div');
-  bar.textContent = 'Cashbackagent has moved to a new URL! Please bookmark flatfee-realtor.com.';
-  bar.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9999;' +
-                      'background:#fffae6;padding:12px;text-align:center;' +
-                      'font:16px/1.5 sans-serif;box-shadow:0 2px 4px rgba(0,0,0,.15)';
-  setTimeout(()=>bar.remove(), 5000);
-  (document.body || document.documentElement).append(bar);
-  console.log('[banner] shown');                        // 3 – confirmation
+  bar.innerHTML = `
+      We’ve moved! You’re on our new site now.
+      <button aria-label="Close" style="
+          margin-left:.8rem;background:transparent;border:0;
+          font-size:20px;cursor:pointer;line-height:1;">×</button>`;
+  bar.style.cssText = `
+      position:fixed;top:0;left:0;right:0;z-index:9999;
+      padding:12px 8px;background:#fffae6;color:#222;
+      font:16px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+      text-align:center;box-shadow:0 2px 4px rgba(0,0,0,.15)`;
+
+  /* 3 Hide on click or after 5 s ------------------------------------------- */
+  const hide = () => bar.remove();
+  bar.querySelector('button').onclick = hide;
+  setTimeout(hide, 5000);
+
+  (document.body || document.documentElement).appendChild(bar);
 })();
 </script>
 
@@ -388,7 +406,7 @@
         
         <div class="row justify-content-center mt-4">
             <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
-                <form action="https://mobirise.eu/" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name"><input type="hidden" name="email" data-form-email="true" value="a4l3NFIcrQJ8nKfIIKsE7pZmsa/zj9QW0aRspeEK5s+TgCMTHiMGhZtCjbNMWiXHBqJCe8pcq/Y9349RAV1UmXQ72yJG9g6RTFKNr/e34BXCPUi7itHehqnPQru24lA2.3KwkorkZeTb1lluhlRhnfCJjD33AlfgVITj2eejoeLuaIcOAlMwRFipgdc+kCn+YoTs+jZGjHh0j5a2vcT0vLNA712YJ0LoHag7ZXFpCNGj1BF2nQ5vLhvKBXwgEBn+M">
+                <form action="https://mobirise.eu/" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name"><input type="hidden" name="email" data-form-email="true" value="QDo8iIol5SSKx4Vf8lTssgO69HfdCZs6XsNTeApzn7kvgtMAagTwUSIp5DTTCMejuzDn1YNdsDRAbmV2mauDaRfnqXZj8bXkdzAvx5CfO+nHzRTCjpvWiewWpr9SUvh/.FpuYcfypmSuN1uecAe04BDTFzQgyz3CZIqwuBdnDJm/1L50TF+iQWyUfkyjBxCNqyww6c1TvRv5cBug7JMbjHOFOBVYOBM+eW1s4Uk0zffdck1hmtmIAwbtMm7YVw3yH">
                     <div class="row">
                         <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Thanks, we will get back to you ASAP!</div>
                         <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">
