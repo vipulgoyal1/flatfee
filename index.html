@@ -30,30 +30,34 @@
   
 </head>
 <body>
-  <!-- Show banner only to visitors coming from cashbackagent.net -->
+  <!-- Welcome banner for visitors who just came from cashbackagent.net -->
 <script>
 (function () {
-  /* referrer check is case-insensitive and ignores protocol */
-  const cameFromOldSite = /\/\/(?:www\.)?cashbackagent\.net/i.test(document.referrer);
-  if (!cameFromOldSite) return;        // bail if user came directly or from elsewhere
+  /* ─── 1 .  Detect the referrer host safely ─── */
+  const ref = document.referrer;
+  if (!ref) return;                             // no referrer at all
+  let host;
+  try { host = new URL(ref).hostname.replace(/^www\./, ''); }
+  catch { return; }                             // malformed referrer
 
-  /* ----------  styling  ---------- */
-  const bar = document.createElement('div');
-  bar.innerHTML = `
-      Cashbackagent has moved to a new website! Please bookmark flatfee-realtor.com
-      <button aria-label="close notice" style="margin-left:1rem;border:none;background:transparent;font-size:20px;cursor:pointer;">×</button>`;
+  if (host !== 'cashbackagent.net') return;     // came from somewhere else
+
+  /* ─── 2 .  Build the banner ─── */
+  const bar = Object.assign(document.createElement('div'), {
+    innerHTML: `
+      Cashbackagent has moved to a new URL! Please bookmark flatfee-realtor.com
+      <button aria-label="Close notice" style="margin-left:.8rem;
+                background:transparent;border:0;font-size:20px;cursor:pointer">×</button>`
+  });
   bar.style.cssText = `
-      position:fixed;top:0;left:0;right:0;z-index:9999;
-      background:#fffae6;color:#222;font:16px/1.5 -apple-system,blinkmacsystemfont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-      text-align:center;padding:12px 8px;box-shadow:0 2px 4px rgba(0,0,0,.15)`;
+    position:fixed;top:0;left:0;right:0;z-index:9999;
+    padding:12px 8px;background:#fffae6;font:16px/1.5 sans-serif;
+    color:#222;text-align:center;box-shadow:0 2px 4px rgba(0,0,0,.15)`;
 
-  /* ----------  behaviour  ---------- */
-  const hide = () => bar.remove();
-  bar.querySelector('button').onclick = hide;          // manual dismiss
-  setTimeout(hide, 5000);                              // auto-hide after 5 s
-
-  /* inject as soon as body is ready */
-  (document.body || document.documentElement).prepend(bar);
+  /* ─── 3 .  Show + hide ─── */
+  bar.querySelector('button').onclick = () => bar.remove();
+  setTimeout(() => bar.remove(), 5000);          // auto-hide after 5 s
+  (document.body || document.documentElement).appendChild(bar);
 })();
 </script>
 
@@ -394,7 +398,7 @@
         
         <div class="row justify-content-center mt-4">
             <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
-                <form action="https://mobirise.eu/" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name"><input type="hidden" name="email" data-form-email="true" value="xEv12IYBECq9unhfc3vSk5MshGvv0gO+I7A+02b8Y7e41L9YVcDpQLmaTjsMa7iYCIgDTpgOcgDz02fQiJ79B7kd36c2XOz6YOp9oCCJY4B2pqwXtL+XvjKoori3L9Ce.AbApZGqGpbbJF5hBFVbm1z429taMiYC/j4iadUxMRMxGTtGjYXDV9UftamPzuEZ/Cy1XMPc9RRCSyF2F1+h09eL5AZ++7ufuu/ozkDxTvjOM5RDxe40xQpZrNyNMHfbW">
+                <form action="https://mobirise.eu/" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name"><input type="hidden" name="email" data-form-email="true" value="r+4FNVOiXxaCMTfhaHxXvNgXaJqaQhuhVn4s+DotxG9LtVDnVKLQGRzsFCQ9lb9evpZjOjWfL9hkbsjuM6uCpUydEgDNNpcObWdaxEONjLXKvq61IfFuZz4tl4oz1l/B.1siyIVkgU6F0lN3RCO/JFaj8znjdFHjaOxOIG3OJtspzkkzLkyIjxHUdrUVavGKiGYTOChdF3BZnOZurY5fOS0pr7DfOA82ijiaStG6DeJ9re1B9Ry3zoJVxI8u8EOYY">
                     <div class="row">
                         <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Thanks, we will get back to you ASAP!</div>
                         <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">
