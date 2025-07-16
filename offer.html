@@ -32,24 +32,31 @@
   <!-- ===== Welcome banner for visitors coming from cashbackagent.net ===== -->
 <script>
 (function () {
-  /* 1. Detect flag in either place ---------------------------------------- */
-  const url  = new URL(window.location.href);
-  const hasQueryFlag = url.searchParams.get('src') === 'cb';
-  const hasHashFlag  = location.hash.replace(/^#/, '') === 'src=cb';
-  if (!(hasQueryFlag || hasHashFlag)) return;      // bail if flag absent
+  const u   = new URL(location.href);
+  const src = u.searchParams.get('src');          // null | 'cb' | 'cb/xxx'
 
-  /* 2. Clean the URL (remove ?src or #src) -------------------------------- */
-  if (history.replaceState) {
-    if (hasQueryFlag) url.searchParams.delete('src');
-    if (hasHashFlag)  url.hash = '';
-    history.replaceState(null, '', url.pathname + url.search + url.hash);
-  }
+  /* Exit if no flag or not starting with 'cb' --------------------------- */
+  if (!src || !src.startsWith('cb')) return;
 
-  /* 3. Show only once per tab -------------------------------------------- */
+  /* One-per-session guard ---------------------------------------------- */
   if (sessionStorage.getItem('welcomeDismissed')) return;
   sessionStorage.setItem('welcomeDismissed', '1');
 
-  /* 4. Build the banner --------------------------------------------------- */
+  /* If Squarespace stuffed the path inside the src value, pull it out --- */
+  const extraPath = src.slice(2);                 // everything after 'cb'
+  if (extraPath.startsWith('/')) {
+    if (u.pathname === '/' || u.pathname === '') {
+      u.pathname = extraPath;                     // restore /contact.html etc.
+    }
+  }
+
+  /* Strip the flag (and its junk) from the URL ------------------------- */
+  u.searchParams.delete('src');
+  if (history.replaceState) {
+    history.replaceState(null, '', u.pathname + u.search + u.hash);
+  }
+
+  /* Build the banner --------------------------------------------------- */
   const bar = document.createElement('div');
   bar.innerHTML = `
       Cashbackagent has moved to a new URL!&nbsp;
@@ -63,7 +70,7 @@
       font:16px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
       text-align:center;box-shadow:0 2px 4px rgba(0,0,0,.15)`;
 
-  /* 5. Hide after 5 s or on click ---------------------------------------- */
+  /* Hide after 5 s or when dismissed ----------------------------------- */
   const hide = () => bar.remove();
   bar.querySelector('button').onclick = hide;
   setTimeout(hide, 5000);
@@ -132,7 +139,7 @@
         <div class="row">
             <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
 <!--Formbuilder Form-->
-<form action="https://mobirise.eu/" method="POST" class="mbr-form form-with-styler" data-form-title="Request Offer"><input type="hidden" name="email" data-form-email="true" value="PETVxNoxp9GiKCuB/hQJbuL7QzUf+85HEgggsHrGcy7Fm4wPbEQ6WnDAKR/+qAzUmHzuWGMiWAorFjiWy/QD6N3r0B6pkd+vWhCJgUUkDwkW0AmoQh1jzMMPWZ5QRbLB.2vyt0R7CpsAsR2xcwY5NKsw6l15SKkmWJb9zSIDtyd58kXGpxhgnkZoKjv8BZ+naR6G0eDuqzBG0mE9ud/hl1rJAbHchDr6MbdKmnIEQlJnFtSFX096WA5akWEuIM9YK">
+<form action="https://mobirise.eu/" method="POST" class="mbr-form form-with-styler" data-form-title="Request Offer"><input type="hidden" name="email" data-form-email="true" value="USxwed6m9AhcjtUA19Wsz3Q0XBKUvapu+2iix2IUchywZWCIH/0IX3sKrypZUnVlwX18ezMz+1WuFB1KIZOnrvwzK6F1dSZBHuNj8sfAryxyMOFQB1suq1oF8aCTjg/J.yKY2mRNmLWr4TJ2zWG9T8UPWFKtMz7Wc0lrtCajECqPo5bE8dzlrvR062HShJAxdGsHrx3TnG7hrtK45VIsNihtcDyP16YvIPrlM9Z4viWf88n5erlDvTN5mmRSCKz5u">
 <div class="form-row">
 <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Thanks, we will work on the offer! Please email preapproval and proof of funds if you didn't.</div>
 <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">Oops...! some problem!</div>

@@ -29,24 +29,31 @@
   <!-- ===== Welcome banner for visitors coming from cashbackagent.net ===== -->
 <script>
 (function () {
-  /* 1. Detect flag in either place ---------------------------------------- */
-  const url  = new URL(window.location.href);
-  const hasQueryFlag = url.searchParams.get('src') === 'cb';
-  const hasHashFlag  = location.hash.replace(/^#/, '') === 'src=cb';
-  if (!(hasQueryFlag || hasHashFlag)) return;      // bail if flag absent
+  const u   = new URL(location.href);
+  const src = u.searchParams.get('src');          // null | 'cb' | 'cb/xxx'
 
-  /* 2. Clean the URL (remove ?src or #src) -------------------------------- */
-  if (history.replaceState) {
-    if (hasQueryFlag) url.searchParams.delete('src');
-    if (hasHashFlag)  url.hash = '';
-    history.replaceState(null, '', url.pathname + url.search + url.hash);
-  }
+  /* Exit if no flag or not starting with 'cb' --------------------------- */
+  if (!src || !src.startsWith('cb')) return;
 
-  /* 3. Show only once per tab -------------------------------------------- */
+  /* One-per-session guard ---------------------------------------------- */
   if (sessionStorage.getItem('welcomeDismissed')) return;
   sessionStorage.setItem('welcomeDismissed', '1');
 
-  /* 4. Build the banner --------------------------------------------------- */
+  /* If Squarespace stuffed the path inside the src value, pull it out --- */
+  const extraPath = src.slice(2);                 // everything after 'cb'
+  if (extraPath.startsWith('/')) {
+    if (u.pathname === '/' || u.pathname === '') {
+      u.pathname = extraPath;                     // restore /contact.html etc.
+    }
+  }
+
+  /* Strip the flag (and its junk) from the URL ------------------------- */
+  u.searchParams.delete('src');
+  if (history.replaceState) {
+    history.replaceState(null, '', u.pathname + u.search + u.hash);
+  }
+
+  /* Build the banner --------------------------------------------------- */
   const bar = document.createElement('div');
   bar.innerHTML = `
       Cashbackagent has moved to a new URL!&nbsp;
@@ -60,7 +67,7 @@
       font:16px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
       text-align:center;box-shadow:0 2px 4px rgba(0,0,0,.15)`;
 
-  /* 5. Hide after 5 s or on click ---------------------------------------- */
+  /* Hide after 5 s or when dismissed ----------------------------------- */
   const hide = () => bar.remove();
   bar.querySelector('button').onclick = hide;
   setTimeout(hide, 5000);
