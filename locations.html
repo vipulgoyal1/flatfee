@@ -26,23 +26,27 @@
   
 </head>
 <body>
-  <!-- ===== Welcome banner for visitors coming via cashbackagent.net ===== -->
+  <!-- ===== Welcome banner for visitors coming from cashbackagent.net ===== -->
 <script>
 (function () {
-  /* 1. Detect the hash flag ------------------------------------------------ */
-  if (location.hash !== '#src=cb') return;          // no flag → exit
+  /* 1. Detect flag in either place ---------------------------------------- */
+  const url  = new URL(window.location.href);
+  const hasQueryFlag = url.searchParams.get('src') === 'cb';
+  const hasHashFlag  = location.hash.replace(/^#/, '') === 'src=cb';
+  if (!(hasQueryFlag || hasHashFlag)) return;      // bail if flag absent
 
-  /* Optional: strip the flag so it doesn’t linger in the address bar ------- */
+  /* 2. Clean the URL (remove ?src or #src) -------------------------------- */
   if (history.replaceState) {
-      history.replaceState(null, '',
-        location.pathname + location.search + location.hash.replace('#src=cb', ''));
+    if (hasQueryFlag) url.searchParams.delete('src');
+    if (hasHashFlag)  url.hash = '';
+    history.replaceState(null, '', url.pathname + url.search + url.hash);
   }
 
-  /* Show banner only once per tab ----------------------------------------- */
+  /* 3. Show only once per tab -------------------------------------------- */
   if (sessionStorage.getItem('welcomeDismissed')) return;
   sessionStorage.setItem('welcomeDismissed', '1');
 
-  /* 2. Build the banner with your new message ----------------------------- */
+  /* 4. Build the banner --------------------------------------------------- */
   const bar = document.createElement('div');
   bar.innerHTML = `
       Cashbackagent has moved to a new URL!&nbsp;
@@ -56,7 +60,7 @@
       font:16px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
       text-align:center;box-shadow:0 2px 4px rgba(0,0,0,.15)`;
 
-  /* 3. Hide on click or after 5 s ---------------------------------------- */
+  /* 5. Hide after 5 s or on click ---------------------------------------- */
   const hide = () => bar.remove();
   bar.querySelector('button').onclick = hide;
   setTimeout(hide, 5000);

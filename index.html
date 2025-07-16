@@ -30,23 +30,27 @@
   
 </head>
 <body>
-  <!-- ===== Welcome banner for visitors coming via cashbackagent.net ===== -->
+  <!-- ===== Welcome banner for visitors coming from cashbackagent.net ===== -->
 <script>
 (function () {
-  /* 1. Detect the hash flag ------------------------------------------------ */
-  if (location.hash !== '#src=cb') return;          // no flag → exit
+  /* 1. Detect flag in either place ---------------------------------------- */
+  const url  = new URL(window.location.href);
+  const hasQueryFlag = url.searchParams.get('src') === 'cb';
+  const hasHashFlag  = location.hash.replace(/^#/, '') === 'src=cb';
+  if (!(hasQueryFlag || hasHashFlag)) return;      // bail if flag absent
 
-  /* Optional: strip the flag so it doesn’t linger in the address bar ------- */
+  /* 2. Clean the URL (remove ?src or #src) -------------------------------- */
   if (history.replaceState) {
-      history.replaceState(null, '',
-        location.pathname + location.search + location.hash.replace('#src=cb', ''));
+    if (hasQueryFlag) url.searchParams.delete('src');
+    if (hasHashFlag)  url.hash = '';
+    history.replaceState(null, '', url.pathname + url.search + url.hash);
   }
 
-  /* Show banner only once per tab ----------------------------------------- */
+  /* 3. Show only once per tab -------------------------------------------- */
   if (sessionStorage.getItem('welcomeDismissed')) return;
   sessionStorage.setItem('welcomeDismissed', '1');
 
-  /* 2. Build the banner with your new message ----------------------------- */
+  /* 4. Build the banner --------------------------------------------------- */
   const bar = document.createElement('div');
   bar.innerHTML = `
       Cashbackagent has moved to a new URL!&nbsp;
@@ -60,7 +64,7 @@
       font:16px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
       text-align:center;box-shadow:0 2px 4px rgba(0,0,0,.15)`;
 
-  /* 3. Hide on click or after 5 s ---------------------------------------- */
+  /* 5. Hide after 5 s or on click ---------------------------------------- */
   const hide = () => bar.remove();
   bar.querySelector('button').onclick = hide;
   setTimeout(hide, 5000);
@@ -172,15 +176,15 @@
                     <h3 class="mbr-section-title mb-0 mbr-fonts-style display-2"><strong>Frequently Asked Questions</strong></h3>
                     
                 </div>
-                <div id="bootstrap-accordion_6" class="panel-group accordionStyles accordion" role="tablist" aria-multiselectable="true">
+                <div id="bootstrap-accordion_3" class="panel-group accordionStyles accordion" role="tablist" aria-multiselectable="true">
                     <div class="card mb-3">
                         <div class="card-header" role="tab" id="headingOne">
-                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse1_6" aria-expanded="false" aria-controls="collapse1">
+                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse1_3" aria-expanded="false" aria-controls="collapse1">
                                 <h6 class="panel-title-edit mbr-fonts-style mb-0 display-7"><strong>Are you fully licensed? Are you a member of realtor associations?</strong></h6>
                                 <span class="sign mbr-iconfont mbri-arrow-down"></span>
                             </a>
                         </div>
-                        <div id="collapse1_6" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_6">
+                        <div id="collapse1_3" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_3">
                             <div class="panel-body">
                                 <p class="mbr-fonts-style panel-text display-4">Yes, we are fully licensed in CA, NY, and FL. We are members of MLS, national, state and local association of realtors. Our founder Yulia Goyal also has experience working with 2 large banks in mortgage refinancing.&nbsp;<br> </p>
                             </div>
@@ -188,12 +192,12 @@
                     </div>
                     <div class="card mb-3">
                         <div class="card-header" role="tab" id="headingOne">
-                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse2_6" aria-expanded="false" aria-controls="collapse2">
+                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse2_3" aria-expanded="false" aria-controls="collapse2">
                                 <h6 class="panel-title-edit mbr-fonts-style mb-0 display-7"><strong>While I like the idea of cash back, I'm more interested in getting my offer accepted. Can you help with that?</strong></h6>
                                 <span class="sign mbr-iconfont mbri-arrow-down"></span>
                             </a>
                         </div>
-                        <div id="collapse2_6" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_6">
+                        <div id="collapse2_3" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_3">
                             <div class="panel-body">
                                 <p class="mbr-fonts-style panel-text display-4">
                                     If you were to get 30k cash back from us on the transaction, we can help you increase your offer by 30k. This would give you a huge leg up against competing buyers! </p>
@@ -202,12 +206,12 @@
                     </div>
                     <div class="card mb-3">
                         <div class="card-header" role="tab" id="headingOne">
-                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse3_6" aria-expanded="false" aria-controls="collapse3">
+                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse3_3" aria-expanded="false" aria-controls="collapse3">
                                 <h6 class="panel-title-edit mbr-fonts-style mb-0 display-7"><strong>Do I need to sign an agreement prior to working with you?</strong></h6>
                                 <span class="sign mbr-iconfont mbri-arrow-down"></span>
                             </a>
                         </div>
-                        <div id="collapse3_6" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_6">
+                        <div id="collapse3_3" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_3">
                             <div class="panel-body">
                                 <p class="mbr-fonts-style panel-text display-4">
                                     Prior to writing an offer on your behalf or showing you a house, we will ask you to sign a non-exclusive agreement. The purpose of this agreement is to provide a full disclosure of our fee to you. This is a requirement for all realtors starting Aug 2024.</p>
@@ -216,12 +220,12 @@
                     </div>
                     <div class="card mb-3">
                         <div class="card-header" role="tab" id="headingOne">
-                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse4_6" aria-expanded="false" aria-controls="collapse4">
+                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse4_3" aria-expanded="false" aria-controls="collapse4">
                                 <h6 class="panel-title-edit mbr-fonts-style mb-0 display-7"><strong>Has your business model changed after Aug 2024?</strong></h6>
                                 <span class="sign mbr-iconfont mbri-arrow-down"></span>
                             </a>
                         </div>
-                        <div id="collapse4_6" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_6">
+                        <div id="collapse4_3" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_3">
                             <div class="panel-body">
                                 <p class="mbr-fonts-style panel-text display-4">Starting Aug 2024, the payment made to buyer's agent is negotiable and is part of the offer made by the buyer to the seller. This means now there are two options available: (1) Ask the seller to pay the usual 2.5-3% and get cash back from us, or, (2) Ask the seller to pay only our flat fee (essentially giving cash back to the seller) and reduce your offer price accordingly if needed. There are pros and cons of each option. We will discuss which option is right for you.</p>
                             </div>
@@ -229,12 +233,12 @@
                     </div>
                     <div class="card mb-3">
                         <div class="card-header" role="tab" id="headingOne">
-                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse5_6" aria-expanded="false" aria-controls="collapse5">
+                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse5_3" aria-expanded="false" aria-controls="collapse5">
                                 <h6 class="panel-title-edit mbr-fonts-style mb-0 display-7"><strong>I have heard that the seller pays both real estate agents. So why should I care as a buyer?</strong></h6>
                                 <span class="sign mbr-iconfont mbri-arrow-down"></span>
                             </a>
                         </div>
-                        <div id="collapse5_6" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_6">
+                        <div id="collapse5_3" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_3">
                             <div class="panel-body">
                                 <p class="mbr-fonts-style panel-text display-4">
                                     Good question! Who do you think pays the seller? It is your money as the buyer which goes to all three parties (the seller and the two real estate agents). You can't control the payment made to the seller’s agent. But you can choose your buyer’s agent wisely to get the maximum cashback. </p>
@@ -243,12 +247,12 @@
                     </div>
                     <div class="card mb-3">
                         <div class="card-header" role="tab" id="headingOne">
-                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse6_6" aria-expanded="false" aria-controls="collapse6">
+                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse6_3" aria-expanded="false" aria-controls="collapse6">
                                 <h6 class="panel-title-edit mbr-fonts-style mb-0 display-7"><strong>Can I just go without an agent and get 100% cashback? Why do I need a buyer's agent at all?</strong></h6>
                                 <span class="sign mbr-iconfont mbri-arrow-down"></span>
                             </a>
                         </div>
-                        <div id="collapse6_6" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_6">
+                        <div id="collapse6_3" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_3">
                             <div class="panel-body">
                                 <p class="mbr-fonts-style panel-text display-4">If the buyer is without an agent, the seller’s agent generally gets to keep higher commission and you get no cashback. Besides, having an agent is strongly advised. You need to be able to write the legal offer and purchase contract which can run into dozens of pages. You need to read and interpret disclosures. You need to negotiate, take care of inspections, or decide if you want to waive inspections. You need to know how the market is doing and what would be the right offer for a particular property. There is quite a bit of work that goes in purchasing a house as you can imagine.</p>
                             </div>
@@ -270,15 +274,15 @@
         <div class="row justify-content-center">
             <div class="col-12 col-md-10">
                 
-                <div id="bootstrap-accordion_7" class="panel-group accordionStyles accordion" role="tablist" aria-multiselectable="true">
+                <div id="bootstrap-accordion_4" class="panel-group accordionStyles accordion" role="tablist" aria-multiselectable="true">
                     <div class="card mb-3">
                         <div class="card-header" role="tab" id="headingOne">
-                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse1_7" aria-expanded="false" aria-controls="collapse1">
+                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse1_4" aria-expanded="false" aria-controls="collapse1">
                                 <h6 class="panel-title-edit mbr-fonts-style mb-0 display-7"><strong>I have been working with an agent who showed me a house which I like. But I like the idea of a huge cash back. Can I make an offer on that house with you?</strong></h6>
                                 <span class="sign mbr-iconfont mbri-arrow-down"></span>
                             </a>
                         </div>
-                        <div id="collapse1_7" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_7">
+                        <div id="collapse1_4" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_4">
                             <div class="panel-body">
                                 <p class="mbr-fonts-style panel-text display-4">Starting Aug 2024, all agents are required to sign an agreement with the client prior to showing a house. Please consult that agreement on whether it is ok to switch the agent. Regardless of the agreement, if they have already provided you a service and have spent valuable hours driving around with you,&nbsp;they deserve to be compensated and we recommend sticking to them for that property.&nbsp;</p>
                             </div>
@@ -286,12 +290,12 @@
                     </div>
                     <div class="card mb-3">
                         <div class="card-header" role="tab" id="headingOne">
-                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse2_7" aria-expanded="false" aria-controls="collapse2">
+                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse2_4" aria-expanded="false" aria-controls="collapse2">
                                 <h6 class="panel-title-edit mbr-fonts-style mb-0 display-7"><strong>I'm already working with an agent, but I like you more. Is it fine to change the agent?</strong></h6>
                                 <span class="sign mbr-iconfont mbri-arrow-down"></span>
                             </a>
                         </div>
-                        <div id="collapse2_7" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_7">
+                        <div id="collapse2_4" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_4">
                             <div class="panel-body">
                                 <p class="mbr-fonts-style panel-text display-4">
                                     Yes, you can switch to another agent at any time unless you have a written contract disallowing this with the previous agent. We never sign exclusive agreements, so you are free to switch from us to another agent at any time.</p>
@@ -300,12 +304,12 @@
                     </div>
                     <div class="card mb-3">
                         <div class="card-header" role="tab" id="headingOne">
-                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse3_7" aria-expanded="false" aria-controls="collapse3">
+                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse3_4" aria-expanded="false" aria-controls="collapse3">
                                 <h6 class="panel-title-edit mbr-fonts-style mb-0 display-7"><strong>Is the cash back to the buyer legal?</strong></h6>
                                 <span class="sign mbr-iconfont mbri-arrow-down"></span>
                             </a>
                         </div>
-                        <div id="collapse3_7" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_7">
+                        <div id="collapse3_4" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_4">
                             <div class="panel-body">
                                 <p class="mbr-fonts-style panel-text display-4">
                                     Yes. This practice is legal in 41 states including California and Florida. US Department of Justice encourages this practice to foster competition and avoid price fixing.  </p>
@@ -314,12 +318,12 @@
                     </div>
                     <div class="card mb-3">
                         <div class="card-header" role="tab" id="headingOne">
-                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse4_7" aria-expanded="false" aria-controls="collapse4">
+                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse4_4" aria-expanded="false" aria-controls="collapse4">
                                 <h6 class="panel-title-edit mbr-fonts-style mb-0 display-7"><strong>Do I need to pay you the commission as the buyer?</strong></h6>
                                 <span class="sign mbr-iconfont mbri-arrow-down"></span>
                             </a>
                         </div>
-                        <div id="collapse4_7" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_7">
+                        <div id="collapse4_4" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_4">
                             <div class="panel-body">
                                 <p class="mbr-fonts-style panel-text display-4">No. The real estate agents are typically paid by the seller. So effectively we will be giving you cash back after deducting our fee. </p>
                             </div>
@@ -327,12 +331,12 @@
                     </div>
                     <div class="card mb-3">
                         <div class="card-header" role="tab" id="headingOne">
-                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse5_7" aria-expanded="false" aria-controls="collapse5">
+                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse5_4" aria-expanded="false" aria-controls="collapse5">
                                 <h6 class="panel-title-edit mbr-fonts-style mb-0 display-7"><strong>Would the cash back count as income? Would I be taxed on this amount?</strong></h6>
                                 <span class="sign mbr-iconfont mbri-arrow-down"></span>
                             </a>
                         </div>
-                        <div id="collapse5_7" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_7">
+                        <div id="collapse5_4" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_4">
                             <div class="panel-body">
                                 <p class="mbr-fonts-style panel-text display-4">No! While we cannot provide tax advice, typically this would be considered as a rebate on the house purchase. The cost basis of your house would be reduced by the amount of cashback you receive from us.</p>
                             </div>
@@ -340,12 +344,12 @@
                     </div>
                     <div class="card mb-3">
                         <div class="card-header" role="tab" id="headingOne">
-                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse6_7" aria-expanded="false" aria-controls="collapse6">
+                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse6_4" aria-expanded="false" aria-controls="collapse6">
                                 <h6 class="panel-title-edit mbr-fonts-style mb-0 display-7"><strong>I have heard "you get what you pay for". Isn't it a good idea to hire a percentage-based-commission agent?</strong></h6>
                                 <span class="sign mbr-iconfont mbri-arrow-down"></span>
                             </a>
                         </div>
-                        <div id="collapse6_7" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_7">
+                        <div id="collapse6_4" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_4">
                             <div class="panel-body">
                                 <p class="mbr-fonts-style panel-text display-4">We do far more transactions than a typical real estate agent. We typically write multiple offers per week, are deeply plugged into how the real estate market is doing (which can go from&nbsp;being a seller's market to a buyer's market in a matter of months, and vice versa), and can give you accurate advice on how to play the game. Experience doesn't have to cost tens of thousands of dollars!</p>
                             </div>
@@ -406,7 +410,7 @@
         
         <div class="row justify-content-center mt-4">
             <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
-                <form action="https://mobirise.eu/" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name"><input type="hidden" name="email" data-form-email="true" value="3dUFycADnAHd+LGS9u4op0HDr/UAsYPBUT0D9AuI4LCGLihMMCOpQmwOrYxL4MnMPCbSoLBCOxCq8ot9zBubjsV39IMXD4BvOYRV6GQ6T16qeASDQhmWvVivr6HeJwqK.F8ENQ4Yom0kD9u+nMWo1eOmALgrH9TFgyGOMpXxyFsrW7fIQpcsRINz3LnQo4vFhaPWJAwpqRg3SzPgkyt6m1nD8vKtOo9HxIfgkILsrzB1gSLZmWCUxLQsGTMBEbpkA">
+                <form action="https://mobirise.eu/" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name"><input type="hidden" name="email" data-form-email="true" value="H1r8T66d7VkLBCyLUd/5hQE+iyfbHQctOZYNjuAC7ZVr8TSNWhoLORaB2CV5eopbqTEUzWoTwcY74H1V8NHsaoia7//2UuwSwu67JNq8XZOdkphVdhb6b71zEbUZsszP.WwpQ9La+OccCfx59aphTX7iDcllYMIPogMHYHUhxdgZ3AXcadJ6wFhJYS2BTA2BqWfMqMWiHZKhYP4P2qhdbubm47z4uscTqfH1Aa3y3pYj8jEFzWjAHtPVv6bg3ngNd">
                     <div class="row">
                         <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Thanks, we will get back to you ASAP!</div>
                         <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">
