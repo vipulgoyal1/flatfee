@@ -26,27 +26,27 @@
   
 </head>
 <body>
-  <!-- ========== Welcome banner for visitors from cashbackagent.net ========== -->
+  <!-- ===== Welcome banner for visitors coming via cashbackagent.net ===== -->
 <script>
 (function () {
-  /* 1 Detect ?src=cb ------------------------------------------------------- */
-  const url = new URL(window.location.href);
-  if (url.searchParams.get('src') !== 'cb') return;              // bail if flag absent
+  /* 1. Detect the hash flag ------------------------------------------------ */
+  if (location.hash !== '#src=cb') return;          // no flag → exit
 
-  /* Optional: strip the flag so it doesn’t linger in the address bar -------- */
+  /* Optional: strip the flag so it doesn’t linger in the address bar ------- */
   if (history.replaceState) {
-    url.searchParams.delete('src');
-    history.replaceState(null, '', url.pathname + url.search + url.hash);
+      history.replaceState(null, '',
+        location.pathname + location.search + location.hash.replace('#src=cb', ''));
   }
 
-  /* Avoid re-showing in this tab ------------------------------------------- */
+  /* Show banner only once per tab ----------------------------------------- */
   if (sessionStorage.getItem('welcomeDismissed')) return;
   sessionStorage.setItem('welcomeDismissed', '1');
 
-  /* 2 Build the bar --------------------------------------------------------- */
+  /* 2. Build the banner with your new message ----------------------------- */
   const bar = document.createElement('div');
   bar.innerHTML = `
-      Cashbackagent has moved to a new URL! Please bookmark flatfee-realtor.com.
+      Cashbackagent has moved to a new URL!&nbsp;
+      Please bookmark <strong>flatfee-realtor.com</strong>.
       <button aria-label="Close" style="
           margin-left:.8rem;background:transparent;border:0;
           font-size:20px;cursor:pointer;line-height:1;">×</button>`;
@@ -56,7 +56,7 @@
       font:16px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
       text-align:center;box-shadow:0 2px 4px rgba(0,0,0,.15)`;
 
-  /* 3 Hide on click or after 5 s ------------------------------------------- */
+  /* 3. Hide on click or after 5 s ---------------------------------------- */
   const hide = () => bar.remove();
   bar.querySelector('button').onclick = hide;
   setTimeout(hide, 5000);

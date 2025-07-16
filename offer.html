@@ -29,27 +29,27 @@
   
 </head>
 <body>
-  <!-- ========== Welcome banner for visitors from cashbackagent.net ========== -->
+  <!-- ===== Welcome banner for visitors coming via cashbackagent.net ===== -->
 <script>
 (function () {
-  /* 1 Detect ?src=cb ------------------------------------------------------- */
-  const url = new URL(window.location.href);
-  if (url.searchParams.get('src') !== 'cb') return;              // bail if flag absent
+  /* 1. Detect the hash flag ------------------------------------------------ */
+  if (location.hash !== '#src=cb') return;          // no flag → exit
 
-  /* Optional: strip the flag so it doesn’t linger in the address bar -------- */
+  /* Optional: strip the flag so it doesn’t linger in the address bar ------- */
   if (history.replaceState) {
-    url.searchParams.delete('src');
-    history.replaceState(null, '', url.pathname + url.search + url.hash);
+      history.replaceState(null, '',
+        location.pathname + location.search + location.hash.replace('#src=cb', ''));
   }
 
-  /* Avoid re-showing in this tab ------------------------------------------- */
+  /* Show banner only once per tab ----------------------------------------- */
   if (sessionStorage.getItem('welcomeDismissed')) return;
   sessionStorage.setItem('welcomeDismissed', '1');
 
-  /* 2 Build the bar --------------------------------------------------------- */
+  /* 2. Build the banner with your new message ----------------------------- */
   const bar = document.createElement('div');
   bar.innerHTML = `
-      Cashbackagent has moved to a new URL! Please bookmark flatfee-realtor.com.
+      Cashbackagent has moved to a new URL!&nbsp;
+      Please bookmark <strong>flatfee-realtor.com</strong>.
       <button aria-label="Close" style="
           margin-left:.8rem;background:transparent;border:0;
           font-size:20px;cursor:pointer;line-height:1;">×</button>`;
@@ -59,7 +59,7 @@
       font:16px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
       text-align:center;box-shadow:0 2px 4px rgba(0,0,0,.15)`;
 
-  /* 3 Hide on click or after 5 s ------------------------------------------- */
+  /* 3. Hide on click or after 5 s ---------------------------------------- */
   const hide = () => bar.remove();
   bar.querySelector('button').onclick = hide;
   setTimeout(hide, 5000);
@@ -128,7 +128,7 @@
         <div class="row">
             <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
 <!--Formbuilder Form-->
-<form action="https://mobirise.eu/" method="POST" class="mbr-form form-with-styler" data-form-title="Request Offer"><input type="hidden" name="email" data-form-email="true" value="FTtBAb5au1MEcSpiUVUf/MOGo1OKudwnqbVACbmAEQbAHVuInhWs3q3G8Bhf5no1z7QPWdzYd45kniYdLQUVADji2NSD8acx0A/bARZv+YGMQ9zysfLhUfnzw34esN2u.buR72dnSiptuRRFX7zTDiSss0bUnckuCxnDm1lxbwi5/j8DyNxVMW7pGS4Oy/2csfATZ+a89qKPZLrS7KVumayZbt4leTgN8X0rk/gQX271mHBk5B3Ekv2Bk2I6hIYpC">
+<form action="https://mobirise.eu/" method="POST" class="mbr-form form-with-styler" data-form-title="Request Offer"><input type="hidden" name="email" data-form-email="true" value="KhBTPWhwniRowyzGIuoKCGFQ+YGAq9jhE6+D/U0ZVge5c3Fbu3zyDxU33gfgoKYIIjVKsTGnx50JDG2P57u0sasolDVqtQu18TM9xTsBUR+T9KT68YYGxoP1W8Hfx4nm.AUiYFbRI16VlvEex01njMOIlRHSOILP4czVpTcwzTcwZNrC0e6hOMfKjtYwam0CtPc+VgW0IC3ssu6zBZXhlglSsmDZjVmLDwqpQt+Fw4OYihg+A9eVMmwKHr0p3p3Lt">
 <div class="form-row">
 <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Thanks, we will work on the offer! Please email preapproval and proof of funds if you didn't.</div>
 <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">Oops...! some problem!</div>
