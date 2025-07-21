@@ -6728,7 +6728,7 @@ a {
 }
 .cid-uR08vTDope {
   padding-top: 5rem;
-  padding-bottom: 2rem;
+  padding-bottom: 0rem;
   background-color: #eae7dc;
 }
 .cid-uR08vTDope .mbr-fallback-image.disabled {
@@ -6766,6 +6766,118 @@ a {
   color: #e43f3f;
 }
 .cid-uR08vTDope .list {
+  color: #202020;
+}
+.cid-uRysrgEDSS {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  background-color: #eae7dc;
+}
+.cid-uRysrgEDSS .line {
+  background-color: #6592e6;
+  align: center;
+  height: 2px;
+  margin: 0 auto;
+}
+.cid-uRysrgEDSS .mbr-text {
+  color: #e43f3f;
+}
+.cid-uRytk1T7AD {
+  padding-top: 0rem;
+  padding-bottom: 2rem;
+  background-color: #eae7dc;
+}
+.cid-uRytk1T7AD .mbr-fallback-image.disabled {
+  display: none;
+}
+.cid-uRytk1T7AD .mbr-fallback-image {
+  display: block;
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+}
+.cid-uRytk1T7AD ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 2.5rem;
+}
+.cid-uRytk1T7AD li {
+  position: relative;
+  margin-bottom: 1rem;
+}
+.cid-uRytk1T7AD ul li::before {
+  position: absolute;
+  left: -1.6rem;
+  content: "\2022";
+  color: #e85a4f;
+  font-weight: bold;
+  font-size: 2rem;
+  width: 1.6rem;
+}
+.cid-uRytk1T7AD H3 {
+  text-align: center;
+  color: #e43f3f;
+}
+.cid-uRytk1T7AD .list {
+  color: #202020;
+}
+.cid-uRytLFbcJE {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  background-color: #eae7dc;
+}
+.cid-uRytLFbcJE .line {
+  background-color: #6592e6;
+  align: center;
+  height: 2px;
+  margin: 0 auto;
+}
+.cid-uRytLFbcJE .mbr-text {
+  color: #e43f3f;
+}
+.cid-uRytMR7mX4 {
+  padding-top: 0rem;
+  padding-bottom: 2rem;
+  background-color: #eae7dc;
+}
+.cid-uRytMR7mX4 .mbr-fallback-image.disabled {
+  display: none;
+}
+.cid-uRytMR7mX4 .mbr-fallback-image {
+  display: block;
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+}
+.cid-uRytMR7mX4 ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 2.5rem;
+}
+.cid-uRytMR7mX4 li {
+  position: relative;
+  margin-bottom: 1rem;
+}
+.cid-uRytMR7mX4 ul li::before {
+  position: absolute;
+  left: -1.6rem;
+  content: "\2022";
+  color: #e85a4f;
+  font-weight: bold;
+  font-size: 2rem;
+  width: 1.6rem;
+}
+.cid-uRytMR7mX4 H3 {
+  text-align: center;
+  color: #e43f3f;
+}
+.cid-uRytMR7mX4 .list {
   color: #202020;
 }
 .cid-uR0Bx5s1PI {
