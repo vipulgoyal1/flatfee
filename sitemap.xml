@@ -1,72 +1,47 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
-
-<url>
-  <loc>https://flatfee-realtor.com/</loc>
-  <lastmod>2025-07-15T11:26:02+00:00</lastmod>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://flatfee-realtor.com/index.html</loc>
-  <lastmod>2025-07-15T11:26:02+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://flatfee-realtor.com/process.html</loc>
-  <lastmod>2025-07-15T11:26:02+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://flatfee-realtor.com/sfbay.html</loc>
-  <lastmod>2025-07-15T11:26:02+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://flatfee-realtor.com/locations.html</loc>
-  <lastmod>2025-07-15T11:26:02+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://flatfee-realtor.com/blog.html</loc>
-  <lastmod>2025-07-15T11:26:02+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://flatfee-realtor.com/reviews.html</loc>
-  <lastmod>2025-07-15T11:26:02+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://flatfee-realtor.com/contact.html</loc>
-  <lastmod>2025-07-15T11:26:02+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://flatfee-realtor.com/referrals.html</loc>
-  <lastmod>2025-07-15T11:26:02+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://flatfee-realtor.com/license.html</loc>
-  <lastmod>2025-07-15T11:26:02+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://flatfee-realtor.com/terms.html</loc>
-  <lastmod>2025-07-15T11:26:02+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://flatfee-realtor.com/privacy.html</loc>
-  <lastmod>2025-07-15T11:26:02+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	<url>
+		<loc>https://flatfee-realtor.com/index.html</loc>
+	</url>
+	<url>
+		<loc>https://flatfee-realtor.com/process.html</loc>
+	</url>
+	<url>
+		<loc>https://flatfee-realtor.com/reviews.html</loc>
+	</url>
+	<url>
+		<loc>https://flatfee-realtor.com/referrals.html</loc>
+	</url>
+	<url>
+		<loc>https://flatfee-realtor.com/offer.html</loc>
+	</url>
+	<url>
+		<loc>https://flatfee-realtor.com/contact.html</loc>
+	</url>
+	<url>
+		<loc>https://flatfee-realtor.com/privacy.html</loc>
+	</url>
+	<url>
+		<loc>https://flatfee-realtor.com/terms.html</loc>
+	</url>
+	<url>
+		<loc>https://flatfee-realtor.com/sfbay.html</loc>
+	</url>
+	<url>
+		<loc>https://flatfee-realtor.com/locations.html</loc>
+	</url>
+	<url>
+		<loc>https://flatfee-realtor.com/license.html</loc>
+	</url>
+	<url>
+		<loc>https://flatfee-realtor.com/blog.html</loc>
+	</url>
+	<url>
+		<loc>https://flatfee-realtor.com/rent_vs_buy_sheet_CA.html</loc>
+	</url>
+	<url>
+		<loc>https://flatfee-realtor.com/Bay_Area_Price_Drop.html</loc>
+	</url>
+	<url>
+		<loc>https://flatfee-realtor.com/Borrow_money_low_interest_SPX_Box.html</loc>
+	</url>
 </urlset>
