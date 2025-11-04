@@ -1,6 +1,6 @@
 {
   "settings": {
-    "currentPage": "properties.html",
+    "currentPage": "index.html",
     "theme": {
       "name": "mobirise5",
       "title": "Mobirise 5",
@@ -63,7 +63,7 @@
     ],
     "imageResize": true,
     "favicon": "@PROJECT_PATH@/assets/images/logo-final-128x90.png",
-    "mbrsiteDomain": "h8p4fl0de2",
+    "mbrsiteDomain": "w4s4k0imwi",
     "usedWebp": false,
     "robotsSwitcher": false,
     "sitemapSwitcher": true,
