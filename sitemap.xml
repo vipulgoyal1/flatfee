@@ -12,6 +12,9 @@
 		<loc>https://flatfee-realtor.com/referrals.html</loc>
 	</url>
 	<url>
+		<loc>https://flatfee-realtor.com/offer.html</loc>
+	</url>
+	<url>
 		<loc>https://flatfee-realtor.com/contact.html</loc>
 	</url>
 	<url>
@@ -43,5 +46,29 @@
 	</url>
 	<url>
 		<loc>https://flatfee-realtor.com/properties.html</loc>
+	</url>
+	<url>
+		<loc>https://flatfee-realtor.com/San-Francisco.html</loc>
+	</url>
+	<url>
+		<loc>https://flatfee-realtor.com/San-Jose.html</loc>
+	</url>
+	<url>
+		<loc>https://flatfee-realtor.com/Oakland.html</loc>
+	</url>
+	<url>
+		<loc>https://flatfee-realtor.com/Los-Angeles.html</loc>
+	</url>
+	<url>
+		<loc>https://flatfee-realtor.com/San-Diego.html</loc>
+	</url>
+	<url>
+		<loc>https://flatfee-realtor.com/San-Mateo.html</loc>
+	</url>
+	<url>
+		<loc>https://flatfee-realtor.com/Sacramento.html</loc>
+	</url>
+	<url>
+		<loc>https://flatfee-realtor.com/Fremont.html</loc>
 	</url>
 </urlset>
