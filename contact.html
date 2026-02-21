@@ -18,13 +18,167 @@
   <link rel="stylesheet" href="assets/socicon/css/styles.css">
   <link rel="stylesheet" href="assets/theme/css/style.css">
   <link rel="stylesheet" href="assets/recaptcha.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,500,600,700,800,900,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,500,600,700,800,900,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=DM+Sans:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=DM+Sans:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
   <link rel="preload" href="https://fonts.googleapis.com/css?family=Lexend:100,200,300,400,500,600,700,800,900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lexend:100,200,300,400,500,600,700,800,900&display=swap"></noscript>
-  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=JQrGQh"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=JQrGQh" type="text/css">
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=xT33Zf"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=xT33Zf" type="text/css">
 
   
   
   
+<!-- SHARED MENU/FOOTER STYLES -->
+<style>
+.cid-uTZO3wYcT2 .navbar .navbar-logo img {
+      height: 2.4rem;
+      width: auto;
+    }
+    @media (min-width: 992px) {
+      .cid-uTZO3wYcT2 .navbar > .container {
+        flex-wrap: nowrap;
+      }
+      .cid-uTZO3wYcT2 .navbar .navbar-collapse {
+        flex-grow: 1;
+        align-items: center;
+      }
+      .cid-uTZO3wYcT2 ul.navbar-nav {
+        flex-wrap: nowrap;
+      }
+      .cid-uTZO3wYcT2 .navbar-buttons {
+        min-width: auto;
+        white-space: nowrap;
+        margin-left: 0.25rem;
+      }
+    }
+    .btn-rankings-outline,
+    .btn-rankings-outline:active,
+    .btn-rankings-outline:focus {
+      background-color: #ffffff !important;
+      border-color: #232323 !important;
+      color: #232323 !important;
+    }
+    .btn-rankings-outline:hover {
+      background-color: #f7f7f7 !important;
+      border-color: #000000 !important;
+      color: #000000 !important;
+    }
+
+    /* ===== Redesigned Footer (Option B: Warm Dark + Gold) ===== */
+    .footer-redesigned {
+      background-color: #1b1b1b;
+      color: #ffffff;
+      padding: 60px 0 0 0;
+      font-family: 'DM Sans', 'Lexend', sans-serif;
+    }
+    .footer-redesigned a {
+      color: #bfbfbf;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .footer-redesigned a:hover {
+      color: #d4a853;
+      text-decoration: underline;
+    }
+    .footer-brand-col img {
+      height: 72px;
+      width: auto;
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+    .footer-brand-col p {
+      color: #888888;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .footer-social a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: #2a2a2a;
+      margin-right: 10px;
+      color: #bfbfbf;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+    .footer-social a:hover {
+      background-color: #d4a853;
+      color: #1b1b1b;
+      text-decoration: none;
+    }
+    .footer-heading {
+      color: #d4a853;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 20px;
+    }
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+    .footer-links li a {
+      font-size: 0.9rem;
+    }
+    .footer-bottom {
+      border-top: 1px solid #333333;
+      margin-top: 40px;
+      padding: 20px 0;
+      text-align: center;
+    }
+    .footer-bottom p {
+      color: #666666;
+      font-size: 0.85rem;
+      margin: 0;
+    }
+    .footer-contact-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 14px;
+      color: #bfbfbf;
+      font-size: 0.9rem;
+    }
+    .footer-contact-item .footer-contact-icon {
+      margin-right: 10px;
+      color: #d4a853;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .footer-contact-item a {
+      color: #bfbfbf;
+    }
+    @media (max-width: 767px) {
+      .footer-redesigned {
+        padding: 40px 0 0 0;
+      }
+      .footer-redesigned .col-md-3 {
+        margin-bottom: 30px;
+      }
+      .footer-heading {
+        margin-bottom: 14px;
+      }
+      .footer-brand-col {
+        text-align: center;
+      }
+      .footer-contact-item {
+        justify-content: center;
+      }
+      .footer-social {
+        text-align: center;
+      }
+    }
+</style>
+<!-- /SHARED MENU/FOOTER STYLES -->
+
 </head>
 <body>
   <!-- ===== Welcome banner for visitors coming from cashbackagent.net ===== -->
@@ -61,7 +215,7 @@
       Please bookmark <strong>flatfee-realtor.com</strong>.
       <button aria-label="Close" style="
           margin-left:.8rem;background:transparent;border:0;
-          font-size:20px;cursor:pointer;line-height:1;">×</button>`;
+          font-size:20px;cursor:pointer;line-height:1;">&times;</button>`;
   bar.style.cssText = `
       position:fixed;top:0;left:0;right:0;z-index:9999;
       padding:12px 8px;background:#fffae6;color:#222;
@@ -78,12 +232,15 @@
 </script>
 
   <section data-bs-version="5.1" class="menu menu2 cid-uTZO3wYcT2" once="menu" id="menu2-4t">
-    
+
     <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
         <div class="container">
             <div class="navbar-brand">
-                
-                
+                <span class="navbar-logo">
+                    <a href="index.html">
+                        <img src="assets/images/logo-ffr-2-337x337.png" alt="Flat Fee Realtor">
+                    </a>
+                </span>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <div class="hamburger">
@@ -94,9 +251,10 @@
                 </div>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                
-                
-                <div class="navbar-buttons mbr-section-btn"><a class="btn btn-black display-4" href="index.html">Home</a> <a class="btn btn-black display-4" href="process.html">Process</a> <a class="btn btn-black display-4" href="sfbay.html">SF Bay</a>  <a class="btn btn-black display-4" href="locations.html">Locations</a> <a class="btn btn-black display-4" href="blog.html">Blog</a>   <a class="btn btn-black display-4" href="reviews.html">Reviews</a> <a class="btn btn-black display-4" href="properties.html">Properties</a>  <a class="btn btn-black display-4" href="contact.html">Contact</a></div>
+                <ul class="navbar-nav nav-dropdown navbar-nav-top-padding" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="process.html">Process</a></li><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="sfbay.html">SF Bay</a></li><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="locations.html">Locations</a></li><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="blog.html">Blog</a></li><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="properties.html">Properties</a></li></ul>
+
+                <div class="navbar-buttons mbr-section-btn"><a class="btn btn-rankings-outline display-4" href="Appreciation-Rankings-Hub.html">Rankings</a> <a class="btn btn-black display-4" href="contact.html">Contact</a></div>
             </div>
         </div>
     </nav>
@@ -153,7 +311,7 @@
         <div class="row justify-content-center mt-4">
             <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
 <!--Formbuilder Form-->
-<form action="https://mobirise.eu/" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name"><input type="hidden" name="email" data-form-email="true" value="u2ht0N7TxWj62E3n0SFA4EPQCG6IvKg9P4aZVKJTfaSoIbbG1PTlB/iKkOYQMvLQWIBvpPG51pjddPJFxCQE48xIrwfyHCz1AwtayeFK2bnHGDOBFWfUMoOydMvXxpqy.TLBb2BHbYMNGmpoF3oTkBxZz/tuglUoiQ1QG3ImSdw5XBLAsSOCN7EpvTplhgKAPeh5gxWz96KDV9QSVr7gOho5PckOXsHGzuFwhQiM9CVzVW/ZwZ3PEoHOU9bt8XbQV">
+<form action="https://mobirise.eu/" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name"><input type="hidden" name="email" data-form-email="true" value="pSlXMhkhtJ2a/1rRucwcb15tUA+IvGQ6fKNZ0/2XnAx06nbf2OSBLDr7zA/IAAuhqbf2ZSd/qXpCmrdRedHCp22GS73Ha0QofIe0yN6o+3mC8zVeWXTkSMC889adDiJM.4xi1JtEahJAhf0KMERB51KxnE8OQmx/dleEfGTLhbjwyPFVTw7HEMl1TDB6JnNyCcBeyeSqvMCrgSgzTp6d1GddatTH4+tNvW0GGh2kUHoV5/CGrwSPIu0ZXIELxFEhE">
 <div class="row">
 <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Thanks, we will get back to you ASAP!</div>
 <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12"> Oops...! some problem! </div>
@@ -223,7 +381,7 @@
 </strong></div><div><strong>
 </strong></div><div><strong>
 </strong></div></h3>
-                <ul class="list mbr-fonts-style display-7"><p><span style="font-size: 1.2rem;"><br></span></p><p>Our founders are based in the Bay Area (San Jose in particular). They have also lived in southern CA, and personally involved in every transaction. They work with a team of agents.</p><p>
+                <ul class="list mbr-fonts-style display-7"><p><span><br></span></p><p>Our founders are based in the Bay Area (San Jose in particular). They have also lived in southern CA, and personally involved in every transaction. They work with a team of agents.</p><p>
 </p><p>
 </p><p>
 </p><p>
@@ -285,62 +443,84 @@
     </div>
 </section>
 
-<section data-bs-version="5.1" class="footer4 cid-uTZ2oGKltU" once="footers" id="footer4-4s">
-
-    
-
-    
-    
+<!-- ===== REDESIGNED FOOTER ===== -->
+<footer class="footer-redesigned">
     <div class="container">
-        <div class="row mbr-white">
-            <div class="col-6 col-lg-3">
-                <div class="media-wrap col-md-12 col-12">
-                    
-                        <img src="assets/images/logo-ffr-2-337x337.png" alt="Flat Fee Realtor">
-                    
+        <div class="row">
+            <!-- Column 1: Brand + Contact -->
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+                <div class="footer-brand-col">
+                    <img src="assets/images/logo-ffr-2-337x337.png" alt="Flat Fee Realtor">
+                    <p>Top 1% Realtors with all 5-Star reviews. Flat fee, maximum cashback. Full service representation.</p>
+                </div>
+                <div class="footer-contact-item">
+                    <span class="footer-contact-icon">&#9742;</span>
+                    <span>408-905-8133</span>
+                </div>
+                <div class="footer-contact-item">
+                    <span class="footer-contact-icon socicon-whatsapp socicon" style="font-size: 0.95rem;"></span>
+                    <a href="https://wa.me/14089058133" target="_blank">408-905-8133</a>
+                </div>
+                <div class="footer-contact-item">
+                    <span class="footer-contact-icon">&#9993;</span>
+                    <a href="mailto:info@flatfee-realtor.com">info@flatfee-realtor.com</a>
+                </div>
+                <div class="footer-social" style="margin-top: 16px;">
+                    <a href="https://www.reddit.com/user/flatfee-realtor/" target="_blank" aria-label="Reddit">
+                        <span class="mbr-iconfont socicon-reddit socicon"></span>
+                    </a>
                 </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-3">
-                
-                <p class="mbr-text mbr-fonts-style mb-4 display-4"><strong>Contact:</strong><br>Call/Whatsapp/Text&nbsp;&nbsp;<br>408-905-8133<br> info@flatfee-realtor.com<br></p>
-                
-                <div class="social-row display-7">
-                    <div class="soc-item">
-                        <a href="https://www.reddit.com/user/flatfee-realtor/" target="_blank">
-                            <span class="mbr-iconfont socicon-reddit socicon"></span>
-                        </a>
-                    </div>
-                    <div class="soc-item">
-                        
-                            <span class="mbr-iconfont socicon-facebook socicon"></span>
-                        
-                    </div>
-                    
-                    
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-3">
-                
-                <ul class="list mbr-fonts-style display-4">
-                    <li class="mbr-text item-wrap"><span style="font-size: 1.1rem;">Locations:&nbsp;</span></li><li class="mbr-text item-wrap"><span style="font-size: 1.1rem;"><a href="San-Jose.html" class="text-white">San Jose, CA</a></span></li><li class="mbr-text item-wrap"><span style="font-size: 1.1rem;"><a href="San-Francisco.html" class="text-white">San Francisco, CA</a></span></li><li class="mbr-text item-wrap"><span style="font-size: 1.1rem;"><a href="Oakland.html" class="text-white">Oakland, CA</a></span></li><li class="mbr-text item-wrap"><span style="font-size: 1.1rem;"><a href="Fremont.html" class="text-white text-primary">Fremont, CA</a></span></li><li class="mbr-text item-wrap"><span style="font-size: 1.1rem;"><a href="San-Mateo.html" class="text-white">San Mateo, CA</a></span></li><li class="mbr-text item-wrap"><span style="font-size: 1.1rem;"><a href="Los-Angeles.html" class="text-white">Los Angeles, CA</a></span></li><li class="mbr-text item-wrap"><span style="font-size: 1.1rem;"><a href="San-Diego.html" class="text-white">San Diego, CA</a></span></li><li class="mbr-text item-wrap"><span style="font-size: 17.6px;"><a href="Sacramento.html" class="text-white text-primary">Sacramento, CA</a></span></li><li class="mbr-text item-wrap"><a href="locations.html" class="text-white">See More</a></li>
+
+            <!-- Column 2: Locations -->
+            <div class="col-6 col-md-6 col-lg-3 mb-4">
+                <h5 class="footer-heading">Locations</h5>
+                <ul class="footer-links">
+                    <li><a href="San-Jose.html">San Jose, CA</a></li>
+                    <li><a href="San-Francisco.html">San Francisco, CA</a></li>
+                    <li><a href="Oakland.html">Oakland, CA</a></li>
+                    <li><a href="Fremont.html">Fremont, CA</a></li>
+                    <li><a href="San-Mateo.html">San Mateo, CA</a></li>
+                    <li><a href="Los-Angeles.html">Los Angeles, CA</a></li>
+                    <li><a href="San-Diego.html">San Diego, CA</a></li>
+                    <li><a href="Sacramento.html">Sacramento, CA</a></li>
+                    <li><a href="locations.html">See More</a></li>
                 </ul>
             </div>
-            <div class="col-12 col-md-6 col-lg-3">
-                
-                <ul class="list mbr-fonts-style display-7">
-                    <li class="mbr-text item-wrap"><a href="referrals.html" class="text-white">Referrals
-</a></li><li class="mbr-text item-wrap"><a href="properties.html" class="text-white">Closed Properties</a></li><li class="mbr-text item-wrap"><a href="blog.html" class="text-white">Our Blog</a></li><li class="mbr-text item-wrap"><a href="blog.html" class="text-white text-primary">
-</a></li><li class="mbr-text item-wrap"><a href="license.html" class="text-white">License Information</a></li><li class="mbr-text item-wrap"><a href="terms.html" class="text-white">Terms and Conditions</a></li><li class="mbr-text item-wrap"><a href="privacy.html" class="text-white">Privacy Policy</a></li><a href="privacy.html" class="text-primary">
-                    </a><li class="mbr-text item-wrap"><br></li>
+
+            <!-- Column 3: Appreciation Rankings -->
+            <div class="col-6 col-md-6 col-lg-3 mb-4">
+                <h5 class="footer-heading">Rankings</h5>
+                <ul class="footer-links">
+                    <li><a href="Appreciation-Rankings-Hub.html">Real Estate Appreciation Hub</a></li>
+                    <li><a href="Bay-Area-City-Appreciation-Ranking.html">Bay Area Appreciation Ranking</a></li>
+                    <li><a href="Southern-CA-City-Appreciation-Ranking.html">Southern CA Appreciation Rankings</a></li>
+                    <li><a href="US-City-Appreciation-Ranking.html">California Appreciation Rankings</a></li>
+                    <li><a href="US-City-Appreciation-Ranking.html">US Appreciation Rankings</a></li>
+                    <li><a href="US-Neighborhood-Appreciation-Ranking.html">Neighborhood Level Rankings</a></li>
                 </ul>
             </div>
-            <div class="col-12 mt-4">
-                <p class="mbr-text mb-0 mbr-fonts-style copyright align-center display-4">
-                    © Copyright 2026 Flat Fee Realtor (formerly Cashbackagent)</p>
+
+            <!-- Column 4: Company -->
+            <div class="col-6 col-md-6 col-lg-3 mb-4">
+                <h5 class="footer-heading">Company</h5>
+                <ul class="footer-links">
+                    <li><a href="reviews.html">Client Reviews</a></li>
+                    <li><a href="properties.html">Closed Properties</a></li>
+                    <li><a href="blog.html">Our Blog</a></li>
+                    <li><a href="license.html">License Information</a></li>
+                    <li><a href="terms.html">Terms and Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
             </div>
         </div>
+
+        <!-- Bottom bar -->
+        <div class="footer-bottom">
+            <p>&copy; Copyright 2026 Flat Fee Realtor (formerly Cashbackagent)</p>
+        </div>
     </div>
-</section>
+</footer>
 
 
 <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -370,9 +550,9 @@ alt="Web Analytics"
 referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
 <!-- End of Statcounter Code -->
   
-<div id="chatbutton-wa" data-phone="+14089058133" data-showpopup="true" data-headertitle="👋 Message us on WhatsApp!" data-popupmessage="Hi!👋
+<div id="chatbutton-wa" data-phone="+14089058133" data-showpopup="true" data-headertitle="Message us on WhatsApp!" data-popupmessage="Hi!
 
-Leave us a message and it will go straight to our phone! 🔥
+Leave us a message and it will go straight to our phone!
 
 FFR Team" data-placeholder="Type here" data-position="left" data-headercolor="#39847a" data-backgroundcolor="#e5ddd5" data-autoopentimeout="0" data-size="65px"><div class="floating-wpp-button" style="width: 65px; height: 65px;"><div class="floating-wpp-button-image"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="0 0 800 800" width="65" height="65"><defs><clipPath id="_clipPath_A3g8G5hPEGG2L0B6hFCxamU4cc8rfqzQ"><rect width="800" height="800"></rect></clipPath></defs><g clip-path="url(#_clipPath_A3g8G5hPEGG2L0B6hFCxamU4cc8rfqzQ)"><g><path d=" M 787.59 800 L 12.41 800 C 5.556 800 0 793.332 0 785.108 L 0 14.892 C 0 6.667 5.556 0 12.41 0 L 787.59 0 C 794.444 0 800 6.667 800 14.892 L 800 785.108 C 800 793.332 794.444 800 787.59 800 Z " fill="rgb(37,211,102)"></path></g><g><path d=" M 508.558 450.429 C 502.67 447.483 473.723 433.24 468.325 431.273 C 462.929 429.308 459.003 428.328 455.078 434.22 C 451.153 440.114 439.869 453.377 436.434 457.307 C 433 461.236 429.565 461.729 423.677 458.78 C 417.79 455.834 398.818 449.617 376.328 429.556 C 358.825 413.943 347.008 394.663 343.574 388.768 C 340.139 382.873 343.207 379.687 346.155 376.752 C 348.804 374.113 352.044 369.874 354.987 366.436 C 357.931 362.999 358.912 360.541 360.875 356.614 C 362.837 352.683 361.857 349.246 360.383 346.299 C 358.912 343.352 347.136 314.369 342.231 302.579 C 337.451 291.099 332.597 292.654 328.983 292.472 C 325.552 292.301 321.622 292.265 317.698 292.265 C 313.773 292.265 307.394 293.739 301.996 299.632 C 296.6 305.527 281.389 319.772 281.389 348.752 C 281.389 377.735 302.487 405.731 305.431 409.661 C 308.376 413.592 346.949 473.062 406.015 498.566 C 420.062 504.634 431.03 508.256 439.581 510.969 C 453.685 515.451 466.521 514.818 476.666 513.302 C 487.978 511.613 511.502 499.06 516.409 485.307 C 521.315 471.55 521.315 459.762 519.842 457.307 C 518.371 454.851 514.446 453.377 508.558 450.429 Z  M 401.126 597.117 L 401.047 597.117 C 365.902 597.104 331.431 587.661 301.36 569.817 L 294.208 565.572 L 220.08 585.017 L 239.866 512.743 L 235.21 505.332 C 215.604 474.149 205.248 438.108 205.264 401.1 C 205.307 293.113 293.17 205.257 401.204 205.257 C 453.518 205.275 502.693 225.674 539.673 262.696 C 576.651 299.716 597.004 348.925 596.983 401.258 C 596.939 509.254 509.078 597.117 401.126 597.117 Z  M 567.816 234.565 C 523.327 190.024 464.161 165.484 401.124 165.458 C 271.24 165.458 165.529 271.161 165.477 401.085 C 165.46 442.617 176.311 483.154 196.932 518.892 L 163.502 641 L 288.421 608.232 C 322.839 627.005 361.591 636.901 401.03 636.913 L 401.126 636.913 L 401.127 636.913 C 530.998 636.913 636.717 531.2 636.77 401.274 C 636.794 338.309 612.306 279.105 567.816 234.565" fill-rule="evenodd" fill="rgb(255,255,255)"></path></g></g></svg></div></div></div>
  </body>

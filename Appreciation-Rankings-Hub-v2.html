@@ -7,10 +7,10 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   <link rel="shortcut icon" href="assets/images/logo20final-128x90.png" type="image/x-icon">
-  <meta name="description" content="Read buyer education articles on California real estate: trends, financing, negotiation, and strategies to save money on your next home purchase.">
-  
-  
-  <title>Buyer Education - Blog</title>
+  <meta name="description" content="Browse all real estate appreciation rankings in one place. Compare neighborhood and city rankings across Bay Area, Southern California, and the U.S.">
+
+
+  <title>Real Estate Appreciation Ranking Hub | Redesign Option 1 v2</title>
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/chatbutton/floating-wpp.css">
   <link rel="stylesheet" href="assets/dropdown/css/style.css">
@@ -22,10 +22,79 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=DM+Sans:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
   <link rel="preload" href="https://fonts.googleapis.com/css?family=Lexend:100,200,300,400,500,600,700,800,900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lexend:100,200,300,400,500,600,700,800,900&display=swap"></noscript>
-  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=6yhJQg"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=6yhJQg" type="text/css">
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=ZS1iTS"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=ZS1iTS" type="text/css">
   
-  
-  
+  <style>
+  .rankings-page {
+    background:
+      radial-gradient(circle at 12% 10%, #d7ecff 0%, rgba(215, 236, 255, 0) 40%),
+      radial-gradient(circle at 90% 14%, #ffe6cd 0%, rgba(255, 230, 205, 0) 38%),
+      linear-gradient(180deg, #f6fbff 0%, #f7fafc 100%);
+    padding: 3rem 0 4rem;
+  }
+  .o1-shell { max-width: 1160px; margin: 0 auto; padding: 0 1rem; }
+  .o1-hero { display: grid; grid-template-columns: 1.3fr .9fr; gap: 1rem; align-items: stretch; }
+  .o1-hero-main {
+    background: linear-gradient(135deg, #122e4a 0%, #1a4f7a 58%, #2d83b3 100%);
+    color: #fff; border-radius: 20px; padding: 2rem; box-shadow: 0 20px 42px rgba(17, 45, 70, 0.2);
+  }
+  .o1-eyebrow {
+    display: inline-block; font-size: .75rem; letter-spacing: .08em; text-transform: uppercase;
+    background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.28); border-radius: 999px;
+    padding: .3rem .65rem; margin-bottom: .8rem;
+  }
+  .o1-hero-main h1 { margin: 0; font-size: clamp(1.7rem, 3.4vw, 2.45rem); line-height: 1.1; }
+  .o1-hero-main p { margin: .85rem 0 0; color: rgba(255,255,255,.95); max-width: 760px; }
+  .o1-meta { margin-top: 1rem; font-weight: 600; font-size: .92rem; }
+  .o1-panel {
+    background: #ffffff; border: 1px solid #dce8f3; border-radius: 20px; padding: 1.35rem;
+    box-shadow: 0 10px 24px rgba(27, 63, 95, .1);
+  }
+  .o1-panel h3 { margin: 0 0 .6rem; color: #173a57; font-size: 1.08rem; }
+  .o1-panel ul { margin: 0; padding-left: 1rem; color: #425f77; }
+  .o1-panel li + li { margin-top: .4rem; }
+  .o1-note {
+    margin-top: .9rem; padding: .75rem; background: #f3f8ff; border-left: 4px solid #2f82b2;
+    border-radius: 10px; color: #24445d; font-size: .92rem;
+  }
+  .o1-groups { margin-top: 1.35rem; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1rem; }
+  .o1-group {
+    background: #fff; border: 1px solid #e3edf6; border-radius: 16px; padding: 1rem;
+    box-shadow: 0 8px 20px rgba(28, 66, 99, .08);
+  }
+  .o1-group h2 { margin: 0; font-size: 1.18rem; color: #133955; }
+  .o1-group > p { margin: .4rem 0 .9rem; color: #4b6578; font-size: .95rem; }
+  .o1-metro { grid-column: span 3; }
+  .o1-us { grid-column: span 3; }
+  .o1-city { grid-column: span 6; }
+  .o1-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; }
+  .o1-card { border: 1px solid #d7e7f3; background: linear-gradient(180deg, #ffffff 0%, #f9fcff 100%); border-radius: 12px; padding: .85rem; }
+  .o1-kicker {
+    display: inline-block; font-size: .68rem; text-transform: uppercase; letter-spacing: .07em;
+    color: #1a4f72; background: #eaf4fb; border: 1px solid #cce3f3; border-radius: 999px; padding: .25rem .5rem; margin-bottom: .45rem;
+  }
+  .o1-card h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: .01em;
+    color: #0f3551;
+  }
+  .o1-card p { margin: .45rem 0 .7rem; color: #4f687d; font-size: .92rem; }
+  .o1-card a { color: #0f6ca5; text-decoration: none; font-weight: 700; font-size: .92rem; }
+  .o1-card a:hover { text-decoration: underline; color: #084d76; }
+  @media (max-width: 992px) {
+    .o1-hero { grid-template-columns: 1fr; }
+    .o1-groups { grid-template-columns: 1fr; }
+    .o1-metro, .o1-us, .o1-city { grid-column: span 1; }
+  }
+  @media (max-width: 680px) {
+    .o1-cards { grid-template-columns: 1fr; }
+    .o1-card h3 { font-size: 1.1rem; }
+    .o1-hero-main, .o1-panel { padding: 1.2rem; }
+  }
+</style>
 <!-- SHARED MENU/FOOTER STYLES -->
 <style>
 .cid-uTZO3wYcT2 .navbar .navbar-logo img {
@@ -173,44 +242,6 @@
         text-align: center;
       }
     }
-
-    /* ===== BLOG HERO ===== */
-    .blog-hero {
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
-      color: #ffffff;
-      text-align: center;
-      padding: 90px 0 70px;
-    }
-    .blog-hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('assets/images/1497-sanborn-2029x1729.jpg') center/cover no-repeat;
-      opacity: 0.17;
-      pointer-events: none;
-    }
-    .blog-hero .container { position: relative; z-index: 1; }
-    .blog-hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.4rem, 5vw, 3.6rem);
-      font-weight: 800;
-      color: #ffffff;
-      margin-bottom: 12px;
-    }
-    .blog-hero p {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 1.05rem;
-      color: rgba(255,255,255,0.82);
-      max-width: 760px;
-      margin: 0 auto;
-      line-height: 1.7;
-    }
-    .content14.cid-uR08vTDope .mbr-section-title { display: none; }
 </style>
 <!-- /SHARED MENU/FOOTER STYLES -->
 
@@ -295,246 +326,265 @@
     </nav>
 </section>
 
-<section class="blog-hero">
-  <div class="container">
-    <h1>Real Estate Blog - Buyer Education</h1>
-    <p>Practical guides, calculators, and market insights to help you buy confidently in California.</p>
+<section data-bs-version="5.1" class="rankings-page" id="rankings-hub-main">
+  <div class="o1-shell">
+    <div class="o1-hero">
+      <div class="o1-hero-main">
+        <span class="o1-eyebrow">California + Nationwide Rankings</span>
+        <h1>Real Estate Appreciation Ranking Hub</h1>
+        <p>Which cities and neighborhoods have appreciated the most? Explore a single hub for city-level and neighborhood-level return rankings across California metros and the full U.S.</p>
+        <div class="o1-meta">Last updated: Jan 1, 2026</div>
+      </div>
+      <aside class="o1-panel">
+        <h3>How to use this hub</h3>
+        <ul>
+          <li>Select your region, then compare city and neighborhood returns.</li>
+          <li>Rank by 1, 3, 5, 10, 20, or 25 year return windows.</li>
+          <li>Sort by average home price and population for context.</li>
+        </ul>
+        <div class="o1-note">All data is sourced from Zillow for U.S. single-family homes and is updated through the end of December 2025.</div>
+      </aside>
+    </div>
+
+    <div class="o1-groups">
+      <section class="o1-group o1-metro">
+        <h2>City Rankings by California Metro Area</h2>
+        <p>City-level comparisons across key California metro clusters.</p>
+        <div class="o1-cards">
+          <article class="o1-card">
+            <span class="o1-kicker">City Rankings</span>
+            <h3>Bay Area City Rankings</h3>
+            <p>Compare city appreciation performance across the Bay Area metro region.</p>
+            <a href="Bay-Area-City-Appreciation-Ranking.html">Open page -&gt;</a>
+          </article>
+          <article class="o1-card">
+            <span class="o1-kicker">City Rankings</span>
+            <h3>Southern California City Rankings</h3>
+            <p>Track city-level appreciation from Los Angeles through San Diego metros.</p>
+            <a href="Southern-CA-City-Appreciation-Ranking.html">Open page -&gt;</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="o1-group o1-us">
+        <h2>Nationwide Rankings</h2>
+        <p>National pages for U.S. city-level and neighborhood-level analysis.</p>
+        <div class="o1-cards">
+          <article class="o1-card">
+            <span class="o1-kicker">City Rankings</span>
+            <h3>US City Rankings</h3>
+            <p>Filter metro areas and compare city appreciation trends across time windows.</p>
+            <a href="US-City-Appreciation-Ranking.html">Open page -&gt;</a>
+          </article>
+          <article class="o1-card">
+            <span class="o1-kicker">Neighborhood Rankings</span>
+            <h3>US Neighborhood Rankings</h3>
+            <p>Search cities and compare neighborhood return history at national scale.</p>
+            <a href="US-Neighborhood-Appreciation-Ranking.html">Open page -&gt;</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="o1-group o1-city">
+        <h2>Neighborhood Rankings by City</h2>
+        <p>Neighborhood-level rankings for major California markets.</p>
+        <div class="o1-cards">
+          <article class="o1-card">
+            <span class="o1-kicker">Neighborhood Rankings</span>
+            <h3>San Jose Neighborhood Rankings</h3>
+            <p>Review appreciation rankings for San Jose neighborhoods in Silicon Valley.</p>
+            <a href="San-Jose.html">Open page -&gt;</a>
+          </article>
+          <article class="o1-card">
+            <span class="o1-kicker">Neighborhood Rankings</span>
+            <h3>San Francisco Neighborhood Rankings</h3>
+            <p>Analyze neighborhood appreciation across San Francisco micro-markets.</p>
+            <a href="San-Francisco.html">Open page -&gt;</a>
+          </article>
+          <article class="o1-card">
+            <span class="o1-kicker">Neighborhood Rankings</span>
+            <h3>Los Angeles Neighborhood Rankings</h3>
+            <p>Compare neighborhood trends in Los Angeles with return and CAGR views.</p>
+            <a href="Los-Angeles.html">Open page -&gt;</a>
+          </article>
+          <article class="o1-card">
+            <span class="o1-kicker">Neighborhood Rankings</span>
+            <h3>San Diego Neighborhood Rankings</h3>
+            <p>Explore neighborhood performance across coastal and inland San Diego markets.</p>
+            <a href="San-Diego.html">Open page -&gt;</a>
+          </article>
+          <article class="o1-card">
+            <span class="o1-kicker">Neighborhood Rankings</span>
+            <h3>Oakland Neighborhood Rankings</h3>
+            <p>See neighborhood return trends across Oakland sub-markets and price bands.</p>
+            <a href="Oakland.html">Open page -&gt;</a>
+          </article>
+          <article class="o1-card">
+            <span class="o1-kicker">Neighborhood Rankings</span>
+            <h3>Fremont Neighborhood Rankings</h3>
+            <p>Review Fremont neighborhood appreciation by long-term and recent periods.</p>
+            <a href="Fremont.html">Open page -&gt;</a>
+          </article>
+          <article class="o1-card">
+            <span class="o1-kicker">Neighborhood Rankings</span>
+            <h3>San Mateo Neighborhood Rankings</h3>
+            <p>Compare San Mateo neighborhood performance with CAGR and total return metrics.</p>
+            <a href="San-Mateo.html">Open page -&gt;</a>
+          </article>
+          <article class="o1-card">
+            <span class="o1-kicker">Neighborhood Rankings</span>
+            <h3>Sacramento Neighborhood Rankings</h3>
+            <p>Explore Sacramento neighborhood appreciation across established and growth areas.</p>
+            <a href="Sacramento.html">Open page -&gt;</a>
+          </article>
+          <article class="o1-card">
+            <span class="o1-kicker">Neighborhood Rankings</span>
+            <h3>Anaheim Neighborhood Rankings</h3>
+            <p>Compare Anaheim neighborhood return trends across short-term and long-term windows.</p>
+            <a href="Anaheim.html">Open page -&gt;</a>
+          </article>
+          <article class="o1-card">
+            <span class="o1-kicker">Neighborhood Rankings</span>
+            <h3>Bakersfield Neighborhood Rankings</h3>
+            <p>Review neighborhood appreciation patterns across Bakersfield markets.</p>
+            <a href="Bakersfield.html">Open page -&gt;</a>
+          </article>
+          <article class="o1-card">
+            <span class="o1-kicker">Neighborhood Rankings</span>
+            <h3>Berkeley Neighborhood Rankings</h3>
+            <p>Analyze Berkeley neighborhood performance with return and CAGR metrics.</p>
+            <a href="Berkeley.html">Open page -&gt;</a>
+          </article>
+          <article class="o1-card">
+            <span class="o1-kicker">Neighborhood Rankings</span>
+            <h3>Chula Vista Neighborhood Rankings</h3>
+            <p>Explore neighborhood-level appreciation trends across Chula Vista.</p>
+            <a href="Chula-Vista.html">Open page -&gt;</a>
+          </article>
+          <article class="o1-card">
+            <span class="o1-kicker">Neighborhood Rankings</span>
+            <h3>Cupertino Neighborhood Rankings</h3>
+            <p>Compare appreciation history across Cupertino neighborhoods.</p>
+            <a href="Cupertino.html">Open page -&gt;</a>
+          </article>
+          <article class="o1-card">
+            <span class="o1-kicker">Neighborhood Rankings</span>
+            <h3>Elk Grove Neighborhood Rankings</h3>
+            <p>Review Elk Grove neighborhood returns across multiple time horizons.</p>
+            <a href="Elk-Grove.html">Open page -&gt;</a>
+          </article>
+          <article class="o1-card">
+            <span class="o1-kicker">Neighborhood Rankings</span>
+            <h3>Fresno Neighborhood Rankings</h3>
+            <p>See how Fresno neighborhoods have appreciated over recent and long-term periods.</p>
+            <a href="Fresno.html">Open page -&gt;</a>
+          </article>
+          <article class="o1-card">
+            <span class="o1-kicker">Neighborhood Rankings</span>
+            <h3>Glendale Neighborhood Rankings</h3>
+            <p>Analyze neighborhood performance across Glendale sub-markets.</p>
+            <a href="Glendale.html">Open page -&gt;</a>
+          </article>
+          <article class="o1-card">
+            <span class="o1-kicker">Neighborhood Rankings</span>
+            <h3>Hayward Neighborhood Rankings</h3>
+            <p>Compare Hayward neighborhood appreciation with sortable return metrics.</p>
+            <a href="Hayward.html">Open page -&gt;</a>
+          </article>
+          <article class="o1-card">
+            <span class="o1-kicker">Neighborhood Rankings</span>
+            <h3>Huntington Beach Neighborhood Rankings</h3>
+            <p>Track neighborhood-level returns across Huntington Beach.</p>
+            <a href="Huntington-Beach.html">Open page -&gt;</a>
+          </article>
+          <article class="o1-card">
+            <span class="o1-kicker">Neighborhood Rankings</span>
+            <h3>Irvine Neighborhood Rankings</h3>
+            <p>Explore appreciation rankings for Irvine neighborhoods.</p>
+            <a href="Irvine.html">Open page -&gt;</a>
+          </article>
+          <article class="o1-card">
+            <span class="o1-kicker">Neighborhood Rankings</span>
+            <h3>Long Beach Neighborhood Rankings</h3>
+            <p>Compare neighborhood return history across Long Beach.</p>
+            <a href="Long-Beach.html">Open page -&gt;</a>
+          </article>
+          <article class="o1-card">
+            <span class="o1-kicker">Neighborhood Rankings</span>
+            <h3>Palo Alto Neighborhood Rankings</h3>
+            <p>Review Palo Alto neighborhood appreciation across time windows.</p>
+            <a href="Palo-Alto.html">Open page -&gt;</a>
+          </article>
+          <article class="o1-card">
+            <span class="o1-kicker">Neighborhood Rankings</span>
+            <h3>Pasadena Neighborhood Rankings</h3>
+            <p>Analyze Pasadena neighborhood trends with total return and CAGR views.</p>
+            <a href="Pasadena.html">Open page -&gt;</a>
+          </article>
+          <article class="o1-card">
+            <span class="o1-kicker">Neighborhood Rankings</span>
+            <h3>Riverside Neighborhood Rankings</h3>
+            <p>Explore neighborhood-level appreciation trends across Riverside.</p>
+            <a href="Riverside.html">Open page -&gt;</a>
+          </article>
+          <article class="o1-card">
+            <span class="o1-kicker">Neighborhood Rankings</span>
+            <h3>Roseville Neighborhood Rankings</h3>
+            <p>Compare Roseville neighborhood performance across multiple periods.</p>
+            <a href="Roseville.html">Open page -&gt;</a>
+          </article>
+          <article class="o1-card">
+            <span class="o1-kicker">Neighborhood Rankings</span>
+            <h3>Salinas Neighborhood Rankings</h3>
+            <p>Review neighborhood appreciation patterns across Salinas.</p>
+            <a href="Salinas.html">Open page -&gt;</a>
+          </article>
+          <article class="o1-card">
+            <span class="o1-kicker">Neighborhood Rankings</span>
+            <h3>Santa Ana Neighborhood Rankings</h3>
+            <p>See neighborhood return trends across Santa Ana markets.</p>
+            <a href="Santa-Ana.html">Open page -&gt;</a>
+          </article>
+          <article class="o1-card">
+            <span class="o1-kicker">Neighborhood Rankings</span>
+            <h3>Santa Barbara Neighborhood Rankings</h3>
+            <p>Analyze appreciation rankings for Santa Barbara neighborhoods.</p>
+            <a href="Santa-Barbara.html">Open page -&gt;</a>
+          </article>
+          <article class="o1-card">
+            <span class="o1-kicker">Neighborhood Rankings</span>
+            <h3>Santa Clarita Neighborhood Rankings</h3>
+            <p>Compare Santa Clarita neighborhood returns across key timeframes.</p>
+            <a href="Santa-Clarita.html">Open page -&gt;</a>
+          </article>
+          <article class="o1-card">
+            <span class="o1-kicker">Neighborhood Rankings</span>
+            <h3>Santa Rosa Neighborhood Rankings</h3>
+            <p>Review neighborhood performance data for Santa Rosa.</p>
+            <a href="Santa-Rosa.html">Open page -&gt;</a>
+          </article>
+          <article class="o1-card">
+            <span class="o1-kicker">Neighborhood Rankings</span>
+            <h3>Stockton Neighborhood Rankings</h3>
+            <p>Explore neighborhood appreciation trends across Stockton.</p>
+            <a href="Stockton.html">Open page -&gt;</a>
+          </article>
+          <article class="o1-card">
+            <span class="o1-kicker">Neighborhood Rankings</span>
+            <h3>Sunnyvale Neighborhood Rankings</h3>
+            <p>Compare neighborhood return history across Sunnyvale.</p>
+            <a href="Sunnyvale.html">Open page -&gt;</a>
+          </article>
+          <article class="o1-card">
+            <span class="o1-kicker">Neighborhood Rankings</span>
+            <h3>Ventura Neighborhood Rankings</h3>
+            <p>Review Ventura neighborhood appreciation across recent and long-term periods.</p>
+            <a href="Ventura.html">Open page -&gt;</a>
+          </article>
+        </div>
+      </section>
+    </div>
   </div>
-</section>
-
-<section data-bs-version="5.1" class="content14 cid-uR08vTDope" id="content14-39">
-    
-
-    
-    
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                    <h3 class="mbr-section-title mbr-fonts-style mb-4 display-2"><strong>Real Estate Blog - Buyer Education&nbsp;</strong><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong> 
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong> 
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong> 
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong> 
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div></h3>
-                <ul class="list mbr-fonts-style display-7"><p>We are active on <strong>Reddit</strong> in various subs. Follow us here <a href="https://www.reddit.com/user/flatfee-realtor/" class="text-info" target="_blank">https://www.reddit.com/user/flatfee-realtor/</a></p><p>
-</p><p>
-</p><p>
-</p><p>
-</p><p>
-</p><p>
-</p><p>
-</p><p>
-</p><p>
-</p><p>
-</p><p>
-</p></ul>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="article04 walletm5 cid-uTV9WO8d2R" id="article04-8a">
-    
-
-    
-    
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <div class="card-wrapper">
-                    <div class="content-wrapper">
-                        <div class="image-wrapper">
-                            <img class="little-radius" src="assets/images/ranking.png" alt="California neighborhood appreciation ranking hub">
-                        </div>
-                        <div class="content-wrap">
-                            <h2 class="mbr-section-title mbr-fonts-style display-2"><strong>Appreciation Ranking Hub</strong></h2>
-                            <div class="text-wrapper">
-                                <p class="mbr-text mbr-fonts-style display-7">Which cities and neighborhoods in Bay Area have appreciated the most? What about Southern CA? What about Nationally? Go through our interactive pages and find out.</p>
-                            </div>
-                            <div class="mbr-section-btn main-btn"><a class="btn btn-black-outline display-7" href="Appreciation-Rankings-Hub.html">
-                                    Open Hub</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="article04 walletm5 cid-uTV9WO8d2R" id="article04-3p">
-    
-
-    
-    
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <div class="card-wrapper">
-                    <div class="content-wrapper">
-                        <div class="image-wrapper">
-                            <img class="little-radius" src="assets/images/arm20vs203020year-804x804.png" alt="Rent vs Buy">
-                        </div>
-                        <div class="content-wrap">
-                            <h2 class="mbr-section-title mbr-fonts-style display-2"><strong>ARM vs 30-year Fixed Mortgage: In Depth Comparison</strong></h2>
-                            <div class="text-wrapper">
-                                <p class="mbr-text mbr-fonts-style display-7">Should you go with an adjustable rate mortgage (ARM) or a 30-year fixed one? Every home buyer contends with this question at some point or the other. We do the actual math and help you make an informed decision.</p>
-                            </div>
-                            <div class="mbr-section-btn main-btn"><a class="btn btn-black-outline display-7" href="ARM-vs-30Year-Fixed-Mortgage-Spreadsheet.html">
-                                    Read More</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="article04 walletm5 cid-v9XxI0LsLz" id="article04-6w">
-    
-
-    
-    
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <div class="card-wrapper">
-                    <div class="content-wrapper">
-                        <div class="image-wrapper">
-                            <img class="little-radius" src="assets/images/buy20before20sell-804x804.png" alt="Rent vs Buy">
-                        </div>
-                        <div class="content-wrap">
-                            <h2 class="mbr-section-title mbr-fonts-style display-2"><strong>Buying Your Next Home Before Selling the Current One? How to Qualify for a Mortgage</strong></h2>
-                            <div class="text-wrapper">
-                                <p class="mbr-text mbr-fonts-style display-7">You already own a home and find your next home. But you can’t qualify for the new mortgage because your lender counts both mortgage payments in your debt-to-income (DTI) ratio. What can you do?&nbsp;</p>
-                            </div>
-                            <div class="mbr-section-btn main-btn"><a class="btn btn-black-outline display-7" href="Buy-Before-Sell-Mortgage.html">
-                                    Read More</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="article04 walletm5 cid-v9XwKXpgQj" id="article04-6v">
-    
-
-    
-    
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <div class="card-wrapper">
-                    <div class="content-wrapper">
-                        <div class="image-wrapper">
-                            <img class="little-radius" src="assets/images/rent-vs-buy-804x804.png" alt="Rent vs Buy">
-                        </div>
-                        <div class="content-wrap">
-                            <h2 class="mbr-section-title mbr-fonts-style display-2"><strong>Rent vs Buy Excel Sheet and Observations</strong></h2>
-                            <div class="text-wrapper">
-                                <p class="mbr-text mbr-fonts-style display-7">
-                                    We consider two scenarios:&nbsp;<br><br><strong>Scenario 1</strong>: you buy a house and build home equity
-<br><strong>Scenario 2</strong>: you rent and instead put down payment money + monthly savings into stocks<br><br>Which one is better? Let's find out!</p>
-                            </div>
-                            <div class="mbr-section-btn main-btn"><a class="btn btn-black-outline display-7" href="rent-vs-buy-sheet-CA.html">
-                                    Read More</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="article04 walletm5 cid-uTVuLcAUMo" id="article04-3q">
-    
-
-    
-    
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <div class="card-wrapper">
-                    <div class="content-wrapper">
-                        <div class="image-wrapper">
-                            <img class="little-radius" src="assets/images/image5.jpg" alt="">
-                        </div>
-                        <div class="content-wrap">
-                            <h2 class="mbr-section-title mbr-fonts-style display-2"><strong>Borrow Money for Home Purchase at 4% to 4.5% Using Box Spreads</strong></h2>
-                            <div class="text-wrapper">
-                                <p class="mbr-text mbr-fonts-style display-7"><br>Have a stock portfolio? Learn about a powerful tool we often use with our clients which lets you borrow money at <em>far below </em>the market mortgage rates.<br><br></p>
-                            </div>
-                            <div class="mbr-section-btn main-btn"><a class="btn btn-black-outline display-7" href="Borrow-money-low-interest-SPX-Box.html">
-                                    Read More</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="article04 walletm5 cid-uTVuMjsQaR" id="article04-3r">
-    
-
-    
-    
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <div class="card-wrapper">
-                    <div class="content-wrapper">
-                        <div class="image-wrapper">
-                            <a href="Bay-Area-Price-Drop.html"><img class="little-radius" src="assets/images/house-price-decline-804x482.jpeg" alt="House price drop"></a>
-                        </div>
-                        <div class="content-wrap">
-                            <h2 class="mbr-section-title mbr-fonts-style display-2"><strong>Thoughts on Bay Area Housing Price Drop</strong></h2>
-                            <div class="text-wrapper">
-                                <p class="mbr-text mbr-fonts-style display-7">Recently we have seen some softening in the prices in several areas. What is the reason? Is a big drop coming or will the prices go back to resuming their upward climb?&nbsp;Let's find out!</p>
-                            </div>
-                            <div class="mbr-section-btn main-btn"><a class="btn btn-black-outline display-7" href="Bay-Area-Price-Drop.html">
-                                    Read More</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </section>
 
 <!-- ===== REDESIGNED FOOTER ===== -->
