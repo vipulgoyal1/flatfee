@@ -10,7 +10,7 @@
   <meta name="description" content="Browse all real estate appreciation rankings in one place. Compare neighborhood and city rankings across Bay Area, Southern California, and the U.S.">
 
 
-  <title>Real Estate Appreciation Ranking Hub | Redesign Option 1</title>
+  <title>Real Estate Appreciation Ranking Hub | Redesign Option 1 v2</title>
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/chatbutton/floating-wpp.css">
   <link rel="stylesheet" href="assets/dropdown/css/style.css">
@@ -73,7 +73,14 @@
     display: inline-block; font-size: .68rem; text-transform: uppercase; letter-spacing: .07em;
     color: #1a4f72; background: #eaf4fb; border: 1px solid #cce3f3; border-radius: 999px; padding: .25rem .5rem; margin-bottom: .45rem;
   }
-  .o1-card h3 { margin: 0; font-size: 1.02rem; color: #173d5a; }
+  .o1-card h3 {
+    margin: 0;
+    font-size: 1.22rem;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+    color: #0f3551;
+  }
   .o1-card p { margin: .45rem 0 .7rem; color: #4f687d; font-size: .92rem; }
   .o1-card a { color: #0f6ca5; text-decoration: none; font-weight: 700; font-size: .92rem; }
   .o1-card a:hover { text-decoration: underline; color: #084d76; }
@@ -84,6 +91,7 @@
   }
   @media (max-width: 680px) {
     .o1-cards { grid-template-columns: 1fr; }
+    .o1-card h3 { font-size: 1.1rem; }
     .o1-hero-main, .o1-panel { padding: 1.2rem; }
   }
 </style>
