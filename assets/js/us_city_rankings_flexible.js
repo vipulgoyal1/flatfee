@@ -447,7 +447,7 @@
         syncColumnWidths();
         handleStickyHeader();
 
-        if (heading) heading.textContent = "US City Rankings | Flexible Selector";
+        if (heading) heading.textContent = "US City Appreciation Rankings";
 
         if (!activeRows.length) {
             setStatus("No cities match the current selection. Adjust filters and try again.", true);

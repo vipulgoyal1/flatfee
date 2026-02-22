@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html  >
 <head>
-  
+
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  
+
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   <link rel="shortcut icon" href="assets/images/logo20final-128x90.png" type="image/x-icon">
   <meta name="description" content="Compare Bay Area city appreciation rankings using Zillow home value data. Analyze 1, 3, 5, 10, 20, and 25-year returns and CAGR across Bay Area cities.">
-  
-  
+
+
   <title>Bay Area City Appreciation Ranking</title>
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/chatbutton/floating-wpp.css">
@@ -23,45 +23,9 @@
   <link rel="preload" href="https://fonts.googleapis.com/css?family=Lexend:100,200,300,400,500,600,700,800,900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lexend:100,200,300,400,500,600,700,800,900&display=swap"></noscript>
   <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=zWQikK"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=zWQikK" type="text/css">
-  <style>
-    #content6-72 {
-      padding-top: 1.5rem;
-      padding-bottom: 0.75rem;
-    }
-    #content6-72 .line {
-      margin: 0.6rem 0;
-    }
-    #content6-72 .mbr-text {
-      margin: 0.75rem 0 !important;
-    }
-    #content6-72 .subtitle-note a {
-      color: inherit;
-      text-decoration: none !important;
-      font-weight: inherit;
-    }
-    #content6-72 .subtitle-note a:hover,
-    #content6-72 .subtitle-note a:focus {
-      color: inherit;
-      text-decoration: none !important;
-    }
-    #content14-73 {
-      padding-top: 0.75rem;
-      padding-bottom: 0.75rem;
-    }
-    #content14-73 .mbr-text {
-      margin-bottom: 0.75rem;
-    }
-    #custom-html-75 {
-      margin-top: 0.25rem;
-      margin-bottom: 1.5rem;
-    }
-  </style>
 
-  
-  
-  
-<!-- SHARED MENU/FOOTER STYLES -->
-<style>
+  <style>
+/* ===== SHARED MENU/FOOTER STYLES ===== */
 .cid-uTZO3wYcT2 .navbar .navbar-logo img {
       height: 2.4rem;
       width: auto;
@@ -207,8 +171,64 @@
         text-align: center;
       }
     }
-</style>
-<!-- /SHARED MENU/FOOTER STYLES -->
+/* ===== /SHARED MENU/FOOTER STYLES ===== */
+
+/* ---- Rankings Section ---- */
+.sf-rankings-section {
+  padding: 56px 0 44px;
+  background: #ffffff;
+  border-bottom: 1px solid #ece8df;
+}
+.sf-rankings-section .section-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: #d4a853; margin-bottom: 0.5rem; display: block;
+}
+.sf-rankings-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 700; color: #1b1b1b;
+  line-height: 1.2; margin-bottom: 0.8rem;
+}
+.rankings-accent-line {
+  width: 48px; height: 4px;
+  background: #d4a853; border-radius: 2px;
+}
+.ranking-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.97rem; color: #555;
+  line-height: 1.8; margin-bottom: 1.4rem;
+}
+.ranking-tip-badge {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: #fdf8f0;
+  border: 1px solid #e8d8a0;
+  border-left: 4px solid #d4a853;
+  border-radius: 0 8px 8px 0;
+  padding: 13px 18px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem; color: #555; line-height: 1.6;
+}
+.ranking-tip-icon { color: #d4a853; font-size: 1.15rem; flex-shrink: 0; margin-top: 1px; }
+.ranking-tip-badge a { color: #2c5364; font-weight: 600; text-decoration: none; }
+.ranking-tip-badge a:hover { color: #d4a853; }
+
+/* ---- Table wrapper ---- */
+#custom-html-75 {
+  margin: 0;
+  padding: 0.6rem 0;
+  background: #f5f4f0;
+  border-bottom: 1px solid #ece8df;
+}
+#bayarea-appreciation-table {
+  width: 100%;
+  margin: 0;
+  background: #f5f4f0;
+  border: 0;
+  overflow-x: auto;
+}
+  </style>
 
 </head>
 <body>
@@ -291,29 +311,28 @@
     </nav>
 </section>
 
-<section data-bs-version="5.1" class="content6 cid-vaI3VRhxXF" id="content6-72">
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                <hr class="line">
-                <p class="mbr-text align-center mbr-fonts-style my-4 display-5">Bay Area City Appreciation Ranking</p>
-                <hr class="line">
-                <p class="mbr-text align-center mbr-fonts-style display-7 subtitle-note" style="margin-top: 1rem; font-style: italic;">Which cities and neighborhoods have given the best returns in different regions of California as well as nationally? Visit our <a href="Appreciation-Rankings-Hub.html">Appreciation Ranking Hub</a> to explore more.</p>
-            </div>
-        </div>
-    </div>
-</section>
 
-<section data-bs-version="5.1" class="content14 cid-vaI3VRoG3o" id="content14-73">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                <p class="mbr-text mbr-fonts-style display-7">Which Bay Area cities have appreciated the most over the last few years? We cover the top 50 cities by population over the last 1, 3, 5, 10, 20 and 25 years. All data has been taken from Zillow for single family homes. The interactive table allows sorting by any column of your choice. It is easy to notice two broad trends across different time periods.</p>
-                <p class="mbr-text mbr-fonts-style display-7">In the early 2000s, peninsula and northern parts of the Bay showed the strongest appreciation. Places like San Francisco, Oakland, Menlo Park, Palo Alto, etc. were the leaders. This clearly changed in 2010s as the tech employment moved downwards to the South Bay. The places with the strongest appreciation were San Jose, Milpitas, Sunnyvale, Cupertino, Campbell, and so on. Oakland and San Francisco have severely underperformed in the last 10 years. Part of it is because of the perception problem amid the media reports of crime and homelessness. Given their relative affordability compared to South Bay, we expect the next 10 years to be much stronger.</p>
-            </div>
+<!-- =====================================================
+     RANKINGS HEADER
+     ===================================================== -->
+<section class="sf-rankings-section">
+  <div class="container">
+    <div class="row align-items-center gy-4">
+      <div class="col-lg-5">
+        <span class="section-label">Real Estate Data</span>
+        <h2>Bay Area City Appreciation Ranking</h2>
+        <div class="rankings-accent-line"></div>
+      </div>
+      <div class="col-lg-7">
+        <p class="ranking-sub">Which Bay Area cities have appreciated the most over the last few years? We cover the top 50 cities by population over 1, 3, 5, 10, 20, and 25 years. All data from Zillow for single-family homes. Two broad trends stand out across different time periods.</p>
+        <p class="ranking-sub">In the early 2000s, the peninsula and northern Bay showed the strongest appreciation — San Francisco, Oakland, Menlo Park, Palo Alto, etc. led the way. This shifted in the 2010s as tech employment moved south: San Jose, Milpitas, Sunnyvale, Cupertino, and Campbell became the top performers. Oakland and San Francisco have underperformed over the last 10 years, partly due to perception issues around crime and homelessness. Given their relative affordability now, we expect the next decade to be much stronger.</p>
+        <div class="ranking-tip-badge">
+          <span class="ranking-tip-icon">&#8597;</span>
+          <span>Click any column header to sort &mdash; or visit our <a href="Appreciation-Rankings-Hub.html">Appreciation Rankings Hub</a> to explore more regions of California and the US.</span>
         </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <div id="custom-html-75"><div id="bayarea-appreciation-table">
@@ -434,13 +453,13 @@
   <script src="assets/chatbutton/script.js"></script>
   <script src="assets/dropdown/js/navbar-dropdown.js"></script>
   <script src="assets/theme/js/script.js"></script>
-  
+
   <!-- Default Statcounter code for flatfee
 http://flatfee-realtor.com -->
 <script type="text/javascript">
-var sc_project=13140329; 
-var sc_invisible=1; 
-var sc_security="04536c4a"; 
+var sc_project=13140329;
+var sc_invisible=1;
+var sc_security="04536c4a";
 </script>
 <script type="text/javascript"
 src="https://www.statcounter.com/counter/counter.js"
@@ -534,7 +553,7 @@ referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
     function renderTable(sortedData) {
         const tbody = document.getElementById('tableBody');
         if (!tbody) return;
-        
+
         tbody.innerHTML = '';
 
         sortedData.forEach(row => {
@@ -556,7 +575,7 @@ referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
     function syncColumnWidths() {
         const originalHeaders = document.querySelectorAll('#originalHeader th');
         const stickyHeaders = document.querySelectorAll('#stickyHeader th');
-        
+
         originalHeaders.forEach((th, index) => {
             const width = th.offsetWidth;
             if (stickyHeaders[index]) {
@@ -565,11 +584,11 @@ referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
                 stickyHeaders[index].style.maxWidth = width + 'px';
             }
         });
-        
+
         const table = document.getElementById('dataTable');
         const stickyHeader = document.getElementById('stickyHeader');
         const tableRect = table.getBoundingClientRect();
-        
+
         stickyHeader.style.width = tableRect.width + 'px';
         stickyHeader.style.left = tableRect.left + 'px';
     }
@@ -583,7 +602,7 @@ referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
             `#originalHeader th[data-column="${column}"]`,
             `#stickyHeader th[data-column="${column}"]`
         ];
-        
+
         selectors.forEach(selector => {
             const th = document.querySelector(selector);
             if (th) {
@@ -594,7 +613,7 @@ referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
 
     function sortData(column) {
         let direction = 'asc';
-        
+
         if (currentSort.column === column) {
             direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
         }
@@ -633,11 +652,11 @@ referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
     function handleStickyHeader() {
         const originalHeader = document.getElementById('originalHeader');
         const stickyHeader = document.getElementById('stickyHeader');
-        
+
         if (!originalHeader || !stickyHeader) return;
-        
+
         const rect = originalHeader.getBoundingClientRect();
-        
+
         if (rect.top < 0) {
             stickyHeader.classList.add('visible');
             syncColumnWidths();
@@ -663,7 +682,7 @@ referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
                 syncColumnWidths();
             }
         });
-        
+
         syncColumnWidths();
         handleStickyHeader();
     }
