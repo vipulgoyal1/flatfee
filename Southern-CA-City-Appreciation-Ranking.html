@@ -573,6 +573,9 @@ referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
     function syncColumnWidths() {
         const originalHeaders = document.querySelectorAll('#originalHeader th');
         const stickyHeaders = document.querySelectorAll('#stickyHeader th');
+        const table = document.getElementById('dataTable');
+        const stickyHeader = document.getElementById('stickyHeader');
+        if (!table || !stickyHeader) return;
         
         originalHeaders.forEach((th, index) => {
             const width = th.offsetWidth;
@@ -583,8 +586,6 @@ referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
             }
         });
         
-        const table = document.getElementById('dataTable');
-        const stickyHeader = document.getElementById('stickyHeader');
         const tableRect = table.getBoundingClientRect();
         
         stickyHeader.style.width = tableRect.width + 'px';
@@ -664,6 +665,17 @@ referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
     }
 
     function initTable() {
+        let syncRaf = null;
+        const syncStickyIfVisible = () => {
+            const stickyHeader = document.getElementById('stickyHeader');
+            if (!stickyHeader || !stickyHeader.classList.contains('visible')) return;
+            if (syncRaf !== null) cancelAnimationFrame(syncRaf);
+            syncRaf = requestAnimationFrame(() => {
+                syncColumnWidths();
+                syncRaf = null;
+            });
+        };
+
         renderTable(data);
 
         document.querySelectorAll('#bayarea-appreciation-table th.sortable').forEach(th => {
@@ -674,12 +686,14 @@ referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
         });
 
         window.addEventListener('scroll', handleStickyHeader);
+        const tableContainer = document.getElementById('bayarea-appreciation-table');
+        if (tableContainer) {
+            tableContainer.addEventListener('scroll', syncStickyIfVisible, { passive: true });
+        }
         window.addEventListener('resize', () => {
-            const stickyHeader = document.getElementById('stickyHeader');
-            if (stickyHeader && stickyHeader.classList.contains('visible')) {
-                syncColumnWidths();
-            }
+            syncStickyIfVisible();
         });
+        window.addEventListener('orientationchange', syncStickyIfVisible);
         
         syncColumnWidths();
         handleStickyHeader();

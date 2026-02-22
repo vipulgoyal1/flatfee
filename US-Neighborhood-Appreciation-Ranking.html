@@ -832,6 +832,16 @@ referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
     function initTable() {
         if (!tableBody) return;
         setCityStatus('Loading U.S. dataset...', false);
+        let syncRaf = null;
+        const syncStickyIfVisible = () => {
+            const stickyHeader = document.getElementById('stickyHeader');
+            if (!stickyHeader || !stickyHeader.classList.contains('visible')) return;
+            if (syncRaf !== null) cancelAnimationFrame(syncRaf);
+            syncRaf = requestAnimationFrame(() => {
+                syncColumnWidths();
+                syncRaf = null;
+            });
+        };
 
         fillStateOptions();
         fillCityOptionsForState('');
@@ -883,12 +893,14 @@ referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
         }
 
         window.addEventListener('scroll', handleStickyHeader);
+        const tableContainer = document.getElementById('bayarea-appreciation-table');
+        if (tableContainer) {
+            tableContainer.addEventListener('scroll', syncStickyIfVisible, { passive: true });
+        }
         window.addEventListener('resize', () => {
-            const stickyHeader = document.getElementById('stickyHeader');
-            if (stickyHeader && stickyHeader.classList.contains('visible')) {
-                syncColumnWidths();
-            }
+            syncStickyIfVisible();
         });
+        window.addEventListener('orientationchange', syncStickyIfVisible);
 
         const params = new URL(window.location.href).searchParams;
         const cityFromUrl = (params.get('city') || '').trim();

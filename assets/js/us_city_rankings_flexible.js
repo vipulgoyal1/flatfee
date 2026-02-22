@@ -571,6 +571,16 @@
 
     function initTable() {
         if (!tableBody) return;
+        let syncRaf = null;
+        const syncStickyIfVisible = () => {
+            const stickyHeader = document.getElementById("stickyHeader");
+            if (!stickyHeader || !stickyHeader.classList.contains("visible")) return;
+            if (syncRaf !== null) cancelAnimationFrame(syncRaf);
+            syncRaf = requestAnimationFrame(() => {
+                syncColumnWidths();
+                syncRaf = null;
+            });
+        };
 
         if (!allRows.length) {
             setStatus("City data is unavailable.", true);
@@ -588,12 +598,14 @@
         initSortingHandlers();
 
         window.addEventListener("scroll", handleStickyHeader);
+        const tableContainer = document.getElementById("bayarea-appreciation-table");
+        if (tableContainer) {
+            tableContainer.addEventListener("scroll", syncStickyIfVisible, { passive: true });
+        }
         window.addEventListener("resize", () => {
-            const stickyHeader = document.getElementById("stickyHeader");
-            if (stickyHeader && stickyHeader.classList.contains("visible")) {
-                syncColumnWidths();
-            }
+            syncStickyIfVisible();
         });
+        window.addEventListener("orientationchange", syncStickyIfVisible);
 
         applySelection();
     }
