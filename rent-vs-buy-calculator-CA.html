@@ -1,0 +1,1246 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/logo20final-128x90.png" type="image/x-icon">
+  <meta name="description" content="California rent vs buy calculator. Compare buying versus renting and investing with Prop 13, federal and CA mortgage tax deductions, and long-term wealth projections.">
+  <title>Rent vs Buy Calculator CA</title>
+
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/chatbutton/floating-wpp.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,500,600,700,800,900,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,500,600,700,800,900,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=DM+Sans:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=DM+Sans:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Lexend:100,200,300,400,500,600,700,800,900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lexend:100,200,300,400,500,600,700,800,900&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=WeIiZG">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=WeIiZG" type="text/css">
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+<style>
+/* ===== SHARED MENU/FOOTER STYLES ===== */
+.cid-uTZO3wYcT2 .navbar .navbar-logo img { height: 2.4rem; width: auto; }
+@media (min-width: 992px) {
+  .cid-uTZO3wYcT2 .navbar > .container { flex-wrap: nowrap; }
+  .cid-uTZO3wYcT2 .navbar .navbar-collapse { flex-grow: 1; align-items: center; }
+  .cid-uTZO3wYcT2 ul.navbar-nav { flex-wrap: nowrap; }
+  .cid-uTZO3wYcT2 .navbar-buttons { min-width: auto; white-space: nowrap; margin-left: 0.25rem; }
+}
+.btn-rankings-outline, .btn-rankings-outline:active, .btn-rankings-outline:focus {
+  background-color: #ffffff !important; border-color: #232323 !important; color: #232323 !important;
+}
+.btn-rankings-outline:hover { background-color: #f7f7f7 !important; border-color: #000000 !important; color: #000000 !important; }
+.footer-redesigned { background-color: #1b1b1b; color: #ffffff; padding: 60px 0 0 0; font-family: 'DM Sans', 'Lexend', sans-serif; }
+.footer-redesigned a { color: #bfbfbf; text-decoration: none; transition: color 0.2s ease; }
+.footer-redesigned a:hover { color: #d4a853; text-decoration: underline; }
+.footer-brand-col img { height: 72px; width: auto; margin-bottom: 16px; display: inline-block; }
+.footer-brand-col p { color: #888888; font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px; }
+.footer-social a { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background-color: #2a2a2a; margin-right: 10px; color: #bfbfbf; transition: background-color 0.2s ease, color 0.2s ease; }
+.footer-social a:hover { background-color: #d4a853; color: #1b1b1b; text-decoration: none; }
+.footer-heading { color: #d4a853; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 20px; }
+.footer-links { list-style: none; padding: 0; margin: 0; }
+.footer-links li { margin-bottom: 10px; }
+.footer-links li a { font-size: 0.9rem; }
+.footer-bottom { border-top: 1px solid #333333; margin-top: 40px; padding: 20px 0; text-align: center; }
+.footer-bottom p { color: #666666; font-size: 0.85rem; margin: 0; }
+.footer-contact-item { display: flex; align-items: flex-start; margin-bottom: 14px; color: #bfbfbf; font-size: 0.9rem; }
+.footer-contact-item .footer-contact-icon { margin-right: 10px; color: #d4a853; flex-shrink: 0; margin-top: 2px; }
+.footer-contact-item a { color: #bfbfbf; }
+@media (max-width: 767px) {
+  .footer-redesigned { padding: 40px 0 0 0; }
+  .footer-redesigned .col-md-3 { margin-bottom: 30px; }
+  .footer-heading { margin-bottom: 14px; }
+  .footer-brand-col { text-align: center; }
+  .footer-contact-item { justify-content: center; }
+  .footer-social { text-align: center; }
+}
+
+/* ===== PAGE BASE ===== */
+body { font-family: 'DM Sans', 'Lexend', sans-serif; }
+
+/* ===== HERO SECTION ===== */
+.rvb-hero {
+  position: relative;
+  background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+  padding: 64px 0 52px;
+  overflow: hidden;
+}
+.rvb-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('assets/images/rent-vs-buy-804x804.png') center/cover no-repeat;
+  opacity: 0.12;
+}
+.rvb-hero .container {
+  position: relative;
+  z-index: 1;
+}
+.rvb-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+.rvb-hero p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.15rem;
+  color: #c0d6df;
+  line-height: 1.8;
+  max-width: 720px;
+}
+@media (max-width: 767px) {
+  .rvb-hero { padding: 44px 0 36px; }
+  .rvb-hero h1 { font-size: 2rem; }
+}
+
+/* ===== INSIGHTS SECTION ===== */
+.insights-section {
+  background: #f4f6f8;
+  padding: 52px 0 40px;
+}
+.insights-section .section-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #d4a853;
+  margin-bottom: 6px;
+}
+.insights-section .section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.3rem, 3vw, 1.75rem);
+  font-weight: 700;
+  color: #1b1b1b;
+  margin-bottom: 6px;
+}
+.insights-section .section-subtitle {
+  color: #777;
+  font-size: 0.9rem;
+  margin-bottom: 36px;
+}
+
+.insight-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+@media (max-width: 900px) { .insight-cards { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 580px) { .insight-cards { grid-template-columns: 1fr; } }
+
+.icard {
+  background: #fff;
+  border-radius: 12px;
+  padding: 26px 22px 22px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+  border-top: 4px solid #e0e0e0;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.icard:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.10); }
+.icard.ic-green  { border-top-color: #4caf50; }
+.icard.ic-gold   { border-top-color: #d4a853; }
+.icard.ic-blue   { border-top-color: #1565c0; }
+.icard.ic-purple { border-top-color: #7c4dff; }
+
+.icard-icon {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem;
+  margin-bottom: 14px;
+}
+.ic-green  .icard-icon { background: #e8f5e9; }
+.ic-gold   .icard-icon { background: #fff8e1; }
+.ic-blue   .icard-icon { background: #e3f2fd; }
+.ic-purple .icard-icon { background: #ede7f6; }
+
+.icard h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1b1b1b;
+  margin-bottom: 8px;
+  line-height: 1.35;
+}
+.icard p {
+  font-size: 0.84rem;
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+}
+.icard .ic-stat {
+  display: inline-block;
+  margin-top: 12px;
+  background: #f8f8f8;
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #333;
+}
+.ic-green  .ic-stat { background: #e8f5e9; color: #2e7d32; }
+.ic-gold   .ic-stat { background: #fff8e1; color: #b37a00; }
+.ic-blue   .ic-stat { background: #e3f2fd; color: #1565c0; }
+.ic-purple .ic-stat { background: #ede7f6; color: #512da8; }
+
+/* Assumptions strip */
+.assumptions-strip {
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  padding: 14px 20px;
+  margin-top: 28px;
+  font-size: 0.82rem;
+  color: #777;
+}
+.assumptions-strip strong { color: #444; }
+
+/* ===== CALCULATOR SECTION HEADER ===== */
+.calc-section-header {
+  background: #fff;
+  padding: 36px 0 0;
+  text-align: center;
+  border-top: 1px solid #e8e8e8;
+}
+.calc-section-header .section-eyebrow {
+  font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.12em; color: #d4a853; margin-bottom: 6px;
+}
+.calc-section-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.4rem, 3.5vw, 2rem);
+  font-weight: 800; color: #1b1b1b; margin-bottom: 8px;
+}
+.calc-section-header p {
+  color: #666; font-size: 0.92rem; max-width: 560px; margin: 0 auto;
+}
+
+/* ===== CALCULATOR STYLES ===== */
+.calc-wrapper { background: #f8f9fa; padding: 32px 0 60px; }
+
+.result-tiles {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+@media (max-width: 575px) { .result-tiles { grid-template-columns: 1fr; } }
+@media (min-width: 576px) and (max-width: 767px) { .result-tiles { grid-template-columns: 1fr 1fr; } }
+
+.rtile { border-radius: 12px; padding: 20px 18px 16px; text-align: center; position: relative; }
+.rtile.buy  { background: #e8f5e9; border: 2px solid #a5d6a7; }
+.rtile.rent { background: #e3f2fd; border: 2px solid #90caf9; }
+.rtile.winner { background: #fff8e1; border: 2px solid #d4a853; }
+.rtile .rt-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: #777; margin-bottom: 6px; }
+.rtile .rt-value { font-size: 1.75rem; font-weight: 800; color: #1b1b1b; line-height: 1.15; }
+.rtile.winner .rt-value { color: #b37a00; }
+.rtile .rt-sub { font-size: 0.8rem; color: #888; margin-top: 5px; }
+.rtile .rt-years { font-size: 0.78rem; color: #aaa; margin-top: 2px; }
+
+.calc-tab-nav { display: flex; gap: 0; border-bottom: 2px solid #d4a853; margin-bottom: 28px; }
+.calc-tab-btn {
+  padding: 11px 26px; border: none; background: #e9e9e9; color: #555;
+  font-family: 'DM Sans', sans-serif; font-size: 0.92rem; font-weight: 600;
+  cursor: pointer; border-radius: 6px 6px 0 0; margin-right: 4px; transition: background 0.2s, color 0.2s;
+}
+.calc-tab-btn.active { background: #1b1b1b; color: #d4a853; }
+.calc-tab-btn:hover:not(.active) { background: #d0d0d0; }
+
+.calc-card { background: #fff; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); padding: 28px 28px 24px; margin-bottom: 20px; }
+.calc-card-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: #1b1b1b; margin-bottom: 4px; }
+.calc-card-subtitle { color: #888; font-size: 0.85rem; margin-bottom: 20px; }
+
+.calc-section-label {
+  font-size: 0.73rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em;
+  color: #d4a853; margin: 18px 0 10px; padding-bottom: 4px; border-bottom: 1px solid #f0e0b0;
+}
+
+.ig { margin-bottom: 14px; }
+.ig label { display: block; font-size: 0.83rem; font-weight: 600; color: #444; margin-bottom: 3px; }
+.ig .hint { font-size: 0.76rem; color: #999; margin-top: 2px; line-height: 1.4; }
+
+.inp {
+  width: 100%; padding: 7px 11px; border: 1.5px solid #c8e6c9; border-radius: 6px;
+  background: #f1f8f0; font-size: 0.93rem; font-family: 'DM Sans', sans-serif; color: #1b1b1b;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.inp:focus { outline: none; border-color: #4caf50; box-shadow: 0 0 0 3px rgba(76,175,80,0.13); }
+
+.slider-row { display: flex; align-items: center; gap: 8px; }
+.slider-row input[type=range] { flex: 1; accent-color: #4caf50; }
+.slider-row .inp { width: 76px; flex-shrink: 0; }
+
+.computed-row { display: flex; gap: 12px; margin-top: 6px; flex-wrap: wrap; }
+.computed-box { flex: 1; min-width: 160px; background: #e8f4fd; border: 1.5px solid #90caf9; border-radius: 7px; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center; }
+.computed-box .cb-label { font-size: 0.8rem; color: #555; }
+.computed-box .cb-value { font-size: 1rem; font-weight: 800; color: #1565c0; }
+
+.tip-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 15px; height: 15px; border-radius: 50%;
+  background: #bbdefb; color: #1565c0;
+  font-size: 9px; font-weight: 900; font-style: italic;
+  cursor: pointer; margin-left: 5px; border: none;
+  vertical-align: middle; flex-shrink: 0; line-height: 1;
+  transition: background 0.15s;
+}
+.tip-btn:hover { background: #90caf9; }
+.ig { position: relative; }
+.th-lbl { position: relative; }
+.tip-popup {
+  display: none;
+  position: absolute;
+  left: 0; top: 1.6em;
+  z-index: 500;
+  width: 310px; max-width: 90vw;
+  background: #f0f7ff;
+  border: 1.5px solid #90caf9; border-radius: 7px;
+  padding: 9px 12px; font-size: 0.8rem; color: #1a3a5c;
+  line-height: 1.55;
+  box-shadow: 0 4px 14px rgba(21,101,192,0.18);
+}
+.tip-popup.open { display: block; }
+
+.breakeven-notice {
+  background: #f3f0ff; border: 1.5px solid #9c7ef0; border-radius: 8px;
+  padding: 10px 16px; font-size: 0.86rem; color: #4a2a8f; margin-bottom: 18px; font-weight: 600;
+}
+
+.chart-container { position: relative; height: 320px; margin-bottom: 20px; }
+
+.table-section-toggle {
+  display: flex; align-items: center; justify-content: space-between;
+  cursor: pointer; padding: 10px 0; border-bottom: 2px solid #e0e0e0; user-select: none;
+}
+.toggle-title { font-weight: 700; font-size: 0.95rem; color: #1b1b1b; }
+.toggle-arrow { font-size: 0.82rem; color: #d4a853; font-weight: 700; transition: transform 0.2s; }
+.table-wrap { overflow-x: auto; margin-top: 14px; }
+.rvb-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; min-width: 760px; }
+.rvb-table th { background: #1b1b1b; color: #d4a853; padding: 9px 8px; text-align: right; font-weight: 700; white-space: nowrap; }
+.rvb-table th:first-child { text-align: center; }
+.rvb-table th.td-buy { background: #2e7d32 !important; color: #ffffff; }
+.rvb-table th.td-rent { background: #1565c0 !important; color: #ffffff; }
+.rvb-table td { padding: 6px 8px; text-align: right; border-bottom: 1px solid #f0f0f0; white-space: nowrap; }
+.rvb-table td:first-child { text-align: center; font-weight: 700; color: #555; }
+.rvb-table tr:nth-child(even) td { background: #f9f9f9; }
+.rvb-table tr.hl-row td { background: #fff8e1 !important; font-weight: 700; }
+.rvb-table tr:hover td { background: #e8f4fd; }
+.rvb-table td.td-buy { background: #e8f5e9 !important; color: #2e7d32; font-weight: 600; }
+.rvb-table td.td-rent { background: #e3f2fd !important; color: #1565c0; font-weight: 600; }
+.rvb-table tr.hl-row td.td-buy { background: #c8e6c9 !important; }
+.rvb-table tr.hl-row td.td-rent { background: #bbdefb !important; }
+.rvb-table tr:hover td.td-buy { background: #c8e6c9 !important; }
+.rvb-table tr:hover td.td-rent { background: #bbdefb !important; }
+.td-pos { color: #c62828; }
+.td-neg { color: #2e7d32; }
+
+.th-results { margin-top: 12px; }
+.th-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid #f0f0f0; font-size: 0.88rem; }
+.th-row:last-child { border-bottom: none; }
+.th-row .th-lbl { color: #555; }
+.th-row .th-val { font-weight: 700; color: #1b1b1b; }
+.th-row.th-big { border-top: 2px solid #d4a853; margin-top: 6px; padding-top: 12px; }
+.th-row.th-big .th-lbl { font-weight: 700; font-size: 1rem; }
+.th-row.th-big .th-val { font-size: 1.45rem; color: #2e7d32; }
+
+.btn-apply { background: #d4a853; color: #1b1b1b; border: none; padding: 9px 22px; border-radius: 6px; font-weight: 700; font-size: 0.88rem; cursor: pointer; transition: background 0.2s; font-family: 'DM Sans', sans-serif; }
+.btn-apply:hover { background: #c49440; }
+.apply-confirm { display:none; margin-top:7px; font-size:0.8rem; color:#2e7d32; font-weight:600; }
+
+.inputs-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; }
+@media (max-width: 767px) { .inputs-2col { grid-template-columns: 1fr; } }
+
+.notes-card { background: #fff; border-left: 4px solid #d4a853; border-radius: 0 8px 8px 0; padding: 18px 22px; margin-bottom: 28px; }
+.notes-card h5 { color: #1b1b1b; font-weight: 700; margin-bottom: 10px; font-size: 0.95rem; }
+.notes-card ol { margin-bottom: 0; }
+.notes-card li { margin-bottom: 7px; font-size: 0.87rem; color: #444; line-height: 1.6; }
+.notes-card li:last-child { margin-bottom: 0; }
+
+.th-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; }
+@media (max-width: 767px) { .th-2col { grid-template-columns: 1fr; } }
+
+/* ===== GOOGLE SHEETS SECTION ===== */
+.sheets-section {
+  background: #fff;
+  padding: 52px 0 56px;
+  border-top: 1px solid #e8e8e8;
+}
+.sheets-section .section-eyebrow {
+  font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.12em; color: #d4a853; margin-bottom: 6px;
+}
+.sheets-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.3rem, 3vw, 1.75rem);
+  font-weight: 700; color: #1b1b1b; margin-bottom: 8px;
+}
+.sheets-section .section-desc {
+  color: #666; font-size: 0.9rem; margin-bottom: 32px; max-width: 580px;
+}
+.sheet-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 600px) { .sheet-cards { grid-template-columns: 1fr; } }
+
+.sheet-card {
+  border: 1.5px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 24px 22px;
+  display: flex; flex-direction: column; gap: 10px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.sheet-card:hover { border-color: #d4a853; box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+.sheet-card-icon {
+  width: 42px; height: 42px; border-radius: 9px;
+  background: #e8f5e9; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
+}
+.sheet-card h4 { font-size: 0.97rem; font-weight: 700; color: #1b1b1b; margin: 0; }
+.sheet-card p { font-size: 0.83rem; color: #666; margin: 0; line-height: 1.5; }
+.sheet-card a.sheet-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.82rem; font-weight: 700; color: #1565c0;
+  text-decoration: none; margin-top: 4px;
+  word-break: break-all;
+}
+.sheet-card a.sheet-link:hover { text-decoration: underline; color: #0d47a1; }
+.sheet-card .sheet-badge {
+  display: inline-block;
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+  padding: 2px 8px; border-radius: 4px; letter-spacing: 0.06em;
+}
+.sheet-badge.view-only { background: #e3f2fd; color: #1565c0; }
+.sheet-badge.editable  { background: #fff3e0; color: #e65100; }
+
+/* Sheet notes */
+.sheet-notes {
+  margin-top: 28px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 18px 22px;
+}
+.sheet-notes h5 { font-size: 0.88rem; font-weight: 700; color: #1b1b1b; margin-bottom: 10px; }
+.sheet-notes ul { margin: 0; padding-left: 18px; }
+.sheet-notes li { font-size: 0.83rem; color: #555; margin-bottom: 6px; line-height: 1.55; }
+</style>
+</head>
+<body>
+
+<!-- Welcome banner -->
+<script>
+(function () {
+  const u   = new URL(location.href);
+  const src = u.searchParams.get('src');
+  if (!src || !src.startsWith('cb')) return;
+  if (sessionStorage.getItem('welcomeDismissed')) return;
+  sessionStorage.setItem('welcomeDismissed', '1');
+  const extraPath = src.slice(2);
+  if (extraPath.startsWith('/')) {
+    if (u.pathname === '/' || u.pathname === '') u.pathname = extraPath;
+  }
+  u.searchParams.delete('src');
+  if (history.replaceState) history.replaceState(null, '', u.pathname + u.search + u.hash);
+  const bar = document.createElement('div');
+  bar.innerHTML = `Cashbackagent has moved to a new URL!&nbsp; Please bookmark <strong>flatfee-realtor.com</strong>. <button aria-label="Close" style="margin-left:.8rem;background:transparent;border:0;font-size:20px;cursor:pointer;line-height:1;">&times;</button>`;
+  bar.style.cssText = `position:fixed;top:0;left:0;right:0;z-index:9999;padding:12px 8px;background:#fffae6;color:#222;font:16px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;text-align:center;box-shadow:0 2px 4px rgba(0,0,0,.15)`;
+  const hide = () => bar.remove();
+  bar.querySelector('button').onclick = hide;
+  setTimeout(hide, 5000);
+  (document.body || document.documentElement).appendChild(bar);
+})();
+</script>
+
+<!-- NAVBAR -->
+<section data-bs-version="5.1" class="menu menu2 cid-uTZO3wYcT2" once="menu" id="menu2-4t">
+  <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+    <div class="container">
+      <div class="navbar-brand">
+        <span class="navbar-logo">
+          <a href="index.html"><img src="assets/images/logo-ffr-2-337x337.png" alt="Flat Fee Realtor"></a>
+        </span>
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <div class="hamburger"><span></span><span></span><span></span><span></span></div>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav nav-dropdown navbar-nav-top-padding" data-app-modern-menu="true">
+          <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="process.html">Process</a></li>
+          <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="sfbay.html">SF Bay</a></li>
+          <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="locations.html">Locations</a></li>
+          <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="properties.html">Properties</a></li>
+        </ul>
+        <div class="navbar-buttons mbr-section-btn">
+          <a class="btn btn-rankings-outline display-4" href="Appreciation-Rankings-Hub.html">Rankings</a>
+          <a class="btn btn-black display-4" href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</section>
+
+<!-- ===== HERO ===== -->
+<section class="rvb-hero">
+  <div class="container">
+    <h1>Rent vs Buy in California</h1>
+    <p>Buying or renting in California involves more than just comparing mortgage payments to rent: rent goes up, mortgage does not. This calculator accounts for federal and California mortgage tax deductions, SALT deduction from 2025 legislation changes, Prop 13 property taxes, and what your down payment could earn in the stock market if renting.</p>
+  </div>
+</section>
+
+<!-- ===== SCENARIO INTRO ===== -->
+<section style="padding:52px 0 44px;background:#ffffff;border-bottom:1px solid #e8e8e8;">
+  <div class="container">
+    <div style="max-width:760px;margin:0 auto;text-align:center;">
+      <p style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#d4a853;margin-bottom:8px;">How This Calculator Works</p>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.9rem);font-weight:700;color:#1b1b1b;margin-bottom:20px;">Two Scenarios, One Question</h2>
+      <p style="font-size:1.02rem;color:#444;line-height:1.85;margin-bottom:0;">The calculator compares two paths over any time horizon you choose. <strong>Scenario 1 â€” Buy:</strong> you purchase a home, make monthly mortgage payments, and build equity as the property appreciates.<strong>Scenario 2 â€” Rent &amp; Invest:</strong> you rent instead, and put your would-be down payment â€” plus any monthly savings from renting being cheaper than owning â€” into a stock portfolio. At the end of your chosen period, which path leaves you with a higher net worth?</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== KEY INSIGHTS ===== -->
+<section class="insights-section">
+  <div class="container">
+    <div class="section-eyebrow">Key Findings</div>
+    <div class="section-title">What the Numbers Tell Us</div>
+    <p class="section-subtitle">Based on analysis of Bay Area home prices, stock market history, and California tax rules. Updated Jan 2026.</p>
+
+    <div class="insight-cards">
+
+      <div class="icard ic-green">
+        <div class="icard-icon">ðŸ¡</div>
+        <h4>The 5% Appreciation Tipping Point</h4>
+        <p>For a $2M home with a 5.5% mortgage and 9% stock returns, buying beats renting once annual property appreciation hits roughly <strong>5%</strong> â€” close to the Bay Area's 30-year average.</p>
+        <span class="ic-stat">$2M house Â· 5% app. rate â†’ Buy wins</span>
+      </div>
+
+      <div class="icard ic-gold">
+        <div class="icard-icon">ðŸ’¸</div>
+        <h4>Lower-Priced Homes Favor Buying Sooner</h4>
+        <p>For a $1.25M home, only <strong>~4.5% annual appreciation</strong> is needed for buying to win. A higher share of the mortgage is tax-deductible, reducing your effective borrowing cost significantly.</p>
+        <span class="ic-stat">$1.25M house Â· 4.5% app. rate â†’ Buy wins</span>
+      </div>
+
+      <div class="icard ic-blue">
+        <div class="icard-icon">ðŸ“…</div>
+        <h4>Buying Gets Less Favorable After ~10 Years</h4>
+        <p>Counterintuitively, after 10+ years the renting-and-investing strategy often <strong>catches up or overtakes</strong> buying. Mortgage leverage decreases over time as loan balance shrinks, while a stock portfolio compounding at 9% gains momentum.</p>
+        <span class="ic-stat">Stocks compound faster long-term</span>
+      </div>
+
+      <div class="icard ic-purple">
+        <div class="icard-icon">ðŸ”’</div>
+        <h4>Prop 13: California's Hidden Buying Advantage</h4>
+        <p>California's Proposition 13 locks in your property tax based on <strong>purchase price</strong>, growing at max 2%/year â€” far below typical appreciation. This becomes a major financial advantage the longer you own.</p>
+        <span class="ic-stat">Tax based on purchase price, not current value</span>
+      </div>
+
+      <div class="icard ic-green">
+        <div class="icard-icon">ðŸ¦</div>
+        <h4>Mortgage Deduction Lowers Your True Rate</h4>
+        <p>Federal and CA tax deductions on mortgage interest can reduce your effective rate by <strong>1â€“2 percentage points</strong>. Use the Tax Rate Helper tab in the calculator to find your exact number.</p>
+        <span class="ic-stat">5.5% bank rate â†’ ~4.25% after tax deduction</span>
+      </div>
+
+      <div class="icard ic-gold">
+        <div class="icard-icon">ðŸŒŠ</div>
+        <h4>Stocks vs. Real Estate: Risk Profiles Differ</h4>
+        <p>The 9% S&amp;P 500 average is volatile year-to-year. If you'd invest conservatively in bonds or Treasuries (4â€“5% return), <strong>buying almost always wins</strong>. The comparison is closest when stocks return 8â€“10%.</p>
+        <span class="ic-stat">Bonds at 4â€“5% â†’ Buying wins easily</span>
+      </div>
+
+    </div>
+
+    <div class="assumptions-strip">
+      <strong>Base assumptions used above:</strong> $2M home price Â· 20% down payment Â· 5.5% bank mortgage rate (4.25% after tax deductions) Â· 30-year fixed Â· 1.25% property tax (Prop 13) Â· 0.7% maintenance Â· $5,000/mo initial rent Â· 5% rent growth Â· 9% stock returns Â· 10-year comparison window. Adjust any of these in the calculator below.
+    </div>
+  </div>
+</section>
+
+<!-- ===== CALCULATOR SECTION HEADER ===== -->
+<div class="calc-section-header">
+  <div class="container">
+    <div class="section-eyebrow">Interactive Tool</div>
+    <h2>Run Your Own Numbers</h2>
+    <p>Plug in your specific home price, interest rate, and assumptions. Results update instantly.</p>
+  </div>
+</div>
+
+<!-- ===== CALCULATOR ===== -->
+<div class="calc-wrapper">
+  <div class="container">
+
+    <!-- Tab nav -->
+    <div class="calc-tab-nav">
+      <button class="calc-tab-btn active" id="tab-btn-1" onclick="switchTab(1)">Calculator</button>
+      <button class="calc-tab-btn" id="tab-btn-2" onclick="switchTab(2)">Tax Rate Helper</button>
+    </div>
+
+    <!-- ======================== -->
+    <!-- TAB 1: Rent vs Buy       -->
+    <!-- ======================== -->
+    <div id="tab-panel-1">
+
+      <!-- 3 Result Tiles -->
+      <div class="result-tiles">
+        <div class="rtile buy">
+          <div class="rt-label">ðŸ  Buy â€” Net Wealth</div>
+          <div class="rt-value" id="tile_buy">â€”</div>
+          <div class="rt-sub" id="tile_buy_sub">Home equity</div>
+          <div class="rt-years" id="tile_buy_years"></div>
+        </div>
+        <div class="rtile rent">
+          <div class="rt-label">ðŸ“ˆ Rent â€” Portfolio</div>
+          <div class="rt-value" id="tile_rent">â€”</div>
+          <div class="rt-sub" id="tile_rent_sub">Stock balance</div>
+          <div class="rt-years" id="tile_rent_years"></div>
+        </div>
+        <div class="rtile winner">
+          <div class="rt-label">Winner</div>
+          <div class="rt-value" id="tile_winner">â€”</div>
+          <div class="rt-sub" id="tile_diff">Advantage: â€”</div>
+        </div>
+      </div>
+
+      <!-- Breakeven notice -->
+      <div id="breakeven-notice" class="breakeven-notice"></div>
+
+      <!-- Inputs card -->
+      <div class="calc-card">
+        <div class="calc-card-title">Your Scenario</div>
+        <div class="calc-card-subtitle">Edit any green field â€” results update instantly.</div>
+
+        <div class="inputs-2col">
+          <!-- Left: buying params -->
+          <div>
+            <div class="calc-section-label">ðŸ  Buying</div>
+
+            <div class="ig">
+              <label>Home Price ($)</label>
+              <input class="inp money-inp" id="homePrice" type="text" value="2,000,000" oninput="calculate()">
+            </div>
+
+            <div class="ig">
+              <label>Annual Property Appreciation Rate (%) <button class="tip-btn" onclick="showTip('tip-appRate',event)">i</button></label>
+              <div class="slider-row">
+                <input type="range" min="0" max="12" step="0.5" value="5" oninput="syncSR('appreciationRate',this.value)">
+                <input class="inp" id="appreciationRate" type="number" value="5" step="0.5" oninput="syncRS('appreciationRate',this.value);calculate()">
+                <span style="color:#555;font-size:.85rem">%</span>
+              </div>
+              <div id="tip-appRate" class="tip-popup">The annual rate at which the home's market value grows. The Bay Area 30-year historical average is roughly 5â€“6%. Higher appreciation strongly favors buying â€” this is one of the most impactful inputs.</div>
+            </div>
+
+            <div class="ig">
+              <label>Down Payment (%)</label>
+              <div class="slider-row">
+                <input type="range" min="5" max="60" step="1" value="20" oninput="syncSR('downPct',this.value)">
+                <input class="inp" id="downPct" type="number" value="20" min="1" max="80" oninput="syncRS('downPct',this.value);calculate()">
+                <span style="color:#555;font-size:.85rem">%</span>
+              </div>
+            </div>
+
+            <div class="ig">
+              <label>Tax-Adjusted Mortgage Rate (%) <button class="tip-btn" onclick="showTip('tip-adjRate',event)">i</button></label>
+              <input class="inp" id="adjRate" type="number" value="4.25" step="0.05" oninput="calculate()">
+              <div class="hint">Use "Tax Rate Helper" tab to calculate. Default 4.25% = 5.5% bank rate after deductions.</div>
+              <div id="tip-adjRate" class="tip-popup">This is your bank's stated interest rate <em>reduced</em> by the tax savings from deducting mortgage interest. Because mortgage interest is tax-deductible (federally up to $750k loan, in CA up to $1M), your true cost of borrowing is lower than the bank rate. Use the "Tax Rate Helper" tab to compute this automatically from your actual bank rate and tax brackets.</div>
+            </div>
+
+            <div class="ig">
+              <label>Mortgage Term (years)</label>
+              <input class="inp" id="mortgageTerm" type="number" value="30" min="10" max="30" oninput="calculate()">
+            </div>
+
+            <div class="ig">
+              <label>Annual Property Tax (%) <button class="tip-btn" onclick="showTip('tip-propTax',event)">i</button></label>
+              <input class="inp" id="propTaxPct" type="number" value="1.25" step="0.05" oninput="calculate()">
+              <div class="hint">Grows 2%/yr on purchase price (Prop 13)</div>
+              <div id="tip-propTax" class="tip-popup">California's Proposition 13 caps property tax increases at 2% per year, regardless of how fast the home's market value grows. The tax is based on the <em>purchase price</em>, not current value â€” a major advantage of buying in CA. Typical rate at time of purchase is 1.0â€“1.3%.</div>
+            </div>
+
+            <div class="ig">
+              <label>Annual Maintenance + Insurance + HoA (%) <button class="tip-btn" onclick="showTip('tip-maint',event)">i</button></label>
+              <input class="inp" id="maintenancePct" type="number" value="0.7" step="0.05" oninput="calculate()">
+              <div class="hint">Applied to current property value each year</div>
+              <div id="tip-maint" class="tip-popup">Covers home insurance (~0.2â€“0.4%), ongoing repairs and maintenance (~0.3â€“0.7%), and HOA fees if applicable. Unlike property tax, this scales with the home's current market value each year. For a $2M home at 0.7%, that's ~$14,000/yr initially.</div>
+            </div>
+          </div>
+
+          <!-- Right: renting params -->
+          <div>
+            <div class="calc-section-label">ðŸ“ˆ Renting + Investing</div>
+
+            <div class="ig">
+              <label>Initial Monthly Rent ($)</label>
+              <input class="inp money-inp" id="initialRent" type="text" value="5,000" oninput="calculate()">
+            </div>
+
+            <div class="ig">
+              <label>Annual Rent Growth Rate (%) <button class="tip-btn" onclick="showTip('tip-rentGrowth',event)">i</button></label>
+              <div class="slider-row">
+                <input type="range" min="0" max="10" step="0.5" value="5" oninput="syncSR('rentGrowth',this.value)">
+                <input class="inp" id="rentGrowth" type="number" value="5" step="0.5" oninput="syncRS('rentGrowth',this.value);calculate()">
+                <span style="color:#555;font-size:.85rem">%</span>
+              </div>
+              <div id="tip-rentGrowth" class="tip-popup">The rate at which your monthly rent increases each year. Rents in high-demand markets like the Bay Area historically track property appreciation closely. Setting this lower than the appreciation rate simulates a landlord-friendly market; setting them equal is the neutral assumption.</div>
+            </div>
+
+            <div class="ig">
+              <label>Annual Investment Return (%) <button class="tip-btn" onclick="showTip('tip-investReturn',event)">i</button></label>
+              <div class="slider-row">
+                <input type="range" min="3" max="15" step="0.5" value="9" oninput="syncSR('investReturn',this.value)">
+                <input class="inp" id="investReturn" type="number" value="9" step="0.5" oninput="syncRS('investReturn',this.value);calculate()">
+                <span style="color:#555;font-size:.85rem">%</span>
+              </div>
+              <div class="hint">S&amp;P 500 100-year average: 9â€“10%</div>
+              <div id="tip-investReturn" class="tip-popup">The annual return on the renter's invested portfolio (down payment + annual savings). The S&amp;P 500 has averaged ~9â€“10% per year over 100 years. Note: stock returns are volatile year-to-year unlike home values. If you prefer safer investments (bonds, treasury), use 4â€“5%, which will make buying look better.</div>
+            </div>
+
+            <div class="calc-section-label">ðŸ“… Comparison Period</div>
+            <div class="ig">
+              <label>Years to Compare</label>
+              <div class="slider-row">
+                <input type="range" min="1" max="30" step="1" value="10" oninput="syncSR('yearsToCompare',this.value)">
+                <input class="inp" id="yearsToCompare" type="number" value="10" min="1" max="30" oninput="syncRS('yearsToCompare',this.value);calculate()">
+                <span style="color:#555;font-size:.85rem">yrs</span>
+              </div>
+            </div>
+
+            <div class="calc-section-label">Computed</div>
+            <div class="computed-row">
+              <div class="computed-box">
+                <span class="cb-label">Loan Amount</span>
+                <span class="cb-value" id="disp_loan">â€”</span>
+              </div>
+              <div class="computed-box">
+                <span class="cb-label">Monthly Payment</span>
+                <span class="cb-value" id="disp_pmt">â€”</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart -->
+      <div class="calc-card">
+        <div class="calc-card-title">Net Wealth Over Time</div>
+        <div class="calc-card-subtitle">Home equity (buying) vs stock portfolio (renting + investing). Renter's portfolio is seeded with the down payment on day 1.</div>
+        <div class="chart-container">
+          <canvas id="wealthChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Year-by-year table -->
+      <div class="calc-card">
+        <div class="table-section-toggle" onclick="toggleTable()">
+          <span class="toggle-title">Year-by-Year Breakdown</span>
+          <span class="toggle-arrow" id="toggleArrow">â–¼ Show</span>
+        </div>
+        <div id="tableSection" style="display:none;">
+          <div class="table-wrap">
+            <table class="rvb-table">
+              <thead>
+                <tr>
+                  <th>Yr</th>
+                  <th>Property Value</th>
+                  <th>Loan Remaining</th>
+                  <th class="td-buy">Home Equity</th>
+                  <th>Annual Mortgage</th>
+                  <th>Tax + Maint.</th>
+                  <th>Total Buy Cost</th>
+                  <th>Annual Rent</th>
+                  <th>Buy âˆ’ Rent</th>
+                  <th>Stock Contrib.</th>
+                  <th class="td-rent">Stock Balance</th>
+                </tr>
+              </thead>
+              <tbody id="rvbTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notes -->
+      <div class="notes-card">
+        <h5>Hard to Quantify Factors</h5>
+        <ol>
+          <li>You may be able to refinance at a lower rate later (+1 Buying).</li>
+          <li>As mortgage leverage reduces, buying gets worse. Theoretically you can reverse this by taking a home equity loan to invest in stocks.</li>
+          <li>Cost of selling (realtor fee, county tax) is not included.</li>	
+ 	<li> You get up to $500k profit tax-free when selling a primary residence, and 1031 exchanges are available for RE but not stocks.</li>
+          <li>Renting gives freedom to move anytime. Buying lets you customize your home.</li>
+        </ol>
+      </div>
+
+    </div><!-- end tab-panel-1 -->
+
+    <!-- ========================== -->
+    <!-- TAB 2: Tax Rate Helper      -->
+    <!-- ========================== -->
+    <div id="tab-panel-2" style="display:none;">
+      <div class="calc-card">
+        <div class="calc-card-title">Mortgage Tax Deduction Calculator</div>
+        <div class="calc-card-subtitle">Calculates your effective after-tax mortgage rate. Click "Apply to Calculator" when done.</div>
+
+        <div class="th-2col">
+          <!-- Left: inputs -->
+          <div>
+            <div class="calc-section-label">Mortgage Details</div>
+            <div class="ig">
+              <label>Mortgage Amount ($)</label>
+              <input class="inp money-inp" id="mtg_amount" type="text" value="1,600,000" oninput="calcTax()">
+            </div>
+            <div class="ig">
+              <label>Bank Interest Rate (%)</label>
+              <input class="inp" id="mtg_bank_rate" type="number" value="5.5" step="0.05" oninput="calcTax()">
+              <div class="hint">5.5% is a typical 7-year ARM rate</div>
+            </div>
+
+            <div class="calc-section-label">Tax Details</div>
+            <div class="ig">
+              <label>Federal Standard Deduction ($) <button class="tip-btn" onclick="showTip('tip-fedStd',event)">i</button></label>
+              <input class="inp money-inp" id="mtg_fed_std" type="text" value="32,200" oninput="calcTax()">
+              <div class="hint">You lose this when you itemize</div>
+              <div id="tip-fedStd" class="tip-popup">When you own a home, you can <em>itemize</em> deductions (claiming mortgage interest, property taxes, SALT) instead of taking the standard deduction. But you can't do both - so the standard deduction is the "cost" of itemizing. For 2026, it is $16,100 (single) and $32,200 (married filing jointly).</div>
+            </div>
+            <div class="ig">
+              <label>SALT Deduction You Can Claim ($) <button class="tip-btn" onclick="showTip('tip-salt',event)">i</button></label>
+              <input class="inp money-inp" id="mtg_salt" type="text" value="40,000" oninput="calcTax()">
+              <div class="hint">SALT cap recent legislation changes: $40k up to $500k income, then phases down, and $10k at/above $600k.</div>
+              <div id="tip-salt" class="tip-popup">SALT = State and local taxes, primarily California income tax plus property tax. Recent legislation changes put SALT cap to $40,000 for income up to $500,000, phase-down between $500,000 and $600,000, and $10,000 at or above $600,000 (same for married and single filers). Enter the amount you can actually claim. Include property taxes you owe because of buying.</div>
+            </div>
+            <div class="ig">
+              <label>Federal Marginal Tax Rate (%) <button class="tip-btn" onclick="showTip('tip-fedMarg',event)">i</button></label>
+              <input class="inp" id="mtg_fed_rate" type="number" value="35" oninput="calcTax()">
+              <div id="tip-fedMarg" class="tip-popup">Use your <em>marginal</em> (top bracket) rate, not your average/effective rate. For 2026 married filing jointly: 22% ($100,800-$211,400), 24% ($211,400-$403,550), 32% ($403,550-$512,450), 35% ($512,450-$768,700), 37% (above $768,700).</div>
+            </div>
+            <div class="ig">
+              <label>California Marginal Tax Rate (%) <button class="tip-btn" onclick="showTip('tip-caMarg',event)">i</button></label>
+              <input class="inp" id="mtg_ca_rate" type="number" value="11.3" step="0.1" oninput="calcTax()">
+              <div id="tip-caMarg" class="tip-popup">For married/RDP filing jointly (Schedule Y values currently used for 2026 estimating): 9.3% ($145,448-$742,958), 10.3% ($742,958-$891,542), 11.3% ($891,542-$1,485,906), 12.3% (above $1,485,906), plus a 1% Behavioral Health Services Tax above $1M. </div>
+            </div>
+          </div>
+
+          <!-- Right: results -->
+          <div>
+            <div class="calc-section-label">Federal Deduction</div>
+            <div class="th-results">
+              <div class="th-row"><span class="th-lbl">Annual Interest</span><span class="th-val" id="mtg_annual_interest">â€”</span></div>
+              <div class="th-row"><span class="th-lbl">Deductible Interest (cap $750k) <button class="tip-btn" onclick="showTip('tip-fedDed',event)">i</button><div id="tip-fedDed" class="tip-popup" style="font-weight:400;">Federal law caps the mortgage principal eligible for interest deduction at <strong>$750,000</strong> for loans originated after Dec 15, 2017. If your loan is $1.6M, only the interest on the first $750k is deductible â€” roughly 47% of your total interest. Older loans (pre-Dec 2017) have a $1M cap.</div></span><span class="th-val" id="mtg_fed_deductible">â€”</span></div>
+              <div class="th-row"><span class="th-lbl">Net Itemized Deduction <button class="tip-btn" onclick="showTip('tip-netItemized',event)">i</button><div id="tip-netItemized" class="tip-popup" style="font-weight:400;">= Deductible mortgage interest + SALT âˆ’ Standard deduction. This is the <em>extra</em> deduction you gain by itemizing. It cannot be -ve since you would not itemize in that case.</div></span><span class="th-val" id="mtg_net_itemized">â€”</span></div>
+              <div class="th-row"><span class="th-lbl">Federal Tax Savings</span><span class="th-val" id="mtg_fed_savings">â€”</span></div>
+            </div>
+
+            <div class="calc-section-label" style="margin-top:20px;">California Deduction</div>
+            <div class="th-results">
+              <div class="th-row"><span class="th-lbl">Deductible Interest (cap $1M) <button class="tip-btn" onclick="showTip('tip-caDed',event)">i</button><div id="tip-caDed" class="tip-popup" style="font-weight:400;">California is more generous than federal law â€” it allows mortgage interest deduction on loan principal up to <strong>$1,000,000</strong>, regardless of when the loan was originated. So for a $1.6M loan, CA lets you deduct interest on 62.5% of the principal vs. the federal 47%.</div></span><span class="th-val" id="mtg_ca_deductible">â€”</span></div>
+              <div class="th-row"><span class="th-lbl">CA Tax Savings</span><span class="th-val" id="mtg_ca_savings">â€”</span></div>
+            </div>
+
+            <div class="calc-section-label" style="margin-top:20px;">Result</div>
+            <div class="th-results">
+              <div class="th-row"><span class="th-lbl">Total Tax Savings</span><span class="th-val" id="mtg_total_savings">â€”</span></div>
+              <div class="th-row"><span class="th-lbl">After-Tax Interest</span><span class="th-val" id="mtg_after_tax_interest">â€”</span></div>
+              <div class="th-row th-big">
+                <span class="th-lbl">Effective (Tax-Adjusted) Rate</span>
+                <span class="th-val" id="mtg_effective_rate">â€”</span>
+              </div>
+            </div>
+
+            <div style="margin-top:22px;">
+              <button class="btn-apply" onclick="applyTaxRate()">Apply to Calculator â†’</button>
+              <div class="apply-confirm" id="apply-confirm">âœ“ Rate applied!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- end tab-panel-2 -->
+
+  </div><!-- end container -->
+</div><!-- end calc-wrapper -->
+
+<!-- ===== GOOGLE SHEETS SECTION ===== -->
+<section class="sheets-section">
+  <div class="container">
+    <div class="section-eyebrow">Also Available</div>
+    <h2>Explore in Google Sheets</h2>
+    <p class="section-desc">Prefer working in a spreadsheet? Use the original Google Sheet that inspired this calculator â€” view-only or directly editable.</p>
+
+    <div class="sheet-cards">
+      <div class="sheet-card">
+        <div class="sheet-card-icon">ðŸ“Š</div>
+        <div>
+          <span class="sheet-badge view-only">View Only</span>
+        </div>
+        <h4>View-Only Sheet</h4>
+        <p>Browse the full model with all formulas. Make a copy to your own Google Drive to edit freely.</p>
+        <a href="https://tinyurl.com/buyvsrentca" class="sheet-link" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          tinyurl.com/buyvsrentca
+        </a>
+      </div>
+
+      <div class="sheet-card">
+        <div class="sheet-card-icon">âœï¸</div>
+        <div>
+          <span class="sheet-badge editable">Directly Editable</span>
+        </div>
+        <h4>Public Editable Sheet</h4>
+        <p>Edit directly in your browser â€” no sign-in needed. Note: anyone can view data, so don't save sensitive info.</p>
+        <a href="https://tinyurl.com/rentvsbuycaedit" class="sheet-link" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          tinyurl.com/rentvsbuycaedit
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer-redesigned">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-6 col-lg-3 mb-4">
+        <div class="footer-brand-col">
+          <img src="assets/images/logo-ffr-2-337x337.png" alt="Flat Fee Realtor">
+          <p>Top 1% Realtors with all 5-Star reviews. Flat fee, maximum cashback. Full service representation.</p>
+        </div>
+        <div class="footer-contact-item"><span class="footer-contact-icon">&#9742;</span><span>408-905-8133</span></div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon socicon-whatsapp socicon" style="font-size:0.95rem;"></span>
+          <a href="https://wa.me/14089058133" target="_blank">408-905-8133</a>
+        </div>
+        <div class="footer-contact-item"><span class="footer-contact-icon">&#9993;</span><a href="mailto:info@flatfee-realtor.com">info@flatfee-realtor.com</a></div>
+        <div class="footer-social" style="margin-top:16px;">
+          <a href="https://www.reddit.com/user/flatfee-realtor/" target="_blank" aria-label="Reddit">
+            <span class="mbr-iconfont socicon-reddit socicon"></span>
+          </a>
+        </div>
+      </div>
+      <div class="col-6 col-md-6 col-lg-3 mb-4">
+        <h5 class="footer-heading">Locations</h5>
+        <ul class="footer-links">
+          <li><a href="San-Jose.html">San Jose, CA</a></li>
+          <li><a href="San-Francisco.html">San Francisco, CA</a></li>
+          <li><a href="Oakland.html">Oakland, CA</a></li>
+          <li><a href="Fremont.html">Fremont, CA</a></li>
+          <li><a href="San-Mateo.html">San Mateo, CA</a></li>
+          <li><a href="Los-Angeles.html">Los Angeles, CA</a></li>
+          <li><a href="San-Diego.html">San Diego, CA</a></li>
+          <li><a href="Sacramento.html">Sacramento, CA</a></li>
+          <li><a href="locations.html">See More</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md-6 col-lg-3 mb-4">
+        <h5 class="footer-heading">Rankings</h5>
+        <ul class="footer-links">
+          <li><a href="Appreciation-Rankings-Hub.html">Real Estate Appreciation Hub</a></li>
+          <li><a href="Bay-Area-City-Appreciation-Ranking.html">Bay Area Appreciation Ranking</a></li>
+          <li><a href="Southern-CA-City-Appreciation-Ranking.html">Southern CA Appreciation Rankings</a></li>
+          <li><a href="US-City-Appreciation-Ranking.html">US Appreciation Rankings</a></li>
+          <li><a href="US-Neighborhood-Appreciation-Ranking.html">Neighborhood Level Rankings</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md-6 col-lg-3 mb-4">
+        <h5 class="footer-heading">Company</h5>
+        <ul class="footer-links">
+          <li><a href="reviews.html">Client Reviews</a></li>
+          <li><a href="properties.html">Closed Properties</a></li>
+          <li><a href="blog.html">Our Blog</a></li>
+          <li><a href="license.html">License Information</a></li>
+          <li><a href="terms.html">Terms and Conditions</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>&copy; Copyright 2026 Flat Fee Realtor (formerly Cashbackagent)</p></div>
+  </div>
+</footer>
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/smoothscroll/smooth-scroll.js"></script>
+<script src="assets/ytplayer/index.js"></script>
+<script src="assets/chatbutton/floating-wpp.js"></script>
+<script src="assets/chatbutton/script.js"></script>
+<script src="assets/dropdown/js/navbar-dropdown.js"></script>
+<script src="assets/theme/js/script.js"></script>
+
+<script type="text/javascript">var sc_project=13140329; var sc_invisible=1; var sc_security="04536c4a";</script>
+<script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+<noscript><div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img class="statcounter" src="https://c.statcounter.com/13140329/0/04536c4a/1/" alt="Web Analytics" referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+
+<div id="chatbutton-wa" data-phone="+14089058133" data-showpopup="true" data-headertitle="Message us on WhatsApp!" data-popupmessage="Hi!
+
+Leave us a message and it will go straight to our phone!
+
+FFR Team" data-placeholder="Type here" data-position="left" data-headercolor="#39847a" data-backgroundcolor="#e5ddd5" data-autoopentimeout="0" data-size="65px"></div>
+
+<!-- ===== CALCULATOR LOGIC ===== -->
+<script>
+/* ---- Comma-formatted money inputs ---- */
+function getM(id) {
+  var raw = document.getElementById(id).value.replace(/[$,\s]/g, '');
+  return parseFloat(raw) || 0;
+}
+function commaFmt(n) {
+  return Math.round(n).toLocaleString('en-US');
+}
+function fmt(n) {
+  if (n === null || n === undefined || isNaN(n)) return 'â€”';
+  return '$' + commaFmt(n);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.money-inp').forEach(function(inp) {
+    inp.addEventListener('blur', function() {
+      var raw = this.value.replace(/[$,\s]/g, '');
+      var n = parseFloat(raw);
+      if (!isNaN(n)) this.value = commaFmt(n);
+    });
+    inp.addEventListener('focus', function() {
+      this.value = this.value.replace(/[,$\s]/g, '');
+    });
+    var n = parseFloat(inp.value.replace(/[$,\s]/g, ''));
+    if (!isNaN(n)) inp.value = commaFmt(n);
+  });
+});
+
+/* ---- Slider â†” number input sync ---- */
+function syncSR(id, val) {
+  document.getElementById(id).value = val;
+  calculate();
+}
+function syncRS(id, val) {
+  var el = document.getElementById(id);
+  var row = el.closest('.slider-row');
+  if (row) { var r = row.querySelector('input[type=range]'); if (r) r.value = val; }
+}
+
+/* ---- Tab switching ---- */
+function switchTab(t) {
+  document.getElementById('tab-panel-1').style.display = t === 1 ? '' : 'none';
+  document.getElementById('tab-panel-2').style.display = t === 2 ? '' : 'none';
+  document.getElementById('tab-btn-1').classList.toggle('active', t === 1);
+  document.getElementById('tab-btn-2').classList.toggle('active', t === 2);
+  if (t === 2) syncTaxHelperFromTab1();
+}
+
+function syncTaxHelperFromTab1() {
+  var homePrice = getM('homePrice');
+  var downPct   = parseFloat(document.getElementById('downPct').value) || 0;
+  var loanAmt   = homePrice * (1 - downPct / 100);
+  document.getElementById('mtg_amount').value = commaFmt(loanAmt);
+  calcTax();
+}
+
+/* ---- Finance helpers ---- */
+function pmtMonthly(annualRatePct, termYrs, principal) {
+  if (annualRatePct === 0) return principal / (termYrs * 12);
+  var r = annualRatePct / 100 / 12;
+  var n = termYrs * 12;
+  return principal * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
+}
+function loanBalance(annualRatePct, yearN, monthlyPmt, origLoan) {
+  if (annualRatePct === 0) return Math.max(0, origLoan - monthlyPmt * 12 * yearN);
+  var r = annualRatePct / 100 / 12;
+  var n = yearN * 12;
+  var f = Math.pow(1 + r, n);
+  return Math.max(0, origLoan * f - monthlyPmt * (f - 1) / r);
+}
+
+/* ---- Chart instance ---- */
+var wealthChart = null;
+
+/* ---- Main calculator ---- */
+function calculate() {
+  var homePrice      = getM('homePrice');
+  var downPct        = parseFloat(document.getElementById('downPct').value)        || 0;
+  var adjRate        = parseFloat(document.getElementById('adjRate').value)        || 0;
+  var mortgageTerm   = parseInt(document.getElementById('mortgageTerm').value)     || 30;
+  var propTaxPct     = parseFloat(document.getElementById('propTaxPct').value)     || 0;
+  var maintenancePct = parseFloat(document.getElementById('maintenancePct').value) || 0;
+  var appRate        = parseFloat(document.getElementById('appreciationRate').value)|| 0;
+  var yearsN         = Math.min(parseInt(document.getElementById('yearsToCompare').value) || 10, mortgageTerm);
+  var initRent       = getM('initialRent');
+  var rentGrowth     = parseFloat(document.getElementById('rentGrowth').value)     || 0;
+  var investReturn   = parseFloat(document.getElementById('investReturn').value)   || 0;
+
+  var loanAmt    = homePrice * (1 - downPct / 100);
+  var downAmt    = homePrice * downPct / 100;
+  var monthlyPmt = pmtMonthly(adjRate, mortgageTerm, loanAmt);
+
+  document.getElementById('disp_loan').textContent = fmt(loanAmt);
+  document.getElementById('disp_pmt').textContent  = fmt(monthlyPmt);
+
+  var data = [];
+  data.push({ year:0, propVal:homePrice, remLoan:loanAmt, equity:downAmt, annMtg:0, taxMaint:0, totalBuy:0, annRent:initRent*12, costDiff:0, stockContrib:0, stockBal:downAmt });
+
+  for (var y = 1; y <= mortgageTerm; y++) {
+    var prev = data[y-1];
+    var pv   = homePrice * Math.pow(1 + appRate/100, y);
+    var rl   = loanBalance(adjRate, y, monthlyPmt, loanAmt);
+    var eq   = pv - rl;
+    var annMtg   = monthlyPmt * 12;
+    var propTax  = homePrice * propTaxPct / 100 * Math.pow(1.02, y);
+    var maint    = pv * maintenancePct / 100;
+    var taxMaint = propTax + maint;
+    var totalBuy = annMtg + taxMaint;
+    var annRent  = prev.annRent * (1 + rentGrowth/100);
+    var costDiff = totalBuy - annRent;
+    var contrib  = Math.max(0, costDiff);
+    var stockBal = prev.stockBal * (1 + investReturn/100) + contrib;
+    data.push({ year:y, propVal:pv, remLoan:rl, equity:eq, annMtg:annMtg, taxMaint:taxMaint, totalBuy:totalBuy, annRent:annRent, costDiff:costDiff, stockContrib:contrib, stockBal:stockBal });
+  }
+
+  var nth    = data[Math.min(yearsN, mortgageTerm)];
+  var buyW   = nth.equity;
+  var rentW  = nth.stockBal;
+  var diff   = buyW - rentW;
+  var winner = diff > 0 ? 'ðŸ  Buying' : 'ðŸ“ˆ Renting';
+
+  document.getElementById('tile_buy').textContent       = fmt(buyW);
+  document.getElementById('tile_buy_years').textContent = 'after ' + yearsN + ' years';
+  document.getElementById('tile_rent').textContent      = fmt(rentW);
+  document.getElementById('tile_rent_years').textContent= 'after ' + yearsN + ' years';
+  document.getElementById('tile_winner').textContent    = winner;
+  document.getElementById('tile_diff').textContent      = 'Advantage: ' + fmt(Math.abs(diff));
+
+  var beYear = null, prevSign = data[0].equity - data[0].stockBal;
+  for (var i = 1; i < data.length; i++) {
+    var sign = data[i].equity - data[i].stockBal;
+    if (prevSign * sign < 0) { beYear = i; break; }
+    prevSign = sign;
+  }
+  var beEl = document.getElementById('breakeven-notice');
+  if (beYear !== null) {
+    var dir = (data[beYear].equity - data[beYear].stockBal) > 0 ? 'switches in favor of <strong>buying</strong>' : 'switches in favor of <strong>renting</strong>';
+    beEl.innerHTML = 'âš–ï¸ The math ' + dir + ' around <strong>year ' + beYear + '</strong> with these assumptions.';
+  } else {
+    var finalDiff = data[data.length - 1].equity - data[data.length - 1].stockBal;
+    beEl.innerHTML = finalDiff > 0
+      ? 'ðŸ  Buying stays ahead for the full ' + mortgageTerm + '-year period with these assumptions.'
+      : 'ðŸ“ˆ Renting stays ahead for the full ' + mortgageTerm + '-year period with these assumptions.';
+  }
+
+  updateChart(data, yearsN);
+  updateTable(data, yearsN);
+}
+
+function updateChart(data, hlYear) {
+  var labels = data.map(function(d){ return 'Yr '+d.year; });
+  var eqData = data.map(function(d){ return Math.round(d.equity); });
+  var stData = data.map(function(d){ return Math.round(d.stockBal); });
+  var pvData = data.map(function(d){ return Math.round(d.propVal); });
+  var ctx = document.getElementById('wealthChart').getContext('2d');
+  if (wealthChart) wealthChart.destroy();
+  wealthChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [
+        { label: 'ðŸ  Home Equity', data: eqData, borderColor:'#2e7d32', backgroundColor:'rgba(46,125,50,0.07)', borderWidth:2.5, pointRadius:2, tension:0.3, fill:false },
+        { label: 'ðŸ“ˆ Stock Portfolio', data: stData, borderColor:'#1565c0', backgroundColor:'rgba(21,101,192,0.07)', borderWidth:2.5, pointRadius:2, tension:0.3, fill:false },
+        { label: 'Property Value', data: pvData, borderColor:'#bbb', borderWidth:1.5, borderDash:[5,5], pointRadius:0, tension:0.3, fill:false }
+      ]
+    },
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      interaction:{ mode:'index', intersect:false },
+      plugins:{
+        legend:{ position:'top', labels:{ font:{ family:'DM Sans, sans-serif', size:12 } } },
+        tooltip:{ callbacks:{ label:function(c){ return ' '+c.dataset.label+': $'+c.parsed.y.toLocaleString('en-US'); } } }
+      },
+      scales:{
+        x:{ ticks:{ font:{size:11}, maxTicksLimit:10 } },
+        y:{ ticks:{ callback:function(v){ return v>=1e6?'$'+(v/1e6).toFixed(1)+'M':'$'+(v/1e3).toFixed(0)+'K'; }, font:{size:11} } }
+      }
+    }
+  });
+}
+
+function updateTable(data, hlYear) {
+  var tbody = document.getElementById('rvbTableBody');
+  var html = '';
+  for (var i = 0; i < data.length; i++) {
+    var d = data[i];
+    var hl = d.year === hlYear;
+    var dcls = d.costDiff > 0 ? 'td-pos' : 'td-neg';
+    html += '<tr class="'+(hl?'hl-row':'')+'"><td>'+d.year+'</td><td>'+fmt(d.propVal)+'</td><td>'+fmt(d.remLoan)+'</td><td class="td-buy">'+fmt(d.equity)+'</td><td>'+(d.year===0?'â€”':fmt(d.annMtg))+'</td><td>'+(d.year===0?'â€”':fmt(d.taxMaint))+'</td><td>'+(d.year===0?'â€”':fmt(d.totalBuy))+'</td><td>'+fmt(d.annRent)+'</td><td class="'+(d.year===0?'':dcls)+'">'+(d.year===0?'â€”':fmt(d.costDiff))+'</td><td>'+(d.year===0?'â€”':fmt(d.stockContrib))+'</td><td class="td-rent">'+fmt(d.stockBal)+'</td></tr>';
+  }
+  tbody.innerHTML = html;
+}
+
+/* ---- Table toggle ---- */
+var tableOpen = false;
+function toggleTable() {
+  tableOpen = !tableOpen;
+  document.getElementById('tableSection').style.display = tableOpen ? '' : 'none';
+  document.getElementById('toggleArrow').textContent = tableOpen ? 'â–² Hide' : 'â–¼ Show';
+}
+
+/* ---- Tax helper ---- */
+var lastEffRate = 4.25;
+function calcTax() {
+  var mtgAmt   = getM('mtg_amount');
+  var bankRate = parseFloat(document.getElementById('mtg_bank_rate').value) || 0;
+  var fedStd   = getM('mtg_fed_std');
+  var salt     = getM('mtg_salt');
+  var fedRate  = parseFloat(document.getElementById('mtg_fed_rate').value) || 0;
+  var caRate   = parseFloat(document.getElementById('mtg_ca_rate').value)  || 0;
+
+  var annInt      = mtgAmt * bankRate / 100;
+  var fedDed      = Math.min(mtgAmt, 750000) * bankRate / 100;
+  var netItemized = Math.max(0, fedDed + salt - fedStd);
+  var fedSavings  = netItemized * fedRate / 100;
+  var caDed       = Math.min(mtgAmt, 1000000) * bankRate / 100;
+  var caSavings   = caDed * caRate / 100;
+  var totalSavings= fedSavings + caSavings;
+  var afterTaxInt = annInt - totalSavings;
+  var effRate     = mtgAmt > 0 ? (afterTaxInt / mtgAmt * 100) : 0;
+
+  document.getElementById('mtg_annual_interest').textContent    = fmt(annInt);
+  document.getElementById('mtg_fed_deductible').textContent     = fmt(fedDed);
+  document.getElementById('mtg_net_itemized').textContent       = fmt(netItemized);
+  document.getElementById('mtg_fed_savings').textContent        = fmt(fedSavings);
+  document.getElementById('mtg_ca_deductible').textContent      = fmt(caDed);
+  document.getElementById('mtg_ca_savings').textContent         = fmt(caSavings);
+  document.getElementById('mtg_total_savings').textContent      = fmt(totalSavings);
+  document.getElementById('mtg_after_tax_interest').textContent = fmt(afterTaxInt);
+  document.getElementById('mtg_effective_rate').textContent     = effRate.toFixed(3) + '%';
+
+  lastEffRate = effRate;
+}
+
+function applyTaxRate() {
+  document.getElementById('adjRate').value = lastEffRate.toFixed(3);
+  var c = document.getElementById('apply-confirm');
+  c.style.display = '';
+  setTimeout(function(){ c.style.display='none'; }, 3000);
+  calculate();
+  switchTab(1);
+}
+
+/* ---- Info tooltips ---- */
+function showTip(id, e) {
+  e.stopPropagation();
+  var el = document.getElementById(id);
+  var wasOpen = el.classList.contains('open');
+  document.querySelectorAll('.tip-popup.open').forEach(function(p){ p.classList.remove('open'); });
+  if (!wasOpen) el.classList.add('open');
+}
+document.addEventListener('click', function() {
+  document.querySelectorAll('.tip-popup.open').forEach(function(p){ p.classList.remove('open'); });
+});
+
+/* ---- Init ---- */
+calcTax();
+calculate();
+</script>
+</body>
+</html>
