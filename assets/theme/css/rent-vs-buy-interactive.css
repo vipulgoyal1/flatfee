@@ -1,0 +1,274 @@
+.rb-shell {
+  background: linear-gradient(180deg, #f7f9f6 0%, #ffffff 56%, #f5f6f8 100%);
+  padding-bottom: 36px;
+}
+
+.rb-intro {
+  margin-top: 24px;
+  margin-bottom: 10px;
+}
+
+.rb-intro p {
+  margin: 0;
+}
+
+.rb-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.rb-card {
+  border: 1px solid #d9ddd9;
+  border-radius: 14px;
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: 0 10px 20px rgba(10, 29, 8, 0.05);
+}
+
+.rb-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1e2e18;
+}
+
+.rb-muted {
+  color: #61696d;
+  font-size: 0.95rem;
+  margin-bottom: 14px;
+}
+
+.rb-input-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 12px;
+}
+
+.rb-input-grid label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #2f383d;
+  margin: 0;
+}
+
+.rb-input-grid input {
+  width: 100%;
+  margin-top: 6px;
+  border: 1px solid #bfd4b8;
+  border-radius: 9px;
+  padding: 8px 10px;
+  background: #f0ffe6;
+  font-size: 0.94rem;
+}
+
+.rb-input-grid input:focus {
+  outline: none;
+  border-color: #79a36a;
+  box-shadow: 0 0 0 3px rgba(121, 163, 106, 0.2);
+}
+
+.rb-input-grid input:disabled {
+  background: #f3f5f2;
+  border-color: #d9dfd7;
+  color: #6a7175;
+}
+
+.rb-helper-output {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid #ebeeeb;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 16px;
+}
+
+.rb-helper-output div {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  border-bottom: 1px dashed #eff2ef;
+  padding-bottom: 6px;
+  font-size: 0.9rem;
+}
+
+.rb-helper-output strong {
+  text-align: right;
+  color: #1f3328;
+}
+
+.rb-inline-metrics {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.rb-inline-metrics div {
+  border-radius: 10px;
+  background: #f5f8f4;
+  border: 1px solid #e3ebe0;
+  padding: 10px 12px;
+}
+
+.rb-inline-metrics span {
+  display: block;
+  font-size: 0.82rem;
+  color: #5d666b;
+}
+
+.rb-inline-metrics strong {
+  display: block;
+  margin-top: 3px;
+  font-size: 1.02rem;
+  color: #12271e;
+}
+
+.rb-actions {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.rb-btn {
+  border: 1px solid #1f3328;
+  background: #1f3328;
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.88rem;
+  line-height: 1.2;
+  transition: all 0.2s ease;
+}
+
+.rb-btn:hover {
+  background: #0f1f17;
+  border-color: #0f1f17;
+}
+
+.rb-btn.rb-btn-light {
+  background: #ffffff;
+  color: #1f3328;
+}
+
+.rb-btn.rb-btn-light:hover {
+  background: #f2f5f3;
+}
+
+.rb-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  font-size: 0.88rem;
+  color: #3b4348;
+}
+
+.rb-summary {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.rb-summary-card {
+  border-radius: 11px;
+  padding: 13px 14px;
+  border: 1px solid #d9dfd8;
+  background: #ffffff;
+}
+
+.rb-summary-card h4 {
+  font-size: 0.84rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #62706a;
+  margin: 0 0 7px;
+}
+
+.rb-summary-card .rb-value {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1d2f25;
+  line-height: 1.1;
+}
+
+.rb-pill {
+  display: inline-flex;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.rb-pill-buy {
+  color: #0f5a2d;
+  background: #ddf5e7;
+}
+
+.rb-pill-rent {
+  color: #224c77;
+  background: #deebfb;
+}
+
+.rb-table-card {
+  margin-bottom: 20px;
+}
+
+.rb-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #e2e5e1;
+  border-radius: 10px;
+}
+
+.rb-table-wrap table {
+  margin: 0;
+  min-width: 1240px;
+  font-size: 0.87rem;
+}
+
+.rb-table-wrap thead th {
+  white-space: nowrap;
+  background: #f2f6f2;
+  border-bottom: 1px solid #dce4da;
+  color: #293832;
+  position: sticky;
+  top: 0;
+}
+
+.rb-notes {
+  margin-bottom: 24px;
+}
+
+.rb-notes ul {
+  margin-bottom: 0;
+}
+
+.rb-notes li {
+  margin-bottom: 6px;
+  color: #2f363b;
+}
+
+@media (max-width: 992px) {
+  .rb-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rb-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 576px) {
+  .rb-input-grid,
+  .rb-helper-output,
+  .rb-inline-metrics,
+  .rb-summary {
+    grid-template-columns: 1fr;
+  }
+}
