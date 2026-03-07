@@ -168,7 +168,7 @@
 <!-- HERO REDESIGN STYLES -->
 <style>
     .hero-v2 {
-      background: #f9f9f7;
+      background: #fcfbf8;
       padding: 70px 0 60px;
     }
     /* Left: text column */
@@ -353,7 +353,9 @@
 <!-- REVIEWS CAROUSEL STYLES -->
 <style>
     .reviews-carousel-section {
-      background: #f5f4f0;
+      background: #ffffff;
+      border-top: 1px solid #ece6da;
+      border-bottom: 1px solid #ece6da;
       padding: 70px 0 70px;
     }
     .reviews-eyebrow {
@@ -514,6 +516,196 @@
 </style>
 <!-- /REVIEWS CAROUSEL STYLES -->
 
+<!-- CONTACT V2 STYLES -->
+<style>
+  .contact-v2 {
+    background: #fcfaf6;
+    border-top: 1px solid #e8dfd1;
+    padding: 60px 0 88px;
+  }
+  .contact-v2-eyebrow {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #39847a;
+    margin-bottom: 14px;
+  }
+  .contact-v2-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #1a1a1a;
+    line-height: 1.25;
+    margin-bottom: 16px;
+  }
+  .contact-v2-subtext {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.97rem;
+    color: #5d574d;
+    line-height: 1.75;
+    margin-bottom: 36px;
+  }
+  .contact-v2-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+  .contact-v2-info {
+    padding-top: 18px;
+  }
+  .contact-v2-card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background: rgba(255,255,255,0.92);
+    border: 1px solid #e4dbcd;
+    border-radius: 10px;
+    padding: 18px 22px;
+    box-shadow: 0 10px 24px rgba(58,42,18,0.06);
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  }
+  .contact-v2-card:hover {
+    border-color: #d4a853;
+    box-shadow: 0 14px 30px rgba(58,42,18,0.1);
+    transform: translateY(-2px);
+  }
+  .contact-v2-card-icon {
+    width: 46px;
+    height: 46px;
+    background: rgba(57,132,122,0.12);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    flex-shrink: 0;
+    color: #39847a;
+  }
+  .contact-v2-card-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #7b7468;
+    margin-bottom: 4px;
+  }
+  .contact-v2-card-values {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .contact-v2-card-value {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1f1f1f;
+    line-height: 1.5;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .contact-v2-card-value:hover { color: #d4a853; text-decoration: none; }
+  .contact-v2-response {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    color: #6d665b;
+  }
+  .contact-v2-response-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #39847a;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 3px rgba(57,132,122,0.22);
+  }
+  /* Form card */
+  .contact-v2-form-card {
+    background: #ffffff;
+    border: 1px solid #e8dfd1;
+    border-radius: 16px;
+    padding: 40px 44px;
+    box-shadow: 0 14px 38px rgba(58,42,18,0.08);
+  }
+  .contact-v2-form-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+  }
+  .contact-v2-form-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    color: #7e776c;
+    margin-bottom: 28px;
+  }
+  .contact-v2-form-card .form-control {
+    border: 1.5px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.92rem;
+    color: #333333;
+    background: #fcfbf8;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .contact-v2-form-card .form-control:focus {
+    border-color: #39847a;
+    box-shadow: 0 0 0 3px rgba(57,132,122,0.14);
+    background: #ffffff;
+    outline: none;
+  }
+  .contact-v2-form-card textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+  }
+  .contact-v2-btn-submit {
+    width: 100%;
+    background: #232323;
+    color: #ffffff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    transition: background 0.2s;
+    margin-top: 4px;
+  }
+  .contact-v2-btn-submit:hover { background: #000000; }
+  @media (max-width: 991px) {
+    .contact-v2 { padding: 44px 0 60px; }
+    .contact-v2-heading { font-size: 1.8rem; }
+    .contact-v2-info { padding-top: 0; }
+    .contact-v2-form-card { padding: 28px 24px; margin-top: 10px; }
+  }
+  @media (max-width: 575px) {
+    .contact-v2-heading { font-size: 1.55rem; }
+  }
+</style>
+<!-- /CONTACT V2 STYLES -->
+
+<style>
+  #Calculator .calculator-page-wrapper {
+    background: #f8f4ed;
+  }
+  .cid-sFF5Wb1ZQt {
+    background-color: #fbfaf7;
+    padding-bottom: 2.5rem;
+  }
+  .cid-tNJxnYMuoX {
+    background-color: #ffffff;
+  }
+</style>
 </head>
 <body>
   <!-- ===== Welcome banner for visitors coming from cashbackagent.net ===== -->
@@ -949,16 +1141,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="content16 cid-tNJxnYMuoX" id="content16-c">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-10">
-                <div id="bootstrap-accordion_3" class="panel-group accordionStyles accordion" role="tablist" aria-multiselectable="true">
+                <div id="bootstrap-accordion_3" class="panel-group accordionStyles accordion mt-4" role="tablist" aria-multiselectable="true">
                     <div class="card mb-3">
                         <div class="card-header" role="tab" id="headingOne">
                             <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse1_3" aria-expanded="false" aria-controls="collapse1">
@@ -1043,66 +1226,79 @@
     </div>
 </section>
 
-<section data-bs-version="5.1" class="contacts2 cid-uqjIgKFERS" id="contacts2-u">
-    <div class="container">
-        <div class="mbr-section-head">
-            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2"><strong>Contact Us</strong></h3>
-            <h1 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-2 display-7"><br>Please mention where you are in your homebuying process (e.g., just thinking about it, going to open houses, or already like a house and ready to make an offer)<div><br></div></h1>
-        </div>
-        <div class="row justify-content-center mt-4">
-            <div class="card col-12 col-md-6">
-                <div class="card-wrapper">
-                    <div class="image-wrapper"><span class="mbr-iconfont mobi-mbri-phone mobi-mbri"></span></div>
-                    <div class="text-wrapper">
-                        <h6 class="card-title mbr-fonts-style mb-1 display-5"><strong>Call or WhatsApp or Text</strong></h6>
-                        <p class="mbr-text mbr-fonts-style display-7"><a href="sms:+1408-905-8133" class="text-primary">+1&nbsp;(408) 905-</a>8133</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card col-12 col-md-6">
-                <div class="card-wrapper">
-                    <div class="image-wrapper"><span class="mbr-iconfont mobi-mbri-letter mobi-mbri"></span></div>
-                    <div class="text-wrapper">
-                        <h6 class="card-title mbr-fonts-style mb-1 display-5"><strong>Email</strong></h6>
-                        <p class="mbr-text mbr-fonts-style display-7"><a href="mailto:info@flatfee-realtor.com" class="text-primary">info@flatfee-realtor.com</a><br><a href="mailto:homes.goyal@gmail.com" class="text-primary">homes.goyal@gmail.com</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<!-- ===== REDESIGNED CONTACT US ===== -->
+<section class="contact-v2" id="contact">
+  <div class="container">
+    <div class="row g-5 align-items-start">
 
-<section data-bs-version="5.1" class="form5 cid-tO7gporztb" id="form5-e">
-    <div class="container">
-        <div class="row justify-content-center mt-4">
-            <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
-<form action="https://mobirise.eu/" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name"><input type="hidden" name="email" data-form-email="true" value="a42vi1x8bXmzSHHvIVJb4c/ybUYFpazE4GlNh1BoM806SH6Bm0SvgwgHUertLI2juvwZWIBgvhNKDqd/FgvXl/7gURz8BRig9G5hsrIuLhpAO8FLMvKL0MjC9L/deoMl.4vBKppVJw7O+enlOZ7Op5iKAs5D+N+Gn96fY17rsRNkM9T4SYiWn0T97U1byfrHWud+OHkLpNGhS9S7vsO1IOHLb9a3zmKr5W4diFxTVERfq01kbVmGNLUpQ8oAQ0rIt">
-<div class="row">
-<div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Thanks, we will get back to you ASAP!</div>
-<div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">Oops... something went wrong!</div>
-</div>
-<div class="dragArea row">
-<div class="col-md col-sm-12 form-group mb-3" data-for="name">
-<input type="text" name="name" placeholder="Name" data-form-field="name" required="required" class="form-control display-7" value="" id="name-form5-e">
-</div>
-<div class="col-md col-sm-12 form-group mb-3" data-for="email">
-<input type="email" name="email" placeholder="E-mail" data-form-field="email" class="form-control display-7" value="" id="email-form5-e">
-</div>
-<div data-for="Phone" class="col-lg-12 col-md-12 col-sm-12 form-group">
-<input type="text" name="Phone" placeholder="Phone" data-form-field="Phone" class="form-control display-7" value="" id="Phone-form5-e">
-</div>
-<div data-for="textarea" class="col-12 form-group mb-3">
-<textarea name="textarea" placeholder="Please mention phone number and where you are in your homebuying process " data-form-field="textarea" required="required" class="form-control display-7" id="textarea-form5-e"></textarea>
-</div>
-<div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn">
-<button type="submit" class="w-100 btn btn-primary display-4">Send message</button>
-</div>
-</div>
-</form>
+      <!-- Left: Info -->
+      <div class="col-12 col-lg-5 contact-v2-info">
+        <h2 class="contact-v2-heading">Contact Us</h2>
+        <p class="contact-v2-subtext">Please mention where you are in your homebuying process (e.g., just thinking about it, going to open houses, or already like a house and ready to make an offer).</p>
+
+        <div class="contact-v2-cards">
+          <div class="contact-v2-card">
+            <div class="contact-v2-card-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
             </div>
+            <div>
+              <div class="contact-v2-card-label">Call or WhatsApp or Text</div>
+              <a href="sms:+14089058133" class="contact-v2-card-value">+1 (408) 905-8133</a>
+            </div>
+          </div>
+          <div class="contact-v2-card">
+            <div class="contact-v2-card-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="contact-v2-card-label">Email</div>
+              <div class="contact-v2-card-values">
+                <a href="mailto:info@flatfee-realtor.com" class="contact-v2-card-value">info@flatfee-realtor.com</a>
+                <a href="mailto:info@goyalteam.com" class="contact-v2-card-value">info@goyalteam.com</a>
+              </div>
+            </div>
+          </div>
         </div>
+
+      </div>
+
+      <!-- Right: Form -->
+      <div class="col-12 col-lg-7">
+        <div class="contact-v2-form-card">
+          <div class="contact-v2-form-title">Send Us a Message</div>
+          <div class="mbr-form" data-form-type="formoid">
+          <form action="https://mobirise.eu/" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name">
+            <input type="hidden" name="email" data-form-email="true" value="a42vi1x8bXmzSHHvIVJb4c/ybUYFpazE4GlNh1BoM806SH6Bm0SvgwgHUertLI2juvwZWIBgvhNKDqd/FgvXl/7gURz8BRig9G5hsrIuLhpAO8FLMvKL0MjC9L/deoMl.4vBKppVJw7O+enlOZ7Op5iKAs5D+N+Gn96fY17rsRNkM9T4SYiWn0T97U1byfrHWud+OHkLpNGhS9S7vsO1IOHLb9a3zmKr5W4diFxTVERfq01kbVmGNLUpQ8oAQ0rIt">
+            <div class="row">
+              <div hidden="hidden" data-form-alert="" class="alert alert-success col-12 mb-3">Thanks, we will get back to you ASAP!</div>
+              <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12 mb-3">Oops... something went wrong!</div>
+            </div>
+            <div class="dragArea row g-3">
+              <div class="col-sm-6 form-group mb-3" data-for="name">
+                <input type="text" name="name" placeholder="Name" data-form-field="name" required="required" class="form-control display-7" id="name-contact-v2">
+              </div>
+              <div class="col-sm-6 form-group mb-3" data-for="email">
+                <input type="email" name="email" placeholder="E-mail" data-form-field="email" class="form-control display-7" id="email-contact-v2">
+              </div>
+              <div class="col-12 form-group" data-for="Phone">
+                <input type="text" name="Phone" placeholder="Phone" data-form-field="Phone" class="form-control display-7" id="phone-contact-v2">
+              </div>
+              <div class="col-12 form-group mb-3" data-for="textarea">
+                <textarea name="textarea" placeholder="Please mention phone number and where you are in your homebuying process" data-form-field="textarea" required="required" class="form-control display-7" id="textarea-contact-v2"></textarea>
+              </div>
+              <div class="col-12 align-center mbr-section-btn">
+                <button type="submit" class="contact-v2-btn-submit">Send Message &rarr;</button>
+              </div>
+            </div>
+          </form>
+          </div>
+        </div>
+      </div>
+
     </div>
+  </div>
 </section>
+<!-- ===== /REDESIGNED CONTACT US ===== -->
 
 <!-- ===== REDESIGNED FOOTER ===== -->
 <footer class="footer-redesigned">

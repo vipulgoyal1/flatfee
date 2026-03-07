@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/logo20final-128x90.png" type="image/x-icon">
+  <meta name="description" content="ARM vs 30-Year Fixed mortgage calculator. Enter your ARM intro rate, fixed rate, intro period, and holding period to find the break-even post-intro rate — the rate above which Fixed becomes cheaper. Updated March 2026.">
+  <title>ARM vs 30-Year Fixed Mortgage Calculator</title>
+
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/chatbutton/floating-wpp.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,500,600,700,800,900,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,500,600,700,800,900,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=DM+Sans:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=DM+Sans:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Lexend:100,200,300,400,500,600,700,800,900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lexend:100,200,300,400,500,600,700,800,900&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=Rdzjs4">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=Rdzjs4" type="text/css">
+
+
+<style>
+/* ===== SHARED MENU/FOOTER STYLES ===== */
+.cid-uTZO3wYcT2 .navbar .navbar-logo img { height: 2.4rem; width: auto; }
+@media (min-width: 992px) {
+  .cid-uTZO3wYcT2 .navbar > .container { flex-wrap: nowrap; }
+  .cid-uTZO3wYcT2 .navbar .navbar-collapse { flex-grow: 1; align-items: center; }
+  .cid-uTZO3wYcT2 ul.navbar-nav { flex-wrap: nowrap; }
+  .cid-uTZO3wYcT2 .navbar-buttons { min-width: auto; white-space: nowrap; margin-left: 0.25rem; }
+}
+.btn-rankings-outline, .btn-rankings-outline:active, .btn-rankings-outline:focus {
+  background-color: #ffffff !important; border-color: #232323 !important; color: #232323 !important;
+}
+.btn-rankings-outline:hover { background-color: #f7f7f7 !important; border-color: #000000 !important; color: #000000 !important; }
+.footer-redesigned { background-color: #1b1b1b; color: #ffffff; padding: 60px 0 0 0; font-family: 'DM Sans', 'Lexend', sans-serif; }
+.footer-redesigned a { color: #bfbfbf; text-decoration: none; transition: color 0.2s ease; }
+.footer-redesigned a:hover { color: #d4a853; text-decoration: underline; }
+.footer-brand-col img { height: 72px; width: auto; margin-bottom: 16px; display: inline-block; }
+.footer-brand-col p { color: #888888; font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px; }
+.footer-social a { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background-color: #2a2a2a; margin-right: 10px; color: #bfbfbf; transition: background-color 0.2s ease, color 0.2s ease; }
+.footer-social a:hover { background-color: #d4a853; color: #1b1b1b; text-decoration: none; }
+.footer-heading { color: #d4a853; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 20px; }
+.footer-links { list-style: none; padding: 0; margin: 0; }
+.footer-links li { margin-bottom: 10px; }
+.footer-links li a { font-size: 0.9rem; }
+.footer-bottom { border-top: 1px solid #333333; margin-top: 40px; padding: 20px 0; text-align: center; }
+.footer-bottom p { color: #666666; font-size: 0.85rem; margin: 0; }
+.footer-contact-item { display: flex; align-items: flex-start; margin-bottom: 14px; color: #bfbfbf; font-size: 0.9rem; }
+.footer-contact-item .footer-contact-icon { margin-right: 10px; color: #d4a853; flex-shrink: 0; margin-top: 2px; }
+.footer-contact-item a { color: #bfbfbf; }
+@media (max-width: 767px) {
+  .footer-redesigned { padding: 40px 0 0 0; }
+  .footer-redesigned .col-md-3 { margin-bottom: 30px; }
+  .footer-heading { margin-bottom: 14px; }
+  .footer-brand-col { text-align: center; }
+  .footer-contact-item { justify-content: center; }
+  .footer-social { text-align: center; }
+}
+
+/* ===== PAGE BASE ===== */
+body { font-family: 'DM Sans', 'Lexend', sans-serif; }
+
+/* ===== HERO SECTION ===== */
+.arm-hero {
+  position: relative;
+  background: linear-gradient(135deg, #081a0e 0%, #112a18 50%, #1a3d24 100%);
+  padding: 64px 0 52px;
+  overflow: hidden;
+}
+.arm-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('assets/images/arm20vs203020year-804x804.png') center/cover no-repeat;
+  opacity: 0.09;
+}
+.arm-hero .container { position: relative; z-index: 1; }
+.arm-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem; font-weight: 800; color: #ffffff; margin-bottom: 20px;
+}
+.arm-hero p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.15rem; color: #b8d4c0; line-height: 1.8; max-width: 720px;
+}
+@media (max-width: 767px) {
+  .arm-hero { padding: 44px 0 36px; }
+  .arm-hero h1 { font-size: 2rem; }
+}
+
+/* ===== TWO LOAN TYPES SECTION ===== */
+.loans-section {
+  background: #ffffff;
+  padding: 52px 0 44px;
+  border-bottom: 1px solid #e8e8e8;
+}
+.loans-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 32px;
+}
+@media (max-width: 640px) { .loans-grid { grid-template-columns: 1fr; } }
+
+.loan-card {
+  border-radius: 14px;
+  border: 2px solid #e0e0e0;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+.loan-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.10); }
+.loan-card-header {
+  padding: 18px 22px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.08rem; font-weight: 700; color: #ffffff;
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+}
+.loan-card-header.arm   { background: linear-gradient(135deg, #1a5c2e, #2e7d32); }
+.loan-card-header.fixed { background: linear-gradient(135deg, #1a3a6c, #1565c0); }
+.loan-card-header .rate-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.22);
+  border-radius: 6px;
+  padding: 3px 12px;
+  font-size: 0.92rem; font-weight: 800;
+  white-space: nowrap; flex-shrink: 0;
+}
+.loan-card-body { padding: 20px 22px; background: #fff; }
+.loan-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  margin-bottom: 13px; font-size: 0.88rem; color: #333; line-height: 1.55;
+}
+.loan-item:last-child { margin-bottom: 0; }
+.loan-item .li-icon { flex-shrink: 0; margin-top: 1px; font-size: 1rem; }
+.loan-item .li-label { font-weight: 700; color: #1b1b1b; display: block; font-size: 0.78rem; margin-bottom: 1px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* ===== INSIGHTS SECTION ===== */
+.insights-section { background: #f4f6f8; padding: 52px 0 40px; }
+.insights-section .section-eyebrow {
+  font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.12em; color: #d4a853; margin-bottom: 6px;
+}
+.insights-section .section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.3rem, 3vw, 1.75rem); font-weight: 700; color: #1b1b1b; margin-bottom: 6px;
+}
+.insights-section .section-subtitle { color: #777; font-size: 0.9rem; margin-bottom: 36px; }
+.insight-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+@media (max-width: 900px) { .insight-cards { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 580px) { .insight-cards { grid-template-columns: 1fr; } }
+
+.icard {
+  background: #fff; border-radius: 12px; padding: 26px 22px 22px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+  border-top: 4px solid #e0e0e0;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.icard:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.10); }
+.icard.ic-green  { border-top-color: #4caf50; }
+.icard.ic-gold   { border-top-color: #d4a853; }
+.icard.ic-blue   { border-top-color: #1565c0; }
+.icard.ic-purple { border-top-color: #7c4dff; }
+.icard.ic-teal   { border-top-color: #00897b; }
+.icard.ic-slate  { border-top-color: #546e7a; }
+
+.icard-icon {
+  width: 44px; height: 44px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; margin-bottom: 14px;
+}
+.ic-green  .icard-icon { background: #e8f5e9; }
+.ic-gold   .icard-icon { background: #fff8e1; }
+.ic-blue   .icard-icon { background: #e3f2fd; }
+.ic-purple .icard-icon { background: #ede7f6; }
+.ic-teal   .icard-icon { background: #e0f2f1; }
+.ic-slate  .icard-icon { background: #eceff1; }
+
+.icard h4 { font-size: 0.95rem; font-weight: 700; color: #1b1b1b; margin-bottom: 8px; line-height: 1.35; }
+.icard p { font-size: 0.84rem; color: #555; line-height: 1.6; margin: 0; }
+.icard .ic-stat {
+  display: inline-block; margin-top: 12px;
+  background: #f8f8f8; border-radius: 6px; padding: 5px 10px;
+  font-size: 0.8rem; font-weight: 700; color: #333;
+}
+.ic-green  .ic-stat { background: #e8f5e9; color: #2e7d32; }
+.ic-gold   .ic-stat { background: #fff8e1; color: #b37a00; }
+.ic-blue   .ic-stat { background: #e3f2fd; color: #1565c0; }
+.ic-purple .ic-stat { background: #ede7f6; color: #512da8; }
+.ic-teal   .ic-stat { background: #e0f2f1; color: #00695c; }
+.ic-slate  .ic-stat { background: #eceff1; color: #37474f; }
+
+/* ===== CALCULATOR SECTION HEADER ===== */
+.calc-section-header {
+  background: #fff; padding: 36px 0 0;
+  text-align: center; border-top: 1px solid #e8e8e8;
+}
+.calc-section-header .section-eyebrow {
+  font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.12em; color: #d4a853; margin-bottom: 6px;
+}
+.calc-section-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.4rem, 3.5vw, 2rem); font-weight: 800; color: #1b1b1b; margin-bottom: 8px;
+}
+.calc-section-header p { color: #666; font-size: 0.92rem; max-width: 600px; margin: 0 auto; }
+
+/* ===== CALCULATOR STYLES ===== */
+.calc-wrapper { background: #f8f9fa; padding: 32px 0 60px; }
+
+.calc-card { background: #fff; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); padding: 28px 28px 24px; margin-bottom: 20px; }
+.calc-card-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: #1b1b1b; margin-bottom: 4px; }
+.calc-card-subtitle { color: #888; font-size: 0.85rem; margin-bottom: 20px; }
+
+.calc-section-label {
+  font-size: 0.73rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em;
+  color: #d4a853; margin: 18px 0 10px; padding-bottom: 4px; border-bottom: 1px solid #f0e0b0;
+}
+
+.ig { margin-bottom: 14px; position: relative; }
+.ig label { display: block; font-size: 0.83rem; font-weight: 600; color: #444; margin-bottom: 3px; }
+.ig .hint { font-size: 0.76rem; color: #999; margin-top: 2px; line-height: 1.4; }
+
+.inp {
+  width: 100%; padding: 7px 11px; border: 1.5px solid #c8e6c9; border-radius: 6px;
+  background: #f1f8f0; font-size: 0.93rem; font-family: 'DM Sans', sans-serif; color: #1b1b1b;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.inp:focus { outline: none; border-color: #4caf50; box-shadow: 0 0 0 3px rgba(76,175,80,0.13); }
+
+.slider-row { display: flex; align-items: center; gap: 8px; }
+.slider-row input[type=range] { flex: 1; accent-color: #2e7d32; }
+.slider-row .inp { width: 80px; flex-shrink: 0; }
+
+.computed-row { display: flex; gap: 12px; margin-top: 6px; flex-wrap: wrap; }
+.computed-box { flex: 1; min-width: 120px; background: #e8f4fd; border: 1.5px solid #90caf9; border-radius: 7px; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center; }
+.computed-box.arm-box { background: #e8f5e9; border-color: #a5d6a7; }
+.computed-box.arm-box .cb-value { color: #2e7d32; }
+.computed-box .cb-label { font-size: 0.78rem; color: #555; line-height: 1.3; }
+.computed-box .cb-value { font-size: 0.97rem; font-weight: 800; color: #1565c0; }
+
+.tip-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 15px; height: 15px; border-radius: 50%;
+  background: #bbdefb; color: #1565c0;
+  font-size: 9px; font-weight: 900; font-style: italic;
+  cursor: pointer; margin-left: 5px; border: none;
+  vertical-align: middle; flex-shrink: 0; line-height: 1;
+  transition: background 0.15s;
+}
+.tip-btn:hover { background: #90caf9; }
+.tip-popup {
+  display: none; position: absolute; left: 0; top: 1.6em;
+  z-index: 500; width: 310px; max-width: 90vw;
+  background: #f0f7ff; border: 1.5px solid #90caf9; border-radius: 7px;
+  padding: 9px 12px; font-size: 0.8rem; color: #1a3a5c;
+  line-height: 1.55; box-shadow: 0 4px 14px rgba(21,101,192,0.18);
+}
+.tip-popup.open { display: block; }
+
+.result-banner {
+  background: #fff; border: 2px solid #d4a853; border-radius: 14px;
+  padding: 26px 32px 22px; margin-bottom: 24px;
+  box-shadow: 0 4px 18px rgba(212,168,83,0.18);
+}
+.result-banner-eyebrow {
+  font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.13em; color: #b37a00; margin-bottom: 18px;
+}
+.result-banner-nums {
+  display: grid; grid-template-columns: 1fr 1px 1fr; gap: 0 32px;
+  align-items: start; padding-bottom: 18px; margin-bottom: 18px;
+  border-bottom: 1px solid #f0e0b0;
+}
+@media (max-width: 575px) {
+  .result-banner-nums { grid-template-columns: 1fr; gap: 18px 0; }
+  .rbn-divider { display: none; }
+}
+.rbn-divider { background: #f0e0b0; width: 1px; align-self: stretch; }
+.rbn-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: #999; margin-bottom: 8px; }
+.rbn-big { font-size: 3rem; font-weight: 900; line-height: 1; letter-spacing: -0.02em; color: #b37a00; }
+.rbn-big.delta { color: #333; font-size: 2.2rem; }
+.rbn-sub { font-size: 0.76rem; color: #bbb; margin-top: 7px; }
+.result-banner-verdict {
+  font-size: 0.88rem; color: #5a3800; font-weight: 500; line-height: 1.65;
+}
+.result-banner-verdict strong { font-weight: 700; }
+
+
+.inputs-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; }
+@media (max-width: 767px) { .inputs-2col { grid-template-columns: 1fr; } }
+
+.notes-card { background: #fff; border-left: 4px solid #d4a853; border-radius: 0 8px 8px 0; padding: 18px 22px; margin-bottom: 0; }
+.notes-card h5 { color: #1b1b1b; font-weight: 700; margin-bottom: 10px; font-size: 0.95rem; }
+.notes-card ol { margin-bottom: 0; }
+.notes-card li { margin-bottom: 7px; font-size: 0.87rem; color: #444; line-height: 1.6; }
+.notes-card li:last-child { margin-bottom: 0; }
+
+/* ===== KEY CONSIDERATIONS SECTION ===== */
+.how-section {
+  background: #ffffff;
+  padding: 60px 0 64px;
+  border-top: 1px solid #e8e8e8;
+}
+.how-section .section-eyebrow {
+  font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.12em; color: #d4a853; margin-bottom: 6px;
+}
+.how-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.3rem, 3vw, 1.75rem); font-weight: 700; color: #1b1b1b; margin-bottom: 28px;
+}
+.how-section h3 {
+  font-size: 1rem; font-weight: 700; color: #1b1b1b;
+  margin-bottom: 10px; margin-top: 28px;
+  padding-left: 12px; border-left: 3px solid #2e7d32;
+}
+.how-section p { font-size: 0.93rem; color: #444; line-height: 1.85; margin-bottom: 14px; }
+
+/* ===== GOOGLE SHEETS SECTION ===== */
+.sheets-section {
+  background: #f4f6f8;
+  padding: 52px 0 56px;
+  border-top: 1px solid #e8e8e8;
+}
+.sheets-section .section-eyebrow {
+  font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.12em; color: #d4a853; margin-bottom: 6px;
+}
+.sheets-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.3rem, 3vw, 1.75rem); font-weight: 700; color: #1b1b1b; margin-bottom: 8px;
+}
+.sheets-section .section-desc { color: #666; font-size: 0.9rem; margin-bottom: 28px; max-width: 560px; }
+.sheet-card {
+  border: 1.5px solid #e0e0e0; border-radius: 12px; padding: 24px 22px;
+  display: flex; flex-direction: column; gap: 10px; background: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s; max-width: 520px;
+}
+.sheet-card:hover { border-color: #d4a853; box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+.sheet-card-icon { width: 42px; height: 42px; border-radius: 9px; background: #e8f5e9; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+.sheet-card h4 { font-size: 0.97rem; font-weight: 700; color: #1b1b1b; margin: 0; }
+.sheet-card p { font-size: 0.83rem; color: #666; margin: 0; line-height: 1.5; }
+.sheet-card a.sheet-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.82rem; font-weight: 700; color: #1565c0;
+  text-decoration: none; margin-top: 4px; word-break: break-all;
+}
+.sheet-card a.sheet-link:hover { text-decoration: underline; color: #0d47a1; }
+.sheet-badge { display: inline-block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.06em; }
+.sheet-badge.editable { background: #e8f5e9; color: #2e7d32; }
+</style>
+</head>
+<body>
+
+<!-- ===== Welcome banner ===== -->
+<script>
+(function () {
+  const u   = new URL(location.href);
+  const src = u.searchParams.get('src');
+  if (!src || !src.startsWith('cb')) return;
+  if (sessionStorage.getItem('welcomeDismissed')) return;
+  sessionStorage.setItem('welcomeDismissed', '1');
+  const extraPath = src.slice(2);
+  if (extraPath.startsWith('/')) {
+    if (u.pathname === '/' || u.pathname === '') u.pathname = extraPath;
+  }
+  u.searchParams.delete('src');
+  if (history.replaceState) history.replaceState(null, '', u.pathname + u.search + u.hash);
+  const bar = document.createElement('div');
+  bar.innerHTML = `Cashbackagent has moved to a new URL!&nbsp; Please bookmark <strong>flatfee-realtor.com</strong>. <button aria-label="Close" style="margin-left:.8rem;background:transparent;border:0;font-size:20px;cursor:pointer;line-height:1;">&times;</button>`;
+  bar.style.cssText = `position:fixed;top:0;left:0;right:0;z-index:9999;padding:12px 8px;background:#fffae6;color:#222;font:16px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;text-align:center;box-shadow:0 2px 4px rgba(0,0,0,.15)`;
+  const hide = () => bar.remove();
+  bar.querySelector('button').onclick = hide;
+  setTimeout(hide, 5000);
+  (document.body || document.documentElement).appendChild(bar);
+})();
+</script>
+
+<!-- NAVBAR -->
+<section data-bs-version="5.1" class="menu menu2 cid-uTZO3wYcT2" once="menu" id="menu2-4t">
+  <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+    <div class="container">
+      <div class="navbar-brand">
+        <span class="navbar-logo">
+          <a href="index.html"><img src="assets/images/logo-ffr-2-337x337.png" alt="Flat Fee Realtor"></a>
+        </span>
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <div class="hamburger"><span></span><span></span><span></span><span></span></div>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav nav-dropdown navbar-nav-top-padding" data-app-modern-menu="true">
+          <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="process.html">Process</a></li>
+          <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="sfbay.html">SF Bay</a></li>
+          <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="locations.html">Locations</a></li>
+          <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="properties.html">Properties</a></li>
+        </ul>
+        <div class="navbar-buttons mbr-section-btn">
+          <a class="btn btn-rankings-outline display-4" href="Appreciation-Rankings-Hub.html">Rankings</a>
+          <a class="btn btn-black display-4" href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</section>
+
+<!-- ===== HERO ===== -->
+<section class="arm-hero">
+  <div class="container">
+    <h1>ARM vs. 30-Year Fixed Mortgage</h1>
+    <p>The math behind this decision is rarely presented clearly. Knowing the break-even post-intro rate — the rate above which a fixed mortgage becomes cheaper — lets you make a fully informed choice rather than guessing.</p>
+  </div>
+</section>
+
+<!-- ===== TWO LOAN TYPES SECTION ===== -->
+<section class="loans-section">
+  <div class="container">
+    <div style="max-width:760px;margin:0 auto;text-align:center;">
+      <p style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#d4a853;margin-bottom:8px;">Two Loan Structures, One Decision</p>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.9rem);font-weight:700;color:#1b1b1b;margin-bottom:14px;">What You're Actually Choosing Between</h2>
+      <p style="font-size:1.02rem;color:#444;line-height:1.8;margin-bottom:0;">Everyone taking out a mortgage faces this choice. The key insight: ARM savings early in the loan are worth more than identical savings later — because you owe the most money at the start.</p>
+    </div>
+
+    <div class="loans-grid">
+      <!-- ARM -->
+      <div class="loan-card">
+        <div class="loan-card-header arm">
+          <span>Adjustable Rate Mortgage (ARM)</span>
+          <span class="rate-badge">Lower Start</span>
+        </div>
+        <div class="loan-card-body">
+          <div class="loan-item">
+            <span class="li-icon">📉</span>
+            <div>
+              <span class="li-label">Intro Rate</span>
+              Lower rate for a fixed intro period (typically 5, 7, or 10 years). Labeled as 7/1 ARM, 5/1 ARM, etc.
+            </div>
+          </div>
+          <div class="loan-item">
+            <span class="li-icon">🔄</span>
+            <div>
+              <span class="li-label">After Intro Period</span>
+              Rate adjusts (typically annually) based on a benchmark index + margin. Can go up or down.
+            </div>
+          </div>
+          <div class="loan-item">
+            <span class="li-icon">✅</span>
+            <div>
+              <span class="li-label">Best For</span>
+              Those who plan to sell, refinance, or prepay a substantial amount. Lower payments early mean more cash flow.
+            </div>
+          </div>
+          <div class="loan-item">
+            <span class="li-icon">⚠️</span>
+            <div>
+              <span class="li-label">Risk</span>
+              If you hold past the intro period and rates have risen significantly, payments jump.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 30-Year Fixed -->
+      <div class="loan-card">
+        <div class="loan-card-header fixed">
+          <span>30-Year Fixed Mortgage</span>
+          <span class="rate-badge">Predictable</span>
+        </div>
+        <div class="loan-card-body">
+          <div class="loan-item">
+            <span class="li-icon">🔒</span>
+            <div>
+              <span class="li-label">Rate</span>
+              Same rate for the full 30-year loan term — completely predictable. Typically 0.5–1.5% higher than the ARM intro rate.
+            </div>
+          </div>
+          <div class="loan-item">
+            <span class="li-icon">🧘</span>
+            <div>
+              <span class="li-label">After Intro Period</span>
+              No adjustment. Payment stays exactly the same, no matter what happens to interest rates.
+            </div>
+          </div>
+          <div class="loan-item">
+            <span class="li-icon">✅</span>
+            <div>
+              <span class="li-label">Best For</span>
+              Those who value certainty, plan to hold long-term, or are worried about rates rising significantly.
+            </div>
+          </div>
+          <div class="loan-item">
+            <span class="li-icon">⚠️</span>
+            <div>
+              <span class="li-label">Cost</span>
+              Higher initial rate means higher early payments — even when the ARM would have been cheaper.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== KEY INSIGHTS ===== -->
+<section class="insights-section">
+  <div class="container">
+    <div class="section-eyebrow">Key Insights</div>
+    <div class="section-title">What the Math Actually Says</div>
+    <p class="section-subtitle">A mathematical perspective on this decision — factors that many people overlook.</p>
+
+    <div class="insight-cards">
+
+      <div class="icard ic-green">
+        <div class="icard-icon">📊</div>
+        <h4>Early Rate Difference Matters Most</h4>
+        <p>Your outstanding principal is <strong>highest at the start</strong>. A 1% rate difference on a $1.2M loan saves $12,000/yr in year 1 vs. only ~$5,000/yr in year 20 when the balance is lower. Same rate difference, very different dollar impact.</p>
+        <span class="ic-stat">ARM savings are front-loaded</span>
+      </div>
+
+      <div class="icard ic-gold">
+        <div class="icard-icon">⏰</div>
+        <h4>Early Savings Have Greater Value</h4>
+        <p>Money saved in years 1–7 can be invested and compound over the rest of your holding period. Each dollar of early savings is worth more than a dollar saved in year 15. This compounds the ARM's advantage significantly.</p>
+        <span class="ic-stat">Time value of money favors ARM</span>
+      </div>
+
+      <div class="icard ic-blue">
+        <div class="icard-icon">💳</div>
+        <h4>Prepay Principal During Intro Period</h4>
+        <p>One practical move: use savings from the ARM's lower payment to <strong>prepay extra principal</strong>. That immediately reduces your balance, lowers future interest costs, and reduces your exposure if the rate resets higher later.</p>
+        <span class="ic-stat">Lower balance = lower reset risk</span>
+      </div>
+
+      <div class="icard ic-purple">
+        <div class="icard-icon">🏡</div>
+        <h4>Most People Hold &lt; 10 Years</h4>
+        <p>Historically, a majority of mortgage holders <strong>sell or refinance</strong> before 10 years. If you sell or refi before the ARM intro period ends, you never experience the rate reset — and you captured all the savings.</p>
+        <span class="ic-stat">Median hold period ~8 years</span>
+      </div>
+
+      <div class="icard ic-teal">
+        <div class="icard-icon">🎯</div>
+        <h4>The Break-Even Rate Is the Key Number</h4>
+        <p>The break-even post-intro rate tells you: <em>"If I believe post-intro rates will stay below X%, ARM wins."</em> With 5.5% ARM / 6.5% fixed / 7-yr intro / 15-yr hold, the break-even is <strong>8.21%</strong>.</p>
+        <span class="ic-stat">Calculate yours below ↓</span>
+      </div>
+
+      <div class="icard ic-slate">
+        <div class="icard-icon">🛡️</div>
+        <h4>Fixed = Peace of Mind</h4>
+        <p>None of this is to say ARM is always better. A 30-year fixed provides <strong>genuine peace of mind</strong> and eliminates rate risk entirely. If you value certainty or don't want to track rates, fixed is a perfectly rational choice.</p>
+        <span class="ic-stat">Certainty has real value</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== CALCULATOR SECTION HEADER ===== -->
+<div class="calc-section-header">
+  <div class="container">
+    <div class="section-eyebrow">Interactive Calculator</div>
+    <h2>ARM vs. Fixed — Run Your Numbers</h2>
+    <p>Adjust the four inputs to instantly see the break-even post-intro rate — the ARM reset rate above which the 30-year fixed becomes the cheaper option.</p>
+  </div>
+</div>
+
+<!-- ===== CALCULATOR ===== -->
+<div class="calc-wrapper">
+  <div class="container">
+
+    <!-- Inputs card -->
+    <div class="calc-card">
+      <div class="calc-card-title">Your Scenario</div>
+      <div class="calc-card-subtitle">Edit any field — results update instantly.</div>
+
+      <div class="inputs-2col">
+        <!-- Left: loan params -->
+        <div>
+          <div class="calc-section-label">🔄 ARM Parameters</div>
+
+          <div class="ig">
+            <label>ARM Intro Rate (%)</label>
+            <div class="slider-row">
+              <input type="range" min="2" max="10" step="0.05" value="5" oninput="syncSR('armIntroRate',this.value)">
+              <input class="inp" id="armIntroRate" type="number" value="5" step="0.05" oninput="syncRS('armIntroRate',this.value);armCalc()">
+              <span style="color:#555;font-size:.85rem">%</span>
+            </div>
+            <div class="hint">The fixed rate for the ARM intro period (e.g. a 7/1 ARM at 5.5%)</div>
+          </div>
+
+          <div class="ig">
+            <label>ARM Intro Period (years) <button class="tip-btn" onclick="showTip('tip-introPeriod',event)">i</button></label>
+            <div class="slider-row">
+              <input type="range" min="1" max="15" step="1" value="7" oninput="syncSR('introPeriod',this.value)">
+              <input class="inp" id="introPeriod" type="number" value="7" min="1" max="15" oninput="syncRS('introPeriod',this.value);armCalc()">
+              <span style="color:#555;font-size:.85rem">yrs</span>
+            </div>
+            <div id="tip-introPeriod" class="tip-popup">Common ARM types: 5/1 ARM (5-year intro, adjusts annually after), 7/1 ARM (7-year intro), 10/1 ARM (10-year intro). The first number is the intro period in years.</div>
+          </div>
+
+        </div>
+
+        <!-- Right: fixed + hold period + computed -->
+        <div>
+          <div class="calc-section-label">🔒 Fixed Rate &amp; Holding Period</div>
+
+          <div class="ig">
+            <label>30-Year Fixed Rate (%)</label>
+            <div class="slider-row">
+              <input type="range" min="3" max="12" step="0.05" value="6" oninput="syncSR('fixedRate',this.value)">
+              <input class="inp" id="fixedRate" type="number" value="6" step="0.05" oninput="syncRS('fixedRate',this.value);armCalc()">
+              <span style="color:#555;font-size:.85rem">%</span>
+            </div>
+          </div>
+
+          <div class="ig">
+            <label>Holding Period (years) <button class="tip-btn" onclick="showTip('tip-holdPeriod',event)">i</button></label>
+            <div class="slider-row">
+              <input type="range" min="1" max="30" step="1" value="10" oninput="syncSR('holdPeriod',this.value)">
+              <input class="inp" id="holdPeriod" type="number" value="10" min="1" max="30" oninput="syncRS('holdPeriod',this.value);armCalc()">
+              <span style="color:#555;font-size:.85rem">yrs</span>
+            </div>
+            <div class="hint">How long you expect to keep this mortgage before selling or refinancing.</div>
+            <div id="tip-holdPeriod" class="tip-popup">This is how long you expect to keep the loan — not necessarily how long you hold the house. If you refinance after 5 years, the holding period is 5 years. Historically, the median time homeowners hold a mortgage before selling or refinancing is ~7 years.</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Result Banner -->
+    <div class="result-banner">
+      <div class="result-banner-eyebrow">🎯 Break-Even Analysis</div>
+      <div class="result-banner-nums">
+        <div>
+          <div class="rbn-label">Break-Even Post-Intro Rate</div>
+          <div class="rbn-big" id="be_rate">—</div>
+          <div class="rbn-sub" id="be_rate_sub">ARM wins if post-intro rate stays below this</div>
+        </div>
+        <div class="rbn-divider"></div>
+        <div>
+          <div class="rbn-label">Rate Increase Needed (Δ)</div>
+          <div class="rbn-big delta" id="be_delta">—</div>
+          <div class="rbn-sub" id="be_delta_sub">above ARM intro rate</div>
+        </div>
+      </div>
+      <div class="result-banner-verdict" id="be_verdict">—</div>
+    </div>
+
+    <!-- Notes -->
+    <div class="notes-card">
+      <h5>Important Assumptions</h5>
+      <ol>
+        <li>Basic premise: During ARM intro period, pay the difference (Fixed − ARM required) to ARM principal. After intro period, pay the difference (ARM required − Fixed) to Fixed principal.</li>
+        <li>ARM rate caps (typically 2% per adjustment, 5–6% lifetime) are not modeled. Real ARMs may not be able to jump as high as the break-even rate.</li>
+      </ol>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== KEY CONSIDERATIONS ARTICLE ===== -->
+<section class="how-section">
+  <div class="container">
+    <div style="max-width:760px;">
+      <div class="section-eyebrow">Full Analysis</div>
+      <h2>Key Considerations</h2>
+
+      <p><em>This topic comes up frequently — everyone taking out a mortgage faces this decision. Here is a mathematical perspective and some observations that people often overlook.</em></p>
+
+      <h3>1. The Beginning of the Loan Matters More Than the End</h3>
+      <p>Your outstanding principal is highest at the start, which means the interest rate you pay early on applies to the largest balance. A small rate difference in the first few years can have a bigger impact than a similar difference much later, when the balance is smaller.</p>
+
+      <h3>2. Early Savings Are More Valuable (Time Value of Money)</h3>
+      <p>Savings at the beginning of the loan are worth more because money saved today can earn a return over time. An ARM's lower intro-period payment isn't just $X saved — it's $X that can be invested or used to pay down principal, compounding its value over the rest of your holding period.</p>
+
+      <h3>3. Use Early Savings to Pay Down Principal and Reduce Future Interest</h3>
+      <p>One practical move is to use the ARM's lower payment during the intro period to prepay principal. That immediately reduces what you owe, which lowers future interest costs even further. It also reduces your exposure if the ARM rate rises later, since a higher rate would apply to a smaller remaining balance.</p>
+
+      <h3>4. Refinancing, Selling Early, or Prepaying Can Change the Picture</h3>
+      <p>If interest rates come down at some point — often during a recession — you may be able to refinance into a better loan and reset the ARM intro period. In addition, a majority of people will hold the mortgage for less than 10 years. If you sell or refi before the ARM intro period ends, you never experience the rate reset and capture all the savings.</p>
+
+      <h3>Concrete Example</h3>
+      <p>With an ARM at 5.5%, a 30-year fixed at 6.5%, a 7-year intro period, and a 15-year holding period, <strong>the ARM doesn't become worse than the fixed unless the post-intro ARM rate rises higher than 8.21%</strong>. That is the break-even rate for those inputs. Run the calculator above with your actual numbers to find yours.</p>
+
+      <p>None of this is to say an ARM is always better. A 30-year fixed provides real peace of mind and protects you from future rate increases. The point is simply: make an informed decision using the math that actually tells you which option will be cheaper for you.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GOOGLE SHEETS SECTION ===== -->
+<section class="sheets-section">
+  <div class="container">
+    <div class="section-eyebrow">Also Available</div>
+    <h2>Explore in Google Sheets</h2>
+    <p class="section-desc">Prefer working in a spreadsheet? Use the original Excel/Sheets model — enter your data into the yellow fields and see the results directly.</p>
+
+    <div class="sheet-card">
+      <div class="sheet-card-icon">📊</div>
+      <div>
+        <span class="sheet-badge editable">Editable Spreadsheet</span>
+      </div>
+      <h4>ARM vs 30-Year Fixed — Google Sheet</h4>
+      <p>Enter your ARM intro rate, fixed rate, intro period, and holding period into the yellow fields. The sheet calculates break-even rates and total cost comparison.</p>
+      <a href="https://docs.google.com/spreadsheets/d/1VwOEy-RFMQaRfnwdup9DXkSQSLGkdmhK6yp883ROVG4/edit?usp=sharing" class="sheet-link" target="_blank">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Open in Google Sheets
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer-redesigned">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-6 col-lg-3 mb-4">
+        <div class="footer-brand-col">
+          <img src="assets/images/logo-ffr-2-337x337.png" alt="Flat Fee Realtor">
+          <p>Top 1% Realtors with all 5-Star reviews. Flat fee, maximum cashback. Full service representation.</p>
+        </div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon">&#9742;</span>
+          <span>408-905-8133</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon socicon-whatsapp socicon" style="font-size: 0.95rem;"></span>
+          <a href="https://wa.me/14089058133" target="_blank">408-905-8133</a>
+        </div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon">&#9993;</span>
+          <a href="mailto:info@flatfee-realtor.com">info@flatfee-realtor.com</a>
+        </div>
+        <div class="footer-social" style="margin-top: 16px;">
+          <a href="https://www.reddit.com/user/flatfee-realtor/" target="_blank" aria-label="Reddit">
+            <span class="mbr-iconfont socicon-reddit socicon"></span>
+          </a>
+        </div>
+      </div>
+      <div class="col-6 col-md-6 col-lg-3 mb-4">
+        <h5 class="footer-heading">Locations</h5>
+        <ul class="footer-links">
+          <li><a href="San-Jose.html">San Jose, CA</a></li>
+          <li><a href="San-Francisco.html">San Francisco, CA</a></li>
+          <li><a href="Oakland.html">Oakland, CA</a></li>
+          <li><a href="Fremont.html">Fremont, CA</a></li>
+          <li><a href="San-Mateo.html">San Mateo, CA</a></li>
+          <li><a href="Los-Angeles.html">Los Angeles, CA</a></li>
+          <li><a href="San-Diego.html">San Diego, CA</a></li>
+          <li><a href="Sacramento.html">Sacramento, CA</a></li>
+          <li><a href="locations.html">See More</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md-6 col-lg-3 mb-4">
+        <h5 class="footer-heading">Rankings</h5>
+        <ul class="footer-links">
+          <li><a href="Appreciation-Rankings-Hub.html">Real Estate Appreciation Hub</a></li>
+          <li><a href="Bay-Area-City-Appreciation-Ranking.html">Bay Area Appreciation Ranking</a></li>
+          <li><a href="Southern-CA-City-Appreciation-Ranking.html">Southern CA Appreciation Rankings</a></li>
+          <li><a href="US-City-Appreciation-Ranking.html">US Appreciation Rankings</a></li>
+          <li><a href="US-Neighborhood-Appreciation-Ranking.html">Neighborhood Level Rankings</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md-6 col-lg-3 mb-4">
+        <h5 class="footer-heading">Company</h5>
+        <ul class="footer-links">
+          <li><a href="reviews.html">Client Reviews</a></li>
+          <li><a href="properties.html">Closed Properties</a></li>
+          <li><a href="blog.html">Our Blog</a></li>
+          <li><a href="license.html">License Information</a></li>
+          <li><a href="terms.html">Terms and Conditions</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; Copyright 2026 Flat Fee Realtor (formerly Cashbackagent)</p>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/smoothscroll/smooth-scroll.js"></script>
+<script src="assets/ytplayer/index.js"></script>
+<script src="assets/chatbutton/floating-wpp.js"></script>
+<script src="assets/chatbutton/script.js"></script>
+<script src="assets/dropdown/js/navbar-dropdown.js"></script>
+<script src="assets/theme/js/script.js"></script>
+
+<!-- Default Statcounter code -->
+<script type="text/javascript">
+var sc_project=13140329;
+var sc_invisible=1;
+var sc_security="04536c4a";
+</script>
+<script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+<noscript><div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img class="statcounter" src="https://c.statcounter.com/13140329/0/04536c4a/1/" alt="Web Analytics" referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+
+<!-- WhatsApp button -->
+<div id="chatbutton-wa" data-phone="+14089058133" data-showpopup="true" data-headertitle="Message us on WhatsApp!" data-popupmessage="Hi!
+
+Leave us a message and it will go straight to our phone!
+
+FFR Team" data-placeholder="Type here" data-position="left" data-headercolor="#39847a" data-backgroundcolor="#e5ddd5" data-autoopentimeout="0" data-size="65px"></div>
+
+<!-- ===== CALCULATOR JAVASCRIPT ===== -->
+<script>
+/* ---- Helpers ---- */
+function pctFmt(n, d) {
+  d = (d === undefined) ? 2 : d;
+  return n.toFixed(d) + '%';
+}
+
+/* ---- Slider ↔ text sync ---- */
+function syncSR(id, val) {
+  var el = document.getElementById(id);
+  if (el) { el.value = val; armCalc(); }
+}
+function syncRS(id, val) {
+  document.querySelectorAll('input[type=range]').forEach(function(s) {
+    if (s.getAttribute('oninput') && s.getAttribute('oninput').indexOf(id) !== -1) s.value = val;
+  });
+}
+
+/* ---- Tooltip ---- */
+function showTip(id, e) {
+  e.stopPropagation();
+  document.querySelectorAll('.tip-popup.open').forEach(function(p) {
+    if (p.id !== id) p.classList.remove('open');
+  });
+  var el = document.getElementById(id);
+  if (el) el.classList.toggle('open');
+}
+document.addEventListener('click', function() {
+  document.querySelectorAll('.tip-popup.open').forEach(function(p) { p.classList.remove('open'); });
+});
+
+/* ---- Amortization helpers ---- */
+function getMonthlyPayment(principal, monthlyRate, termMonths) {
+  if (monthlyRate <= 0) return principal / termMonths;
+  var r = monthlyRate;
+  var n = termMonths;
+  return principal * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
+}
+
+/*
+ * ARM with prepayment (matches Excel methodology):
+ * During intro period, pay the Fixed payment amount — extra goes to ARM principal.
+ * After intro, ARM resets and pays the recalculated payment on the reduced balance.
+ */
+function calcArmInterest(loanAmt, introRatePct, postRatePct, fixedRatePct, introPeriodYrs, holdYrs) {
+  var TERM_MO   = 360;
+  var introMo   = Math.round(introPeriodYrs * 12);
+  var holdMo    = Math.min(Math.round(holdYrs * 12), TERM_MO);
+  var r_intro   = introRatePct / 100 / 12;
+  var r_post    = postRatePct  / 100 / 12;
+  var pmt_fixed = getMonthlyPayment(loanAmt, fixedRatePct / 100 / 12, TERM_MO);
+
+  var bal = loanAmt, totalInt = 0, pmt_post = 0;
+
+  for (var m = 1; m <= holdMo; m++) {
+    if (m === introMo + 1 && introMo < TERM_MO) {
+      pmt_post = getMonthlyPayment(bal, r_post, TERM_MO - introMo);
+    }
+    var rate = (m <= introMo) ? r_intro : r_post;
+    // During intro: pay Fixed pmt (prepays principal); after intro: pay ARM reset pmt
+    var pmt  = (m <= introMo) ? pmt_fixed : pmt_post;
+    var interest  = bal * rate;
+    var principal = Math.min(pmt - interest, bal);
+    totalInt += interest;
+    bal -= principal;
+    if (bal <= 0) break;
+  }
+  return totalInt;
+}
+
+function calcFixedInterest(loanAmt, fixedRatePct, holdYrs) {
+  var TERM_MO = 360;
+  var holdMo  = Math.min(Math.round(holdYrs * 12), TERM_MO);
+  var r       = fixedRatePct / 100 / 12;
+  var pmt     = getMonthlyPayment(loanAmt, r, TERM_MO);
+  var totalInt = 0;
+  var bal      = loanAmt;
+
+  for (var m = 1; m <= holdMo; m++) {
+    var interest  = bal * r;
+    var principal = Math.min(pmt - interest, bal);
+    totalInt += interest;
+    bal -= principal;
+    if (bal <= 0) break;
+  }
+  return { totalInterest: totalInt, payment: pmt };
+}
+
+/* Binary-search for break-even post-intro rate */
+function findBreakEven(loanAmt, introRatePct, fixedRatePct, introPeriodYrs, holdYrs) {
+  if (holdYrs <= introPeriodYrs) return null; // post-intro never applies → ARM always wins
+
+  var fixedInt = calcFixedInterest(loanAmt, fixedRatePct, holdYrs).totalInterest;
+
+  var armAtHigh = calcArmInterest(loanAmt, introRatePct, 20, fixedRatePct, introPeriodYrs, holdYrs);
+  if (armAtHigh < fixedInt) return null; // ARM wins at any rate
+
+  var armAtLow = calcArmInterest(loanAmt, introRatePct, 0, fixedRatePct, introPeriodYrs, holdYrs);
+  if (armAtLow >= fixedInt) return 0; // Fixed always wins
+
+  var lo = 0, hi = 20;
+  for (var i = 0; i < 80; i++) {
+    var mid = (lo + hi) / 2;
+    if (calcArmInterest(loanAmt, introRatePct, mid, fixedRatePct, introPeriodYrs, holdYrs) < fixedInt) lo = mid;
+    else hi = mid;
+  }
+  return (lo + hi) / 2;
+}
+
+
+/* ---- Main calculation ---- */
+function armCalc() {
+  var loanAmt     = 1000000; // normalized — break-even rate is loan-amount independent
+  var armIntro    = parseFloat(document.getElementById('armIntroRate').value) || 0;
+  var introPeriod = parseFloat(document.getElementById('introPeriod').value) || 7;
+  var fixedRate   = parseFloat(document.getElementById('fixedRate').value) || 0;
+  var holdPeriod  = parseFloat(document.getElementById('holdPeriod').value) || 10;
+
+  var beRate = findBreakEven(loanAmt, armIntro, fixedRate, introPeriod, holdPeriod);
+  var delta  = (beRate !== null) ? beRate - armIntro : null;
+
+  /* ---- Result banner ---- */
+  if (beRate === null) {
+    document.getElementById('be_rate').textContent  = 'Any Rate';
+    document.getElementById('be_delta').textContent = '—';
+    if (holdPeriod <= introPeriod) {
+      document.getElementById('be_rate_sub').textContent  = 'ARM wins — rate reset never applies';
+      document.getElementById('be_delta_sub').textContent = 'holding period ≤ intro period';
+      document.getElementById('be_verdict').textContent   = '✓ Holding period (' + holdPeriod + ' yrs) ≤ ARM intro period (' + introPeriod + ' yrs). The rate reset never occurs — ARM wins at any post-intro rate.';
+    } else {
+      document.getElementById('be_rate_sub').textContent  = 'ARM wins at any post-intro rate';
+      document.getElementById('be_delta_sub').textContent = 'ARM savings are too large to overcome';
+      document.getElementById('be_verdict').textContent   = '✓ ARM wins even if the post-intro rate reaches 20%. The prepayment advantage during the ' + introPeriod + '-year intro period is large enough that Fixed cannot catch up in the remaining ' + (holdPeriod - introPeriod) + ' year(s).';
+    }
+  } else {
+    document.getElementById('be_rate').textContent      = pctFmt(beRate);
+    document.getElementById('be_delta').textContent     = '+' + pctFmt(delta);
+    document.getElementById('be_rate_sub').textContent  = 'ARM wins if post-intro rate stays below this';
+    document.getElementById('be_delta_sub').textContent = 'above the ' + armIntro + '% ARM intro rate';
+    document.getElementById('be_verdict').textContent   = 'ARM is cheaper as long as the post-intro rate stays below ' + pctFmt(beRate) + '. That requires rates to rise more than ' + pctFmt(delta) + ' above today\'s ' + armIntro + '% ARM intro rate.';
+  }
+}
+
+/* ---- Initialize ---- */
+armCalc();
+</script>
+
+</body>
+</html>
