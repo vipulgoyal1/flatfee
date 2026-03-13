@@ -785,7 +785,9 @@
   if (!series || !chartCanvas || !window.Chart) return;
   const dates = series.dates;
   const prices = series.prices;
-  const suggestedMin = Math.floor((Math.min(...prices) * 0.85) / 10000) * 10000;
+  const validPrices = prices.filter(value => Number.isFinite(value));
+  if (!validPrices.length) return;
+  const suggestedMin = Math.floor((Math.min(...validPrices) * 0.85) / 10000) * 10000;
   const ctx = chartCanvas.getContext('2d');
   new Chart(ctx, {
     type: 'line',
@@ -794,6 +796,7 @@
       datasets: [{
         label: 'Price Index',
         data: prices,
+        spanGaps: true,
         borderColor: '#2c5364',
         backgroundColor: 'rgba(44, 83, 100, 0.10)',
         borderWidth: 2, fill: true, tension: 0.4,
