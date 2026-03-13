@@ -1,15 +1,11 @@
 <!DOCTYPE html>
-<html  >
+<html>
 <head>
-  
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   <link rel="shortcut icon" href="assets/images/logo20final-128x90.png" type="image/x-icon">
   <meta name="description" content="Offer Information">
-  
-  
   <title>Offer Information</title>
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
@@ -27,9 +23,8 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lexend:100,200,300,400,500,600,700,800,900&display=swap"></noscript>
   <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=ucGK9n"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=ucGK9n" type="text/css">
 
-  
-  
   <meta name="robots" content="noindex, follow">
+
 <!-- SHARED MENU/FOOTER STYLES -->
 <style>
 .cid-uTZO3wYcT2 .navbar .navbar-logo img {
@@ -180,36 +175,559 @@
 </style>
 <!-- /SHARED MENU/FOOTER STYLES -->
 
+<!-- OFFER PAGE STYLES -->
+<style>
+  /* ---- Shared typography tokens ---- */
+  .offer-eyebrow {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #39847a;
+    margin-bottom: 14px;
+  }
+  .offer-section-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: #1a1a1a;
+    line-height: 1.25;
+    margin-bottom: 18px;
+  }
+  .offer-section-subheading {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 14px;
+  }
+  .offer-body-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.97rem;
+    color: #444444;
+    line-height: 1.8;
+  }
+
+  /* ---- Page hero / header ---- */
+  .offer-page-hero {
+    background: #fcfbf8;
+    border-bottom: 1px solid #ece6da;
+    padding: 60px 0 52px;
+  }
+  .offer-page-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #1a1a1a;
+    line-height: 1.2;
+    margin-bottom: 32px;
+  }
+  /* TOC link cards */
+  .offer-toc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 4px;
+  }
+  .offer-toc-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #232323;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  .offer-toc-link:hover {
+    border-color: #39847a;
+    color: #39847a;
+    box-shadow: 0 3px 10px rgba(57,132,122,0.12);
+    text-decoration: none;
+  }
+  .offer-toc-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #39847a;
+    color: #ffffff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  @media (max-width: 575px) {
+    .offer-page-hero { padding: 40px 0 36px; }
+    .offer-page-hero h1 { font-size: 1.8rem; }
+    .offer-toc { flex-direction: column; }
+    .offer-toc-link { width: 100%; }
+  }
+
+  /* ---- Form section ---- */
+  .offer-form-section {
+    background: #fcfaf6;
+    border-top: 1px solid #e8dfd1;
+    border-bottom: 1px solid #e8dfd1;
+    padding: 64px 0 72px;
+  }
+  .offer-form-card {
+    background: #ffffff;
+    border: 1px solid #e8dfd1;
+    border-radius: 16px;
+    padding: 40px 44px;
+    box-shadow: 0 14px 38px rgba(58,42,18,0.08);
+  }
+  .offer-form-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+  }
+  .offer-form-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    color: #7e776c;
+    margin-bottom: 28px;
+  }
+  .offer-form-card .form-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #444444;
+    margin-bottom: 5px;
+  }
+  .offer-form-card .form-control {
+    border: 1.5px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 11px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.92rem;
+    color: #333333;
+    background: #fcfbf8;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .offer-form-card .form-control:focus {
+    border-color: #39847a;
+    box-shadow: 0 0 0 3px rgba(57,132,122,0.14);
+    background: #ffffff;
+    outline: none;
+  }
+  .offer-form-card textarea.form-control {
+    min-height: 100px;
+    resize: vertical;
+  }
+  .offer-form-divider {
+    border: none;
+    border-top: 1px solid #ece6da;
+    margin: 20px 0 24px;
+  }
+  .offer-form-notice {
+    background: rgba(57,132,122,0.07);
+    border: 1px solid rgba(57,132,122,0.2);
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    color: #2a5c56;
+    line-height: 1.65;
+    margin-bottom: 20px;
+  }
+  .offer-btn-submit {
+    width: 100%;
+    background: #232323;
+    color: #ffffff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    transition: background 0.2s;
+    margin-top: 4px;
+  }
+  .offer-btn-submit:hover { background: #000000; }
+  @media (max-width: 991px) {
+    .offer-form-card { padding: 28px 22px; }
+  }
+
+  /* ---- Field info button ---- */
+  .field-info-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #39847a;
+    color: #ffffff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    font-style: italic;
+    border: none;
+    cursor: pointer;
+    margin-left: 5px;
+    vertical-align: middle;
+    line-height: 1;
+    padding: 0;
+    flex-shrink: 0;
+    transition: background 0.15s;
+  }
+  .field-info-btn:hover { background: #2a6b62; }
+  /* Popover style overrides */
+  .popover { max-width: 280px; font-family: 'DM Sans', sans-serif; font-size: 0.84rem; }
+  .popover-header { font-weight: 700; font-size: 0.84rem; background: #f4f0ea; border-bottom: 1px solid #e8dfd1; }
+  .popover-body { color: #444444; line-height: 1.65; }
+
+  /* ---- Commission section visuals ---- */
+  .commission-compare {
+    background: #ffffff;
+    border: 1px solid #e8dfd1;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .commission-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 0;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.92rem;
+    flex-wrap: wrap;
+  }
+  .commission-row + .commission-row {
+    border-top: 1px solid #f0ebe2;
+  }
+  .commission-row-price {
+    font-weight: 700;
+    color: #1a1a1a;
+    min-width: 90px;
+  }
+  .commission-row-op {
+    color: #aaaaaa;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  .commission-row-comm {
+    color: #555;
+    flex: 1;
+  }
+  .commission-row-comm.comm-zero {
+    color: #39847a;
+    font-weight: 600;
+  }
+  .commission-row-net {
+    font-weight: 700;
+    color: #d4a853;
+    white-space: nowrap;
+    background: rgba(212,168,83,0.1);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 0.88rem;
+  }
+  .commission-options {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+  .commission-option-card {
+    flex: 1;
+    min-width: 220px;
+    background: #ffffff;
+    border: 1px solid #e8dfd1;
+    border-radius: 12px;
+    padding: 22px 22px 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+  .commission-option-label {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-radius: 20px;
+    padding: 3px 11px;
+    margin-bottom: 10px;
+  }
+  .commission-option-label.opt-a {
+    background: rgba(57,132,122,0.12);
+    color: #39847a;
+  }
+  .commission-option-label.opt-b {
+    background: rgba(212,168,83,0.15);
+    color: #a07a20;
+  }
+  .commission-option-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.97rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .commission-option-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    color: #555555;
+    line-height: 1.7;
+  }
+  @media (max-width: 575px) {
+    .commission-options { flex-direction: column; }
+    .commission-row { font-size: 0.85rem; gap: 6px; }
+  }
+
+  /* ---- Content sections (terms, commission) ---- */
+  .offer-content-section {
+    padding: 64px 0 68px;
+  }
+  .offer-content-section.bg-warm {
+    background: #fcfbf8;
+    border-bottom: 1px solid #ece6da;
+  }
+  .offer-content-section.bg-white {
+    background: #ffffff;
+    border-bottom: 1px solid #f0ebe2;
+  }
+  .offer-numbered-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .offer-numbered-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .offer-item-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    border-radius: 50%;
+    background: #39847a;
+    color: #ffffff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    margin-top: 2px;
+  }
+  .offer-item-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.97rem;
+    color: #444444;
+    line-height: 1.75;
+  }
+  .offer-item-text strong {
+    color: #1a1a1a;
+  }
+  .offer-item-text a {
+    color: #39847a;
+    text-decoration: underline;
+  }
+  .offer-item-text a:hover {
+    color: #2a6b62;
+  }
+  /* inline note boxes */
+  .offer-note {
+    background: #fffae6;
+    border-left: 3px solid #d4a853;
+    border-radius: 0 6px 6px 0;
+    padding: 10px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    color: #5a4a1e;
+    line-height: 1.65;
+    margin-top: 8px;
+  }
+
+  /* ---- Optional info (image + text) ---- */
+  .offer-optional-section {
+    background: #ffffff;
+    border-bottom: 1px solid #f0ebe2;
+    padding: 60px 0 64px;
+  }
+  .offer-image-wrapper img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.1);
+  }
+  .offer-image-caption {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    color: #888888;
+    text-align: center;
+    margin-top: 10px;
+  }
+  .offer-optional-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .offer-optional-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .offer-optional-icon {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    background: rgba(57,132,122,0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #39847a;
+    font-size: 1rem;
+    margin-top: 2px;
+  }
+  .offer-optional-item-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+  }
+  .offer-optional-item-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: #555555;
+    line-height: 1.7;
+  }
+
+  /* ---- Accepted! section ---- */
+  .offer-accepted-section {
+    background: #fcfbf8;
+    border-bottom: 1px solid #ece6da;
+    padding: 64px 0 72px;
+  }
+  .offer-accepted-section .offer-section-heading {
+    font-size: 2.1rem;
+  }
+  .offer-accepted-subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    color: #666666;
+    margin-bottom: 40px;
+  }
+  /* Accordion overrides */
+  .offer-accordion .card {
+    border: 1px solid #e8e2d8;
+    border-radius: 10px !important;
+    margin-bottom: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .offer-accordion .card-header {
+    background: #ffffff;
+    padding: 0;
+    border: none;
+  }
+  .offer-accordion .panel-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 22px;
+    text-decoration: none;
+    gap: 12px;
+  }
+  .offer-accordion .panel-title:hover {
+    background: #faf7f2;
+    text-decoration: none;
+  }
+  .offer-accordion .panel-title-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.4;
+  }
+  .offer-accordion .panel-title .sign {
+    color: #39847a;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+  }
+  .offer-accordion .panel-title[aria-expanded="true"] .sign {
+    transform: rotate(180deg);
+  }
+  .offer-accordion .panel-body {
+    padding: 4px 22px 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.92rem;
+    color: #555555;
+    line-height: 1.8;
+  }
+  .offer-step-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(57,132,122,0.1);
+    color: #39847a;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+  }
+  @media (max-width: 575px) {
+    .offer-content-section { padding: 48px 0 52px; }
+    .offer-accepted-section { padding: 48px 0 56px; }
+    .offer-section-heading { font-size: 1.7rem; }
+    .offer-optional-section { padding: 44px 0 48px; }
+    .offer-image-wrapper { margin-bottom: 28px; }
+  }
+</style>
+<!-- /OFFER PAGE STYLES -->
+
 </head>
 <body>
   <!-- ===== Welcome banner for visitors coming from cashbackagent.net ===== -->
 <script>
 (function () {
   const u   = new URL(location.href);
-  const src = u.searchParams.get('src');          // null | 'cb' | 'cb/xxx'
-
-  /* Exit if no flag or not starting with 'cb' --------------------------- */
+  const src = u.searchParams.get('src');
   if (!src || !src.startsWith('cb')) return;
-
-  /* One-per-session guard ---------------------------------------------- */
   if (sessionStorage.getItem('welcomeDismissed')) return;
   sessionStorage.setItem('welcomeDismissed', '1');
-
-  /* If Squarespace stuffed the path inside the src value, pull it out --- */
-  const extraPath = src.slice(2);                 // everything after 'cb'
+  const extraPath = src.slice(2);
   if (extraPath.startsWith('/')) {
-    if (u.pathname === '/' || u.pathname === '') {
-      u.pathname = extraPath;                     // restore /contact.html etc.
-    }
+    if (u.pathname === '/' || u.pathname === '') { u.pathname = extraPath; }
   }
-
-  /* Strip the flag (and its junk) from the URL ------------------------- */
   u.searchParams.delete('src');
   if (history.replaceState) {
     history.replaceState(null, '', u.pathname + u.search + u.hash);
   }
-
-  /* Build the banner --------------------------------------------------- */
   const bar = document.createElement('div');
   bar.innerHTML = `
       Cashbackagent has moved to a new URL!&nbsp;
@@ -222,519 +740,500 @@
       padding:12px 8px;background:#fffae6;color:#222;
       font:16px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
       text-align:center;box-shadow:0 2px 4px rgba(0,0,0,.15)`;
-
-  /* Hide after 5 s or when dismissed ----------------------------------- */
   const hide = () => bar.remove();
   bar.querySelector('button').onclick = hide;
   setTimeout(hide, 5000);
-
   (document.body || document.documentElement).appendChild(bar);
 })();
 </script>
 
-  <section data-bs-version="5.1" class="menu menu2 cid-uTZO3wYcT2" once="menu" id="menu2-4t">
-
-    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
-        <div class="container">
-            <div class="navbar-brand">
-                <span class="navbar-logo">
-                    <a href="index.html">
-                        <img src="assets/images/logo-ffr-2-337x337.png" alt="Flat Fee Realtor">
-                    </a>
-                </span>
-            </div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav nav-dropdown navbar-nav-top-padding" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="process.html">Process</a></li><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="sfbay.html">SF Bay</a></li><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="locations.html">Locations</a></li><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="blog.html">Blog</a></li><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="properties.html">Properties</a></li></ul>
-
-                <div class="navbar-buttons mbr-section-btn"><a class="btn btn-rankings-outline display-4" href="Appreciation-Rankings-Hub.html">Rankings</a> <a class="btn btn-black display-4" href="contact.html">Contact</a></div>
-            </div>
-        </div>
-    </nav>
-</section>
-
-<section data-bs-version="5.1" class="content14 cid-uqyEg5wVAO" id="content14-1w">
-    
-
-    
-    
-    
+<!-- ===== NAVBAR ===== -->
+<section data-bs-version="5.1" class="menu menu2 cid-uTZO3wYcT2" once="menu" id="menu2-4t">
+  <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                    <h3 class="mbr-section-title mbr-fonts-style mb-4 display-2"><strong>Information We Need to Prepare an Offer</strong></h3>
-                <ul class="list mbr-fonts-style display-7"><p><span><br></span></p><p><a href="offer.html#formbuilder-27" class="text-info text-primary">1. Provide us offer parameters</a><br></p><p><a href="offer.html#content14-31" class="text-info text-primary">2. How much buyer agent commission to request</a><br></p><p><a href="offer.html#content16-1v" class="text-info text-primary">3. Offer was accepted! How to be prepared and next steps</a><br></p><p><br></p><p>
-</p><p>
-</p><p>
-</p><p>
-</p><p>
-</p><p>
-</p><p>
-</p><p>
-</p><p>
-</p><p>
-</p><p>
-</p></ul>
+      <div class="navbar-brand">
+        <span class="navbar-logo">
+          <a href="index.html">
+            <img src="assets/images/logo-ffr-2-337x337.png" alt="Flat Fee Realtor">
+          </a>
+        </span>
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <div class="hamburger">
+          <span></span><span></span><span></span><span></span>
+        </div>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav nav-dropdown navbar-nav-top-padding" data-app-modern-menu="true">
+          <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="process.html">Process</a></li>
+          <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="sfbay.html">SF Bay</a></li>
+          <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="locations.html">Locations</a></li>
+          <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="properties.html">Properties</a></li>
+        </ul>
+        <div class="navbar-buttons mbr-section-btn">
+          <a class="btn btn-rankings-outline display-4" href="Appreciation-Rankings-Hub.html">Rankings</a>
+          <a class="btn btn-black display-4" href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</section>
+
+<!-- ===== PAGE HERO ===== -->
+<section class="offer-page-hero">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-9">
+        <span class="offer-eyebrow">Buyer Resources</span>
+        <h1>Your Offer Guide &mdash; From Submission to Closing</h1>
+        <p style="font-family:'DM Sans',sans-serif;font-size:1rem;color:#555555;line-height:1.75;margin-bottom:28px;max-width:620px;">Everything you need: how to submit offer parameters, how to think about buyer agent commission, and what to do once your offer is accepted.</p>
+        <nav class="offer-toc" aria-label="Page sections">
+          <a href="#formbuilder-27" class="offer-toc-link">
+            <span class="offer-toc-num">1</span>
+            Submit Offer Parameters
+          </a>
+          <a href="#buyer-commission" class="offer-toc-link">
+            <span class="offer-toc-num">2</span>
+            Buyer Agent Commission
+          </a>
+          <a href="#offer-accepted" class="offer-toc-link">
+            <span class="offer-toc-num">3</span>
+            Offer Accepted &mdash; Closing Steps
+          </a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== OFFER FORM ===== -->
+<section class="offer-form-section" id="formbuilder-27">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-8">
+        <div class="offer-form-card mbr-form" data-form-type="formoid">
+          <div class="offer-form-title">Provide Offer Parameters</div>
+          <div class="offer-form-sub">Fill out the form below after discussing pricing strategy with us, or simply email us the parameters.</div>
+
+          <form action="https://mobirise.eu/" method="POST" class="mbr-form form-with-styler" data-form-title="Request Offer">
+            <input type="hidden" name="email" data-form-email="true" value="uj5jonB3pi41kulUpb4HbAfvNCqAUA88dzHxtLi01zK/MD3uJiRTh3fCQVhR9shctI97fNSsYycEvzND1+RMMiFN4jK4o14OFDyuL9WF/+gAh+4CBnaPQQfniOrR7kbO.IEG2BrWwmmg2dpzYEGASuD7fsOFPFSMgGvWMBpFxAInd4qCEivBQHv07P2y9jO2Dq8FdF93dmInWVVul1VtyjVygARH9gNjnSHteCvw8l6dpwzfegstu9KGvceQ26ZL9">
+
+            <div class="form-row">
+              <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Thanks, we will work on the offer! Please email preapproval and proof of funds if you haven't already.</div>
+              <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">Oops...! some problem!</div>
             </div>
-        </div>
-    </div>
-</section>
 
-<section class="form cid-urlBIslcAd" id="formbuilder-27">
-    
-    
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
-<!--Formbuilder Form-->
-<form action="https://mobirise.eu/" method="POST" class="mbr-form form-with-styler" data-form-title="Request Offer"><input type="hidden" name="email" data-form-email="true" value="uj5jonB3pi41kulUpb4HbAfvNCqAUA88dzHxtLi01zK/MD3uJiRTh3fCQVhR9shctI97fNSsYycEvzND1+RMMiFN4jK4o14OFDyuL9WF/+gAh+4CBnaPQQfniOrR7kbO.IEG2BrWwmmg2dpzYEGASuD7fsOFPFSMgGvWMBpFxAInd4qCEivBQHv07P2y9jO2Dq8FdF93dmInWVVul1VtyjVygARH9gNjnSHteCvw8l6dpwzfegstu9KGvceQ26ZL9">
-<div class="form-row">
-<div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Thanks, we will work on the offer! Please email preapproval and proof of funds if you haven't already.</div>
-<div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">Oops...! some problem!</div>
-</div>
-<div class="dragArea row">
-<div class="col-lg-12 col-md-12 col-sm-12">
-<h4 class="mbr-fonts-style display-2">Provide us Offer Parameters</h4>
-</div>
-<div class="col-lg-12 col-md-12 col-sm-12">
-<p class="display-5"></p>
-</div>
-<div class="col-lg-12 col-md-12 col-sm-12">
-<hr>
-</div>
-<div data-for="Name" class="col-lg-12 col-md-12 col-sm-12 form-group">
-<label for="Name-formbuilder-27" class="form-control-label mbr-fonts-style display-7">Please email us the parameters or fill this offer form&nbsp;(after discussing with us the pricing strategy)<br><br>Buyer Legal Name(s)</label>
-<input type="text" name="Name" placeholder="Buyer Legal Name(s)" data-form-field="Name" class="form-control display-7" value="" id="Name-formbuilder-27">
-</div>
-<div data-for="text" class="col-lg-12 col-md-12 col-sm-12 form-group">
-<label for="text-formbuilder-27" class="form-control-label mbr-fonts-style display-7">Buyer email(s) (Used for Offer signing)</label>
-<input type="text" name="text" placeholder="Email (for every buyer)" data-form-field="text" class="form-control display-7" value="" id="text-formbuilder-27">
-</div>
-<div data-for="Property Address" class="col-lg-12 col-md-12 col-sm-12 form-group">
-<label for="Property Address-formbuilder-27" class="form-control-label mbr-fonts-style display-7">Property Address</label>
-<input type="tel" name="Property Address" placeholder="Property Address" pattern="*" data-form-field="Property Address" required="required" class="form-control display-7" value="" id="Property Address-formbuilder-27">
-</div>
-<div class="col-lg-6 col-md-12 col-sm-12 form-group" data-for="Purchase price">
-<label for="Purchase price-formbuilder-27" class="form-control-label mbr-fonts-style display-7">Purchase price</label>
-<input type="text" name="Purchase price" placeholder="Purchase price" data-form-field="Purchase price" required="required" class="form-control display-7" value="" id="Purchase price-formbuilder-27">
-</div>
-<div data-for="EMD Amount" class="col-lg-6 col-md-12 col-sm-12 form-group">
-<label for="EMD Amount-formbuilder-27" class="form-control-label mbr-fonts-style display-7">Earnest money deposit (EMD)</label>
-<input type="text" name="EMD Amount" data-form-field="EMD Amount" class="form-control display-7" value="3%" id="EMD Amount-formbuilder-27">
-</div>
-<div data-for="EMD Days" class="col-lg-6 col-md-12 col-sm-12 form-group">
-<label for="EMD Days-formbuilder-27" class="form-control-label mbr-fonts-style display-7">EMD Days</label>
-<input type="text" name="EMD Days" data-form-field="EMD Days" class="form-control display-7" value="1 Day" id="EMD Days-formbuilder-27">
-</div>
-<div data-for="CoE" class="col-lg-6 col-md-12 col-sm-12 form-group">
-<label for="CoE-formbuilder-27" class="form-control-label mbr-fonts-style display-7">Close of Escrow</label>
-<input type="text" name="CoE" data-form-field="CoE" class="form-control display-7" value="30 Days" id="CoE-formbuilder-27">
-</div>
-<div data-for="Buyer Agent Commission" class="col-lg-6 col-md-12 col-sm-12 form-group">
-<label for="Buyer Agent Commission-formbuilder-27" class="form-control-label mbr-fonts-style display-7">Buyer Agent Commission</label>
-<input type="text" name="Buyer Agent Commission" data-form-field="Buyer Agent Commission" class="form-control display-7" value="2.5% (and get Cashback)" id="Buyer Agent Commission-formbuilder-27">
-</div>
-<div data-for="Loan" class="col-lg-6 col-md-12 col-sm-12 form-group">
-<label for="Loan-formbuilder-27" class="form-control-label mbr-fonts-style display-7">Loan Percentage</label>
-<input type="text" name="Loan" data-form-field="Loan" class="form-control display-7" value="80%" id="Loan-formbuilder-27">
-</div>
-<div data-for="Contingencies" class="col-lg-12 col-md-12 col-sm-12 form-group">
-<label for="Contingencies-formbuilder-27" class="form-control-label mbr-fonts-style display-7">Contingencies and number of days for each contingency</label>
-<textarea name="Contingencies" data-form-field="Contingencies" class="form-control display-7" value="All Waived" id="Contingencies-formbuilder-27">All Waived</textarea>
-</div>
-<div data-for="Optional" class="col-lg-12 col-md-12 col-sm-12 form-group">
-<label for="Optional-formbuilder-27" class="form-control-label mbr-fonts-style display-7">Optional Information</label>
-<textarea name="Optional" placeholder="Appliances/Equipments, Offer Expiration, Notes/Comments, etc" data-form-field="Optional" class="form-control display-7" id="Optional-formbuilder-27"></textarea>
-</div>
-<div class="col-lg-12 col-md-12 col-sm-12">
-<p class="mbr-fonts-style display-7">Please email preapproval and proof of funds to homes.goyal@gmail.com or secure upload to tinyurl.com/flatfee-realtor. Please ensure that documents show buyer names.</p>
-</div>
-<div class="col-lg-12 col-md-12 col-sm-12">
-<button type="submit" class="w-100 w-100 w-100 w-100 w-100 w-100 w-100 w-100 w-100 w-100 w-100 btn btn-primary display-7">Submit</button>
-</div>
-</div>
-</form><!--Formbuilder Form-->
-</div>
-        </div>
-    </div>
-</section>
+            <hr class="offer-form-divider">
 
-<section data-bs-version="5.1" class="content14 cid-uqyLCwW5HF" id="content14-1y">
-    
+            <div class="dragArea row g-3">
+              <div class="col-12 form-group" data-for="Name">
+                <label for="Name-formbuilder-27" class="form-label">Buyer Legal Name(s)
+                  <button type="button" class="field-info-btn" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-title="Buyer Legal Name(s)" data-bs-content="Enter names exactly as they should appear on the title/deed. Every buyer purchasing the property must be listed here.">i</button>
+                </label>
+                <input type="text" name="Name" placeholder="Buyer Legal Name(s)" data-form-field="Name" class="form-control display-7" value="" id="Name-formbuilder-27">
+              </div>
 
-    
-    
-    
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                    <h3 class="mbr-section-title mbr-fonts-style mb-4 display-2"><strong>What the Above Terms Mean</strong><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong> 
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong> 
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong> 
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong> 
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div></h3>
-                <ul class="list mbr-fonts-style display-7"><p><br></p><p><span>1. <strong>Buyer legal name(s) and email address(es)</strong>: you will get the documents to sign on your email(s)</span><br></p><p>2. <strong>Financial documents</strong>: pre-approval which shows the contact details of the mortgage officer, proof of funds (bank statements, stock portfolio etc). <em>All documents should have the buyer name visible.
-</em></p><p>3. <strong>Purchase price</strong>: of course this is the most critical decision, please ask our advice.</p><p>4. <strong>EMD (earnest money deposit) percent and days</strong>: Typical is 3% deposit within 1 business day of offer acceptance</p><p>5. <strong>Contingencies and number of days for each contingency</strong>: Here is a <a href="https://www.homeward.com/blog/4-common-types-of-home-buying-contingencies" class="text-primary" target="_blank">useful guide</a></p><p><span>Example: 12 day loan </span><span>contingency</span><span>&nbsp;means you have 12 days to verify that your loan will go through.</span></p><p><span>Special note for Bay Area: almost all of our accepted offers in the bay area had no contingency. Please call us to discuss this if needed.</span><br></p><p>6. <strong>Close of Escrow (number of days for closing)</strong>: Your loan officer can help you with this but&nbsp; 20-30 days is typical in CA and 30-45 days in FL and NY.
-</p><p>7. <strong>Loan percentage</strong>: Typically around 80%</p><p>8. <strong>Buyer agent commission</strong> (new change Aug 2024): Please read the Section on "How much buyer agent commission to request".</p><p><br></p><p>
-</p><p>
-</p><p>
-</p><p>
-</p><p>
-</p><p>
-</p><p>
-</p><p>
-</p><p>
-</p><p>
-</p><p>
-</p></ul>
-            </div>
-        </div>
-    </div>
-</section>
+              <div class="col-12 form-group" data-for="text">
+                <label for="text-formbuilder-27" class="form-label">Buyer Email(s)
+                  <button type="button" class="field-info-btn" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-title="Buyer Email(s)" data-bs-content="You will receive the offer documents to sign via these emails. Include one email address per buyer — all buyers need to sign.">i</button>
+                  <span style="font-weight:400;color:#888;font-size:0.78rem;margin-left:4px;">(include all buyers)</span>
+                </label>
+                <input type="text" name="text" placeholder="Email for every buyer" data-form-field="text" class="form-control display-7" value="" id="text-formbuilder-27">
+              </div>
 
-<section data-bs-version="5.1" class="image2 cid-uqyLUsQIUD" id="image2-23">
-    
+              <div class="col-12 form-group" data-for="Property Address">
+                <label for="Property Address-formbuilder-27" class="form-label">Property Address <span style="color:#d9534f;">*</span>
+                  <button type="button" class="field-info-btn" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-title="Property Address" data-bs-content="The address of the property you are making an offer on.">i</button>
+                </label>
+                <input type="text" name="Property Address" placeholder="Full property address" pattern="*" data-form-field="Property Address" required="required" class="form-control display-7" value="" id="Property Address-formbuilder-27">
+              </div>
 
-    
-    
+              <div class="col-sm-6 form-group" data-for="Purchase price">
+                <label for="Purchase price-formbuilder-27" class="form-label">Purchase Price <span style="color:#d9534f;">*</span>
+                  <button type="button" class="field-info-btn" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-title="Purchase Price" data-bs-content="The most critical decision in your offer. Please ask us for pricing strategy advice.">i</button>
+                </label>
+                <input type="text" name="Purchase price" placeholder="e.g. $1,200,000" data-form-field="Purchase price" required="required" class="form-control display-7" value="" id="Purchase price-formbuilder-27">
+              </div>
 
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-12 col-lg-6">
-                <div class="image-wrapper">
-                    <img src="assets/images/2024-10-7-1076x324.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
-                        Appliances/Equipment Default</p>
+              <div class="col-sm-6 form-group" data-for="EMD Amount">
+                <label for="EMD Amount-formbuilder-27" class="form-label">Earnest Money Deposit (EMD)
+                  <button type="button" class="field-info-btn" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-title="Earnest Money Deposit" data-bs-content="A deposit that shows the seller you are serious. Typically 3% of the purchase price, wired to the escrow company 1 day after offer acceptance.">i</button>
+                </label>
+                <input type="text" name="EMD Amount" data-form-field="EMD Amount" class="form-control display-7" value="3%" id="EMD Amount-formbuilder-27">
+              </div>
+
+              <div class="col-sm-6 form-group" data-for="EMD Days">
+                <label for="EMD Days-formbuilder-27" class="form-label">EMD Days
+                  <button type="button" class="field-info-btn" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-title="EMD Days" data-bs-content="The number of business days after acceptance in which you must wire the deposit to escrow. We strongly recommend 1 business day. Note: federal wire cutoff can be as early as 11am PT.">i</button>
+                </label>
+                <input type="text" name="EMD Days" data-form-field="EMD Days" class="form-control display-7" value="1 Day" id="EMD Days-formbuilder-27">
+              </div>
+
+              <div class="col-sm-6 form-group" data-for="CoE">
+                <label for="CoE-formbuilder-27" class="form-label">Close of Escrow
+                  <button type="button" class="field-info-btn" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-title="Close of Escrow" data-bs-content="How many days until transaction closes and the home ownership officially transfers to you. Your loan officer can advise — 20–30 days is typical in CA.">i</button>
+                </label>
+                <input type="text" name="CoE" data-form-field="CoE" class="form-control display-7" value="30 Days" id="CoE-formbuilder-27">
+              </div>
+
+              <div class="col-sm-6 form-group" data-for="Buyer Agent Commission">
+                <label for="Buyer Agent Commission-formbuilder-27" class="form-label">Buyer Agent Commission
+                  <button type="button" class="field-info-btn" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-title="Buyer Agent Commission" data-bs-content="Option A: Ask for 0% and lower the purchase price. Option B: Ask for 2%–2.5% and receive a cashback. See the commission section on this page for full details.">i</button>
+                </label>
+                <input type="text" name="Buyer Agent Commission" data-form-field="Buyer Agent Commission" class="form-control display-7" value="2.5% (and get Cashback)" id="Buyer Agent Commission-formbuilder-27">
+              </div>
+
+              <div class="col-sm-6 form-group" data-for="Loan">
+                <label for="Loan-formbuilder-27" class="form-label">Loan Percentage
+                  <button type="button" class="field-info-btn" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-title="Loan Percentage" data-bs-content="The portion of the purchase price you are financing. Typically around 80%, meaning a 20% down payment. All-cash buyers enter 0%.">i</button>
+                </label>
+                <input type="text" name="Loan" data-form-field="Loan" class="form-control display-7" value="80%" id="Loan-formbuilder-27">
+              </div>
+
+              <div class="col-12 form-group" data-for="Contingencies">
+                <label for="Contingencies-formbuilder-27" class="form-label">Contingencies
+                  <button type="button" class="field-info-btn" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-title="Contingencies" data-bs-html="true" data-bs-content="Contingencies give you the right to back out if conditions aren&#39;t met (loan, inspection, etc.). &lt;a href=&#39;https://www.homeward.com/blog/4-common-types-of-home-buying-contingencies&#39; target=&#39;_blank&#39;&gt;Guide to contingency types&lt;/a&gt;. Bay Area tip: most accepted offers waive all contingencies. Specify each with days, e.g. &#34;12 day loan contingency&#34;.">i</button>
+                  <span style="font-weight:400;color:#888;font-size:0.78rem;margin-left:4px;">(list each with number of days)</span>
+                </label>
+                <textarea name="Contingencies" data-form-field="Contingencies" class="form-control display-7" id="Contingencies-formbuilder-27">All Waived</textarea>
+              </div>
+
+              <div class="col-12 form-group" data-for="Optional">
+                <label for="Optional-formbuilder-27" class="form-label">Optional Information
+                  <button type="button" class="field-info-btn" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-title="Optional Information" data-bs-content="Include any of: offer expiration date/time, appliance or equipment changes (e.g., remove washer/dryer if not present), home warranty preference, or any other special notes.">i</button>
+                </label>
+                <textarea name="Optional" placeholder="Appliances/Equipment, Offer Expiration, Notes/Comments, etc." data-form-field="Optional" class="form-control display-7" id="Optional-formbuilder-27"></textarea>
+              </div>
+
+              <div class="col-12">
+                <div class="offer-form-notice">
+                  Please email preapproval and proof of funds to <strong>info@flatfee-realtor.com</strong> or upload securely at <strong>tinyurl.com/flatfee-realtor</strong>. Ensure all documents show buyer names.
                 </div>
+              </div>
+
+              <div class="col-12">
+                <button type="submit" class="offer-btn-submit">Submit Offer Parameters &rarr;</button>
+              </div>
             </div>
-            <div class="col-12 col-lg">
-                <div class="text-wrapper">
-                    <h3 class="mbr-section-title mbr-fonts-style mb-3 display-5">
-                        <strong>Optional Offer Information</strong></h3>
-                    <p class="mbr-text mbr-fonts-style display-7"><strong>Offer expiration</strong>: If you want to go with our suggestion, leave this blank&nbsp;<br>
-<br><strong>Appliances/Equipments</strong>: The picture on the right shows what we check in our default offer. If you want to change it (say there is no washer/dryer at the property), please tell us what to remove and what to include.<br>
-<br><strong>Home warranty (only for CA)</strong>: Home warranty&nbsp; (partially) pays for appliances/HVAC repairs and costs $700-900 a year. We typically waive it since our experience with these companies is not very good and it's better to just reduce your purchase price rather than asking the seller to pay for home warranty.<br></p>
-                </div>
-            </div>
+          </form>
         </div>
+      </div>
     </div>
+  </div>
 </section>
 
-<section data-bs-version="5.1" class="content14 cid-uO2Shq2Xwr" id="content14-31">
-    
-
-    
-    
-    
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                    <h3 class="mbr-section-title mbr-fonts-style mb-4 display-2"><strong>How Much Buyer Agent Commission to Request</strong><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong> 
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong> 
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong> 
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong> 
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div><div><strong>
-</strong></div></h3>
-                <ul class="list mbr-fonts-style display-7"><p><span><br></span></p><p><span>1) When listing agents present the offer to the seller, they present the net figure (purchase price minus buyer agent commission asked). Sellers only care about the net figure, not the breakup between the purchase price and buyer agent commission.</span><br></p><p>Example: the following two offers are equivalent for the seller
-</p><p>&nbsp;&nbsp;&nbsp;&nbsp;-&gt; Purchase price of $1800k with $0 buyer agent commission
-</p><p>&nbsp; &nbsp; -&gt; Purchase price of $1845k with $45k buyer agent commission
-</p><p>In both cases, the seller nets 1800k
-</p><p>
-</p><p>To ensure that listing agents don't mess up, we also include a calculation in the offer which says something like: <em>"Our offer of $1800K is equivalent to over $1845k with 2.5% buyer agent commission".</em></p><p><br></p><p>2) Given this, we have two options:
-</p><p>(a) Ask the seller for no buyer agent commission or only for our low buyer agent commission (and reduce the purchase price accordingly if needed). This has the advantage that it will result in lower purchase price and hence lower annual property taxes for the buyer. It also reduces the county and city transfer tax (for the buyer as well as the seller). If we ask the seller for no commission, our commission is covered by the buyer directly.&nbsp;</p><p>(b) Ask for the usual 2-3% commission and get a cashback. In this case<span>, please check with your bank if they have any restrictions on the cash back.&nbsp;</span></p><p><br></p><p>
-</p><p>
-</p><p>
-</p><p>
-</p><p>
-</p><p>
-</p><p>
-</p><p>
-</p><p>
-</p><p>
-</p><p>
-</p><p>
-</p></ul>
+<!-- ===== OPTIONAL OFFER INFO ===== -->
+<section class="offer-optional-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-9">
+        <span class="offer-eyebrow">Optional Details</span>
+        <h2 class="offer-section-subheading">Optional Offer Information</h2>
+        <ul class="offer-optional-list">
+          <li class="offer-optional-item">
+            <div class="offer-optional-icon">&#9200;</div>
+            <div>
+              <div class="offer-optional-item-title">Offer Expiration</div>
+              <div class="offer-optional-item-body">Leave blank to go with our suggestion.</div>
             </div>
-        </div>
+          </li>
+          <li class="offer-optional-item">
+            <div class="offer-optional-icon">&#127968;</div>
+            <div style="width:100%;">
+              <div class="offer-optional-item-title">Appliances &amp; Equipment</div>
+              <div class="offer-optional-item-body">The image below shows what we include by default. If something needs to change (e.g., no washer/dryer at the property), let us know what to add or remove.</div>
+              <div class="offer-image-wrapper" style="margin-top:14px;">
+                <img src="assets/images/2024-10-7-1076x324.png" alt="Appliances/Equipment defaults included in offer">
+                <p class="offer-image-caption">Default appliances &amp; equipment included in our offer</p>
+              </div>
+            </div>
+          </li>
+          <li class="offer-optional-item">
+            <div class="offer-optional-icon">&#128274;</div>
+            <div>
+              <div class="offer-optional-item-title">Home Warranty <span style="font-weight:400;font-size:0.82rem;color:#888;">(CA only)</span></div>
+              <div class="offer-optional-item-body">Home warranty partially covers appliance and HVAC repairs (~$700&ndash;900/year). We typically waive it &mdash; our experience with these companies has not been great, and it's usually better to reduce the purchase price instead.</div>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
+  </div>
 </section>
 
-<section data-bs-version="5.1" class="content16 cid-uqyAXjdDMS" id="content16-1v">
+<!-- ===== BUYER AGENT COMMISSION ===== -->
+<section class="offer-content-section bg-warm" id="buyer-commission">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-9">
+        <span class="offer-eyebrow">Commission Strategy</span>
+        <h2 class="offer-section-heading">How Much Buyer Agent Commission to Request</h2>
 
-    
+        <p class="offer-body-text" style="margin-bottom:20px;">
+          Sellers only care about their <strong>net</strong> &mdash; the purchase price minus your agent's commission. These two offers are identical to the seller:
+        </p>
 
-    
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-10">
-                <div class="mbr-section-head align-center mb-4">
-                    <h3 class="mbr-section-title mb-0 mbr-fonts-style display-2"><strong>Your Offer Was Accepted!</strong><br></h3>
-                    <h4 class="mbr-section-subtitle mb-0 mt-2 mbr-fonts-style display-5">
-                       Guide to Smooth Closing</h4>
-                </div>
-                <div id="bootstrap-accordion_61" class="panel-group accordionStyles accordion" role="tablist" aria-multiselectable="true">
-                    <div class="card mb-3">
-                        <div class="card-header" role="tab" id="headingOne">
-                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse1_61" aria-expanded="false" aria-controls="collapse1">
-                                <h6 class="panel-title-edit mbr-fonts-style mb-0 display-7"><strong>Make the initial deposit and avoid common mistakes</strong></h6>
-                                <span class="sign mbr-iconfont mbri-arrow-down"></span>
-                            </a>
-                        </div>
-                        <div id="collapse1_61" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_61">
-                            <div class="panel-body">
-                                <p class="mbr-fonts-style panel-text display-7">Many buyers don't realize that the federal wire system works according to the East Coast time and the same day wire cut off for your bank can be as early as 11am PT if you are in CA.  Please be prepared. The wire instructions will be provided by the escrow officer. Their contact is typically  listed in the disclosures cover sheet.<br> </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card mb-3">
-                        <div class="card-header" role="tab" id="headingOne">
-                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse2_61" aria-expanded="false" aria-controls="collapse2">
-                                <h6 class="panel-title-edit mbr-fonts-style mb-0 display-7"><strong>Sign all disclosures</strong></h6>
-                                <span class="sign mbr-iconfont mbri-arrow-down"></span>
-                            </a>
-                        </div>
-                        <div id="collapse2_61" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_61">
-                            <div class="panel-body">
-                                <p class="mbr-fonts-style panel-text display-7">
-                                    This step is (not) fun! You will have to sign all disclosures individually (typically dozens or even 100s of pages). We will help you in this process!</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card mb-3">
-                        <div class="card-header" role="tab" id="headingOne">
-                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse3_61" aria-expanded="false" aria-controls="collapse3">
-                                <h6 class="panel-title-edit mbr-fonts-style mb-0 display-7"><strong>Finalize your bank ASAP!</strong></h6>
-                                <span class="sign mbr-iconfont mbri-arrow-down"></span>
-                            </a>
-                        </div>
-                        <div id="collapse3_61" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_61">
-                            <div class="panel-body">
-                                <p class="mbr-fonts-style panel-text display-7">
-                                     Yes, you can shop for rates and go with the bank which is different from the preapproval one. But the bank is the bottleneck in the whole process, so finalize the bank ASAP, confirm that they can handle your close of escrow date, and ask them to order appraisal.&nbsp;</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card mb-3">
-                        <div class="card-header" role="tab" id="headingOne">
-                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse4_61" aria-expanded="false" aria-controls="collapse4">
-                                <h6 class="panel-title-edit mbr-fonts-style mb-0 display-7"><strong>Shop for home insurance, setup utilities</strong></h6>
-                                <span class="sign mbr-iconfont mbri-arrow-down"></span>
-                            </a>
-                        </div>
-                        <div id="collapse4_61" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_61">
-                            <div class="panel-body">
-                                <p class="mbr-fonts-style panel-text display-7">
-                                    Home insurance will be required by the bank sooner rather than later. You can get quotes online from various brokers. You can also start utilities in your name effective the closing date: electricity, water, internet, trash, etc.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card mb-3">
-                        <div class="card-header" role="tab" id="headingOne">
-                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse5_61" aria-expanded="false" aria-controls="collapse5">
-                                <h6 class="panel-title-edit mbr-fonts-style mb-0 display-7"><strong>Prepare for signing with notary</strong></h6>
-                                <span class="sign mbr-iconfont mbri-arrow-down"></span>
-                            </a>
-                        </div>
-                        <div id="collapse5_61" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_61">
-                            <div class="panel-body">
-                                <p class="mbr-fonts-style panel-text display-7">A few days before the closing, the escrow would set you up with the notary to sign all the documents. A mobile notary can even come to your house and work around your schedule. This is all you need to do. You don’t need to be present for the closing/recording and don’t need to take time off work! PS: You would need a government issued ID for the notary.&nbsp;&nbsp;<br></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card mb-3">
-                        <div class="card-header" role="tab" id="headingOne">
-                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse6_61" aria-expanded="false" aria-controls="collapse6">
-                                <h6 class="panel-title-edit mbr-fonts-style mb-0 display-7"><strong>Wire the remaining funds, wait for closing and get the keys!</strong></h6>
-                                <span class="sign mbr-iconfont mbri-arrow-down"></span>
-                            </a>
-                        </div>
-                        <div id="collapse6_61" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_61">
-                            <div class="panel-body">
-                                <p class="mbr-fonts-style panel-text display-7">Wire the remaining funds 1-2 days before the closing (per bank instructions). On the day of closing, escrow does the “recording” which officially transfers the house in your name. After the recording, we will let you know how to get the keys.&nbsp;<br></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="commission-compare">
+          <div class="commission-row">
+            <span class="commission-row-price">$1,800K offer</span>
+            <span class="commission-row-op">+</span>
+            <span class="commission-row-comm comm-zero">$0 Buyer Agent Commission</span>
+            <span class="commission-row-op">=</span>
+            <span class="commission-row-net">$1,800K net ✓</span>
+          </div>
+          <div class="commission-row">
+            <span class="commission-row-price">$1,845K offer</span>
+            <span class="commission-row-op">+</span>
+            <span class="commission-row-comm">$45K (~2.5%) Buyer Agent commission</span>
+            <span class="commission-row-op">=</span>
+            <span class="commission-row-net">$1,800K net ✓</span>
+          </div>
         </div>
+
+        <div class="offer-note" style="margin-bottom:28px;">
+          To make sure the listing agent doesn't make a mistake presenting the offer, we include a note in every offer that reads something like: <em>&ldquo;Our offer of $1,800K with waived buyer agent commission is equivalent to over $1,845K with 2.5% buyer agent commission.&rdquo;</em>
+        </div>
+
+        <p class="offer-body-text" style="margin-bottom:20px;">So which should you choose? You have two options:</p>
+
+        <div class="commission-options">
+          <div class="commission-option-card">
+            <span class="commission-option-label opt-a">Option A</span>
+            <div class="commission-option-title">Ask for $0 commission &mdash; lower your price</div>
+            <div class="commission-option-body">Reduces the purchase price, which lowers your annual property taxes and county/city transfer taxes (for both you and the seller). Our fee is paid by you directly.</div>
+          </div>
+          <div class="commission-option-card">
+            <span class="commission-option-label opt-b">Option B</span>
+            <div class="commission-option-title">Ask for 2&ndash;2.5% commission &mdash; get cashback</div>
+            <div class="commission-option-body">You receive the difference as cashback at closing. Lowers your out of pocket closing cost.</div>
+          </div>
+        </div>
+
+      </div>
     </div>
+  </div>
+</section>
+
+<!-- ===== OFFER ACCEPTED ===== -->
+<section class="offer-accepted-section" id="offer-accepted">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-9">
+        <div class="text-center mb-5">
+          <span class="offer-step-badge">&#10003; Congratulations</span>
+          <h2 class="offer-section-heading">Your Offer Was Accepted!</h2>
+          <p class="offer-accepted-subtitle">Your guide to a smooth closing &mdash; step by step.</p>
+        </div>
+
+        <div id="bootstrap-accordion_61" class="panel-group offer-accordion accordion" role="tablist" aria-multiselectable="true">
+
+          <div class="card mb-2">
+            <div class="card-header" role="tab" id="offerAccHeading1">
+              <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#offerAcc1" aria-expanded="false" aria-controls="offerAcc1">
+                <span class="panel-title-text">Make the Initial Deposit &mdash; and Avoid Common Mistakes</span>
+                <span class="sign mbr-iconfont mbri-arrow-down"></span>
+              </a>
+            </div>
+            <div id="offerAcc1" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="offerAccHeading1" data-bs-parent="#bootstrap-accordion_61">
+              <div class="panel-body">
+                Many buyers don't realize that the federal wire system runs on East Coast time &mdash; the same-day wire cutoff at your bank can be as early as 11am PT if you're in CA. Please be prepared. Wire instructions will be provided by the escrow officer, whose contact is typically listed in the disclosures cover sheet.
+              </div>
+            </div>
+          </div>
+
+          <div class="card mb-2">
+            <div class="card-header" role="tab" id="offerAccHeading2">
+              <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#offerAcc2" aria-expanded="false" aria-controls="offerAcc2">
+                <span class="panel-title-text">Sign All Disclosures</span>
+                <span class="sign mbr-iconfont mbri-arrow-down"></span>
+              </a>
+            </div>
+            <div id="offerAcc2" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="offerAccHeading2" data-bs-parent="#bootstrap-accordion_61">
+              <div class="panel-body">
+                This step is (not) fun! You will need to sign all disclosures individually &mdash; typically dozens or even hundreds of pages. We will guide you through the whole process.
+              </div>
+            </div>
+          </div>
+
+          <div class="card mb-2">
+            <div class="card-header" role="tab" id="offerAccHeading3">
+              <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#offerAcc3" aria-expanded="false" aria-controls="offerAcc3">
+                <span class="panel-title-text">Finalize Your Lender ASAP</span>
+                <span class="sign mbr-iconfont mbri-arrow-down"></span>
+              </a>
+            </div>
+            <div id="offerAcc3" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="offerAccHeading3" data-bs-parent="#bootstrap-accordion_61">
+              <div class="panel-body">
+                You can still shop for rates and go with a different lender than your pre-approval. The bank is the bottleneck in the whole process, so finalize your lender immediately, confirm they can meet your close of escrow date, and ask them to order the appraisal.
+              </div>
+            </div>
+          </div>
+
+          <div class="card mb-2">
+            <div class="card-header" role="tab" id="offerAccHeading4">
+              <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#offerAcc4" aria-expanded="false" aria-controls="offerAcc4">
+                <span class="panel-title-text">Shop for Home Insurance &amp; Set Up Utilities</span>
+                <span class="sign mbr-iconfont mbri-arrow-down"></span>
+              </a>
+            </div>
+            <div id="offerAcc4" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="offerAccHeading4" data-bs-parent="#bootstrap-accordion_61">
+              <div class="panel-body">
+                Home insurance will be required by your lender sooner rather than later &mdash; get quotes from multiple brokers online. You can also set up utilities in your name effective the closing date: electricity, water, internet, trash, etc.
+              </div>
+            </div>
+          </div>
+
+          <div class="card mb-2">
+            <div class="card-header" role="tab" id="offerAccHeading5">
+              <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#offerAcc5" aria-expanded="false" aria-controls="offerAcc5">
+                <span class="panel-title-text">Prepare for Signing with a Notary</span>
+                <span class="sign mbr-iconfont mbri-arrow-down"></span>
+              </a>
+            </div>
+            <div id="offerAcc5" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="offerAccHeading5" data-bs-parent="#bootstrap-accordion_61">
+              <div class="panel-body">
+                A few days before closing, escrow will arrange a notary signing. A mobile notary can come to your home and work around your schedule. You do <em>not</em> need to be present for the actual closing/recording and won't need to take time off work. You will need a government-issued ID for the notary.
+              </div>
+            </div>
+          </div>
+
+          <div class="card mb-2">
+            <div class="card-header" role="tab" id="offerAccHeading6">
+              <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#offerAcc6" aria-expanded="false" aria-controls="offerAcc6">
+                <span class="panel-title-text">Wire Remaining Funds, Wait for Closing &amp; Get the Keys!</span>
+                <span class="sign mbr-iconfont mbri-arrow-down"></span>
+              </a>
+            </div>
+            <div id="offerAcc6" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="offerAccHeading6" data-bs-parent="#bootstrap-accordion_61">
+              <div class="panel-body">
+                Wire the remaining funds 1&ndash;2 days before closing (per your lender's instructions). On the day of closing, escrow completes the "recording" which officially transfers the home into your name. After recording, we will let you know how to collect the keys. Congratulations!
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- ===== REDESIGNED FOOTER ===== -->
 <footer class="footer-redesigned">
-    <div class="container">
-        <div class="row">
-            <!-- Column 1: Brand + Contact -->
-            <div class="col-12 col-md-6 col-lg-3 mb-4">
-                <div class="footer-brand-col">
-                    <img src="assets/images/logo-ffr-2-337x337.png" alt="Flat Fee Realtor">
-                    <p>Top 1% Realtors with all 5-Star reviews. Flat fee, maximum cashback. Full service representation.</p>
-                </div>
-                <div class="footer-contact-item">
-                    <span class="footer-contact-icon">&#9742;</span>
-                    <span>408-905-8133</span>
-                </div>
-                <div class="footer-contact-item">
-                    <span class="footer-contact-icon socicon-whatsapp socicon" style="font-size: 0.95rem;"></span>
-                    <a href="https://wa.me/14089058133" target="_blank">408-905-8133</a>
-                </div>
-                <div class="footer-contact-item">
-                    <span class="footer-contact-icon">&#9993;</span>
-                    <a href="mailto:info@flatfee-realtor.com">info@flatfee-realtor.com</a>
-                </div>
-                <div class="footer-social" style="margin-top: 16px;">
-                    <a href="https://www.reddit.com/user/flatfee-realtor/" target="_blank" aria-label="Reddit">
-                        <span class="mbr-iconfont socicon-reddit socicon"></span>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Column 2: Locations -->
-            <div class="col-6 col-md-6 col-lg-3 mb-4">
-                <h5 class="footer-heading">Locations</h5>
-                <ul class="footer-links">
-                    <li><a href="San-Jose.html">San Jose, CA</a></li>
-                    <li><a href="San-Francisco.html">San Francisco, CA</a></li>
-                    <li><a href="Oakland.html">Oakland, CA</a></li>
-                    <li><a href="Fremont.html">Fremont, CA</a></li>
-                    <li><a href="San-Mateo.html">San Mateo, CA</a></li>
-                    <li><a href="Los-Angeles.html">Los Angeles, CA</a></li>
-                    <li><a href="San-Diego.html">San Diego, CA</a></li>
-                    <li><a href="Sacramento.html">Sacramento, CA</a></li>
-                    <li><a href="locations.html">See More</a></li>
-                </ul>
-            </div>
-
-            <!-- Column 3: Appreciation Rankings -->
-            <div class="col-6 col-md-6 col-lg-3 mb-4">
-                <h5 class="footer-heading">Rankings</h5>
-                <ul class="footer-links">
-                    <li><a href="Appreciation-Rankings-Hub.html">Real Estate Appreciation Hub</a></li>
-                    <li><a href="Bay-Area-City-Appreciation-Ranking.html">Bay Area Appreciation Ranking</a></li>
-                    <li><a href="Southern-CA-City-Appreciation-Ranking.html">Southern CA Appreciation Rankings</a></li>
-                    <li><a href="US-City-Appreciation-Ranking.html">California Appreciation Rankings</a></li>
-                    <li><a href="US-City-Appreciation-Ranking.html">US Appreciation Rankings</a></li>
-                    <li><a href="US-Neighborhood-Appreciation-Ranking.html">Neighborhood Level Rankings</a></li>
-                </ul>
-            </div>
-
-            <!-- Column 4: Company -->
-            <div class="col-6 col-md-6 col-lg-3 mb-4">
-                <h5 class="footer-heading">Company</h5>
-                <ul class="footer-links">
-                    <li><a href="reviews.html">Client Reviews</a></li>
-                    <li><a href="properties.html">Closed Properties</a></li>
-                    <li><a href="blog.html">Our Blog</a></li>
-                    <li><a href="license.html">License Information</a></li>
-                    <li><a href="terms.html">Terms and Conditions</a></li>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-                </ul>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-6 col-lg-3 mb-4">
+        <div class="footer-brand-col">
+          <img src="assets/images/logo-ffr-2-337x337.png" alt="Flat Fee Realtor">
+          <p>Top 1% Realtors with all 5-Star reviews. Flat fee, maximum cashback. Full service representation.</p>
         </div>
-
-        <!-- Bottom bar -->
-        <div class="footer-bottom">
-            <p>&copy; Copyright 2026 Flat Fee Realtor (formerly Cashbackagent)</p>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon">&#9742;</span>
+          <span>408-905-8133</span>
         </div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon socicon-whatsapp socicon" style="font-size: 0.95rem;"></span>
+          <a href="https://wa.me/14089058133" target="_blank">408-905-8133</a>
+        </div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon">&#9993;</span>
+          <a href="mailto:info@flatfee-realtor.com">info@flatfee-realtor.com</a>
+        </div>
+        <div class="footer-social" style="margin-top: 16px;">
+          <a href="https://www.reddit.com/user/flatfee-realtor/" target="_blank" aria-label="Reddit">
+            <span class="mbr-iconfont socicon-reddit socicon"></span>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-6 col-lg-3 mb-4">
+        <h5 class="footer-heading">Locations</h5>
+        <ul class="footer-links">
+          <li><a href="San-Jose.html">San Jose, CA</a></li>
+          <li><a href="San-Francisco.html">San Francisco, CA</a></li>
+          <li><a href="Oakland.html">Oakland, CA</a></li>
+          <li><a href="Fremont.html">Fremont, CA</a></li>
+          <li><a href="San-Mateo.html">San Mateo, CA</a></li>
+          <li><a href="Los-Angeles.html">Los Angeles, CA</a></li>
+          <li><a href="San-Diego.html">San Diego, CA</a></li>
+          <li><a href="Sacramento.html">Sacramento, CA</a></li>
+          <li><a href="locations.html">See More</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-md-6 col-lg-3 mb-4">
+        <h5 class="footer-heading">Rankings</h5>
+        <ul class="footer-links">
+          <li><a href="Appreciation-Rankings-Hub.html">Real Estate Appreciation Hub</a></li>
+          <li><a href="Bay-Area-City-Appreciation-Ranking.html">Bay Area Appreciation Ranking</a></li>
+          <li><a href="Southern-CA-City-Appreciation-Ranking.html">Southern CA Appreciation Rankings</a></li>
+          <li><a href="US-City-Appreciation-Ranking.html">California Appreciation Rankings</a></li>
+          <li><a href="US-City-Appreciation-Ranking.html">US Appreciation Rankings</a></li>
+          <li><a href="US-Neighborhood-Appreciation-Ranking.html">Neighborhood Level Rankings</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-md-6 col-lg-3 mb-4">
+        <h5 class="footer-heading">Company</h5>
+        <ul class="footer-links">
+          <li><a href="reviews.html">Client Reviews</a></li>
+          <li><a href="properties.html">Closed Properties</a></li>
+          <li><a href="blog.html">Our Blog</a></li>
+          <li><a href="license.html">License Information</a></li>
+          <li><a href="terms.html">Terms and Conditions</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
     </div>
+    <div class="footer-bottom">
+      <p>&copy; Copyright 2026 Flat Fee Realtor (formerly Cashbackagent)</p>
+    </div>
+  </div>
 </footer>
 
-
 <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/smoothscroll/smooth-scroll.js"></script>
-  <script src="assets/ytplayer/index.js"></script>
-  <script src="assets/chatbutton/floating-wpp.js"></script>
-  <script src="assets/chatbutton/script.js"></script>
-  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
-  <script src="assets/mbr-switch-arrow/mbr-switch-arrow.js"></script>
-  <script src="assets/theme/js/script.js"></script>
-  <script src="assets/formoid.min.js"></script>
-  
-  <!-- Default Statcounter code for flatfee
-http://flatfee-realtor.com -->
+<script src="assets/smoothscroll/smooth-scroll.js"></script>
+<script src="assets/ytplayer/index.js"></script>
+<script src="assets/chatbutton/floating-wpp.js"></script>
+<script src="assets/chatbutton/script.js"></script>
+<script src="assets/dropdown/js/navbar-dropdown.js"></script>
+<script src="assets/mbr-switch-arrow/mbr-switch-arrow.js"></script>
+<script src="assets/theme/js/script.js"></script>
+<script src="assets/formoid.min.js"></script>
+
+<!-- Default Statcounter code for flatfee http://flatfee-realtor.com -->
 <script type="text/javascript">
-var sc_project=13140329; 
-var sc_invisible=1; 
-var sc_security="04536c4a"; 
+var sc_project=13140329;
+var sc_invisible=1;
+var sc_security="04536c4a";
 </script>
-<script type="text/javascript"
-src="https://www.statcounter.com/counter/counter.js"
-async></script>
-<noscript><div class="statcounter"><a title="Web Analytics"
-href="https://statcounter.com/" target="_blank"><img
-class="statcounter"
-src="https://c.statcounter.com/13140329/0/04536c4a/1/"
-alt="Web Analytics"
-referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+<script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+<noscript><div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img class="statcounter" src="https://c.statcounter.com/13140329/0/04536c4a/1/" alt="Web Analytics" referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
 <!-- End of Statcounter Code -->
-  
+
+<script>
+// Initialize Bootstrap popovers on all field info buttons
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.field-info-btn').forEach(function (el) {
+    new bootstrap.Popover(el);
+    // Clicking the field label or input should close open popovers
+    el.addEventListener('shown.bs.popover', function () {
+      document.addEventListener('click', function closeOthers(e) {
+        if (!el.contains(e.target)) {
+          bootstrap.Popover.getInstance(el).hide();
+          document.removeEventListener('click', closeOthers);
+        }
+      });
+    });
+  });
+});
+</script>
+
 <div id="chatbutton-wa" data-phone="+14089058133" data-showpopup="true" data-headertitle="Message us on WhatsApp!" data-popupmessage="Hi!
 
 Leave us a message and it will go straight to our phone!
 
 FFR Team" data-placeholder="Type here" data-position="left" data-headercolor="#39847a" data-backgroundcolor="#e5ddd5" data-autoopentimeout="0" data-size="65px"><div class="floating-wpp-button" style="width: 65px; height: 65px;"><div class="floating-wpp-button-image"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="0 0 800 800" width="65" height="65"><defs><clipPath id="_clipPath_A3g8G5hPEGG2L0B6hFCxamU4cc8rfqzQ"><rect width="800" height="800"></rect></clipPath></defs><g clip-path="url(#_clipPath_A3g8G5hPEGG2L0B6hFCxamU4cc8rfqzQ)"><g><path d=" M 787.59 800 L 12.41 800 C 5.556 800 0 793.332 0 785.108 L 0 14.892 C 0 6.667 5.556 0 12.41 0 L 787.59 0 C 794.444 0 800 6.667 800 14.892 L 800 785.108 C 800 793.332 794.444 800 787.59 800 Z " fill="rgb(37,211,102)"></path></g><g><path d=" M 508.558 450.429 C 502.67 447.483 473.723 433.24 468.325 431.273 C 462.929 429.308 459.003 428.328 455.078 434.22 C 451.153 440.114 439.869 453.377 436.434 457.307 C 433 461.236 429.565 461.729 423.677 458.78 C 417.79 455.834 398.818 449.617 376.328 429.556 C 358.825 413.943 347.008 394.663 343.574 388.768 C 340.139 382.873 343.207 379.687 346.155 376.752 C 348.804 374.113 352.044 369.874 354.987 366.436 C 357.931 362.999 358.912 360.541 360.875 356.614 C 362.837 352.683 361.857 349.246 360.383 346.299 C 358.912 343.352 347.136 314.369 342.231 302.579 C 337.451 291.099 332.597 292.654 328.983 292.472 C 325.552 292.301 321.622 292.265 317.698 292.265 C 313.773 292.265 307.394 293.739 301.996 299.632 C 296.6 305.527 281.389 319.772 281.389 348.752 C 281.389 377.735 302.487 405.731 305.431 409.661 C 308.376 413.592 346.949 473.062 406.015 498.566 C 420.062 504.634 431.03 508.256 439.581 510.969 C 453.685 515.451 466.521 514.818 476.666 513.302 C 487.978 511.613 511.502 499.06 516.409 485.307 C 521.315 471.55 521.315 459.762 519.842 457.307 C 518.371 454.851 514.446 453.377 508.558 450.429 Z  M 401.126 597.117 L 401.047 597.117 C 365.902 597.104 331.431 587.661 301.36 569.817 L 294.208 565.572 L 220.08 585.017 L 239.866 512.743 L 235.21 505.332 C 215.604 474.149 205.248 438.108 205.264 401.1 C 205.307 293.113 293.17 205.257 401.204 205.257 C 453.518 205.275 502.693 225.674 539.673 262.696 C 576.651 299.716 597.004 348.925 596.983 401.258 C 596.939 509.254 509.078 597.117 401.126 597.117 Z  M 567.816 234.565 C 523.327 190.024 464.161 165.484 401.124 165.458 C 271.24 165.458 165.529 271.161 165.477 401.085 C 165.46 442.617 176.311 483.154 196.932 518.892 L 163.502 641 L 288.421 608.232 C 322.839 627.005 361.591 636.901 401.03 636.913 L 401.126 636.913 L 401.127 636.913 C 530.998 636.913 636.717 531.2 636.77 401.274 C 636.794 338.309 612.306 279.105 567.816 234.565" fill-rule="evenodd" fill="rgb(255,255,255)"></path></g></g></svg></div></div></div>
- </body>
+</body>
 </html>
