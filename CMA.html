@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/logo20final-128x90.png" type="image/x-icon">
+  <meta name="description" content="Comparable market analysis tool for California cities. Enter recent comps, adjust each sale to the latest city appreciation level, and calculate an average adjusted price per square foot.">
+  <title>California CMA Adjuster</title>
+
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/chatbutton/floating-wpp.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,500,600,700,800,900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,500,600,700,800,900&display=swap"></noscript>
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=DM+Sans:300,400,500,600,700,800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=DM+Sans:300,400,500,600,700,800&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=cma001"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=cma001" type="text/css">
+
+  <style>
+    /* ── Design tokens ─────────────────────────────── */
+    :root {
+      --cma-navy:   #10213b;
+      --cma-blue:   #1c3d66;
+      --cma-gold:   #c99a3a;
+      --cma-ink:    #182233;
+      --cma-copy:   #4f6074;
+      --cma-panel:  rgba(255,255,255,0.93);
+      --cma-green:  #1f8f6b;
+      --cma-red:    #c34a47;
+      --cma-border: rgba(16,33,59,0.09);
+      --cma-shadow: 0 20px 56px rgba(16,33,59,0.11);
+    }
+
+    /* ── Base ──────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      background:
+        radial-gradient(ellipse at top left, rgba(217,170,82,0.11) 0%, transparent 38%),
+        linear-gradient(175deg, #f4f6fb 0%, #e8eef8 100%);
+      color: var(--cma-ink);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+    }
+
+    /* ── Navbar pass-through ───────────────────────── */
+    .cid-uTZO3wYcT2 .navbar .navbar-logo img { height: 2.4rem; width: auto; }
+    @media (min-width: 992px) {
+      .cid-uTZO3wYcT2 .navbar > .container { flex-wrap: nowrap; }
+      .cid-uTZO3wYcT2 .navbar .navbar-collapse { flex-grow: 1; align-items: center; }
+      .cid-uTZO3wYcT2 ul.navbar-nav { flex-wrap: nowrap; }
+      .cid-uTZO3wYcT2 .navbar-buttons { min-width: auto; white-space: nowrap; margin-left: .25rem; }
+    }
+    .btn-rankings-outline,
+    .btn-rankings-outline:active,
+    .btn-rankings-outline:focus { background-color: #fff !important; border-color: #232323 !important; color: #232323 !important; }
+    .btn-rankings-outline:hover { background-color: #f7f7f7 !important; border-color: #000 !important; color: #000 !important; }
+
+    /* ── Hero ──────────────────────────────────────── */
+    .cma-hero { padding: 52px 0 32px; background: transparent !important; }
+
+    .cma-hero h1 {
+      max-width: 860px;
+      margin: 0 0 14px;
+      color: var(--cma-navy);
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    .cma-hero-copy {
+      max-width: 760px;
+      margin: 0;
+      font-size: 0.97rem;
+      line-height: 1.72;
+      color: var(--cma-copy);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 28px;
+      max-width: 760px;
+    }
+
+    .hero-stat {
+      padding: 16px 18px;
+      border: 1px solid var(--cma-border);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.78);
+    }
+
+    .hero-stat-label {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.7rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--cma-copy);
+    }
+
+    .hero-stat-value {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--cma-navy);
+      line-height: 1.3;
+    }
+
+    /* ── Main layout ───────────────────────────────── */
+    .cma-main {
+      position: relative;
+      z-index: 1;
+      padding-bottom: 60px;
+    }
+
+    /* ── Panel cards ───────────────────────────────── */
+    .panel-card {
+      height: 100%;
+      border: 1px solid var(--cma-border);
+      border-radius: 24px;
+      background: var(--cma-panel);
+      box-shadow: var(--cma-shadow);
+      backdrop-filter: blur(10px);
+      overflow: hidden;
+    }
+
+    .panel-card .panel-body { padding: 28px; }
+
+    .panel-kicker {
+      margin-bottom: 8px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cma-gold);
+    }
+
+    .panel-title {
+      margin: 0 0 8px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      line-height: 1.18;
+      color: var(--cma-navy);
+    }
+
+    .panel-copy {
+      margin: 0;
+      font-size: 0.9rem;
+      line-height: 1.72;
+      color: var(--cma-copy);
+    }
+
+    /* ── City meta box ─────────────────────────────── */
+    .city-meta {
+      margin-top: 16px;
+      padding: 16px 18px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(16,33,59,0.05), rgba(217,170,82,0.07));
+      border: 1px solid var(--cma-border);
+    }
+
+    .city-meta h3 {
+      margin: 0 0 4px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--cma-navy);
+    }
+
+    .city-meta p {
+      margin: 0;
+      font-size: 0.875rem;
+      line-height: 1.55;
+      color: var(--cma-copy);
+    }
+
+    .status-line {
+      margin-top: 14px;
+      font-size: 0.86rem;
+      line-height: 1.5;
+      color: var(--cma-copy);
+    }
+
+    /* ── Summary metric grid ───────────────────────── */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .metric-card {
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: linear-gradient(160deg, #fff 0%, #eaf0f9 100%);
+      border: 1px solid var(--cma-border);
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .metric-card.featured {
+      background: linear-gradient(140deg, #10213b 0%, #1c3d66 100%);
+      border-color: transparent;
+      box-shadow: 0 10px 30px rgba(16,33,59,0.22);
+    }
+
+    .metric-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cma-copy);
+    }
+
+    .metric-card.featured .metric-label { color: rgba(210,224,245,0.7); }
+
+    .metric-value {
+      display: block;
+      font-size: clamp(1.25rem, 2.4vw, 1.9rem);
+      font-weight: 800;
+      line-height: 1.06;
+      color: var(--cma-navy);
+    }
+
+    .metric-card.featured .metric-value { color: #fff; }
+
+    .metric-note {
+      font-size: 0.8rem;
+      line-height: 1.45;
+      color: var(--cma-copy);
+      margin-top: 2px;
+    }
+
+    .metric-card.featured .metric-note { color: rgba(210,224,245,0.72); }
+
+    .metric-card.featured-final {
+      background: linear-gradient(140deg, #6b3d00 0%, #b8790f 100%);
+      border-color: transparent;
+      box-shadow: 0 10px 30px rgba(184,121,15,0.28);
+    }
+    .metric-card.featured-final .metric-label { color: rgba(255,230,170,0.75); }
+    .metric-card.featured-final .metric-value { color: #fff; }
+    .metric-card.featured-final .metric-note  { color: rgba(255,230,170,0.72); }
+
+    /* ── Form fields ───────────────────────────────── */
+    .input-shell { margin-top: 20px; }
+
+    .field-label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--cma-ink);
+    }
+
+    .field-note {
+      margin-top: 7px;
+      font-size: 0.86rem;
+      line-height: 1.55;
+      color: var(--cma-copy);
+    }
+
+    .form-control,
+    .form-select {
+      min-height: 48px;
+      border-radius: 13px;
+      border: 1px solid rgba(16,33,59,0.13);
+      background-color: rgba(255,255,255,0.96);
+      color: var(--cma-ink);
+      box-shadow: none;
+      transition: border-color .15s, box-shadow .15s;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+      border-color: rgba(28,61,102,0.44);
+      box-shadow: 0 0 0 0.2rem rgba(28,61,102,0.1);
+    }
+
+    /* ── Section header ────────────────────────────── */
+    .cma-section { margin-top: 28px; }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--cma-navy);
+    }
+
+    .section-copy {
+      margin: 6px 0 0;
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: var(--cma-copy);
+    }
+
+    /* ── Toolbar buttons ───────────────────────────── */
+    .toolbar {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      gap: 8px;
+    }
+
+    .btn-cma {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 999px;
+      padding: 0.58rem 1.2rem;
+      font-size: 0.875rem;
+      font-weight: 700;
+      white-space: nowrap;
+      cursor: pointer;
+      line-height: 1;
+      transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease;
+    }
+
+    .btn-cma:hover:not([disabled]) { transform: translateY(-1px); }
+
+    .btn-cma-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--cma-navy), var(--cma-blue));
+      box-shadow: 0 6px 20px rgba(16,33,59,0.22);
+    }
+
+    .btn-cma-primary:hover:not([disabled]) { box-shadow: 0 10px 26px rgba(16,33,59,0.3); }
+
+    .btn-cma-secondary {
+      color: var(--cma-navy);
+      background: #dce7f5;
+    }
+
+    .btn-cma-secondary:hover:not([disabled]) { background: #cddaed; }
+
+    .btn-cma[disabled] {
+      cursor: not-allowed;
+      opacity: 0.48;
+    }
+
+    /* ── Comp table card ───────────────────────────── */
+    /* popover is position:fixed so overflow:hidden doesn't clip it */
+    .comp-shell .panel-body { padding: 24px; }
+    .comp-shell .section-head { margin-bottom: 0; }
+    .cma-section { background: transparent !important; }
+
+    .table-wrap {
+      border-radius: 16px;
+      border: 1px solid var(--cma-border);
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .comp-table {
+      width: 100%;
+      margin: 0;
+      color: var(--cma-ink);
+      table-layout: fixed;
+      border-collapse: collapse;
+      vertical-align: middle;
+    }
+
+    .comp-table thead th {
+      padding: 11px 10px;
+      border-bottom: 1px solid rgba(16,33,59,0.08);
+      background: #eef4fb;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--cma-navy);
+      white-space: nowrap;
+    }
+
+    /* Column widths — must sum to 100% */
+    .comp-table th:nth-child(1),
+    .comp-table td:nth-child(1) { width: 5%;  text-align: center; padding-left: 6px; padding-right: 6px; }
+    .comp-table th:nth-child(2),
+    .comp-table td:nth-child(2) { width: 16%; }
+    .comp-table th:nth-child(3),
+    .comp-table td:nth-child(3) { width: 15%; }
+    .comp-table th:nth-child(4),
+    .comp-table td:nth-child(4) { width: 10%; }
+    .comp-table th:nth-child(5),
+    .comp-table td:nth-child(5) { width: 16%; text-align: right; }
+    .comp-table th:nth-child(6),
+    .comp-table td:nth-child(6) { width: 13%; text-align: right; }
+    .comp-table th:nth-child(7),
+    .comp-table td:nth-child(7) { width: 16%; text-align: right; }
+    .comp-table th:nth-child(8),
+    .comp-table td:nth-child(8) { width: 9%;  text-align: center; padding-left: 4px; padding-right: 8px; }
+    /* 5+16+15+10+16+13+16+9 = 100 */
+
+    .comp-table tbody td {
+      padding: 9px 8px;
+      border-bottom: 1px solid rgba(16,33,59,0.06);
+      background: #fff;
+      vertical-align: middle;
+    }
+
+    .comp-table tbody tr:last-child td { border-bottom: 0; }
+    .comp-table tbody tr:hover td { background: #fafcff; }
+
+    /* Inputs inside the table */
+    .comp-table .form-control {
+      min-width: 0;
+      width: 100%;
+      min-height: 38px;
+      padding: 0.36rem 0.55rem;
+      border-radius: 10px;
+      font-size: 0.88rem;
+    }
+
+    /* Date input + calendar button */
+    .date-inline {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .date-inline .form-control {
+      flex: 1 1 0;
+      min-width: 0;
+      text-align: center;
+      padding-left: 0.3rem;
+      padding-right: 0.3rem;
+    }
+
+    .month-picker { flex-shrink: 0; }
+
+    .month-picker-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border: 0;
+      border-radius: 9px;
+      background: rgba(16,33,59,0.07);
+      color: var(--cma-navy);
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background-color .15s;
+    }
+
+    .month-picker-btn:hover { background: rgba(28,61,102,0.15); }
+
+    /* ── Month-picker popover (fixed so it escapes overflow) ── */
+    .month-picker-popover {
+      position: fixed;
+      z-index: 9999;
+      width: 220px;
+      padding: 12px;
+      border: 1px solid rgba(16,33,59,0.12);
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: 0 16px 48px rgba(16,33,59,0.18);
+    }
+
+    .month-picker-popover[hidden] { display: none; }
+
+    .month-picker-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      gap: 6px;
+    }
+
+    .month-picker-year {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: var(--cma-navy);
+    }
+
+    .month-picker-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border: 0;
+      border-radius: 8px;
+      background: rgba(16,33,59,0.07);
+      color: var(--cma-navy);
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color .15s;
+    }
+
+    .month-picker-nav:hover { background: rgba(28,61,102,0.15); }
+
+    .month-picker-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 5px;
+    }
+
+    .month-picker-month {
+      min-height: 32px;
+      border: 0;
+      border-radius: 9px;
+      background: #eef4fb;
+      color: var(--cma-navy);
+      font-size: 0.79rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color .12s;
+    }
+
+    .month-picker-month:hover { background: rgba(28,61,102,0.14); }
+
+    .month-picker-month.active {
+      background: linear-gradient(135deg, var(--cma-navy), var(--cma-blue));
+      color: #fff;
+    }
+
+    /* ── Row number badge ──────────────────────────── */
+    .row-id {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: rgba(16,33,59,0.07);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--cma-navy);
+    }
+
+    /* ── Result cells ──────────────────────────────── */
+    .result-value {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--cma-navy);
+    }
+
+    .result-subtle { display: none; }
+
+    /* ── Remove button ─────────────────────────────── */
+    .remove-row {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border: 0;
+      border-radius: 8px;
+      background: rgba(16,33,59,0.07);
+      color: var(--cma-copy);
+      font-size: 1rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: background-color .15s, color .15s;
+    }
+
+    .remove-row:hover {
+      background: rgba(195,74,71,0.13);
+      color: var(--cma-red);
+    }
+
+    /* ── Responsive ────────────────────────────────── */
+    @media (max-width: 991px) {
+      .cma-hero           { padding: 36px 0 20px; }
+      .panel-card .panel-body { padding: 22px; }
+      .comp-shell .panel-body { padding: 14px; }
+      .section-head       { align-items: flex-start; flex-direction: column; }
+      .toolbar            { flex-shrink: unset; }
+    }
+
+    @media (max-width: 767px) {
+      .cma-hero           { padding: 24px 0 14px; }
+      .hero-stats,
+      .summary-grid       { grid-template-columns: 1fr; }
+      .panel-title,
+      .section-title      { font-size: 1.5rem; }
+      .toolbar            { width: 100%; }
+      .toolbar .btn-cma   { flex: 1 1 auto; }
+      .table-wrap         { overflow-x: auto; }
+      .comp-table         { min-width: 640px; }
+    }
+  </style>
+</head>
+<body>
+<section class="cma-hero">
+  <div class="container">
+    <h1>California CMA Adjuster</h1>
+    <p class="cma-hero-copy">Internal tool for normalizing comp sales to the latest city market level. Select a California city, enter up to 10 comps, and the page will calculate sale $/sf, appreciation adjustment, adjusted $/sf, and the average adjusted result.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-label">Coverage</span>
+        <span class="hero-stat-value" id="heroCoverage">Loading city data...</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-label">History</span>
+        <span class="hero-stat-value" id="heroHistory">Monthly series through latest file month</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-label">Comp Limit</span>
+        <span class="hero-stat-value">Up to 10 properties</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main class="cma-main">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-5">
+        <div class="panel-card">
+          <div class="panel-body">
+            <div class="panel-kicker">City Selection</div>
+            <h2 class="panel-title">Choose the market you want to normalize to.</h2>
+            <p class="panel-copy">The adjustment uses the selected city&apos;s monthly Zillow Home Value Index history. Each comp uses the selected sale month and year, then rolls back to the nearest earlier month only if that city has missing early history.</p>
+
+            <div class="input-shell">
+              <label class="field-label" for="cityFilter">Filter California cities</label>
+              <input id="cityFilter" class="form-control" type="search" placeholder="Type Los Angeles, Fremont, Irvine...">
+            </div>
+
+            <div class="input-shell">
+              <label class="field-label" for="citySelect">Select city</label>
+              <select id="citySelect" class="form-select" aria-describedby="cityHelp">
+                <option value="">Loading city list...</option>
+              </select>
+              <p class="field-note" id="cityHelp">Start typing to narrow the city list. All calculations update automatically after selection.</p>
+            </div>
+
+            <div class="city-meta" id="cityMeta">
+              <h3>No city selected</h3>
+              <p>Load the California city data, then choose the market you want to use for appreciation adjustments.</p>
+            </div>
+
+            <div class="status-line" id="dataStatus">Loading local California appreciation dataset...</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-7">
+        <div class="panel-card">
+          <div class="panel-body">
+            <div class="panel-kicker">Summary</div>
+            <h2 class="panel-title">Current normalized pricing signal.</h2>
+            <p class="panel-copy">This summary reflects only rows with a valid sale month, sale price, and square footage. Blank or invalid rows are excluded from the average.</p>
+
+            <div class="input-shell" style="margin-bottom:16px;">
+              <label class="field-label" for="targetSqft">Target property square footage</label>
+              <input id="targetSqft" class="form-control" type="number" min="1" placeholder="e.g. 1850" style="max-width:220px;">
+            </div>
+
+            <div class="summary-grid">
+              <div class="metric-card">
+                <span class="metric-label">Recommended Value</span>
+                <span class="metric-value" id="recommendedValue">—</span>
+                <span class="metric-note" id="recommendedValueNote">Enter target sq ft above.</span>
+              </div>
+              <div class="metric-card">
+                <span class="metric-label">Recommended Range</span>
+                <span class="metric-value" id="recommendedRange">—</span>
+                <span class="metric-note" id="recommendedRangeNote">Enter target sq ft above.</span>
+              </div>
+              <div class="metric-card">
+                <span class="metric-label">Final Adjusted Average $/sf</span>
+                <span class="metric-value" id="finalAvgValue">$0.00</span>
+                <span class="metric-note" id="finalAvgNote">Select a city and enter comps.</span>
+              </div>
+              <div class="metric-card">
+                <span class="metric-label">Final Adjusted Range</span>
+                <span class="metric-value" id="finalRangeValue">$0.00 – $0.00</span>
+                <span class="metric-note" id="finalRangeNote">Lowest to highest final $/sf.</span>
+              </div>
+              <div class="metric-card">
+                <span class="metric-label">Dec 2025 Adjusted $/sf</span>
+                <span class="metric-value" id="avgAdjustedValue">$0.00</span>
+                <span class="metric-note" id="avgAdjustedNote">Select a city and enter comps.</span>
+              </div>
+              <div class="metric-card">
+                <span class="metric-label">Dec 2025 Adjusted Range</span>
+                <span class="metric-value" id="adjustedRangeValue">$0.00 – $0.00</span>
+                <span class="metric-note" id="adjustedRangeNote">Lowest to highest adjusted $/sf.</span>
+              </div>
+              <div class="metric-card">
+                <span class="metric-label">Average Sale $/sf</span>
+                <span class="metric-value" id="avgRawValue">$0.00</span>
+                <span class="metric-note" id="avgRawNote">Raw price per square foot before any adjustment.</span>
+              </div>
+              <div class="metric-card">
+                <span class="metric-label">Valid Comps Used</span>
+                <span class="metric-value" id="compCountValue">0</span>
+                <span class="metric-note" id="compCountNote">Rows included in the average.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="cma-section">
+      <div class="panel-card comp-shell">
+        <div class="panel-body">
+          <div class="section-head">
+            <div>
+              <h2 class="section-title">Comparable sales</h2>
+              <p class="section-copy">Enter sale month, sale price, and finished square footage for each comp. Blank rows are ignored. The tool calculates the original sale $/sf, appreciation adjustment, and current normalized $/sf for every completed row.</p>
+            </div>
+            <div class="toolbar">
+              <button id="addRowBtn" class="btn-cma btn-cma-primary" type="button">Add comp</button>
+              <button id="resetRowsBtn" class="btn-cma btn-cma-secondary" type="button">Clear rows</button>
+            </div>
+          </div>
+          <div class="table-wrap" style="margin-top:16px;">
+            <table class="table comp-table">
+              <thead>
+                <tr>
+                  <th>Comp</th>
+                  <th>Mo / Yr</th>
+                  <th>Price</th>
+                  <th>Sq Ft</th>
+                  <th>Sale $/sf</th>
+                  <th>Adj %</th>
+                  <th>Adj $/sf</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="compTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+<div id="monthPickerPopover" class="month-picker-popover" hidden>
+  <div class="month-picker-head">
+    <button id="monthPickerPrevYear" class="month-picker-nav" type="button" aria-label="Previous year">&#8249;</button>
+    <div id="monthPickerYear" class="month-picker-year">2025</div>
+    <button id="monthPickerNextYear" class="month-picker-nav" type="button" aria-label="Next year">&#8250;</button>
+  </div>
+  <div id="monthPickerGrid" class="month-picker-grid"></div>
+</div>
+<script src="assets/data/ca_cities_zhvi_data.js"></script>
+<script>
+  const INITIAL_ROWS = 5;
+  const MAX_ROWS = 10;
+
+  const state = {
+    dates: [],
+    monthIndexMap: new Map(),
+    cities: [],
+    filteredCities: [],
+    selectedCity: null,
+    latestDatasetMonth: null,
+    rowCount: 0,
+    activePickerRow: null,
+    activePickerYear: new Date().getFullYear()
+  };
+
+  const dom = {};
+
+  document.addEventListener('DOMContentLoaded', () => {
+    cacheDom();
+    bindEvents();
+    for (let i = 0; i < INITIAL_ROWS; i += 1) addRow();
+    loadDataset();
+  });
+
+  function cacheDom() {
+    dom.cityFilter = document.getElementById('cityFilter');
+    dom.citySelect = document.getElementById('citySelect');
+    dom.cityMeta = document.getElementById('cityMeta');
+    dom.dataStatus = document.getElementById('dataStatus');
+    dom.heroCoverage = document.getElementById('heroCoverage');
+    dom.heroHistory = document.getElementById('heroHistory');
+    dom.avgAdjustedValue = document.getElementById('avgAdjustedValue');
+    dom.avgAdjustedNote = document.getElementById('avgAdjustedNote');
+    dom.adjustedRangeValue = document.getElementById('adjustedRangeValue');
+    dom.adjustedRangeNote = document.getElementById('adjustedRangeNote');
+    dom.avgRawValue = document.getElementById('avgRawValue');
+    dom.avgRawNote = document.getElementById('avgRawNote');
+    dom.compCountValue = document.getElementById('compCountValue');
+    dom.compCountNote = document.getElementById('compCountNote');
+    dom.finalAvgValue = document.getElementById('finalAvgValue');
+    dom.finalAvgNote = document.getElementById('finalAvgNote');
+    dom.finalRangeValue = document.getElementById('finalRangeValue');
+    dom.finalRangeNote = document.getElementById('finalRangeNote');
+    dom.targetSqft = document.getElementById('targetSqft');
+    dom.recommendedValue = document.getElementById('recommendedValue');
+    dom.recommendedValueNote = document.getElementById('recommendedValueNote');
+    dom.recommendedRange = document.getElementById('recommendedRange');
+    dom.recommendedRangeNote = document.getElementById('recommendedRangeNote');
+    dom.compTableBody = document.getElementById('compTableBody');
+    dom.addRowBtn = document.getElementById('addRowBtn');
+    dom.resetRowsBtn = document.getElementById('resetRowsBtn');
+    dom.monthPickerPopover = document.getElementById('monthPickerPopover');
+    dom.monthPickerYear = document.getElementById('monthPickerYear');
+    dom.monthPickerGrid = document.getElementById('monthPickerGrid');
+    dom.monthPickerPrevYear = document.getElementById('monthPickerPrevYear');
+    dom.monthPickerNextYear = document.getElementById('monthPickerNextYear');
+  }
+
+  function bindEvents() {
+    dom.cityFilter.addEventListener('input', renderFilteredCities);
+    dom.citySelect.addEventListener('change', onCityChange);
+    dom.targetSqft.addEventListener('input', updateCalculations);
+    dom.addRowBtn.addEventListener('click', addRow);
+    dom.resetRowsBtn.addEventListener('click', clearRows);
+    dom.monthPickerPrevYear.addEventListener('click', () => shiftMonthPickerYear(-1));
+    dom.monthPickerNextYear.addEventListener('click', () => shiftMonthPickerYear(1));
+    dom.monthPickerGrid.addEventListener('click', handleMonthPickerSelection);
+    document.addEventListener('click', handleDocumentClick);
+    document.addEventListener('keydown', handleDocumentKeydown);
+  }
+
+  function loadDataset() {
+    setDatasetStatus('Loading local California appreciation dataset...', false);
+
+    try {
+      parseBundledDataset(window.CA_CITIES_ZHVI_DATA);
+      state.filteredCities = state.cities.slice();
+      renderCityOptions(state.filteredCities);
+
+      const latestMonth = formatMonthLabel(state.latestDatasetMonth);
+      dom.heroCoverage.textContent = state.cities.length + ' California cities';
+      dom.heroHistory.textContent = 'Monthly data from ' + formatMonthLabel(state.dates[0]) + ' to ' + latestMonth;
+      setDatasetStatus('Loaded ' + state.cities.length + ' California cities with monthly history through ' + latestMonth + '.', false);
+    } catch (error) {
+      console.error(error);
+      dom.citySelect.innerHTML = '<option value="">Unable to load city data</option>';
+      dom.heroCoverage.textContent = 'Dataset unavailable';
+      dom.heroHistory.textContent = 'Check the bundled data script';
+      setDatasetStatus('The bundled California appreciation data script could not be loaded. This page expects "assets/data/ca_cities_zhvi_data.js" to be present.', true);
+    }
+  }
+
+  function parseBundledDataset(dataset) {
+    if (!dataset || !Array.isArray(dataset.dates) || !Array.isArray(dataset.cities)) {
+      throw new Error('Bundled California city dataset is missing or malformed.');
+    }
+
+    state.dates = dataset.dates.slice();
+    state.monthIndexMap = new Map(state.dates.map((date, index) => [date.slice(0, 7), index]));
+    state.latestDatasetMonth = state.dates[state.dates.length - 1];
+
+    state.cities = dataset.cities
+      .map((city) => {
+        const values = Array.isArray(city.values)
+          ? city.values.map((value) => (Number.isFinite(value) ? value : (value === null ? null : Number(value))))
+          : [];
+
+        return {
+          id: city.id,
+          rank: Number(city.rank),
+          name: city.name,
+          metro: city.metro,
+          county: city.county,
+          values,
+          latestPoint: getLatestPoint(values)
+        };
+      })
+      .filter((city) => city.latestPoint)
+      .sort((a, b) => a.name.localeCompare(b.name));
+  }
+
+  function renderFilteredCities() {
+    const query = dom.cityFilter.value.trim().toLowerCase();
+    state.filteredCities = !query
+      ? state.cities.slice()
+      : state.cities.filter((city) => city.name.toLowerCase().includes(query) || city.county.toLowerCase().includes(query) || city.metro.toLowerCase().includes(query));
+    renderCityOptions(state.filteredCities);
+  }
+
+  function renderCityOptions(cities) {
+    const selectedId = state.selectedCity ? state.selectedCity.id : '';
+    if (cities.length === 0) {
+      dom.citySelect.innerHTML = '<option value="">No cities match the current filter</option>';
+      return;
+    }
+
+    const options = ['<option value="">Select a California city</option>'];
+    cities.forEach((city) => {
+      const isSelected = city.id === selectedId ? ' selected' : '';
+      options.push('<option value="' + escapeHtml(city.id) + '"' + isSelected + '>' + escapeHtml(city.name + ' - ' + city.county) + '</option>');
+    });
+    dom.citySelect.innerHTML = options.join('');
+  }
+
+  function onCityChange() {
+    const cityId = dom.citySelect.value;
+    state.selectedCity = state.cities.find((city) => city.id === cityId) || null;
+    renderSelectedCity();
+    updateCalculations();
+  }
+
+  function renderSelectedCity() {
+    if (!state.selectedCity) {
+      dom.cityMeta.innerHTML = '<h3>No city selected</h3><p>Load the California city data, then choose the market you want to use for appreciation adjustments.</p>';
+      return;
+    }
+
+    const latestLabel = formatMonthLabel(state.selectedCity.latestPoint.date);
+    dom.cityMeta.innerHTML = ''
+      + '<h3>' + escapeHtml(state.selectedCity.name) + '</h3>'
+      + '<p>' + escapeHtml(state.selectedCity.county) + ' | ' + escapeHtml(state.selectedCity.metro) + '</p>'
+      + '<p style="margin-top: 10px;">Latest data month: <strong>' + escapeHtml(latestLabel) + '</strong>. Zillow typical home value: <strong>' + escapeHtml(formatCurrency(state.selectedCity.latestPoint.value, 0)) + '</strong>.</p>';
+  }
+
+  function addRow() {
+    if (state.rowCount >= MAX_ROWS) {
+      updateRowButtonState();
+      return;
+    }
+
+    state.rowCount += 1;
+    const rowNumber = state.rowCount;
+    const tr = document.createElement('tr');
+    tr.dataset.rowNumber = String(rowNumber);
+    tr.innerHTML = ''
+      + '<td><span class="row-id">' + rowNumber + '</span></td>'
+      + '<td><div class="date-inline">'
+      + '<input class="form-control sale-period" type="text" inputmode="numeric" maxlength="5" placeholder="MM/YY" aria-label="Sale month and year for comp ' + rowNumber + '">'
+      + '<div class="month-picker">'
+      + '<button class="month-picker-btn" type="button" aria-label="Open month picker for comp ' + rowNumber + '">&#128197;</button>'
+      + '</div>'
+      + '</div></td>'
+      + '<td><input class="form-control sale-price" type="text" inputmode="numeric" placeholder="0" aria-label="Sale price for comp ' + rowNumber + '"></td>'
+      + '<td><input class="form-control sale-sqft" type="number" min="0" step="1" placeholder="0" aria-label="Square feet for comp ' + rowNumber + '"></td>'
+      + '<td><div class="result-stack"><span class="result-value sale-psf">$0.00</span><span class="result-subtle">Original</span></div></td>'
+      + '<td><div class="result-stack"><span class="result-value appreciation-rate">0.0%</span><span class="result-subtle">To latest month</span></div></td>'
+      + '<td><div class="result-stack"><span class="result-value adjusted-psf">$0.00</span><span class="result-subtle">Normalized</span></div></td>'
+      + '<td><button class="remove-row" type="button" aria-label="Remove comp ' + rowNumber + '">&times;</button></td>';
+
+    tr.querySelectorAll('input').forEach((input) => {
+      input.addEventListener('input', (event) => {
+        if (event.target.classList.contains('sale-price')) {
+          formatSalePriceInput(event.target);
+        }
+        if (event.target.classList.contains('sale-period')) {
+          formatSalePeriodInput(event.target);
+          syncPickerFromPeriod(tr);
+        }
+        updateCalculations();
+      });
+      input.addEventListener('change', updateCalculations);
+    });
+
+    tr.querySelector('.month-picker-btn').addEventListener('click', (event) => {
+      openMonthPicker(tr, event.currentTarget);
+    });
+
+    tr.querySelector('.remove-row').addEventListener('click', () => {
+      if (state.activePickerRow === tr) {
+        closeMonthPicker();
+      }
+      tr.remove();
+      renumberRows();
+      updateCalculations();
+      updateRowButtonState();
+    });
+
+    dom.compTableBody.appendChild(tr);
+    updateRowButtonState();
+    updateCalculations();
+  }
+
+  function clearRows() {
+    closeMonthPicker();
+    dom.compTableBody.querySelectorAll('tr').forEach((row) => {
+      row.querySelectorAll('input').forEach((input) => {
+        input.value = '';
+      });
+    });
+    updateCalculations();
+  }
+
+  function renumberRows() {
+    const rows = Array.from(dom.compTableBody.querySelectorAll('tr'));
+    state.rowCount = rows.length;
+    rows.forEach((row, index) => {
+      const rowNumber = index + 1;
+      row.dataset.rowNumber = String(rowNumber);
+      row.querySelector('.row-id').textContent = String(rowNumber);
+      row.querySelector('.sale-period').setAttribute('aria-label', 'Sale month and year for comp ' + rowNumber);
+      row.querySelector('.month-picker-btn').setAttribute('aria-label', 'Open month picker for comp ' + rowNumber);
+      row.querySelector('.sale-price').setAttribute('aria-label', 'Sale price for comp ' + rowNumber);
+      row.querySelector('.sale-sqft').setAttribute('aria-label', 'Square feet for comp ' + rowNumber);
+      row.querySelector('.remove-row').setAttribute('aria-label', 'Remove comp ' + rowNumber);
+    });
+  }
+
+  function updateRowButtonState() {
+    dom.addRowBtn.disabled = state.rowCount >= MAX_ROWS;
+  }
+
+  function updateCalculations() {
+    const rows = Array.from(dom.compTableBody.querySelectorAll('tr'));
+    const validRows = [];
+
+    rows.forEach((row) => {
+      const result = calculateRow(row);
+      if (result && result.valid) validRows.push(result);
+    });
+
+    const resetFinal = () => {
+      dom.finalAvgValue.textContent = '$0.00';
+      dom.finalAvgNote.textContent = 'Select a city and enter comps.';
+      dom.finalRangeValue.textContent = '$0.00 – $0.00';
+      dom.finalRangeNote.textContent = 'Lowest to highest final $/sf.';
+      dom.recommendedValue.textContent = '—';
+      dom.recommendedValueNote.textContent = 'Enter target sq ft above.';
+      dom.recommendedRange.textContent = '—';
+      dom.recommendedRangeNote.textContent = 'Enter target sq ft above.';
+    };
+
+    if (!state.selectedCity) {
+      dom.avgAdjustedValue.textContent = '$0.00';
+      dom.avgAdjustedNote.textContent = 'Choose a city to activate the adjustment logic.';
+      dom.adjustedRangeValue.textContent = '$0.00 – $0.00';
+      dom.adjustedRangeNote.textContent = 'Lowest to highest adjusted $/sf.';
+      dom.avgRawValue.textContent = '$0.00';
+      dom.avgRawNote.textContent = 'Raw price per square foot before appreciation adjustment.';
+      dom.compCountValue.textContent = '0';
+      dom.compCountNote.textContent = 'Rows included in the average.';
+      resetFinal();
+      return;
+    }
+
+    if (validRows.length === 0) {
+      dom.avgAdjustedValue.textContent = '$0.00';
+      dom.avgAdjustedNote.textContent = 'Enter at least one complete comp row to generate the normalized average.';
+      dom.adjustedRangeValue.textContent = '$0.00 – $0.00';
+      dom.adjustedRangeNote.textContent = 'Lowest to highest adjusted $/sf.';
+      dom.avgRawValue.textContent = '$0.00';
+      dom.avgRawNote.textContent = 'Raw price per square foot before appreciation adjustment.';
+      dom.compCountValue.textContent = '0';
+      dom.compCountNote.textContent = 'No valid rows yet.';
+      resetFinal();
+      return;
+    }
+
+    const adjustedAverage = validRows.reduce((sum, row) => sum + row.adjustedPsf, 0) / validRows.length;
+    const rawAverage = validRows.reduce((sum, row) => sum + row.rawPsf, 0) / validRows.length;
+    const adjustedValues = validRows.map((row) => row.adjustedPsf);
+    const minAdjusted = Math.min(...adjustedValues);
+    const maxAdjusted = Math.max(...adjustedValues);
+
+    const latestLabel = formatMonthLabel(state.selectedCity.latestPoint.date);
+    const compWord = validRows.length === 1 ? 'comp' : 'comps';
+
+    dom.avgAdjustedValue.textContent = formatCurrency(adjustedAverage, 2);
+    dom.avgAdjustedNote.textContent = 'Average across ' + validRows.length + ' valid ' + compWord + ' adjusted to ' + latestLabel + '.';
+    dom.adjustedRangeValue.textContent = formatCurrency(minAdjusted, 2) + ' – ' + formatCurrency(maxAdjusted, 2);
+    dom.adjustedRangeNote.textContent = 'Lowest to highest adjusted $/sf across ' + validRows.length + ' ' + compWord + '.';
+    dom.avgRawValue.textContent = formatCurrency(rawAverage, 2);
+    dom.avgRawNote.textContent = 'Average original sale price per square foot before market adjustment.';
+    dom.compCountValue.textContent = String(validRows.length);
+    dom.compCountNote.textContent = validRows.length + ' row' + (validRows.length === 1 ? '' : 's') + ' currently included.';
+
+    const extra = calcExtraAppreciation();
+    const finalAvgPsf = adjustedAverage * extra.factor;
+    const finalMinPsf = minAdjusted * extra.factor;
+    const finalMaxPsf = maxAdjusted * extra.factor;
+    dom.finalAvgValue.textContent = formatCurrency(finalAvgPsf, 2);
+    dom.finalAvgNote.textContent = extra.label;
+    dom.finalRangeValue.textContent = formatCurrency(finalMinPsf, 2) + ' – ' + formatCurrency(finalMaxPsf, 2);
+    dom.finalRangeNote.textContent = 'Range after ' + extra.totalMonths + '-month forward estimate (' + extra.sinceDataset + ' elapsed + 1 closing).';
+
+    const sqft = parseFloat(dom.targetSqft.value);
+    if (sqft > 0) {
+      const roundTo10k = v => Math.ceil(v / 10000) * 10000;
+      const fmtK = v => '$' + (v / 1000).toLocaleString('en-US', { maximumFractionDigits: 0 }) + 'K';
+      dom.recommendedValue.textContent = fmtK(roundTo10k(finalAvgPsf * sqft));
+      dom.recommendedValueNote.textContent = sqft.toLocaleString() + ' sf × ' + formatCurrency(finalAvgPsf, 2) + '/sf (rounded up to nearest $10K)';
+      dom.recommendedRange.textContent = fmtK(roundTo10k(finalMinPsf * sqft)) + ' – ' + fmtK(roundTo10k(finalMaxPsf * sqft));
+      dom.recommendedRangeNote.textContent = sqft.toLocaleString() + ' sf × range (' + formatCurrency(finalMinPsf, 2) + ' – ' + formatCurrency(finalMaxPsf, 2) + '/sf, rounded up to nearest $10K)';
+    } else {
+      dom.recommendedValue.textContent = '—';
+      dom.recommendedValueNote.textContent = 'Enter target sq ft above.';
+      dom.recommendedRange.textContent = '—';
+      dom.recommendedRangeNote.textContent = 'Enter target sq ft above.';
+    }
+  }
+
+  function calculateRow(row) {
+    const periodInput = row.querySelector('.sale-period').value;
+    const priceInput = row.querySelector('.sale-price').value;
+    const sqftInput = row.querySelector('.sale-sqft').value;
+
+    if (!periodInput && !priceInput && !sqftInput) {
+      updateRowDisplay(row, { salePsf: '$0.00', appreciation: '0.0%', adjustedPsf: '$0.00' });
+      return null;
+    }
+
+    if (!periodInput || !priceInput || !sqftInput) {
+      updateRowDisplay(row, { salePsf: '$0.00', appreciation: '0.0%', adjustedPsf: '$0.00' });
+      return null;
+    }
+
+    const period = parseSalePeriod(periodInput);
+    const price = parseCurrencyInput(priceInput);
+    const sqft = Number(sqftInput);
+    if (!period || !Number.isFinite(price) || !Number.isFinite(sqft) || price <= 0 || sqft <= 0) {
+      updateRowDisplay(row, { salePsf: '$0.00', appreciation: '0.0%', adjustedPsf: '$0.00' });
+      return null;
+    }
+
+    const rawPsf = price / sqft;
+
+    if (!state.selectedCity) {
+      updateRowDisplay(row, { salePsf: formatCurrency(rawPsf, 2), appreciation: '0.0%', adjustedPsf: '$0.00' });
+      return null;
+    }
+
+    const saleMonthKey = String(period.year) + '-' + String(period.month).padStart(2, '0');
+    const monthIndex = state.monthIndexMap.get(saleMonthKey);
+    if (monthIndex === undefined) {
+      updateRowDisplay(row, { salePsf: formatCurrency(rawPsf, 2), appreciation: '0.0%', adjustedPsf: '$0.00' });
+      return null;
+    }
+
+    const salePoint = getPointAtOrBefore(monthIndex, state.selectedCity.values);
+    if (!salePoint) {
+      updateRowDisplay(row, { salePsf: formatCurrency(rawPsf, 2), appreciation: '0.0%', adjustedPsf: '$0.00' });
+      return null;
+    }
+
+    const latestPoint = state.selectedCity.latestPoint;
+    const appreciationRate = (latestPoint.value / salePoint.value) - 1;
+    const adjustedPsf = rawPsf * (latestPoint.value / salePoint.value);
+
+    updateRowDisplay(row, {
+      salePsf: formatCurrency(rawPsf, 2),
+      appreciation: formatPercent(appreciationRate),
+      adjustedPsf: formatCurrency(adjustedPsf, 2)
+    });
+
+    return { valid: true, rawPsf, adjustedPsf };
+  }
+
+  function updateRowDisplay(row, values) {
+    row.querySelector('.sale-psf').textContent = values.salePsf;
+    row.querySelector('.appreciation-rate').textContent = values.appreciation;
+    row.querySelector('.adjusted-psf').textContent = values.adjustedPsf;
+  }
+
+  function getLatestPoint(values) {
+    for (let index = values.length - 1; index >= 0; index -= 1) {
+      if (Number.isFinite(values[index])) return { index, date: state.dates[index], value: values[index] };
+    }
+    return null;
+  }
+
+  function getPointAtOrBefore(index, values) {
+    for (let current = index; current >= 0; current -= 1) {
+      if (Number.isFinite(values[current])) return { index: current, date: state.dates[current], value: values[current] };
+    }
+    return null;
+  }
+
+  function calcExtraAppreciation() {
+    if (!state.selectedCity) return { totalMonths: 0, sinceDataset: 0, factor: 1, label: '' };
+
+    const latestStr = state.selectedCity.latestPoint.date;
+    const latestYear = Number(latestStr.slice(0, 4));
+    const latestMo   = Number(latestStr.slice(5, 7)); // 1-based
+
+    const now = new Date();
+    const nowYear = now.getFullYear();
+    const nowMo   = now.getMonth() + 1; // 1-based
+
+    const sinceDataset = Math.max(0, (nowYear - latestYear) * 12 + (nowMo - latestMo));
+    const closingMonths = 1;
+    const totalMonths = sinceDataset + closingMonths;
+    const factor = Math.pow(1.005, totalMonths);
+
+    const latestLabel = formatMonthLabel(latestStr);
+    const pct = ((factor - 1) * 100).toFixed(2);
+    const label = sinceDataset + ' mo since ' + latestLabel + ' + 1 closing mo @ 0.5%/mo = +' + pct + '% est.';
+
+    return { totalMonths, sinceDataset, factor, label };
+  }
+
+  function setDatasetStatus(message, isError) {
+    dom.dataStatus.textContent = message;
+    dom.dataStatus.style.color = isError ? 'var(--cma-red)' : 'var(--cma-copy)';
+  }
+
+  function parseCurrencyInput(value) {
+    const numericValue = String(value).replace(/[^0-9.]/g, '');
+    const parsed = Number(numericValue);
+    return Number.isFinite(parsed) ? parsed : NaN;
+  }
+
+  function parseSalePeriod(value) {
+    const match = String(value).trim().match(/^(\d{2})\/(\d{2})$/);
+    if (!match) return null;
+
+    const month = Number(match[1]);
+    const shortYear = Number(match[2]);
+    if (!Number.isInteger(month) || month < 1 || month > 12) return null;
+
+    const year = shortYear >= 70 ? 1900 + shortYear : 2000 + shortYear;
+    return { month, year };
+  }
+
+  function formatSalePeriodInput(input) {
+    const digits = String(input.value).replace(/\D/g, '').slice(0, 4);
+    if (!digits) {
+      input.value = '';
+      return;
+    }
+
+    if (digits.length <= 2) {
+      input.value = digits;
+      return;
+    }
+
+    input.value = digits.slice(0, 2) + '/' + digits.slice(2);
+  }
+
+  function syncPeriodFromPicker(row, pickerValue) {
+    const period = pickerValue;
+    if (!period) return;
+    const periodInput = row.querySelector('.sale-period');
+    periodInput.value = String(period.month).padStart(2, '0') + '/' + String(period.year).slice(-2);
+  }
+
+  function syncPickerFromPeriod(row) {
+    const period = parseSalePeriod(row.querySelector('.sale-period').value);
+    if (period) {
+      state.activePickerYear = period.year;
+    }
+  }
+
+  function openMonthPicker(row, anchorButton) {
+    state.activePickerRow = row;
+    const period = parseSalePeriod(row.querySelector('.sale-period').value);
+    state.activePickerYear = period ? period.year : getDefaultPickerYear();
+    renderMonthPicker();
+    positionMonthPicker(anchorButton);
+    dom.monthPickerPopover.hidden = false;
+  }
+
+  function closeMonthPicker() {
+    state.activePickerRow = null;
+    dom.monthPickerPopover.hidden = true;
+  }
+
+  function getDefaultPickerYear() {
+    if (state.selectedCity && state.selectedCity.latestPoint && state.selectedCity.latestPoint.date) {
+      return new Date(state.selectedCity.latestPoint.date).getFullYear();
+    }
+    return new Date().getFullYear();
+  }
+
+  function shiftMonthPickerYear(delta) {
+    state.activePickerYear += delta;
+    renderMonthPicker();
+  }
+
+  function renderMonthPicker() {
+    dom.monthPickerYear.textContent = String(state.activePickerYear);
+    const selected = state.activePickerRow ? parseSalePeriod(state.activePickerRow.querySelector('.sale-period').value) : null;
+    const months = [];
+
+    for (let month = 1; month <= 12; month += 1) {
+      const isActive = selected && selected.year === state.activePickerYear && selected.month === month;
+      months.push(
+        '<button class="month-picker-month' + (isActive ? ' active' : '') + '" type="button" data-month="' + month + '">'
+        + String(month).padStart(2, '0') +
+        '</button>'
+      );
+    }
+
+    dom.monthPickerGrid.innerHTML = months.join('');
+  }
+
+  function positionMonthPicker(anchorButton) {
+    const rect = anchorButton.getBoundingClientRect();
+    const popoverWidth = 220;
+    const left = Math.min(rect.left, window.innerWidth - popoverWidth - 12);
+    const top = rect.bottom + 6;
+    dom.monthPickerPopover.style.left = Math.max(12, left) + 'px';
+    dom.monthPickerPopover.style.top = top + 'px';
+  }
+
+  function handleMonthPickerSelection(event) {
+    const button = event.target.closest('.month-picker-month');
+    if (!button || !state.activePickerRow) return;
+
+    const month = Number(button.dataset.month);
+    if (!Number.isInteger(month)) return;
+
+    syncPeriodFromPicker(state.activePickerRow, { month, year: state.activePickerYear });
+    updateCalculations();
+    closeMonthPicker();
+  }
+
+  function handleDocumentClick(event) {
+    if (dom.monthPickerPopover.hidden) return;
+
+    const clickedInsidePopover = dom.monthPickerPopover.contains(event.target);
+    const clickedPickerButton = event.target.closest('.month-picker-btn');
+    if (!clickedInsidePopover && !clickedPickerButton) {
+      closeMonthPicker();
+    }
+  }
+
+  function handleDocumentKeydown(event) {
+    if (event.key === 'Escape' && !dom.monthPickerPopover.hidden) {
+      closeMonthPicker();
+    }
+  }
+
+  function formatSalePriceInput(input) {
+    const numericValue = String(input.value).replace(/[^0-9]/g, '');
+    if (!numericValue) {
+      input.value = '';
+      return;
+    }
+
+    input.value = new Intl.NumberFormat('en-US', {
+      maximumFractionDigits: 0
+    }).format(Number(numericValue));
+  }
+
+  function formatCurrency(value, decimals) {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      maximumFractionDigits: decimals,
+      minimumFractionDigits: decimals
+    }).format(value);
+  }
+
+  function formatPercent(value) {
+    return new Intl.NumberFormat('en-US', {
+      style: 'percent',
+      maximumFractionDigits: 1,
+      minimumFractionDigits: 1,
+      signDisplay: 'always'
+    }).format(value);
+  }
+
+  function formatMonthLabel(dateString) {
+    const date = new Date(dateString);
+    return new Intl.DateTimeFormat('en-US', { month: 'short', year: 'numeric' }).format(date);
+  }
+
+  function escapeHtml(value) {
+    return String(value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+</script>
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/smoothscroll/smooth-scroll.js"></script>
+<script src="assets/ytplayer/index.js"></script>
+<script src="assets/chatbutton/floating-wpp.js"></script>
+<script src="assets/chatbutton/script.js"></script>
+<script src="assets/dropdown/js/navbar-dropdown.js"></script>
+<script src="assets/theme/js/script.js"></script>
+</body>
+</html>
