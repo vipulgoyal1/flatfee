@@ -248,6 +248,28 @@
     .metric-card.featured-final .metric-value { color: #fff; }
     .metric-card.featured-final .metric-note  { color: rgba(255,230,170,0.72); }
 
+    /* ── No-city warning banner ────────────────────── */
+    .no-city-banner {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      border-radius: 14px;
+      background: #fff8ec;
+      border: 1.5px solid #f0c060;
+      color: #7a4f00;
+      font-size: 0.88rem;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+    .no-city-banner::before {
+      content: '⚠';
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .no-city-banner[hidden] { display: none; }
+
     /* ── Form fields ───────────────────────────────── */
     .input-shell { margin-top: 20px; }
 
@@ -600,9 +622,9 @@
       .comp-table         { min-width: 640px; }
     }
 
-    @media print {
-      @page { margin: 1.4cm 1.2cm; size: landscape; }
+    @page { size: portrait; margin: 1.4cm 1.2cm; }
 
+    @media print {
       html, body {
         background: #fff !important;
         color: #000 !important;
@@ -818,6 +840,8 @@
               <input id="targetSqft" class="form-control" type="number" min="1" placeholder="e.g. 1850" style="max-width:220px;">
             </div>
 
+            <div class="no-city-banner" id="noCityBanner">Select a city on the left before entering comps — all adjustments depend on the city's ZHVI appreciation history.</div>
+
             <div class="summary-grid">
               <div class="metric-card">
                 <span class="metric-label">Recommended Value</span>
@@ -954,6 +978,7 @@
     dom.finalAvgNote = document.getElementById('finalAvgNote');
     dom.finalRangeValue = document.getElementById('finalRangeValue');
     dom.finalRangeNote = document.getElementById('finalRangeNote');
+    dom.noCityBanner = document.getElementById('noCityBanner');
     dom.targetSqft = document.getElementById('targetSqft');
     dom.recommendedValue = document.getElementById('recommendedValue');
     dom.recommendedValueNote = document.getElementById('recommendedValueNote');
@@ -1181,6 +1206,8 @@
       dom.recommendedRange.textContent = '—';
       dom.recommendedRangeNote.textContent = 'Enter target sq ft above.';
     };
+
+    dom.noCityBanner.hidden = !!state.selectedCity;
 
     if (!state.selectedCity) {
       dom.avgAdjustedValue.textContent = '$0.00';
