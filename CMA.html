@@ -599,6 +599,86 @@
       .table-wrap         { overflow-x: auto; }
       .comp-table         { min-width: 640px; }
     }
+
+    @media print {
+      /* Reset page background */
+      html, body {
+        background: #fff !important;
+        color: #000 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      /* Hide non-printable UI */
+      nav, .navbar, footer,
+      .cma-hero,
+      .toolbar,
+      .month-picker-btn,
+      .month-picker-popover,
+      .remove-row,
+      #dataStatus,
+      .col-lg-5 { display: none !important; }
+
+      /* Full-width summary panel when left column is hidden */
+      .col-lg-7 { flex: 0 0 100% !important; max-width: 100% !important; }
+
+      /* Remove card chrome */
+      .panel-card {
+        background: #fff !important;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
+        border: 1px solid #ccc !important;
+        border-radius: 8px !important;
+        overflow: visible !important;
+        break-inside: avoid;
+      }
+
+      .cma-main { padding-bottom: 0 !important; }
+
+      /* Metric tiles */
+      .metric-card {
+        background: #f6f8fb !important;
+        border: 1px solid #ccc !important;
+        border-radius: 6px !important;
+        break-inside: avoid;
+      }
+
+      .metric-label, .metric-value, .metric-note,
+      .panel-title, .panel-copy, .panel-kicker,
+      .section-title, .section-copy,
+      .city-meta h3, .city-meta p,
+      .result-value, .field-label {
+        color: #000 !important;
+      }
+
+      /* Table */
+      .table-wrap {
+        overflow: visible !important;
+        border: 1px solid #ccc !important;
+      }
+
+      .comp-table thead th {
+        background: #eee !important;
+        color: #000 !important;
+      }
+
+      .comp-table tbody td {
+        background: #fff !important;
+        color: #000 !important;
+      }
+
+      .row-id { background: #eee !important; color: #000 !important; }
+
+      /* Section break */
+      .cma-section { break-inside: avoid; margin-top: 16px !important; }
+
+      /* Input values still readable */
+      .form-control, .form-select {
+        background: #fff !important;
+        border: 1px solid #ccc !important;
+        color: #000 !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1133,9 +1213,26 @@
 
     const saleMonthKey = String(period.year) + '-' + String(period.month).padStart(2, '0');
     const monthIndex = state.monthIndexMap.get(saleMonthKey);
+    const latestPoint = state.selectedCity.latestPoint;
+
+    // Sale date is beyond the dataset — normalize back using 0.5%/mo estimate
     if (monthIndex === undefined) {
-      updateRowDisplay(row, { salePsf: formatCurrency(rawPsf, 2), appreciation: '0.0%', adjustedPsf: '$0.00' });
-      return null;
+      const latestYear = Number(latestPoint.date.slice(0, 4));
+      const latestMo   = Number(latestPoint.date.slice(5, 7));
+      const monthsBeyond = (period.year - latestYear) * 12 + (period.month - latestMo);
+      if (monthsBeyond <= 0) {
+        updateRowDisplay(row, { salePsf: formatCurrency(rawPsf, 2), appreciation: '0.0%', adjustedPsf: '$0.00' });
+        return null;
+      }
+      const factor = Math.pow(1.005, monthsBeyond);
+      const adjustedPsf = rawPsf / factor;
+      const appreciationRate = (1 / factor) - 1;
+      updateRowDisplay(row, {
+        salePsf: formatCurrency(rawPsf, 2),
+        appreciation: formatPercent(appreciationRate),
+        adjustedPsf: formatCurrency(adjustedPsf, 2)
+      });
+      return { valid: true, rawPsf, adjustedPsf };
     }
 
     const salePoint = getPointAtOrBefore(monthIndex, state.selectedCity.values);
@@ -1144,7 +1241,6 @@
       return null;
     }
 
-    const latestPoint = state.selectedCity.latestPoint;
     const appreciationRate = (latestPoint.value / salePoint.value) - 1;
     const adjustedPsf = rawPsf * (latestPoint.value / salePoint.value);
 
