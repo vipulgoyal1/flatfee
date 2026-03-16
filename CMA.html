@@ -601,28 +601,52 @@
     }
 
     @media print {
-      /* Reset page background */
+      @page { margin: 1.4cm 1.2cm; size: landscape; }
+
       html, body {
         background: #fff !important;
         color: #000 !important;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
+        width: 100% !important;
       }
 
-      /* Hide non-printable UI */
+      /* ── Hide non-printable UI ── */
       nav, .navbar, footer,
       .cma-hero,
       .toolbar,
       .month-picker-btn,
       .month-picker-popover,
       .remove-row,
+      .input-shell,
       #dataStatus,
       .col-lg-5 { display: none !important; }
 
-      /* Full-width summary panel when left column is hidden */
-      .col-lg-7 { flex: 0 0 100% !important; max-width: 100% !important; }
+      /* ── Fix Bootstrap grid ── */
+      /* Kill negative gutter margins that cause right-side bleed */
+      .container {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+      .row {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        display: block !important; /* stack instead of flex so hidden col leaves no gap */
+      }
+      .col-lg-7 {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: none !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
 
-      /* Remove card chrome */
+      /* ── Main layout ── */
+      .cma-main { padding: 0 !important; }
+
+      /* ── Panel cards ── */
       .panel-card {
         background: #fff !important;
         box-shadow: none !important;
@@ -630,19 +654,30 @@
         border: 1px solid #ccc !important;
         border-radius: 8px !important;
         overflow: visible !important;
+        height: auto !important;  /* remove 100% height left over from flex layout */
         break-inside: avoid;
       }
+      .panel-card .panel-body { padding: 16px !important; }
 
-      .cma-main { padding-bottom: 0 !important; }
+      /* ── Summary metric grid: 4 columns across the page ── */
+      .summary-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: 8px !important;
+        margin-top: 12px !important;
+      }
 
-      /* Metric tiles */
       .metric-card {
-        background: #f6f8fb !important;
+        background: #f5f7fb !important;
         border: 1px solid #ccc !important;
         border-radius: 6px !important;
+        padding: 10px 12px !important;
         break-inside: avoid;
       }
 
+      .metric-value { font-size: 1rem !important; }
+      .metric-note  { font-size: 0.72rem !important; }
+
+      /* ── Force all text dark ── */
       .metric-label, .metric-value, .metric-note,
       .panel-title, .panel-copy, .panel-kicker,
       .section-title, .section-copy,
@@ -651,33 +686,68 @@
         color: #000 !important;
       }
 
-      /* Table */
+      /* ── Comparable sales section ── */
+      .cma-section {
+        margin-top: 20px !important;
+        break-inside: avoid;
+      }
+      .comp-shell .panel-body { padding: 14px !important; }
+
+      /* ── Table ── */
       .table-wrap {
         overflow: visible !important;
         border: 1px solid #ccc !important;
+        border-radius: 6px !important;
+      }
+
+      .comp-table {
+        font-size: 0.72rem !important;
+        table-layout: fixed !important;
+        width: 100% !important;
       }
 
       .comp-table thead th {
         background: #eee !important;
         color: #000 !important;
+        padding: 5px 6px !important;
+        font-size: 0.65rem !important;
+        white-space: normal !important;
+        word-break: break-word !important;
       }
 
       .comp-table tbody td {
         background: #fff !important;
         color: #000 !important;
+        padding: 4px 6px !important;
+        vertical-align: middle !important;
       }
 
-      .row-id { background: #eee !important; color: #000 !important; }
-
-      /* Section break */
-      .cma-section { break-inside: avoid; margin-top: 16px !important; }
-
-      /* Input values still readable */
-      .form-control, .form-select {
-        background: #fff !important;
-        border: 1px solid #ccc !important;
+      /* Strip input chrome so text reads like plain values */
+      .comp-table .form-control {
+        background: transparent !important;
+        border: none !important;
+        border-bottom: 1px solid #ddd !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+        min-height: unset !important;
+        height: auto !important;
+        font-size: 0.72rem !important;
         color: #000 !important;
+        box-shadow: none !important;
       }
+
+      .date-inline { gap: 2px !important; }
+      .month-picker { display: none !important; }
+
+      .row-id {
+        background: #eee !important;
+        color: #000 !important;
+        width: 22px !important;
+        height: 22px !important;
+        font-size: 0.68rem !important;
+      }
+
+      .result-value { font-size: 0.72rem !important; }
     }
   </style>
 </head>
