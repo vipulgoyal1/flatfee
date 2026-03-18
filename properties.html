@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html  >
 <head>
-  
+
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  
+
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   <link rel="shortcut icon" href="assets/images/logo20final-128x90.png" type="image/x-icon">
   <meta name="description" content="Browse recently closed properties to see our buying track record, local market expertise, and client outcomes across California">
-  
-  
+
+
   <title>Properties Sold</title>
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/chatbutton/floating-wpp.css">
@@ -24,9 +24,9 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lexend:100,200,300,400,500,600,700,800,900&display=swap"></noscript>
   <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=PrDRJB"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=PrDRJB" type="text/css">
 
-  
-  
-  
+
+
+
 <!-- SHARED MENU/FOOTER STYLES -->
 <style>
 .cid-uTZO3wYcT2 .navbar .navbar-logo img {
@@ -252,6 +252,172 @@
       border-color: #2a6b62;
       text-decoration: none;
     }
+
+    /* ===== PROPERTY TILES V2 ===== */
+    .properties-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 28px;
+      padding: 0;
+    }
+    @media (max-width: 640px) {
+      .properties-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+
+    .prop-tile {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #ffffff;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      transition: transform 0.3s cubic-bezier(.25,.46,.45,.94), box-shadow 0.3s ease;
+      cursor: pointer;
+      text-decoration: none !important;
+      color: inherit !important;
+      display: flex;
+      flex-direction: column;
+    }
+    .prop-tile:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.15);
+    }
+    .prop-tile:hover .prop-tile-img img {
+      transform: scale(1.08);
+    }
+    .prop-tile:hover .prop-tile-overlay {
+      opacity: 1;
+    }
+
+    .prop-tile-img {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+    }
+    .prop-tile-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s cubic-bezier(.25,.46,.45,.94);
+    }
+
+    /* Gradient overlay on image */
+    .prop-tile-img::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60%;
+      background: linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+
+    /* Cashback badge */
+    .prop-tile-cashback {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: linear-gradient(135deg, #39847a 0%, #2c6e65 100%);
+      color: #ffffff;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      padding: 6px 12px;
+      border-radius: 8px;
+      z-index: 2;
+      letter-spacing: 0.02em;
+    }
+
+    /* "View on Zillow" overlay */
+    .prop-tile-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(15,32,39,0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 3;
+    }
+    .prop-tile-overlay span {
+      background: #ffffff;
+      color: #1a1a1a;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 10px 24px;
+      border-radius: 50px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      letter-spacing: 0.02em;
+    }
+    .prop-tile-overlay span::after {
+      content: ' \2197';
+    }
+
+    .prop-tile-body {
+      padding: 18px 20px 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .prop-tile-address {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #1a1a1a;
+      line-height: 1.4;
+      margin: 0 0 8px 0;
+    }
+    .prop-tile-city {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      font-size: 0.84rem;
+      color: #777777;
+      margin: 0;
+    }
+
+    /* Stats row */
+    .prop-tile-stats {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin-top: auto;
+      padding-top: 14px;
+      border-top: 1px solid #f0f0f0;
+    }
+    .prop-tile-stat {
+      flex: 1;
+      text-align: center;
+    }
+    .prop-tile-stat:not(:last-child) {
+      border-right: 1px solid #f0f0f0;
+    }
+    .prop-tile-stat-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      color: #aaaaaa;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 2px;
+    }
+    .prop-tile-stat-value {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+    .prop-tile-stat-value.cashback-val {
+      color: #39847a;
+    }
+
 </style>
 <!-- /SHARED MENU/FOOTER STYLES -->
 
@@ -343,9 +509,9 @@
   </div>
 </section>
 
-<section data-bs-version="5.1" class="content3 cid-uYNoHUhNH5" id="content3-4y">
-    
-    
+<section data-bs-version="5.1" class="content3 cid-uYNoHUhNH5" id="content3-4y" style="padding: 50px 0 60px;">
+
+
     <div class="container">
         <div class="mbr-section-head">
             <h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2"><strong>Properties We Sold</strong></h4>
@@ -359,614 +525,1134 @@
         </div>
         <!-- ===== /REVIEWS LINK BANNER ===== -->
 
-        <div class="row mt-4">
-            <div class="item features-image col-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/1028-Rhode-Island-St-San-Francisco-CA-94107/15151403_zpid/" target="_blank"><img src="assets/images/1028-rhode-island-st.jpg" alt="1028 Rhode Island St" title="" data-slide-to="49" data-bs-slide-to="49"></a>
-                    </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">1028 Rhode Island St, San Francisco, CA 94107</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 1.65M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~33k</strong></p>
-                    </div>
-                    
+        <!-- ===== PROPERTY TILES GRID ===== -->
+        <div class="properties-grid">
+
+            <a href="https://www.zillow.com/homedetails/5211-Ostrich-Ct-San-Jose-CA-95123/19826734_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/5211-ostrich-ct-san-jose-960x720.jpg" alt="5211 Ostrich Ct" loading="lazy">
+                    <div class="prop-tile-cashback">~$17k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
                 </div>
-            </div>
-            <div class="item features-image сol-12 col-md-6 col-lg-3 active">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/137-Adrian-Ave-South-San-Francisco-CA-94080/15478660_zpid/" target="_blank"><img src="assets/images/137-adrian-ave-south-san-francisco-1440x967.jpg" alt="137 Adrian Ave" title="" data-slide-to="0" data-bs-slide-to="0"></a>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">5211 Ostrich Ct</p>
+                    <p class="prop-tile-city">San Jose, CA 95123</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$910K</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$17k</div>
+                        </div>
                     </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">137 Adrian Ave, South San Francisco, CA 94080</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 1.018M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~19k</strong></p>
-                    </div>
-                    
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/58260-Joshua-Ln-Yucca-Valley-CA-92284/17493489_zpid/" target="_blank"><img src="assets/images/58260-joshua-ln-yucca-valley-1-1440x838.jpg" alt="58260 Joshua Ln" title="" data-slide-to="1" data-bs-slide-to="1"></a>
-                    </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">58260 Joshua Ln, Yucca Valley, CA 92284</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 451K</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~5k</strong></p>
-                    </div>
-                    
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/1028-Rhode-Island-St-San-Francisco-CA-94107/15151403_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/1028-rhode-island-st.jpg" alt="1028 Rhode Island St" loading="lazy">
+                    <div class="prop-tile-cashback">~$33k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/6033-Ashley-Ct-Pleasanton-CA-94588/25067945_zpid/" target="_blank"><img src="assets/images/6033-ashley-ct-pleasanton-1440x823.jpg" alt="6033 Ashley Ct" title="" data-slide-to="2" data-bs-slide-to="2"></a>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">1028 Rhode Island St</p>
+                    <p class="prop-tile-city">San Francisco, CA 94107</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$1.65M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$33k</div>
+                        </div>
                     </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">6033 Ashley Ct, Pleasanton, CA 9458</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 1.43M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~35k</strong></p>
-                    </div>
-                    
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/1020-Carnelian-Ter-Union-City-CA-94587/72652871_zpid/" target="_blank"><img src="assets/images/8755-colbath-ave-panorama-city-2329x1650.jpg" alt="8755 Colbath Ave" title="" data-slide-to="3" data-bs-slide-to="3"></a>
-                    </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">8755 Colbath Ave, Panorama City, CA 91402</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 755K</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~8k</strong></p>
-                    </div>
-                    
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/137-Adrian-Ave-South-San-Francisco-CA-94080/15478660_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/137-adrian-ave-south-san-francisco-1440x967.jpg" alt="137 Adrian Ave" loading="lazy">
+                    <div class="prop-tile-cashback">~$19k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/1020-Carnelian-Ter-Union-City-CA-94587/72652871_zpid/" target="_blank"><img src="assets/images/1020-carnelian-ter-union-city-image-2-1278x790.jpg" alt="1020 Carnelian Ter" title="" data-slide-to="4" data-bs-slide-to="4"></a>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">137 Adrian Ave</p>
+                    <p class="prop-tile-city">South San Francisco, CA 94080</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$1.018M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$19k</div>
+                        </div>
                     </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">1020 Carnelian Ter, Union City, CA 94587</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 1.06M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~19k</strong></p>
-                    </div>
-                    
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/1919-Alameda-De-Las-Pulgas-APT-26-San-Mateo-CA-94403/15629773_zpid/" target="_blank"><img src="assets/images/1919-alameda-de-las-pulgas-unit-26-1410x1080.jpg" alt="37721 Madera Ct" title="" data-slide-to="5" data-bs-slide-to="5"></a>
-                    </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">1919 Alameda De Las Pulgas APT 26, San Mateo, CA 94403</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 805K</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~14k</strong></p>
-                    </div>
-                    
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/58260-Joshua-Ln-Yucca-Valley-CA-92284/17493489_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/58260-joshua-ln-yucca-valley-1-1440x838.jpg" alt="58260 Joshua Ln" loading="lazy">
+                    <div class="prop-tile-cashback">~$5k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/37721-Madera-Ct-Fremont-CA-94536/25006986_zpid/" target="_blank"><img src="assets/images/37721-madera-ct-fremont-2311x1471.jpg" alt="37721 Madera Ct" title="" data-slide-to="6" data-bs-slide-to="6"></a>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">58260 Joshua Ln</p>
+                    <p class="prop-tile-city">Yucca Valley, CA 92284</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$451K</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$5k</div>
+                        </div>
                     </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">37721 Madera Ct, Fremont, CA 94536</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 1.425M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~35k</strong></p>
-                    </div>
-                    
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/813-Garden-St-Milpitas-CA-95035/243212445_zpid/" target="_blank"><img src="assets/images/813-garden-street-1-2215x1462.jpg" alt="813 Garden St" title="" data-slide-to="7" data-bs-slide-to="7"></a>
-                    </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">813 Garden St, Milpitas, CA 95035</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 1.46M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~30k</strong></p>
-                    </div>
-                    
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/6033-Ashley-Ct-Pleasanton-CA-94588/25067945_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/6033-ashley-ct-pleasanton-1440x823.jpg" alt="6033 Ashley Ct" loading="lazy">
+                    <div class="prop-tile-cashback">~$35k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/39193-State-St-Fremont-CA-94538/333757187_zpid/" target="_blank"><img src="assets/images/39193-state-st-condominium-1-2226x1482.jpg" alt="39193 State St" title="" data-slide-to="8" data-bs-slide-to="8"></a>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">6033 Ashley Ct</p>
+                    <p class="prop-tile-city">Pleasanton, CA 94588</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$1.43M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$35k</div>
+                        </div>
                     </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">39193 State St, Fremont, CA 94538</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 1.253M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~25k</strong></p>
-                    </div>
-                    
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/249-Netherby-Pl-Pleasant-Hill-CA-94523/18395425_zpid/" target="_blank"><img src="assets/images/249-netherby-pl-1537x958.jpg" alt="249 Netherby Pl" title="" data-slide-to="9" data-bs-slide-to="9"></a>
-                    </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">249 Netherby Pl, Pleasant Hill, CA 94523</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 1.148M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~23k</strong></p>
-                    </div>
-                    
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/1020-Carnelian-Ter-Union-City-CA-94587/72652871_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/8755-colbath-ave-panorama-city-2329x1650.jpg" alt="8755 Colbath Ave" loading="lazy">
+                    <div class="prop-tile-cashback">~$8k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/1497-Sanborn-Ave-San-Jose-CA-95110/19684025_zpid/" target="_blank"><img src="assets/images/1497-sanborn-2029x1729.jpg" alt="1497 Sanborn Ave" title="" data-slide-to="10" data-bs-slide-to="10"></a>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">8755 Colbath Ave</p>
+                    <p class="prop-tile-city">Panorama City, CA 91402</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$755K</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$8k</div>
+                        </div>
                     </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">1497 Sanborn Ave, San Jose, CA 95110</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 825K</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~15k</strong></p>
-                    </div>
-                    
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/613-Frankfort-Ave-Huntington-Beach-CA-92648/25113991_zpid/" target="_blank"><img src="assets/images/613-frankfort-ave-1579x934.jpg" alt="613 Frankfort Ave" title="" data-slide-to="11" data-bs-slide-to="11"></a>
-                    </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">613 Frankfort Ave, Huntington Beach, CA 92648</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 2M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~33k</strong></p>
-                    </div>
-                    
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/1020-Carnelian-Ter-Union-City-CA-94587/72652871_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/1020-carnelian-ter-union-city-image-2-1278x790.jpg" alt="1020 Carnelian Ter" loading="lazy">
+                    <div class="prop-tile-cashback">~$19k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/617-Grizzly-Peak-Blvd-Berkeley-CA-94708/24848614_zpid/" target="_blank"><img src="assets/images/617-grizzly-peak-blvd-berkeley-1168x982.jpg" alt="617 Grizzly Peak Blvd" title="" data-slide-to="12" data-bs-slide-to="12"></a>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">1020 Carnelian Ter</p>
+                    <p class="prop-tile-city">Union City, CA 94587</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$1.06M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$19k</div>
+                        </div>
                     </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">617 Grizzly Peak Blvd, Berkeley, CA 94708</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 2.44M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~54k</strong></p>
-                    </div>
-                    
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/1839-15th-St-APT-253-San-Francisco-CA-94127/15143272_zpid/" target="_blank"><img src="assets/images/1839-15th-st-apt-253-san-francisco-1867x1098.jpg" alt="1839 15th St APT 253" title="" data-slide-to="13" data-bs-slide-to="13"></a>
-                    </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">1839 15th St APT 253, San Francisco, CA 94127</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 690k</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~11k</strong></p>
-                    </div>
-                    
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/1919-Alameda-De-Las-Pulgas-APT-26-San-Mateo-CA-94403/15629773_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/1919-alameda-de-las-pulgas-unit-26-1410x1080.jpg" alt="1919 Alameda De Las Pulgas" loading="lazy">
+                    <div class="prop-tile-cashback">~$14k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/428-Snowdon-Pl-Danville-CA-94506/18460873_zpid/" target="_blank"><img src="assets/images/428-snowdon-pl-1061x657.jpg" alt="428 Snowdon Pl" title="" data-slide-to="14" data-bs-slide-to="14"></a>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">1919 Alameda De Las Pulgas APT 26</p>
+                    <p class="prop-tile-city">San Mateo, CA 94403</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$805K</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$14k</div>
+                        </div>
                     </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">428 Snowdon Pl, Danville, CA 94506</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 2.1M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~46k</strong></p>
-                    </div>
-                    
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/3710-Benton-St-Santa-Clara-CA-95051/19616591_zpid/" target="_blank"><img src="assets/images/3710-benton-st-1259x796.jpg" alt="3710 Benton St" title="" data-slide-to="15" data-bs-slide-to="15"></a>
-                    </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">3710 Benton St, Santa Clara, CA 95051</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 2.2M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~48k</strong></p>
-                    </div>
-                    
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/37721-Madera-Ct-Fremont-CA-94536/25006986_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/37721-madera-ct-fremont-2311x1471.jpg" alt="37721 Madera Ct" loading="lazy">
+                    <div class="prop-tile-cashback">~$35k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/1097-10th-Ave-Redwood-City-CA-94063/15567847_zpid/" target="_blank"><img src="assets/images/1097-10th-avenue-1484x800.jpg" alt="1097 10th Avenue" title="" data-slide-to="16" data-bs-slide-to="16"></a>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">37721 Madera Ct</p>
+                    <p class="prop-tile-city">Fremont, CA 94536</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$1.425M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$35k</div>
+                        </div>
                     </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">1097 10th Avenue, Redwood City, CA 94063</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 1.69M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~35k</strong></p>
-                    </div>
-                    
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/292-Sandpiper-Ct-Foster-City-CA-94404/15611664_zpid" target="_blank"><img src="assets/images/292-sandpiper-ct-1223x781.jpg" alt="292 Sandpiper Court" title="" data-slide-to="17" data-bs-slide-to="17"></a>
-                    </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">292 Sandpiper Court, Foster City, CA 94404</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 2.725M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~60k</strong></p>
-                    </div>
-                    
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/813-Garden-St-Milpitas-CA-95035/243212445_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/813-garden-street-1-2215x1462.jpg" alt="813 Garden St" loading="lazy">
+                    <div class="prop-tile-cashback">~$30k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/2618-Belmont-Canyon-Rd-Belmont-CA-94002/15546015_zpid/?" target="_blank"><img src="assets/images/2618-belmont-canyon-rd-1-1240x786.jpg" alt="2618 Belmont Canyon" title="" data-slide-to="18" data-bs-slide-to="18"></a>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">813 Garden St</p>
+                    <p class="prop-tile-city">Milpitas, CA 95035</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$1.46M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$30k</div>
+                        </div>
                     </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">2618 Belmont Canyon Rd, Belmont, CA 94002</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 3.1M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~70k</strong></p>
-                    </div>
-                    
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/544-Beach-Dr-Aptos-CA-95003/16139784_zpid/" target="_blank"><img src="assets/images/544-beach-dr-aptos-1015x770.jpg" alt="544 Beach Dr" title="" data-slide-to="19" data-bs-slide-to="19"></a>
-                    </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">544 Beach Dr, Aptos, CA 95003</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 3.8M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~86k</strong></p>
-                    </div>
-                    
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/39193-State-St-Fremont-CA-94538/333757187_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/39193-state-st-condominium-1-2226x1482.jpg" alt="39193 State St" loading="lazy">
+                    <div class="prop-tile-cashback">~$25k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/3189-S-Bentley-Ave-Los-Angeles-CA-90034/20459463_zpid/" target="_blank"><img src="assets/images/3189-s-bentley-1-1187x733.jpg" alt="3189 S Bentley Ave" title="" data-slide-to="20" data-bs-slide-to="20"></a>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">39193 State St</p>
+                    <p class="prop-tile-city">Fremont, CA 94538</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$1.253M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$25k</div>
+                        </div>
                     </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">3189 S Bentley Ave, Los Angeles, CA 90034</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 2.27M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~49k</strong></p>
-                    </div>
-                    
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/1619-Cleo-Springs-Ct-San-Jose-CA-95131/19566555_zpid/" target="_blank"><img src="assets/images/1619-cleo-springs-ct-1206x743.jpg" alt="1619 Cleo Springs Ct" title="" data-slide-to="21" data-bs-slide-to="21"></a>
-                    </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">1619 Cleo Springs Ct, San Jose, CA 95131</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 2.08M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~45k</strong></p>
-                    </div>
-                    
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/249-Netherby-Pl-Pleasant-Hill-CA-94523/18395425_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/249-netherby-pl-1537x958.jpg" alt="249 Netherby Pl" loading="lazy">
+                    <div class="prop-tile-cashback">~$23k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/922-Home-Grove-Dr-Winter-Garden-FL-34787/82106736_zpid/" target="_blank"><img src="assets/images/922-home-grove-dr-1373x842.jpg" alt="922 Home Grove Dr" title="" data-slide-to="22" data-bs-slide-to="22"></a>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">249 Netherby Pl</p>
+                    <p class="prop-tile-city">Pleasant Hill, CA 94523</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$1.148M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$23k</div>
+                        </div>
                     </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">922 Home Grove Dr, Winter Garden, FL 34787</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 950K</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~13k</strong></p>
-                    </div>
-                    
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/1589-Sonoma-Dr-Milpitas-CA-95035/19483282_zpid/" target="_blank"><img src="assets/images/1589-sonoma-dr-1197x781.jpg" alt="1589 Sonoma Dr" title="" data-slide-to="23" data-bs-slide-to="23"></a>
-                    </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">1589 Sonoma Dr, Milpitas, CA 95035</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 2.2M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~48k</strong></p>
-                    </div>
-                    
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/1497-Sanborn-Ave-San-Jose-CA-95110/19684025_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/1497-sanborn-2029x1729.jpg" alt="1497 Sanborn Ave" loading="lazy">
+                    <div class="prop-tile-cashback">~$15k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/417-Poppyfield-Dr-American-Canyon-CA-94503/54705080_zpid/" target="_blank"><img src="assets/images/417-poppyfield-dr-1200x876.jpg" alt="417 Poppyfield Dr" title="" data-slide-to="24" data-bs-slide-to="24"></a>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">1497 Sanborn Ave</p>
+                    <p class="prop-tile-city">San Jose, CA 95110</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$825K</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$15k</div>
+                        </div>
                     </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">417 Poppyfield Dr, American Canyon, CA 94503</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 715K</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~12k</strong></p>
-                    </div>
-                    
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/850-Maple-Pl-East-Palo-Alto-CA-94303/181454973_zpid/" target="_blank"><img src="assets/images/850-maple-pl-1187x742.jpg" alt="850 Maple Pl" title="" data-slide-to="25" data-bs-slide-to="25"></a>
-                    </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">850 Maple Pl, East Palo Alto, CA 94303</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 1.51M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~31k</strong></p>
-                    </div>
-                    
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/613-Frankfort-Ave-Huntington-Beach-CA-92648/25113991_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/613-frankfort-ave-1579x934.jpg" alt="613 Frankfort Ave" loading="lazy">
+                    <div class="prop-tile-cashback">~$33k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/140-E-Country-Club-Dr-Brentwood-CA-94513/54625450_zpid/" target="_blank"><img src="assets/images/140-e-country-club-dr.webp" alt="140 E Country Club Dr" title="" data-slide-to="26" data-bs-slide-to="26"></a>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">613 Frankfort Ave</p>
+                    <p class="prop-tile-city">Huntington Beach, CA 92648</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$2M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$33k</div>
+                        </div>
                     </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">140 E Country Club Dr, Brentwood, CA 94513</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 1.04M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~20k</strong></p>
-                    </div>
-                    
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/1465-Coyote-Creek-Way-Milpitas-CA-95035/122248573_zpid/" target="_blank"><img src="assets/images/1465-coyote-creek-506x483.jpg" alt="1465 Coyote Creek Way" title="" data-slide-to="27" data-bs-slide-to="27"></a>
-                    </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">1465 Coyote Creek Way, Milpitas, CA 95035</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 1.42M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~29k</strong></p>
-                    </div>
-                    
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/617-Grizzly-Peak-Blvd-Berkeley-CA-94708/24848614_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/617-grizzly-peak-blvd-berkeley-1168x982.jpg" alt="617 Grizzly Peak Blvd" loading="lazy">
+                    <div class="prop-tile-cashback">~$54k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/3041-Susan-Dr-San-Bruno-CA-94066/15491709_zpid/" target="_blank"><img src="assets/images/3041-susan-dr-1440x959.jpg" alt="3041 Susan Dr" title="" data-slide-to="28" data-bs-slide-to="28"></a>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">617 Grizzly Peak Blvd</p>
+                    <p class="prop-tile-city">Berkeley, CA 94708</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$2.44M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$54k</div>
+                        </div>
                     </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">73041 Susan Dr, San Bruno, CA 94066</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 1.28M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~26k</strong></p>
-                    </div>
-                    
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/7175-Glenview-Dr-San-Jose-CA-95120/153457329_zpid/" target="_blank"><img src="assets/images/7175-glenview.webp" alt="Home" title="" data-slide-to="29" data-bs-slide-to="29"></a>
-                    </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">7175 Glenview Dr,<div>San Jose, CA 95120</div></h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 4.20M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~65k</strong></p>
-                    </div>
-                    
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/1839-15th-St-APT-253-San-Francisco-CA-94127/15143272_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/1839-15th-st-apt-253-san-francisco-1867x1098.jpg" alt="1839 15th St APT 253" loading="lazy">
+                    <div class="prop-tile-cashback">~$11k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/2401-Boonville-Rd-Ukiah-CA-95482/19223451_zpid/" target="_blank"><img src="assets/images/2401-boonville-rd.webp" alt="Home" title="" data-slide-to="30" data-bs-slide-to="30"></a>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">1839 15th St APT 253</p>
+                    <p class="prop-tile-city">San Francisco, CA 94127</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$690K</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$11k</div>
+                        </div>
                     </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">2401 Boonville Rd, Ukiah, CA 95482</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 1.43M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~23.5k</strong></p>
-                    </div>
-                    
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/2249-Farmcrest-St-Milpitas-CA-95035/19484152_zpid/" target="_blank"><img src="assets/images/2249-farmcrest.webp" alt="" title="" data-slide-to="31" data-bs-slide-to="31"></a>
-                    </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">2249 Farmcrest St, Milpitas, CA 95035</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 2.35M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~17.5k</strong></p>
-                    </div>
-                    
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/428-Snowdon-Pl-Danville-CA-94506/18460873_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/428-snowdon-pl-1061x657.jpg" alt="428 Snowdon Pl" loading="lazy">
+                    <div class="prop-tile-cashback">~$46k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/24104-Big-Basin-Way-Saratoga-CA-95070/19742425_zpid/?" target="_blank"><img src="assets/images/24104-big-basin-way.webp" alt="" title="" data-slide-to="32" data-bs-slide-to="32"></a>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">428 Snowdon Pl</p>
+                    <p class="prop-tile-city">Danville, CA 94506</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$2.1M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$46k</div>
+                        </div>
                     </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">24104 Big Basin Way, Saratoga, CA 95070</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 1.95M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~43k</strong></p>
-                    </div>
-                    
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/38921-Riverbank-Ter-Fremont-CA-94536/25020153_zpid/" target="_blank"><img src="assets/images/38921-riverbank-1280x720.jpg" alt="" title="" data-slide-to="33" data-bs-slide-to="33"></a>
-                    </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">38921 Riverbank Ter, Fremont, CA 94536</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 1.488M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~32k</strong></p>
-                    </div>
-                    
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/3710-Benton-St-Santa-Clara-CA-95051/19616591_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/3710-benton-st-1259x796.jpg" alt="3710 Benton St" loading="lazy">
+                    <div class="prop-tile-cashback">~$48k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/1901-Cooley-Ave-East-Palo-Alto-CA-94303/82957417_zpid/" target="_blank"><img src="assets/images/1901-cooley.webp" alt="" title="" data-slide-to="34" data-bs-slide-to="34"></a>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">3710 Benton St</p>
+                    <p class="prop-tile-city">Santa Clara, CA 95051</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$2.2M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$48k</div>
+                        </div>
                     </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">1901 Cooley Ave, East Palo Alto, CA 94303</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 1.254M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~26k</strong></p>
-                    </div>
-                    
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/25271-Parklane-Dr-Hayward-CA-94544/331751515_zpid/" target="_blank"><img src="assets/images/25271-parklane.webp" alt="" title="" data-slide-to="35" data-bs-slide-to="35"></a>
-                    </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">25271 Parklane Dr, Hayward, CA 94544</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 890K</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~17k</strong></p>
-                    </div>
-                    
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/1097-10th-Ave-Redwood-City-CA-94063/15567847_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/1097-10th-avenue-1484x800.jpg" alt="1097 10th Avenue" loading="lazy">
+                    <div class="prop-tile-cashback">~$35k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/2745-Beachwood-Ct-Hayward-CA-94545/64964428_zpid/" target="_blank"><img src="assets/images/2745-beachwood.webp" alt="" title="" data-slide-to="36" data-bs-slide-to="36"></a>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">1097 10th Avenue</p>
+                    <p class="prop-tile-city">Redwood City, CA 94063</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$1.69M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$35k</div>
+                        </div>
                     </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">2745 Beachwood Ct, Hayward, CA 94545</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 1.829M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~40k</strong></p>
-                    </div>
-                    
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/1950-34th-Ave-San-Francisco-CA-94116/15114265_zpid/" target="_blank"><img src="assets/images/1950-34th-ave.webp" alt="" title="" data-slide-to="37" data-bs-slide-to="37"></a>
-                    </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">1950 34th Ave, San Francisco, CA 94116</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 1.252M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~26k</strong></p>
-                    </div>
-                    
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/292-Sandpiper-Ct-Foster-City-CA-94404/15611664_zpid" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/292-sandpiper-ct-1223x781.jpg" alt="292 Sandpiper Court" loading="lazy">
+                    <div class="prop-tile-cashback">~$60k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
                 </div>
-            </div>
-            <div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/419-E-Olive-Ave-Merced-CA-95340/19157392_zpid/" target="_blank"><img src="assets/images/419-e-olive.webp" alt="" title="" data-slide-to="38" data-bs-slide-to="38"></a>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">292 Sandpiper Court</p>
+                    <p class="prop-tile-city">Foster City, CA 94404</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$2.725M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$60k</div>
+                        </div>
                     </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">419 E Olive Ave, Merced, CA 95340</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 640K</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~11k</strong><br>
-                        </p>
-                    </div>
-                    
                 </div>
-            </div>
-            <div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/516-Alvarez-Cmn-Milpitas-CA-95035/82949576_zpid/" target="_blank"><img src="assets/images/516-alvarez-400x300.jpg" alt="" title="" data-slide-to="39" data-bs-slide-to="39"></a>
-                    </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">516 Alvarez Cmn, Milpitas, CA 95035</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 1.255M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~26k</strong></p>
-                    </div>
-                    
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/2618-Belmont-Canyon-Rd-Belmont-CA-94002/15546015_zpid/?" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/2618-belmont-canyon-rd-1-1240x786.jpg" alt="2618 Belmont Canyon Rd" loading="lazy">
+                    <div class="prop-tile-cashback">~$70k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/1813-W-Middlefield-Rd-Mountain-View-CA-94043/19511413_zpid/" target="_blank"><img src="assets/images/1813-w-middlefield.webp" alt="" title="" data-slide-to="40" data-bs-slide-to="40"></a>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">2618 Belmont Canyon Rd</p>
+                    <p class="prop-tile-city">Belmont, CA 94002</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$3.1M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$70k</div>
+                        </div>
                     </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">1813 W Middlefield Rd, Mountain View, CA 94043</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 1.75M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~37k</strong></p>
-                    </div>
-                    
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/2222-Portsmouth-Way-San-Mateo-CA-94403/15538395_zpid/" target="_blank"><img src="assets/images/2222-portsmouth-400x300.jpg" alt="" title="" data-slide-to="41" data-bs-slide-to="41"></a>
-                    </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">2222 Portsmouth Way, San Mateo, CA 94403</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 1.765M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~30k</strong></p>
-                    </div>
-                    
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/544-Beach-Dr-Aptos-CA-95003/16139784_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/544-beach-dr-aptos-1015x770.jpg" alt="544 Beach Dr" loading="lazy">
+                    <div class="prop-tile-cashback">~$86k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/2117-Green-Hills-Pl-Fallbrook-CA-92028/16571897_zpid/" target="_blank"><img src="assets/images/2117-green-hills.webp" alt="" title="" data-slide-to="42" data-bs-slide-to="42"></a>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">544 Beach Dr</p>
+                    <p class="prop-tile-city">Aptos, CA 95003</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$3.8M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$86k</div>
+                        </div>
                     </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">2117 Green Hills Pl, Fallbrook, CA 92028</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 1.3M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~21k</strong></p>
-                    </div>
-                    
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/260-Gold-Mine-Dr-San-Francisco-CA-94131/15199615_zpid/" target="_blank"><img src="assets/images/260-gold-mine.webp" alt="" title="" data-slide-to="43" data-bs-slide-to="43"></a>
-                    </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">260 Gold Mine Dr, San Francisco, CA 94131</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 2.4M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~54k</strong></p>
-                    </div>
-                    
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/3189-S-Bentley-Ave-Los-Angeles-CA-90034/20459463_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/3189-s-bentley-1-1187x733.jpg" alt="3189 S Bentley Ave" loading="lazy">
+                    <div class="prop-tile-cashback">~$49k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/57-Ramsgate-Ct-Danville-CA-94526/18453807_zpid/" target="_blank"><img src="assets/images/57-ramsgate.webp" alt="" title="" data-slide-to="44" data-bs-slide-to="44"></a>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">3189 S Bentley Ave</p>
+                    <p class="prop-tile-city">Los Angeles, CA 90034</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$2.27M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$49k</div>
+                        </div>
                     </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">57 Ramsgate Ct, Danville, CA 94526</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 2.125M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~47k</strong><br></p>
-                    </div>
-                    
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/452-Dellbrook-Ave-San-Francisco-CA-94131/15131047_zpid/" target="_blank"><img src="assets/images/452-dellbrook.webp" alt="" title="" data-slide-to="45" data-bs-slide-to="45"></a>
-                    </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">452 Dellbrook Ave, San Francisco, CA 94131</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 1.74M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~37k</strong><br></p>
-                    </div>
-                    
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/1619-Cleo-Springs-Ct-San-Jose-CA-95131/19566555_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/1619-cleo-springs-ct-1206x743.jpg" alt="1619 Cleo Springs Ct" loading="lazy">
+                    <div class="prop-tile-cashback">~$45k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/281-E-Terra-Mia-Ave-Mountain-House-CA-95391/249476433_zpid/" target="_blank"><img src="assets/images/281-terra-400x300.jpg" alt="" title="" data-slide-to="46" data-bs-slide-to="46"></a>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">1619 Cleo Springs Ct</p>
+                    <p class="prop-tile-city">San Jose, CA 95131</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$2.08M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$45k</div>
+                        </div>
                     </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">&nbsp;281 E Terra Mia Ave, Mountain House, CA 95391</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 1.06M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~15k</strong><br></p>
-                    </div>
-                    
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/49000-Woodgrove-Cmn-Fremont-CA-94539/68026993_zpid/" target="_blank"><img src="assets/images/49000-woodgrove.webp" alt="" title="" data-slide-to="47" data-bs-slide-to="47"></a>
-                    </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">49000 Woodgrove Cmn, Fremont, CA 94539</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 1.35M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~28k</strong><br></p>
-                    </div>
-                    
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/922-Home-Grove-Dr-Winter-Garden-FL-34787/82106736_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/922-home-grove-dr-1373x842.jpg" alt="922 Home Grove Dr" loading="lazy">
+                    <div class="prop-tile-cashback">~$13k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
                 </div>
-            </div><div class="item features-image сol-12 col-md-6 col-lg-3">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.zillow.com/homedetails/1506-San-Tomas-Aquino-Rd-San-Jose-CA-95130/19611787_zpid/" target="_blank"><img src="assets/images/1506-san-thomas-400x300.jpg" alt="" title="" data-slide-to="48" data-bs-slide-to="48"></a>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">922 Home Grove Dr</p>
+                    <p class="prop-tile-city">Winter Garden, FL 34787</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$950K</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$13k</div>
+                        </div>
                     </div>
-                    <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-4">1506 San Tomas Aquino Rd, San Jose, CA 95130</h5>
-                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">Sale Price: 1.8M</h6>
-                        <p class="mbr-text mbr-fonts-style mt-3 display-7"><strong>Cashback: ~40k</strong><br></p>
-                    </div>
-                    
                 </div>
-            </div>
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/1589-Sonoma-Dr-Milpitas-CA-95035/19483282_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/1589-sonoma-dr-1197x781.jpg" alt="1589 Sonoma Dr" loading="lazy">
+                    <div class="prop-tile-cashback">~$48k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
+                </div>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">1589 Sonoma Dr</p>
+                    <p class="prop-tile-city">Milpitas, CA 95035</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$2.2M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$48k</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/417-Poppyfield-Dr-American-Canyon-CA-94503/54705080_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/417-poppyfield-dr-1200x876.jpg" alt="417 Poppyfield Dr" loading="lazy">
+                    <div class="prop-tile-cashback">~$12k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
+                </div>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">417 Poppyfield Dr</p>
+                    <p class="prop-tile-city">American Canyon, CA 94503</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$715K</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$12k</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/850-Maple-Pl-East-Palo-Alto-CA-94303/181454973_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/850-maple-pl-1187x742.jpg" alt="850 Maple Pl" loading="lazy">
+                    <div class="prop-tile-cashback">~$31k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
+                </div>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">850 Maple Pl</p>
+                    <p class="prop-tile-city">East Palo Alto, CA 94303</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$1.51M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$31k</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/140-E-Country-Club-Dr-Brentwood-CA-94513/54625450_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/140-e-country-club-dr.webp" alt="140 E Country Club Dr" loading="lazy">
+                    <div class="prop-tile-cashback">~$20k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
+                </div>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">140 E Country Club Dr</p>
+                    <p class="prop-tile-city">Brentwood, CA 94513</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$1.04M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$20k</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/1465-Coyote-Creek-Way-Milpitas-CA-95035/122248573_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/1465-coyote-creek-506x483.jpg" alt="1465 Coyote Creek Way" loading="lazy">
+                    <div class="prop-tile-cashback">~$29k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
+                </div>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">1465 Coyote Creek Way</p>
+                    <p class="prop-tile-city">Milpitas, CA 95035</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$1.42M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$29k</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/3041-Susan-Dr-San-Bruno-CA-94066/15491709_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/3041-susan-dr-1440x959.jpg" alt="3041 Susan Dr" loading="lazy">
+                    <div class="prop-tile-cashback">~$26k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
+                </div>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">3041 Susan Dr</p>
+                    <p class="prop-tile-city">San Bruno, CA 94066</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$1.28M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$26k</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/7175-Glenview-Dr-San-Jose-CA-95120/153457329_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/7175-glenview.webp" alt="7175 Glenview Dr" loading="lazy">
+                    <div class="prop-tile-cashback">~$65k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
+                </div>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">7175 Glenview Dr</p>
+                    <p class="prop-tile-city">San Jose, CA 95120</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$4.20M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$65k</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/2401-Boonville-Rd-Ukiah-CA-95482/19223451_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/2401-boonville-rd.webp" alt="2401 Boonville Rd" loading="lazy">
+                    <div class="prop-tile-cashback">~$23.5k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
+                </div>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">2401 Boonville Rd</p>
+                    <p class="prop-tile-city">Ukiah, CA 95482</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$1.43M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$23.5k</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/2249-Farmcrest-St-Milpitas-CA-95035/19484152_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/2249-farmcrest.webp" alt="2249 Farmcrest St" loading="lazy">
+                    <div class="prop-tile-cashback">~$17.5k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
+                </div>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">2249 Farmcrest St</p>
+                    <p class="prop-tile-city">Milpitas, CA 95035</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$2.35M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$17.5k</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/24104-Big-Basin-Way-Saratoga-CA-95070/19742425_zpid/?" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/24104-big-basin-way.webp" alt="24104 Big Basin Way" loading="lazy">
+                    <div class="prop-tile-cashback">~$43k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
+                </div>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">24104 Big Basin Way</p>
+                    <p class="prop-tile-city">Saratoga, CA 95070</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$1.95M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$43k</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/38921-Riverbank-Ter-Fremont-CA-94536/25020153_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/38921-riverbank-1280x720.jpg" alt="38921 Riverbank Ter" loading="lazy">
+                    <div class="prop-tile-cashback">~$32k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
+                </div>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">38921 Riverbank Ter</p>
+                    <p class="prop-tile-city">Fremont, CA 94536</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$1.488M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$32k</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/1901-Cooley-Ave-East-Palo-Alto-CA-94303/82957417_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/1901-cooley.webp" alt="1901 Cooley Ave" loading="lazy">
+                    <div class="prop-tile-cashback">~$26k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
+                </div>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">1901 Cooley Ave</p>
+                    <p class="prop-tile-city">East Palo Alto, CA 94303</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$1.254M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$26k</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/25271-Parklane-Dr-Hayward-CA-94544/331751515_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/25271-parklane.webp" alt="25271 Parklane Dr" loading="lazy">
+                    <div class="prop-tile-cashback">~$17k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
+                </div>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">25271 Parklane Dr</p>
+                    <p class="prop-tile-city">Hayward, CA 94544</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$890K</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$17k</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/2745-Beachwood-Ct-Hayward-CA-94545/64964428_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/2745-beachwood.webp" alt="2745 Beachwood Ct" loading="lazy">
+                    <div class="prop-tile-cashback">~$40k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
+                </div>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">2745 Beachwood Ct</p>
+                    <p class="prop-tile-city">Hayward, CA 94545</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$1.829M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$40k</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/1950-34th-Ave-San-Francisco-CA-94116/15114265_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/1950-34th-ave.webp" alt="1950 34th Ave" loading="lazy">
+                    <div class="prop-tile-cashback">~$26k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
+                </div>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">1950 34th Ave</p>
+                    <p class="prop-tile-city">San Francisco, CA 94116</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$1.252M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$26k</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/419-E-Olive-Ave-Merced-CA-95340/19157392_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/419-e-olive.webp" alt="419 E Olive Ave" loading="lazy">
+                    <div class="prop-tile-cashback">~$11k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
+                </div>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">419 E Olive Ave</p>
+                    <p class="prop-tile-city">Merced, CA 95340</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$640K</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$11k</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/516-Alvarez-Cmn-Milpitas-CA-95035/82949576_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/516-alvarez-400x300.jpg" alt="516 Alvarez Cmn" loading="lazy">
+                    <div class="prop-tile-cashback">~$26k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
+                </div>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">516 Alvarez Cmn</p>
+                    <p class="prop-tile-city">Milpitas, CA 95035</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$1.255M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$26k</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/1813-W-Middlefield-Rd-Mountain-View-CA-94043/19511413_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/1813-w-middlefield.webp" alt="1813 W Middlefield Rd" loading="lazy">
+                    <div class="prop-tile-cashback">~$37k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
+                </div>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">1813 W Middlefield Rd</p>
+                    <p class="prop-tile-city">Mountain View, CA 94043</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$1.75M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$37k</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/2222-Portsmouth-Way-San-Mateo-CA-94403/15538395_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/2222-portsmouth-400x300.jpg" alt="2222 Portsmouth Way" loading="lazy">
+                    <div class="prop-tile-cashback">~$30k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
+                </div>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">2222 Portsmouth Way</p>
+                    <p class="prop-tile-city">San Mateo, CA 94403</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$1.765M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$30k</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/2117-Green-Hills-Pl-Fallbrook-CA-92028/16571897_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/2117-green-hills.webp" alt="2117 Green Hills Pl" loading="lazy">
+                    <div class="prop-tile-cashback">~$21k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
+                </div>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">2117 Green Hills Pl</p>
+                    <p class="prop-tile-city">Fallbrook, CA 92028</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$1.3M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$21k</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/260-Gold-Mine-Dr-San-Francisco-CA-94131/15199615_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/260-gold-mine.webp" alt="260 Gold Mine Dr" loading="lazy">
+                    <div class="prop-tile-cashback">~$54k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
+                </div>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">260 Gold Mine Dr</p>
+                    <p class="prop-tile-city">San Francisco, CA 94131</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$2.4M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$54k</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/57-Ramsgate-Ct-Danville-CA-94526/18453807_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/57-ramsgate.webp" alt="57 Ramsgate Ct" loading="lazy">
+                    <div class="prop-tile-cashback">~$47k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
+                </div>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">57 Ramsgate Ct</p>
+                    <p class="prop-tile-city">Danville, CA 94526</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$2.125M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$47k</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/452-Dellbrook-Ave-San-Francisco-CA-94131/15131047_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/452-dellbrook.webp" alt="452 Dellbrook Ave" loading="lazy">
+                    <div class="prop-tile-cashback">~$37k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
+                </div>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">452 Dellbrook Ave</p>
+                    <p class="prop-tile-city">San Francisco, CA 94131</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$1.74M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$37k</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/281-E-Terra-Mia-Ave-Mountain-House-CA-95391/249476433_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/281-terra-400x300.jpg" alt="281 E Terra Mia Ave" loading="lazy">
+                    <div class="prop-tile-cashback">~$15k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
+                </div>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">281 E Terra Mia Ave</p>
+                    <p class="prop-tile-city">Mountain House, CA 95391</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$1.06M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$15k</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/49000-Woodgrove-Cmn-Fremont-CA-94539/68026993_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/49000-woodgrove.webp" alt="49000 Woodgrove Cmn" loading="lazy">
+                    <div class="prop-tile-cashback">~$28k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
+                </div>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">49000 Woodgrove Cmn</p>
+                    <p class="prop-tile-city">Fremont, CA 94539</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$1.35M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$28k</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.zillow.com/homedetails/1506-San-Tomas-Aquino-Rd-San-Jose-CA-95130/19611787_zpid/" target="_blank" class="prop-tile">
+                <div class="prop-tile-img">
+                    <img src="assets/images/1506-san-thomas-400x300.jpg" alt="1506 San Tomas Aquino Rd" loading="lazy">
+                    <div class="prop-tile-cashback">~$40k Cashback</div>
+                    <div class="prop-tile-overlay"><span>View on Zillow</span></div>
+                </div>
+                <div class="prop-tile-body">
+                    <p class="prop-tile-address">1506 San Tomas Aquino Rd</p>
+                    <p class="prop-tile-city">San Jose, CA 95130</p>
+                    <div class="prop-tile-stats">
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Sale Price</div>
+                            <div class="prop-tile-stat-value">$1.8M</div>
+                        </div>
+                        <div class="prop-tile-stat">
+                            <div class="prop-tile-stat-label">Cashback</div>
+                            <div class="prop-tile-stat-value cashback-val">~$40k</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
 
         </div>
+        <!-- ===== /PROPERTY TILES GRID ===== -->
+
     </div>
 </section>
 
@@ -1052,18 +1738,18 @@
 
 <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/smoothscroll/smooth-scroll.js"></script>
-  <script src="assets/ytplayer/index.js"></script>
+<script src="assets/ytplayer/index.js"></script>
   <script src="assets/chatbutton/floating-wpp.js"></script>
   <script src="assets/chatbutton/script.js"></script>
   <script src="assets/dropdown/js/navbar-dropdown.js"></script>
   <script src="assets/theme/js/script.js"></script>
-  
+
   <!-- Default Statcounter code for flatfee
 http://flatfee-realtor.com -->
 <script type="text/javascript">
-var sc_project=13140329; 
-var sc_invisible=1; 
-var sc_security="04536c4a"; 
+var sc_project=13140329;
+var sc_invisible=1;
+var sc_security="04536c4a";
 </script>
 <script type="text/javascript"
 src="https://www.statcounter.com/counter/counter.js"
@@ -1075,7 +1761,7 @@ src="https://c.statcounter.com/13140329/0/04536c4a/1/"
 alt="Web Analytics"
 referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
 <!-- End of Statcounter Code -->
-  
+
 <div id="chatbutton-wa" data-phone="+14089058133" data-showpopup="true" data-headertitle="Message us on WhatsApp!" data-popupmessage="Hi!
 
 Leave us a message and it will go straight to our phone!

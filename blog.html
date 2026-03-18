@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html  >
 <head>
-  
+
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  
+
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   <link rel="shortcut icon" href="assets/images/logo20final-128x90.png" type="image/x-icon">
   <meta name="description" content="Read buyer education articles on California real estate: trends, financing, negotiation, and strategies to save money on your next home purchase.">
-  
-  
+
+
   <title>Buyer Education - Resources & Blog </title>
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/chatbutton/floating-wpp.css">
@@ -23,9 +23,9 @@
   <link rel="preload" href="https://fonts.googleapis.com/css?family=Lexend:100,200,300,400,500,600,700,800,900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lexend:100,200,300,400,500,600,700,800,900&display=swap"></noscript>
   <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=6yhJQg"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=6yhJQg" type="text/css">
-  
-  
-  
+
+
+
 <!-- SHARED MENU/FOOTER STYLES -->
 <style>
 .cid-uTZO3wYcT2 .navbar .navbar-logo img {
@@ -211,6 +211,129 @@
       line-height: 1.7;
     }
     .content14.cid-uR08vTDope .mbr-section-title { display: none; }
+
+    /* ===== BLOG TILES V2 ===== */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 30px;
+      padding: 50px 0 60px;
+    }
+    @media (max-width: 640px) {
+      .blog-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+        padding: 36px 0 44px;
+      }
+    }
+
+    .blog-tile {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #ffffff;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.07);
+      transition: transform 0.3s cubic-bezier(.25,.46,.45,.94), box-shadow 0.3s ease;
+      cursor: pointer;
+      text-decoration: none !important;
+      color: inherit !important;
+      display: flex;
+      flex-direction: column;
+    }
+    .blog-tile:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 40px rgba(0,0,0,0.14);
+      color: inherit !important;
+      text-decoration: none !important;
+    }
+    .blog-tile:hover .blog-tile-img img {
+      transform: scale(1.06);
+    }
+    .blog-tile:hover .blog-tile-cta {
+      background: #1a1a1a;
+      color: #ffffff;
+    }
+
+    .blog-tile-img {
+      position: relative;
+      width: 100%;
+      height: 230px;
+      overflow: hidden;
+      background: #eef2f1;
+    }
+    .blog-tile-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform 0.5s cubic-bezier(.25,.46,.45,.94);
+    }
+
+    /* Category tag on image */
+    .blog-tile-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: linear-gradient(135deg, #39847a 0%, #2c6e65 100%);
+      color: #ffffff;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.72rem;
+      padding: 5px 12px;
+      border-radius: 6px;
+      z-index: 2;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .blog-tile-body {
+      padding: 22px 24px 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .blog-tile-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #1a1a1a;
+      line-height: 1.35;
+      margin: 0 0 12px 0;
+    }
+
+    .blog-tile-excerpt {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      font-size: 0.88rem;
+      color: #666666;
+      line-height: 1.65;
+      margin: 0 0 20px 0;
+      flex: 1;
+    }
+
+    .blog-tile-cta {
+      display: inline-flex;
+      align-items: center;
+      align-self: flex-start;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.84rem;
+      color: #1a1a1a;
+      background: #f4f4f4;
+      border-radius: 50px;
+      padding: 9px 22px;
+      transition: background 0.25s ease, color 0.25s ease;
+      letter-spacing: 0.01em;
+    }
+    .blog-tile-cta::after {
+      content: '\2192';
+      margin-left: 8px;
+      font-size: 1rem;
+      transition: transform 0.25s ease;
+    }
+    .blog-tile:hover .blog-tile-cta::after {
+      transform: translateX(3px);
+    }
 </style>
 <!-- /SHARED MENU/FOOTER STYLES -->
 
@@ -303,11 +426,8 @@
 </section>
 
 <section data-bs-version="5.1" class="content14 cid-uR08vTDope" id="content14-39">
-    
 
-    
-    
-    
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
@@ -316,28 +436,28 @@
 </strong></div><div><strong>
 </strong></div><div><strong>
 </strong></div><div><strong>
-</strong></div><div><strong> 
 </strong></div><div><strong>
 </strong></div><div><strong>
 </strong></div><div><strong>
 </strong></div><div><strong>
 </strong></div><div><strong>
 </strong></div><div><strong>
-</strong></div><div><strong> 
 </strong></div><div><strong>
 </strong></div><div><strong>
 </strong></div><div><strong>
 </strong></div><div><strong>
 </strong></div><div><strong>
 </strong></div><div><strong>
-</strong></div><div><strong> 
 </strong></div><div><strong>
 </strong></div><div><strong>
 </strong></div><div><strong>
 </strong></div><div><strong>
 </strong></div><div><strong>
 </strong></div><div><strong>
-</strong></div><div><strong> 
+</strong></div><div><strong>
+</strong></div><div><strong>
+</strong></div><div><strong>
+</strong></div><div><strong>
 </strong></div><div><strong>
 </strong></div><div><strong>
 </strong></div><div><strong>
@@ -361,181 +481,87 @@
     </div>
 </section>
 
-<section data-bs-version="5.1" class="article04 walletm5 cid-uTV9WO8d2R" id="article04-8a">
-    
+<!-- ===== BLOG TILES V2 ===== -->
+<section style="background: #f9f9f9;">
+    <div class="container">
+        <div class="blog-grid">
 
-    
-    
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <div class="card-wrapper">
-                    <div class="content-wrapper">
-                        <div class="image-wrapper">
-                            <img class="little-radius" src="assets/images/ranking.png" alt="California neighborhood appreciation ranking hub">
-                        </div>
-                        <div class="content-wrap">
-                            <h2 class="mbr-section-title mbr-fonts-style display-2"><strong>Appreciation Ranking Hub</strong></h2>
-                            <div class="text-wrapper">
-                                <p class="mbr-text mbr-fonts-style display-7">Which cities and neighborhoods in Bay Area have appreciated the most? What about Southern CA? What about Nationally? Go through our interactive pages and find out.</p>
-                            </div>
-                            <div class="mbr-section-btn main-btn"><a class="btn btn-black-outline display-7" href="Appreciation-Rankings-Hub.html">
-                                    Open Hub</a></div>
-                        </div>
-                    </div>
+            <a href="Appreciation-Rankings-Hub.html" class="blog-tile">
+                <div class="blog-tile-img">
+                    <img src="assets/images/ranking.png" alt="California neighborhood appreciation ranking hub" loading="lazy">
+                    <div class="blog-tile-tag">Rankings</div>
                 </div>
-            </div>
+                <div class="blog-tile-body">
+                    <h3 class="blog-tile-title">Appreciation Ranking Hub</h3>
+                    <p class="blog-tile-excerpt">Which cities and neighborhoods in the Bay Area have appreciated the most? What about Southern CA? What about nationally? Go through our interactive pages and find out.</p>
+                    <span class="blog-tile-cta">Open Hub</span>
+                </div>
+            </a>
+
+            <a href="ARM-vs-30Year-Fixed-Mortgage-Calculator.html" class="blog-tile">
+                <div class="blog-tile-img">
+                    <img src="assets/images/arm20vs203020year-804x804.png" alt="ARM vs 30-year Fixed Mortgage" loading="lazy">
+                    <div class="blog-tile-tag">Calculator</div>
+                </div>
+                <div class="blog-tile-body">
+                    <h3 class="blog-tile-title">ARM vs 30-Year Fixed Mortgage: In Depth Comparison</h3>
+                    <p class="blog-tile-excerpt">Should you go with an adjustable rate mortgage (ARM) or a 30-year fixed one? We do the actual math and help you make an informed decision.</p>
+                    <span class="blog-tile-cta">Read More</span>
+                </div>
+            </a>
+
+            <a href="Buy-Before-Sell-Mortgage.html" class="blog-tile">
+                <div class="blog-tile-img">
+                    <img src="assets/images/buy20before20sell-804x804.png" alt="Buy Before Sell Mortgage" loading="lazy">
+                    <div class="blog-tile-tag">Guide</div>
+                </div>
+                <div class="blog-tile-body">
+                    <h3 class="blog-tile-title">Buying Your Next Home Before Selling the Current One? How to Qualify for a Mortgage</h3>
+                    <p class="blog-tile-excerpt">You already own a home and find your next home. But you can't qualify for the new mortgage because your lender counts both mortgage payments in your DTI ratio. What can you do?</p>
+                    <span class="blog-tile-cta">Read More</span>
+                </div>
+            </a>
+
+            <a href="rent-vs-buy-calculator-CA.html" class="blog-tile">
+                <div class="blog-tile-img">
+                    <img src="assets/images/rent-vs-buy-804x804.png" alt="Rent vs Buy Calculator" loading="lazy">
+                    <div class="blog-tile-tag">Calculator</div>
+                </div>
+                <div class="blog-tile-body">
+                    <h3 class="blog-tile-title">Rent vs Buy Calculator and Observations</h3>
+                    <p class="blog-tile-excerpt">Buy a house and build home equity, or rent and invest the down payment into stocks? Which scenario is better? Let's find out!</p>
+                    <span class="blog-tile-cta">Read More</span>
+                </div>
+            </a>
+
+            <a href="Borrow-money-low-interest-SPX-Box.html" class="blog-tile">
+                <div class="blog-tile-img">
+                    <img src="assets/images/image5.jpg" alt="Borrow Money Using Box Spreads" loading="lazy">
+                    <div class="blog-tile-tag">Strategy</div>
+                </div>
+                <div class="blog-tile-body">
+                    <h3 class="blog-tile-title">Borrow Money for Home Purchase at 4% to 4.5% Using Box Spreads</h3>
+                    <p class="blog-tile-excerpt">Have a stock portfolio? Learn about a powerful tool we often use with our clients which lets you borrow money at far below market mortgage rates.</p>
+                    <span class="blog-tile-cta">Read More</span>
+                </div>
+            </a>
+
+            <a href="Bay-Area-Price-Drop.html" class="blog-tile">
+                <div class="blog-tile-img">
+                    <img src="assets/images/house-price-decline-804x482.jpeg" alt="Bay Area Housing Price Drop" loading="lazy">
+                    <div class="blog-tile-tag">Market Insight</div>
+                </div>
+                <div class="blog-tile-body">
+                    <h3 class="blog-tile-title">Thoughts on Bay Area Housing Price Drop</h3>
+                    <p class="blog-tile-excerpt">Recently we have seen some softening in prices in several areas. What is the reason? Is a big drop coming or will prices resume their upward climb? Let's find out!</p>
+                    <span class="blog-tile-cta">Read More</span>
+                </div>
+            </a>
+
         </div>
     </div>
 </section>
-
-<section data-bs-version="5.1" class="article04 walletm5 cid-uTV9WO8d2R" id="article04-3p">
-    
-
-    
-    
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <div class="card-wrapper">
-                    <div class="content-wrapper">
-                        <div class="image-wrapper">
-                            <img class="little-radius" src="assets/images/arm20vs203020year-804x804.png" alt="Rent vs Buy">
-                        </div>
-                        <div class="content-wrap">
-                            <h2 class="mbr-section-title mbr-fonts-style display-2"><strong>ARM vs 30-year Fixed Mortgage: In Depth Comparison</strong></h2>
-                            <div class="text-wrapper">
-                                <p class="mbr-text mbr-fonts-style display-7">Should you go with an adjustable rate mortgage (ARM) or a 30-year fixed one? Every home buyer contends with this question at some point or the other. We do the actual math and help you make an informed decision.</p>
-                            </div>
-                            <div class="mbr-section-btn main-btn"><a class="btn btn-black-outline display-7" href="ARM-vs-30Year-Fixed-Mortgage-Calculator.html">
-                                    Read More</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="article04 walletm5 cid-v9XxI0LsLz" id="article04-6w">
-    
-
-    
-    
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <div class="card-wrapper">
-                    <div class="content-wrapper">
-                        <div class="image-wrapper">
-                            <img class="little-radius" src="assets/images/buy20before20sell-804x804.png" alt="Rent vs Buy">
-                        </div>
-                        <div class="content-wrap">
-                            <h2 class="mbr-section-title mbr-fonts-style display-2"><strong>Buying Your Next Home Before Selling the Current One? How to Qualify for a Mortgage</strong></h2>
-                            <div class="text-wrapper">
-                                <p class="mbr-text mbr-fonts-style display-7">You already own a home and find your next home. But you can’t qualify for the new mortgage because your lender counts both mortgage payments in your debt-to-income (DTI) ratio. What can you do?&nbsp;</p>
-                            </div>
-                            <div class="mbr-section-btn main-btn"><a class="btn btn-black-outline display-7" href="Buy-Before-Sell-Mortgage.html">
-                                    Read More</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="article04 walletm5 cid-v9XwKXpgQj" id="article04-6v">
-    
-
-    
-    
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <div class="card-wrapper">
-                    <div class="content-wrapper">
-                        <div class="image-wrapper">
-                            <img class="little-radius" src="assets/images/rent-vs-buy-804x804.png" alt="Rent vs Buy">
-                        </div>
-                        <div class="content-wrap">
-                            <h2 class="mbr-section-title mbr-fonts-style display-2"><strong>Rent vs Buy Excel Sheet and Observations</strong></h2>
-                            <div class="text-wrapper">
-                                <p class="mbr-text mbr-fonts-style display-7">
-                                    We consider two scenarios:&nbsp;<br><br><strong>Scenario 1</strong>: you buy a house and build home equity
-<br><strong>Scenario 2</strong>: you rent and instead put down payment money + monthly savings into stocks<br><br>Which one is better? Let's find out!</p>
-                            </div>
-                            <div class="mbr-section-btn main-btn"><a class="btn btn-black-outline display-7" href="rent-vs-buy-calculator-CA.html">
-                                    Read More</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="article04 walletm5 cid-uTVuLcAUMo" id="article04-3q">
-    
-
-    
-    
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <div class="card-wrapper">
-                    <div class="content-wrapper">
-                        <div class="image-wrapper">
-                            <img class="little-radius" src="assets/images/image5.jpg" alt="">
-                        </div>
-                        <div class="content-wrap">
-                            <h2 class="mbr-section-title mbr-fonts-style display-2"><strong>Borrow Money for Home Purchase at 4% to 4.5% Using Box Spreads</strong></h2>
-                            <div class="text-wrapper">
-                                <p class="mbr-text mbr-fonts-style display-7"><br>Have a stock portfolio? Learn about a powerful tool we often use with our clients which lets you borrow money at <em>far below </em>the market mortgage rates.<br><br></p>
-                            </div>
-                            <div class="mbr-section-btn main-btn"><a class="btn btn-black-outline display-7" href="Borrow-money-low-interest-SPX-Box.html">
-                                    Read More</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section data-bs-version="5.1" class="article04 walletm5 cid-uTVuMjsQaR" id="article04-3r">
-    
-
-    
-    
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <div class="card-wrapper">
-                    <div class="content-wrapper">
-                        <div class="image-wrapper">
-                            <a href="Bay-Area-Price-Drop.html"><img class="little-radius" src="assets/images/house-price-decline-804x482.jpeg" alt="House price drop"></a>
-                        </div>
-                        <div class="content-wrap">
-                            <h2 class="mbr-section-title mbr-fonts-style display-2"><strong>Thoughts on Bay Area Housing Price Drop</strong></h2>
-                            <div class="text-wrapper">
-                                <p class="mbr-text mbr-fonts-style display-7">Recently we have seen some softening in the prices in several areas. What is the reason? Is a big drop coming or will the prices go back to resuming their upward climb?&nbsp;Let's find out!</p>
-                            </div>
-                            <div class="mbr-section-btn main-btn"><a class="btn btn-black-outline display-7" href="Bay-Area-Price-Drop.html">
-                                    Read More</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<!-- ===== /BLOG TILES V2 ===== -->
 
 <!-- ===== REDESIGNED FOOTER ===== -->
 <footer class="footer-redesigned">
@@ -624,13 +650,13 @@
   <script src="assets/chatbutton/script.js"></script>
   <script src="assets/dropdown/js/navbar-dropdown.js"></script>
   <script src="assets/theme/js/script.js"></script>
-  
+
   <!-- Default Statcounter code for flatfee
 http://flatfee-realtor.com -->
 <script type="text/javascript">
-var sc_project=13140329; 
-var sc_invisible=1; 
-var sc_security="04536c4a"; 
+var sc_project=13140329;
+var sc_invisible=1;
+var sc_security="04536c4a";
 </script>
 <script type="text/javascript"
 src="https://www.statcounter.com/counter/counter.js"
@@ -642,7 +668,7 @@ src="https://c.statcounter.com/13140329/0/04536c4a/1/"
 alt="Web Analytics"
 referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
 <!-- End of Statcounter Code -->
-  
+
 <div id="chatbutton-wa" data-phone="+14089058133" data-showpopup="true" data-headertitle="Message us on WhatsApp!" data-popupmessage="Hi!
 
 Leave us a message and it will go straight to our phone!
