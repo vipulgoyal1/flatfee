@@ -722,6 +722,54 @@
     background-color: #fbfaf7;
     padding-bottom: 2.5rem;
   }
+  /* FAQ Accordion overrides (offer-accordion style) */
+  .faq-accordion .card {
+    border: 1px solid #e8e2d8;
+    border-radius: 10px !important;
+    margin-bottom: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .faq-accordion .card-header {
+    background: #ffffff;
+    padding: 0;
+    border: none;
+  }
+  .faq-accordion .panel-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 22px;
+    text-decoration: none;
+    gap: 12px;
+  }
+  .faq-accordion .panel-title:hover {
+    background: #faf7f2;
+    text-decoration: none;
+  }
+  .faq-accordion .panel-title-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.4;
+  }
+  .faq-accordion .panel-title .sign {
+    color: #39847a;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+  }
+  .faq-accordion .panel-title[aria-expanded="true"] .sign {
+    transform: rotate(180deg);
+  }
+  .faq-accordion .panel-body {
+    padding: 4px 22px 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.92rem;
+    color: #555555;
+    line-height: 1.8;
+  }
   .cid-tNJxnYMuoX {
     background-color: #ffffff;
   }
@@ -1094,152 +1142,162 @@
                 <div class="mbr-section-head align-center mb-4">
                     <h3 class="mbr-section-title mb-0 mbr-fonts-style display-2"><strong>Frequently Asked Questions</strong></h3>
                 </div>
-                <div id="bootstrap-accordion_2" class="panel-group accordionStyles accordion" role="tablist" aria-multiselectable="true">
-                    <div class="card mb-3">
-                        <div class="card-header" role="tab" id="headingOne">
-                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse1_2" aria-expanded="false" aria-controls="collapse1">
-                                <h1 class="panel-title-edit mbr-fonts-style mb-0 display-7"><strong>Do you provide full service? Are you experienced?</strong></h1>
-                                <span class="sign mbr-iconfont mbri-arrow-down"></span>
-                            </a>
-                        </div>
-                        <div id="collapse1_2" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_2">
-                            <div class="panel-body">
-                                <p class="mbr-fonts-style panel-text display-4">Yes, we pride ourselves on exceptional service and exceptional advice! A majority of our clients are first-time homebuyers. Many of our past clients who switched to us from full commission realtors told us that our service and insights were actually significantly better than what they got before. We operate less like a sales team and more like a tech and data team.<br> </p>
-                            </div>
-                        </div>
+                <div id="bootstrap-accordion_2" class="panel-group faq-accordion accordion" role="tablist" aria-multiselectable="true">
+
+                  <div class="card mb-2">
+                    <div class="card-header" role="tab" id="faqAccHeading1">
+                      <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#faqAcc1" aria-expanded="false" aria-controls="faqAcc1">
+                        <span class="panel-title-text">Do you provide full service? Are you experienced?</span>
+                        <span class="sign mbr-iconfont mbri-arrow-down"></span>
+                      </a>
                     </div>
-                    <div class="card mb-3">
-                        <div class="card-header" role="tab" id="headingOne">
-                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse2_2" aria-expanded="false" aria-controls="collapse2">
-                                <h1 class="panel-title-edit mbr-fonts-style mb-0 display-7"><strong>Will I get personalized attention when I work with you?</strong></h1>
-                                <span class="sign mbr-iconfont mbri-arrow-down"></span>
-                            </a>
-                        </div>
-                        <div id="collapse2_2" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_2">
-                            <div class="panel-body">
-                                <p class="mbr-fonts-style panel-text display-4">We are big enough to be deeply plugged into the industry but small enough to have a personal relationship with each client. We are family owned and understand the importance of knowing a person and supporting them for what would likely be the biggest purchase of their life. We are always available over phone/emails/text and <strong>sometimes even call our clients at 10pm to help them win a bidding war!</strong></p>
-                            </div>
-                        </div>
+                    <div id="faqAcc1" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="faqAccHeading1" data-bs-parent="#bootstrap-accordion_2">
+                      <div class="panel-body">
+                        Yes, we pride ourselves on exceptional service and exceptional advice! A majority of our clients are first-time homebuyers. Many of our past clients who switched to us from full commission realtors told us that our service and insights were actually significantly better than what they got before. We operate less like a sales team and more like a tech and data team.
+                      </div>
                     </div>
-                    <div class="card mb-3">
-                        <div class="card-header" role="tab" id="headingOne">
-                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse3_2" aria-expanded="false" aria-controls="collapse3">
-                                <h1 class="panel-title-edit mbr-fonts-style mb-0 display-7"><strong>While I like the idea of cash back, I'm more interested in getting my offer accepted. Can you help with that?</strong></h1>
-                                <span class="sign mbr-iconfont mbri-arrow-down"></span>
-                            </a>
-                        </div>
-                        <div id="collapse3_2" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_2">
-                            <div class="panel-body">
-                                <p class="mbr-fonts-style panel-text display-4">If you were to get 30k cash back from us on the transaction, we can help you increase your offer by 30k. This would give you a huge leg up against competing buyers!</p>
-                            </div>
-                        </div>
+                  </div>
+
+                  <div class="card mb-2">
+                    <div class="card-header" role="tab" id="faqAccHeading2">
+                      <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#faqAcc2" aria-expanded="false" aria-controls="faqAcc2">
+                        <span class="panel-title-text">Will I get personalized attention when I work with you?</span>
+                        <span class="sign mbr-iconfont mbri-arrow-down"></span>
+                      </a>
                     </div>
-                    <div class="card mb-3">
-                        <div class="card-header" role="tab" id="headingOne">
-                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse4_2" aria-expanded="false" aria-controls="collapse4">
-                                <h1 class="panel-title-edit mbr-fonts-style mb-0 display-7"><strong>Do you have off-market properties?</strong></h1>
-                                <span class="sign mbr-iconfont mbri-arrow-down"></span>
-                            </a>
-                        </div>
-                        <div id="collapse4_2" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_2">
-                            <div class="panel-body">
-                                <p class="mbr-fonts-style panel-text display-4">Yes, we invest significant time and effort in sourcing off-market properties. We have a special off-market property program and we charge percentage based commission for our off-market properties. Please call us for more details.</p>
-                            </div>
-                        </div>
+                    <div id="faqAcc2" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="faqAccHeading2" data-bs-parent="#bootstrap-accordion_2">
+                      <div class="panel-body">
+                        We are big enough to be deeply plugged into the industry but small enough to have a personal relationship with each client. We are family owned and understand the importance of knowing a person and supporting them for what would likely be the biggest purchase of their life. We are always available over phone/emails/text and <strong>sometimes even call our clients at 10pm to help them win a bidding war!</strong>
+                      </div>
                     </div>
-                    <div class="card mb-3">
-                        <div class="card-header" role="tab" id="headingOne">
-                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse5_2" aria-expanded="false" aria-controls="collapse5">
-                                <h1 class="panel-title-edit mbr-fonts-style mb-0 display-7"><strong>I have heard that the seller pays both real estate agents. So why should I care about the commission as a buyer?</strong></h1>
-                                <span class="sign mbr-iconfont mbri-arrow-down"></span>
-                            </a>
-                        </div>
-                        <div id="collapse5_2" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_2">
-                            <div class="panel-body">
-                                <p class="mbr-fonts-style panel-text display-4">Good question! Who do you think pays the seller? It is your money as the buyer which goes to all three parties (the seller and the two real estate agents). You can't control the payment made to the seller's agent. But you can choose your buyer's agent wisely to get the maximum cashback.</p>
-                            </div>
-                        </div>
+                  </div>
+
+                  <div class="card mb-2">
+                    <div class="card-header" role="tab" id="faqAccHeading3">
+                      <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#faqAcc3" aria-expanded="false" aria-controls="faqAcc3">
+                        <span class="panel-title-text">While I like the idea of cash back, I'm more interested in getting my offer accepted. Can you help with that?</span>
+                        <span class="sign mbr-iconfont mbri-arrow-down"></span>
+                      </a>
                     </div>
-                </div>
-                <div id="bootstrap-accordion_3" class="panel-group accordionStyles accordion mt-4" role="tablist" aria-multiselectable="true">
-                    <div class="card mb-3">
-                        <div class="card-header" role="tab" id="headingOne">
-                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse1_3" aria-expanded="false" aria-controls="collapse1">
-                                <h6 class="panel-title-edit mbr-fonts-style mb-0 display-7"><strong>Are the listing agents biased against flat fee / cash back realtors?</strong></h6>
-                                <span class="sign mbr-iconfont mbri-arrow-down"></span>
-                            </a>
-                        </div>
-                        <div id="collapse1_3" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_3">
-                            <div class="panel-body">
-                                <p class="mbr-fonts-style panel-text display-4">Generally, listing agents want to get the house sold, collect their commission, and move on to the next house. Every time we have had our offer declined has been because the seller wanted a higher offer, not because of who was representing the buyer. Regardless, all our offers are written by agents in the Goyal Team under their own name in affiliation with large well-known brokers.&nbsp;</p>
-                            </div>
-                        </div>
+                    <div id="faqAcc3" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="faqAccHeading3" data-bs-parent="#bootstrap-accordion_2">
+                      <div class="panel-body">
+                        If you were to get 30k cash back from us on the transaction, we can help you increase your offer by 30k. This would give you a huge leg up against competing buyers!
+                      </div>
                     </div>
-                    <div class="card mb-3">
-                        <div class="card-header" role="tab" id="headingOne">
-                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse2_3" aria-expanded="false" aria-controls="collapse2">
-                                <h6 class="panel-title-edit mbr-fonts-style mb-0 display-7"><strong>I'm already working with an agent, but I like you more. Is it fine to change the agent?</strong></h6>
-                                <span class="sign mbr-iconfont mbri-arrow-down"></span>
-                            </a>
-                        </div>
-                        <div id="collapse2_3" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_3">
-                            <div class="panel-body">
-                                <p class="mbr-fonts-style panel-text display-4">Yes, you can switch to another agent at any time unless you have a written contract disallowing this with the previous agent. We never sign exclusive agreements, so you are free to switch from us to another agent at any time.</p>
-                            </div>
-                        </div>
+                  </div>
+
+                  <div class="card mb-2">
+                    <div class="card-header" role="tab" id="faqAccHeading4">
+                      <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#faqAcc4" aria-expanded="false" aria-controls="faqAcc4">
+                        <span class="panel-title-text">Do you have off-market properties?</span>
+                        <span class="sign mbr-iconfont mbri-arrow-down"></span>
+                      </a>
                     </div>
-                    <div class="card mb-3">
-                        <div class="card-header" role="tab" id="headingOne">
-                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse3_3" aria-expanded="false" aria-controls="collapse3">
-                                <h6 class="panel-title-edit mbr-fonts-style mb-0 display-7"><strong>Is the cash back to the buyer legal?</strong></h6>
-                                <span class="sign mbr-iconfont mbri-arrow-down"></span>
-                            </a>
-                        </div>
-                        <div id="collapse3_3" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_3">
-                            <div class="panel-body">
-                                <p class="mbr-fonts-style panel-text display-4">Yes. This practice is legal in 41 states. US Department of Justice encourages this practice to foster competition and avoid price fixing.</p>
-                            </div>
-                        </div>
+                    <div id="faqAcc4" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="faqAccHeading4" data-bs-parent="#bootstrap-accordion_2">
+                      <div class="panel-body">
+                        Yes, we invest significant time and effort in sourcing off-market properties. We have a special off-market property program and we charge percentage based commission for our off-market properties. Please call us for more details.
+                      </div>
                     </div>
-                    <div class="card mb-3">
-                        <div class="card-header" role="tab" id="headingOne">
-                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse4_3" aria-expanded="false" aria-controls="collapse4">
-                                <h6 class="panel-title-edit mbr-fonts-style mb-0 display-7"><strong>Do I need to pay you the commission as the buyer?</strong></h6>
-                                <span class="sign mbr-iconfont mbri-arrow-down"></span>
-                            </a>
-                        </div>
-                        <div id="collapse4_3" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_3">
-                            <div class="panel-body">
-                                <p class="mbr-fonts-style panel-text display-4">No. The real estate agents are typically paid by the seller. So effectively we will be giving you cash back after deducting our fee.</p>
-                            </div>
-                        </div>
+                  </div>
+
+                  <div class="card mb-2">
+                    <div class="card-header" role="tab" id="faqAccHeading5">
+                      <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#faqAcc5" aria-expanded="false" aria-controls="faqAcc5">
+                        <span class="panel-title-text">I have heard that the seller pays both real estate agents. So why should I care about the commission as a buyer?</span>
+                        <span class="sign mbr-iconfont mbri-arrow-down"></span>
+                      </a>
                     </div>
-                    <div class="card mb-3">
-                        <div class="card-header" role="tab" id="headingOne">
-                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse5_3" aria-expanded="false" aria-controls="collapse5">
-                                <h6 class="panel-title-edit mbr-fonts-style mb-0 display-7"><strong>Would the cash back count as income? Would I be taxed on this amount?</strong></h6>
-                                <span class="sign mbr-iconfont mbri-arrow-down"></span>
-                            </a>
-                        </div>
-                        <div id="collapse5_3" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_3">
-                            <div class="panel-body">
-                                <p class="mbr-fonts-style panel-text display-4">No! While we cannot provide tax advice, typically this would be considered as a rebate on the house purchase. The cost basis of your house would be reduced by the amount of cashback you receive from us.</p>
-                            </div>
-                        </div>
+                    <div id="faqAcc5" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="faqAccHeading5" data-bs-parent="#bootstrap-accordion_2">
+                      <div class="panel-body">
+                        Good question! Who do you think pays the seller? It is your money as the buyer which goes to all three parties (the seller and the two real estate agents). You can't control the payment made to the seller's agent. But you can choose your buyer's agent wisely to get the maximum cashback.
+                      </div>
                     </div>
-                    <div class="card mb-3">
-                        <div class="card-header" role="tab" id="headingOne">
-                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse6_3" aria-expanded="false" aria-controls="collapse6">
-                                <h6 class="panel-title-edit mbr-fonts-style mb-0 display-7"><strong>I have heard "you get what you pay for". Isn't it a good idea to hire a percentage-based-commission agent?</strong></h6>
-                                <span class="sign mbr-iconfont mbri-arrow-down"></span>
-                            </a>
-                        </div>
-                        <div id="collapse6_3" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_3">
-                            <div class="panel-body">
-                                <p class="mbr-fonts-style panel-text display-4">We do more transactions than a typical real estate agent. We typically write multiple offers per week, are deeply plugged into how the real estate market is doing (which can go from&nbsp;being a seller's market to a buyer's market in a matter of months, and vice versa), and can give you accurate advice on how to play the game. Experience doesn't have to cost tens of thousands of dollars!</p>
-                            </div>
-                        </div>
+                  </div>
+
+                  <div class="card mb-2">
+                    <div class="card-header" role="tab" id="faqAccHeading6">
+                      <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#faqAcc6" aria-expanded="false" aria-controls="faqAcc6">
+                        <span class="panel-title-text">Are the listing agents biased against flat fee / cash back realtors?</span>
+                        <span class="sign mbr-iconfont mbri-arrow-down"></span>
+                      </a>
                     </div>
+                    <div id="faqAcc6" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="faqAccHeading6" data-bs-parent="#bootstrap-accordion_2">
+                      <div class="panel-body">
+                        Generally, listing agents want to get the house sold, collect their commission, and move on to the next house. Every time we have had our offer declined has been because the seller wanted a higher offer, not because of who was representing the buyer. Regardless, all our offers are written by agents in the Goyal Team under their own name in affiliation with large well-known brokers.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card mb-2">
+                    <div class="card-header" role="tab" id="faqAccHeading7">
+                      <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#faqAcc7" aria-expanded="false" aria-controls="faqAcc7">
+                        <span class="panel-title-text">I'm already working with an agent, but I like you more. Is it fine to change the agent?</span>
+                        <span class="sign mbr-iconfont mbri-arrow-down"></span>
+                      </a>
+                    </div>
+                    <div id="faqAcc7" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="faqAccHeading7" data-bs-parent="#bootstrap-accordion_2">
+                      <div class="panel-body">
+                        Yes, you can switch to another agent at any time unless you have a written contract disallowing this with the previous agent. We never sign exclusive agreements, so you are free to switch from us to another agent at any time.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card mb-2">
+                    <div class="card-header" role="tab" id="faqAccHeading8">
+                      <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#faqAcc8" aria-expanded="false" aria-controls="faqAcc8">
+                        <span class="panel-title-text">Is the cash back to the buyer legal?</span>
+                        <span class="sign mbr-iconfont mbri-arrow-down"></span>
+                      </a>
+                    </div>
+                    <div id="faqAcc8" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="faqAccHeading8" data-bs-parent="#bootstrap-accordion_2">
+                      <div class="panel-body">
+                        Yes. This practice is legal in 41 states. US Department of Justice encourages this practice to foster competition and avoid price fixing.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card mb-2">
+                    <div class="card-header" role="tab" id="faqAccHeading9">
+                      <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#faqAcc9" aria-expanded="false" aria-controls="faqAcc9">
+                        <span class="panel-title-text">Do I need to pay you the commission as the buyer?</span>
+                        <span class="sign mbr-iconfont mbri-arrow-down"></span>
+                      </a>
+                    </div>
+                    <div id="faqAcc9" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="faqAccHeading9" data-bs-parent="#bootstrap-accordion_2">
+                      <div class="panel-body">
+                        No. The real estate agents are typically paid by the seller. So effectively we will be giving you cash back after deducting our fee.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card mb-2">
+                    <div class="card-header" role="tab" id="faqAccHeading10">
+                      <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#faqAcc10" aria-expanded="false" aria-controls="faqAcc10">
+                        <span class="panel-title-text">Would the cash back count as income? Would I be taxed on this amount?</span>
+                        <span class="sign mbr-iconfont mbri-arrow-down"></span>
+                      </a>
+                    </div>
+                    <div id="faqAcc10" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="faqAccHeading10" data-bs-parent="#bootstrap-accordion_2">
+                      <div class="panel-body">
+                        No! While we cannot provide tax advice, typically this would be considered as a rebate on the house purchase. The cost basis of your house would be reduced by the amount of cashback you receive from us.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card mb-2">
+                    <div class="card-header" role="tab" id="faqAccHeading11">
+                      <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#faqAcc11" aria-expanded="false" aria-controls="faqAcc11">
+                        <span class="panel-title-text">I have heard &ldquo;you get what you pay for&rdquo;. Isn't it a good idea to hire a percentage-based-commission agent?</span>
+                        <span class="sign mbr-iconfont mbri-arrow-down"></span>
+                      </a>
+                    </div>
+                    <div id="faqAcc11" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="faqAccHeading11" data-bs-parent="#bootstrap-accordion_2">
+                      <div class="panel-body">
+                        We do more transactions than a typical real estate agent. We typically write multiple offers per week, are deeply plugged into how the real estate market is doing (which can go from&nbsp;being a seller's market to a buyer's market in a matter of months, and vice versa), and can give you accurate advice on how to play the game. Experience doesn't have to cost tens of thousands of dollars!
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
             </div>
         </div>
