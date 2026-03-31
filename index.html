@@ -1480,7 +1480,7 @@ function formatCurrency(number) {
 function calculateFlatFee(purchasePrice) {
     const baseFee = 6895, maxFee = 7895;
     if (purchasePrice <= 1000000) return baseFee;
-    const riskManagementFee = Math.floor((purchasePrice - 1000000) / 100000) * 100;
+    const riskManagementFee = Math.ceil((purchasePrice - 1000000) / 100000) * 100;
     return Math.min(baseFee + riskManagementFee, maxFee);
 }
 function updateCalculator() {
