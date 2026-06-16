@@ -36,14 +36,20 @@ For each address:
 1. Find the Zillow property page.
 2. Pull the relevant details from Zillow.
 3. Prefer a sold price if Zillow shows a sold event.
-4. If Zillow does **not** show the property as sold, flag that clearly and use the current Zillow price only if the user still wants it added.
-5. Also pull a usable Zillow image and save it into `assets/images/`.
+4. Check Redfin too when Zillow does not clearly expose the sold event.
+5. If Zillow and Redfin still do **not** show the property as sold, ask the user for the missing sale price and sold/close date instead of assuming.
+6. Use the shared photo folder first for property images:
+   - `H:\My Drive\FFR\zillow photos`
+7. If a matching photo exists there, copy it into `assets/images/` and use it.
+8. If no matching photo exists there, then try to pull a usable listing image from Zillow/Redfin/Realtor/Trulia.
+9. If the sale details are available but image hosts are blocked, ask before using a placeholder or wait for a photo source from the user.
 
 ## Sale / Listing Details To Capture
 
 At minimum capture:
 
 - full Zillow URL
+- Redfin URL too if Redfin was needed to verify the sold event
 - price used for the tile
 - whether that price is sold price or current listing price
 - sold date if available
@@ -101,8 +107,10 @@ cashback = (sale_price * 0.025) - our_fee
 
 ## Image Rules
 
-- Download a Zillow image for the property.
-- Save it in `assets/images/`.
+- Check `H:\My Drive\FFR\zillow photos` first for an existing property photo.
+- Prefer the best matching existing local photo from that folder when available.
+- Otherwise download a listing image from a public property page.
+- Save the final image in `assets/images/`.
 - Use a descriptive lowercase hyphenated filename, for example:
   - `1511-goodman-ave-redondo-beach-960x720.jpg`
 - Do not change existing images for other tiles.
@@ -116,11 +124,11 @@ cashback = (sale_price * 0.025) - our_fee
 
 ## If A Property Is Not Clearly Sold
 
-If Zillow shows the property as active, new construction, pending, or otherwise not clearly sold:
+If Zillow shows the property as active, new construction, pending, or otherwise not clearly sold, and Redfin also does not clearly confirm the sale:
 
+- ask the user for the missing sale price and sold/close date
 - note that clearly in the response
-- state what price was used
-- do not describe it as sold unless Zillow shows that
+- do not describe it as sold unless a source or the user provides the sold details explicitly
 
 ## Final Response Checklist
 
