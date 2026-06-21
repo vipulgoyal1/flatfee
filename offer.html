@@ -355,12 +355,44 @@
     background: rgba(57,132,122,0.07);
     border: 1px solid rgba(57,132,122,0.2);
     border-radius: 8px;
-    padding: 14px 18px;
+    padding: 16px 18px;
     font-family: 'DM Sans', sans-serif;
     font-size: 0.85rem;
     color: #2a5c56;
     line-height: 1.65;
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .offer-form-notice-text { flex: 1; min-width: 0; }
+  .offer-upload-btn {
+    flex-shrink: 0;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    background: #2a5c56;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    font-weight: 700;
+    padding: 14px 12px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    line-height: 1.15;
+    width: 92px;
+    height: 92px;
+    text-align: center;
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 8px rgba(42,92,86,0.25);
+  }
+  .offer-upload-btn .upload-icon { font-size: 1.6rem; line-height: 1; }
+  .offer-upload-btn:hover { background: #1f4540; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(42,92,86,0.35); }
+  @media (max-width: 600px) {
+    .offer-form-notice { flex-direction: column; align-items: stretch; }
+    .offer-upload-btn { width: 100%; height: auto; flex-direction: row; gap: 10px; padding: 14px; font-size: 0.95rem; }
+    .offer-upload-btn .upload-icon { font-size: 1.2rem; }
   }
   .offer-btn-submit {
     width: 100%;
@@ -928,7 +960,13 @@
 
               <div class="col-12">
                 <div class="offer-form-notice">
-                  Please email preapproval and proof of funds to <a href="mailto:info@flatfee-realtor.com" style="color:#2a5c56;font-weight:600;">info@flatfee-realtor.com</a> or upload securely at <a href="https://tinyurl.com/flatfee-realtor" target="_blank" style="color:#2a5c56;font-weight:600;">tinyurl.com/flatfee-realtor</a>. Proof of funds can be a bank or brokerage statement for full downpayment (i.e., purchase price minus loan amount), and it should show buyer names.
+                  <div class="offer-form-notice-text">
+                    <strong>Next step:</strong> send your preapproval letter and proof of funds — email <a href="mailto:info@goyalteam.com" style="color:#2a5c56;font-weight:600;">info@goyalteam.com</a> or upload securely using the button. Proof of funds is a recent bank or brokerage statement showing the buyer name(s) and a balance of at least the full downpayment (purchase price minus loan amount).
+                  </div>
+                  <a href="https://tinyurl.com/flatfee-realtor" target="_blank" class="offer-upload-btn">
+                    <span class="upload-icon">&#128228;</span>
+                    <span>Upload<br>Securely</span>
+                  </a>
                 </div>
               </div>
 
