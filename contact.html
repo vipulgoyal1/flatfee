@@ -10,6 +10,33 @@
 
   gtag('config', 'AW-11085119565');
 </script>
+<!-- Google Ads conversion: successful contact form submission -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (typeof formModalDOM === 'undefined') return;
+
+    const modalContent = formModalDOM.querySelector('.modal-content');
+    if (!modalContent) return;
+
+    let conversionSent = false;
+    const observer = new MutationObserver(function () {
+      if (conversionSent || !modalContent.classList.contains('alert-success')) return;
+
+      conversionSent = true;
+      gtag('event', 'conversion', {
+        'send_to': 'AW-11085119565/VsR0CPvMk9ccEM2A5qUp',
+        'value': 1.0,
+        'currency': 'USD'
+      });
+      observer.disconnect();
+    });
+
+    observer.observe(modalContent, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+  });
+</script>
   
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
