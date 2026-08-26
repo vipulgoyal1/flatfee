@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="assets/dropdown/css/style.css">
   <link rel="stylesheet" href="assets/socicon/css/styles.css">
   <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="stylesheet" href="assets/theme/css/city-data.css">
   <link rel="preload" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,500,600,700,800,900,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,500,600,700,800,900,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
   <link rel="preload" href="https://fonts.googleapis.com/css?family=DM+Sans:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -381,37 +382,37 @@
         <div class="row g-3">
           <div class="col-6">
             <div class="stat-card">
-              <div class="stat-val"><span class="arrow-up">&#9650;</span>&nbsp;0.4%</div>
+              <div class="stat-val"><span class="arrow-up">&#9650;</span>&nbsp;4.8%</div>
               <div class="stat-label">YoY Price Change</div>
             </div>
           </div>
           <div class="col-6">
             <div class="stat-card">
-              <div class="stat-val"><span class="arrow-up">&#9650;</span>&nbsp;38.7%</div>
+              <div class="stat-val"><span class="arrow-up">&#9650;</span>&nbsp;26.3%</div>
               <div class="stat-label">5-Year Price Change</div>
             </div>
           </div>
           <div class="col-6">
             <div class="stat-card">
-              <div class="stat-val"><span class="arrow-up">&#9650;</span>&nbsp;78.3%</div>
+              <div class="stat-val"><span class="arrow-up">&#9650;</span>&nbsp;80.7%</div>
               <div class="stat-label">10-Year Price Change</div>
             </div>
           </div>
           <div class="col-6">
             <div class="stat-card">
-              <div class="stat-val"><span class="arrow-up">&#9650;</span>&nbsp;249.8%</div>
+              <div class="stat-val"><span class="arrow-up">&#9650;</span>&nbsp;222.1%</div>
               <div class="stat-label">25-Year Price Change</div>
             </div>
           </div>
           <div class="col-6">
             <div class="stat-card">
-              <div class="stat-val">$2,675,169</div>
+              <div class="stat-val">$2,743,818</div>
               <div class="stat-label">Median Sale Price</div>
             </div>
           </div>
           <div class="col-6">
             <div class="stat-card">
-              <div class="stat-val">17</div>
+              <div class="stat-val">30</div>
               <div class="stat-label">Median Days on Market</div>
             </div>
           </div>
@@ -580,219 +581,12 @@
 <script src="assets/dropdown/js/navbar-dropdown.js"></script>
 <script src="assets/mbr-switch-arrow/mbr-switch-arrow.js"></script>
 <script src="assets/theme/js/script.js"></script>
-<script src="assets/data/los_gatos_zhvi_series.js"></script>
+<script src="assets/data/city-pages/los-gatos.js"></script>
+<script src="assets/js/city-page-data.js"></script>
 
 <!-- Default Statcounter code -->
 <script type="text/javascript">var sc_project=13140329; var sc_invisible=1; var sc_security="04536c4a";</script>
 <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
 <noscript><div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img class="statcounter" src="https://c.statcounter.com/13140329/0/04536c4a/1/" alt="Web Analytics" referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
-
-<!-- Neighborhood Table Script -->
-<script>
-(function() {
-    const rawData = [];
-
-    const data = rawData.map((city, index) => ({ ...city, sizeRank: index + 1 }));
-    let currentSort = { column: null, direction: 'asc' };
-
-    function formatPrice(price) {
-        if (price === null) return 'N/A';
-        return '$' + price.toLocaleString();
-    }
-
-    function formatAppreciation(totalReturn, cagr) {
-        if (totalReturn === null || cagr === null) return 'N/A';
-        const sign = totalReturn >= 0 ? '+' : '';
-        const cagrSign = cagr >= 0 ? '+' : '';
-        const className = totalReturn >= 0 ? 'positive' : 'negative';
-        return `<span class="${className}">${sign}${totalReturn.toFixed(2)}%<span class="cagr">(${cagrSign}${cagr.toFixed(2)}%)</span></span>`;
-    }
-
-    function renderTable(sortedData) {
-        const tbody = document.getElementById('tableBody');
-        if (!tbody) return;
-        tbody.innerHTML = '';
-        sortedData.forEach(row => {
-            const tr = document.createElement('tr');
-            tr.innerHTML = `
-                <td class="city-name">(#${row.sizeRank}) ${row.city}</td>
-                <td class="number">${formatAppreciation(row.total_return_1y, row.cagr_1y)}</td>
-                <td class="number">${formatAppreciation(row.total_return_3y, row.cagr_3y)}</td>
-                <td class="number">${formatAppreciation(row.total_return_5y, row.cagr_5y)}</td>
-                <td class="number">${formatAppreciation(row.total_return_10y, row.cagr_10y)}</td>
-                <td class="number">${formatAppreciation(row.total_return_20y, row.cagr_20y)}</td>
-                <td class="number">${formatAppreciation(row.total_return_25y, row.cagr_25y)}</td>
-                <td class="price">${formatPrice(row.typical_price)}</td>
-            `;
-            tbody.appendChild(tr);
-        });
-    }
-
-    function syncColumnWidths() {
-        const originalHeaders = document.querySelectorAll('#originalHeader th');
-        const stickyHeaders = document.querySelectorAll('#stickyHeader th');
-        const table = document.getElementById('dataTable');
-        const stickyHeader = document.getElementById('stickyHeader');
-        if (!table || !stickyHeader) return;
-        originalHeaders.forEach((th, index) => {
-            const width = th.offsetWidth;
-            if (stickyHeaders[index]) {
-                stickyHeaders[index].style.width = width + 'px';
-                stickyHeaders[index].style.minWidth = width + 'px';
-                stickyHeaders[index].style.maxWidth = width + 'px';
-            }
-        });
-        const tableRect = table.getBoundingClientRect();
-        stickyHeader.style.width = tableRect.width + 'px';
-        stickyHeader.style.left = tableRect.left + 'px';
-    }
-
-    function updateSortIndicators(column, direction) {
-        document.querySelectorAll('#bayarea-appreciation-table th').forEach(th => {
-            th.classList.remove('sort-asc', 'sort-desc');
-        });
-        [`#originalHeader th[data-column="${column}"]`, `#stickyHeader th[data-column="${column}"]`].forEach(selector => {
-            const th = document.querySelector(selector);
-            if (th) th.classList.add(`sort-${direction}`);
-        });
-    }
-
-    function sortData(column) {
-        let direction = 'asc';
-        if (currentSort.column === column) direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
-        const sortedData = [...data].sort((a, b) => {
-            let aVal = a[column], bVal = b[column];
-            if (aVal === null && bVal === null) return 0;
-            if (aVal === null) return 1;
-            if (bVal === null) return -1;
-            if (column === 'city') {
-                return direction === 'asc' ? a.sizeRank - b.sizeRank : b.sizeRank - a.sizeRank;
-            }
-            return direction === 'asc' ? aVal - bVal : bVal - aVal;
-        });
-        updateSortIndicators(column, direction);
-        currentSort = { column, direction };
-        renderTable(sortedData);
-    }
-
-    function handleStickyHeader() {
-        const originalHeader = document.getElementById('originalHeader');
-        const stickyHeader = document.getElementById('stickyHeader');
-        if (!originalHeader || !stickyHeader) return;
-        const rect = originalHeader.getBoundingClientRect();
-        if (rect.top < 0) { stickyHeader.classList.add('visible'); syncColumnWidths(); }
-        else { stickyHeader.classList.remove('visible'); }
-    }
-
-    function initTable() {
-        let syncRaf = null;
-        const syncStickyIfVisible = () => {
-            const stickyHeader = document.getElementById('stickyHeader');
-            if (!stickyHeader || !stickyHeader.classList.contains('visible')) return;
-            if (syncRaf !== null) cancelAnimationFrame(syncRaf);
-            syncRaf = requestAnimationFrame(() => {
-                syncColumnWidths();
-                syncRaf = null;
-            });
-        };
-
-        renderTable(data);
-        document.querySelectorAll('#bayarea-appreciation-table th.sortable').forEach(th => {
-            th.addEventListener('click', () => sortData(th.dataset.column));
-        });
-        window.addEventListener('scroll', handleStickyHeader);
-        const tableContainer = document.getElementById('bayarea-appreciation-table');
-        if (tableContainer) {
-            tableContainer.addEventListener('scroll', syncStickyIfVisible, { passive: true });
-        }
-        window.addEventListener('resize', () => {
-            syncStickyIfVisible();
-        });
-        window.addEventListener('orientationchange', syncStickyIfVisible);
-        syncColumnWidths();
-        handleStickyHeader();
-    }
-
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initTable);
-    else initTable();
-})();
-</script>
-
-<!-- Chart Script -->
-<script>
-(function() {
-  const series = window.LOS_GATOS_ZHVI_SERIES;
-  const chartCanvas = document.getElementById('losGatosPriceChart');
-  if (!series || !chartCanvas || !window.Chart) return;
-  const dates = series.dates;
-  const prices = series.prices;
-  const suggestedMin = Math.floor((Math.min(...prices) * 0.85) / 10000) * 10000;
-  const ctx = chartCanvas.getContext('2d');
-  new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: dates,
-      datasets: [{
-        label: 'Price Index',
-        data: prices,
-        borderColor: '#2c5364',
-        backgroundColor: 'rgba(44, 83, 100, 0.10)',
-        borderWidth: 2, fill: true, tension: 0.4,
-        pointRadius: 0, pointHoverRadius: 5,
-        pointHoverBackgroundColor: '#d4a853',
-        pointHoverBorderColor: '#fff', pointHoverBorderWidth: 2
-      }]
-    },
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      interaction: { mode: 'index', intersect: false },
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          callbacks: {
-            title: function(context) {
-              const d = new Date(dates[context[0].dataIndex]);
-              return d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
-            },
-            label: function(context) {
-              return 'Price Index: $' + context.parsed.y.toLocaleString('en-US', { maximumFractionDigits: 0 });
-            }
-          },
-          backgroundColor: 'rgba(0,0,0,0.82)', padding: 12,
-          titleFont: { size: 14, weight: 'bold' }, bodyFont: { size: 13 }
-        }
-      },
-      scales: {
-        x: {
-          ticks: {
-            maxRotation: 45, minRotation: 45, autoSkip: false,
-            callback: function(value, index) {
-              const d = new Date(dates[index]);
-              if (index === dates.length - 1) return 'Dec 2025';
-              if (d.getMonth() === 0 && d.getFullYear() % 2 === 0) return 'Jan ' + d.getFullYear();
-              return '';
-            },
-            font: { size: 10 }
-          },
-          grid: { display: false }
-        },
-        y: {
-          suggestedMin: suggestedMin,
-          ticks: {
-            callback: function(value) {
-              if (value >= 1000000) return '$' + (value / 1000000).toFixed(1) + 'M';
-              return '$' + (value / 1000).toFixed(0) + 'K';
-            },
-            font: { size: 11 }
-          },
-          grid: { color: 'rgba(0,0,0,0.05)' }
-        }
-      }
-    }
-  });
-})();
-</script>
-
-
 </body>
 </html>

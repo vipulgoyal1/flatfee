@@ -1,5 +1,8 @@
 /.claude
 /.codex_tmp
+/data/zillow/raw/
+__pycache__/
+*.pyc
 *.xlsx
 /.vscode
 *.csv

@@ -1,0 +1,683 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-07-31",
+  "periods_years": [
+    1,
+    3,
+    5,
+    10,
+    20,
+    25
+  ],
+  "sources": {
+    "city_sfr_zhvi": {
+      "path": "data/zillow/raw/City_zhvi_uc_sfr_tier_0.33_0.67_sm_sa_month.csv",
+      "sha256": "347b5787f64480d87425a7c04d77695bb2acb27601bef11020dc6c9181c4deae",
+      "rows": 21363,
+      "first_date": "2000-01-31",
+      "latest_date": "2026-07-31"
+    },
+    "neighborhood_sfr_zhvi": {
+      "path": "data/zillow/raw/Neighborhood_zhvi_uc_sfr_sm_sa_month.csv",
+      "sha256": "5eac751f36df5a819432627a78230fc17c423d2fdabe2e9ef1dd9891c8d84321",
+      "rows": 23924,
+      "first_date": "2000-01-31",
+      "latest_date": "2026-07-31"
+    }
+  },
+  "outputs": {
+    "us_cities": {
+      "records": 16968,
+      "matched": 16904,
+      "compatibility_matches": 1,
+      "unavailable_legacy_records": [
+        {
+          "metro": "Anchorage, AK",
+          "city": "Meadow Lakes",
+          "state": "AK",
+          "county": "Matanuska Susitna Borough",
+          "size_rank": 5423
+        },
+        {
+          "metro": "Athens, TX",
+          "city": "Seven Points",
+          "state": "TX",
+          "county": "Henderson County",
+          "size_rank": 17716
+        },
+        {
+          "metro": "Athens, TX",
+          "city": "Tool",
+          "state": "TX",
+          "county": "Henderson County",
+          "size_rank": 20097
+        },
+        {
+          "metro": "Atlanta-Sandy Springs-Alpharetta, GA",
+          "city": "Lovejoy",
+          "state": "GA",
+          "county": "Clayton County",
+          "size_rank": 8530
+        },
+        {
+          "metro": "Atlanta-Sandy Springs-Alpharetta, GA",
+          "city": "Woolsey",
+          "state": "GA",
+          "county": "Fayette County",
+          "size_rank": 17046
+        },
+        {
+          "metro": "Bakersfield, CA",
+          "city": "Oildale",
+          "state": "CA",
+          "county": "Kern County",
+          "size_rank": 2088
+        },
+        {
+          "metro": "Barnstable Town, MA",
+          "city": "Forestdale",
+          "state": "MA",
+          "county": "Barnstable County",
+          "size_rank": 10053
+        },
+        {
+          "metro": "Bozeman, MT",
+          "city": "Big Sky",
+          "state": "MT",
+          "county": "Madison County",
+          "size_rank": 16629
+        },
+        {
+          "metro": "Burlington, NC",
+          "city": "Glen Raven",
+          "state": "NC",
+          "county": "Alamance County",
+          "size_rank": 9299
+        },
+        {
+          "metro": "Charlotte-Concord-Gastonia, NC-SC",
+          "city": "Marvin",
+          "state": "NC",
+          "county": "Union County",
+          "size_rank": 6663
+        },
+        {
+          "metro": "Chico, CA",
+          "city": "Stirling City",
+          "state": "CA",
+          "county": "Butte County",
+          "size_rank": 30062
+        },
+        {
+          "metro": "Columbia, SC",
+          "city": "Batesburg-Leesville",
+          "state": "SC",
+          "county": "Lexington County",
+          "size_rank": 13019
+        },
+        {
+          "metro": "Columbus, OH",
+          "city": "Lincoln Village",
+          "state": "OH",
+          "county": "Franklin County",
+          "size_rank": 5696
+        },
+        {
+          "metro": "Columbus, OH",
+          "city": "Grandview Heights",
+          "state": "OH",
+          "county": "Franklin County",
+          "size_rank": 6660
+        },
+        {
+          "metro": "Dallas-Fort Worth-Arlington, TX",
+          "city": "Lantana",
+          "state": "TX",
+          "county": "Denton County",
+          "size_rank": 6032
+        },
+        {
+          "metro": "Dallas-Fort Worth-Arlington, TX",
+          "city": "New Fairview",
+          "state": "TX",
+          "county": "Wise County",
+          "size_rank": 16108
+        },
+        {
+          "metro": "Dallas-Fort Worth-Arlington, TX",
+          "city": "Hackberry",
+          "state": "TX",
+          "county": "Denton County",
+          "size_rank": 17842
+        },
+        {
+          "metro": "Dallas-Fort Worth-Arlington, TX",
+          "city": "Lincoln Park",
+          "state": "TX",
+          "county": "Denton County",
+          "size_rank": 28607
+        },
+        {
+          "metro": "Denver-Aurora-Lakewood, CO",
+          "city": "Dakota Ridge",
+          "state": "CO",
+          "county": "Jefferson County",
+          "size_rank": 2552
+        },
+        {
+          "metro": "Des Moines-West Des Moines, IA",
+          "city": "Lacona",
+          "state": "IA",
+          "county": "Lucas County",
+          "size_rank": 16189
+        },
+        {
+          "metro": "Goldsboro, NC",
+          "city": "Mar-Mac",
+          "state": "NC",
+          "county": "Wayne County",
+          "size_rank": 16633
+        },
+        {
+          "metro": "Hagerstown-Martinsburg, MD-WV",
+          "city": "Fountainhead-Orchard Hills",
+          "state": "MD",
+          "county": "Washington County",
+          "size_rank": 10643
+        },
+        {
+          "metro": "Hagerstown-Martinsburg, MD-WV",
+          "city": "Paramount-Long Meadow",
+          "state": "MD",
+          "county": "Washington County",
+          "size_rank": 11662
+        },
+        {
+          "metro": "Hartford-East Hartford-Middletown, CT",
+          "city": "Vernon Rockville",
+          "state": "CT",
+          "county": "Tolland County",
+          "size_rank": 2094
+        },
+        {
+          "metro": "Houston-The Woodlands-Sugar Land, TX",
+          "city": "Chateau Woods",
+          "state": "TX",
+          "county": "Montgomery County",
+          "size_rank": 17920
+        },
+        {
+          "metro": "Houston-The Woodlands-Sugar Land, TX",
+          "city": "Pine Island",
+          "state": "TX",
+          "county": "Waller County",
+          "size_rank": 19067
+        },
+        {
+          "metro": "Jasper, AL",
+          "city": "Dora",
+          "state": "AL",
+          "county": "Walker County",
+          "size_rank": 17310
+        },
+        {
+          "metro": "Jefferson City, MO",
+          "city": "Westphalia",
+          "state": "MO",
+          "county": "Osage County",
+          "size_rank": 18434
+        },
+        {
+          "metro": "Kearney, NE",
+          "city": "Heartwell",
+          "state": "NE",
+          "county": "Kearney County",
+          "size_rank": 26062
+        },
+        {
+          "metro": "Knoxville, TN",
+          "city": "Clairfield",
+          "state": "TN",
+          "county": "Claiborne County",
+          "size_rank": 22408
+        },
+        {
+          "metro": "London, KY",
+          "city": "Warbranch",
+          "state": "KY",
+          "county": "Leslie County",
+          "size_rank": 20660
+        },
+        {
+          "metro": "Marietta, OH",
+          "city": "Stockport",
+          "state": "OH",
+          "county": "Washington County",
+          "size_rank": 7796
+        },
+        {
+          "metro": "Memphis, TN-MS-AR",
+          "city": "Lynchburg",
+          "state": "MS",
+          "county": "DeSoto County",
+          "size_rank": 14811
+        },
+        {
+          "metro": "Miami-Fort Lauderdale-Pompano Beach, FL",
+          "city": "Tamiami",
+          "state": "FL",
+          "county": "Miami-Dade County",
+          "size_rank": 1080
+        },
+        {
+          "metro": "Miami-Fort Lauderdale-Pompano Beach, FL",
+          "city": "University Park",
+          "state": "FL",
+          "county": "Miami-Dade County",
+          "size_rank": 2384
+        },
+        {
+          "metro": "Miami-Fort Lauderdale-Pompano Beach, FL",
+          "city": "Westwood Lake",
+          "state": "FL",
+          "county": "Miami-Dade County",
+          "size_rank": 5259
+        },
+        {
+          "metro": "New York-Newark-Jersey City, NY-NJ-PA",
+          "city": "Fort Salonga",
+          "state": "NY",
+          "county": "Suffolk County",
+          "size_rank": 5668
+        },
+        {
+          "metro": "New York-Newark-Jersey City, NY-NJ-PA",
+          "city": "Netcong",
+          "state": "NJ",
+          "county": "Morris County",
+          "size_rank": 10955
+        },
+        {
+          "metro": "New York-Newark-Jersey City, NY-NJ-PA",
+          "city": "Mill Neck",
+          "state": "NY",
+          "county": "Nassau County",
+          "size_rank": 17210
+        },
+        {
+          "metro": "Newport, OR",
+          "city": "Neotsu",
+          "state": "OR",
+          "county": "Lincoln County",
+          "size_rank": 26341
+        },
+        {
+          "metro": "Norwich-New London, CT",
+          "city": "Niantic",
+          "state": "CT",
+          "county": "New London County",
+          "size_rank": 6412
+        },
+        {
+          "metro": "Oil City, PA",
+          "city": "Rouseville",
+          "state": "PA",
+          "county": "Venango County",
+          "size_rank": 16677
+        },
+        {
+          "metro": "Portland-Vancouver-Hillsboro, OR-WA",
+          "city": "Jennings Lodge",
+          "state": "OR",
+          "county": "Clackamas County",
+          "size_rank": 6949
+        },
+        {
+          "metro": "Providence-Warwick, RI-MA",
+          "city": "Manville",
+          "state": "RI",
+          "county": "Providence County",
+          "size_rank": 10292
+        },
+        {
+          "metro": "Rockford, IL",
+          "city": "New Milford",
+          "state": "IL",
+          "county": "Winnebago County",
+          "size_rank": 25609
+        },
+        {
+          "metro": "Salem, OR",
+          "city": "Hayesville",
+          "state": "OR",
+          "county": "Marion County",
+          "size_rank": 2764
+        },
+        {
+          "metro": "San Jose-Sunnyvale-Santa Clara, CA",
+          "city": "Monte Sereno",
+          "state": "CA",
+          "county": "Santa Clara County",
+          "size_rank": 11704
+        },
+        {
+          "metro": "Seattle-Tacoma-Bellevue, WA",
+          "city": "Enumclaw",
+          "state": "WA",
+          "county": "Pierce County",
+          "size_rank": 3017
+        },
+        {
+          "metro": "Sioux City, IA-NE-SD",
+          "city": "Dixon",
+          "state": "NE",
+          "county": "Dixon County",
+          "size_rank": 25432
+        },
+        {
+          "metro": "St. Cloud, MN",
+          "city": "Greenwald",
+          "state": "MN",
+          "county": "Stearns County",
+          "size_rank": 18380
+        },
+        {
+          "metro": "St. Louis, MO-IL",
+          "city": "Cahokia",
+          "state": "IL",
+          "county": "Saint Clair County",
+          "size_rank": 5108
+        },
+        {
+          "metro": "St. Louis, MO-IL",
+          "city": "Centreville",
+          "state": "IL",
+          "county": "Saint Clair County",
+          "size_rank": 8579
+        },
+        {
+          "metro": "St. Louis, MO-IL",
+          "city": "Foristell",
+          "state": "MO",
+          "county": "Warren County",
+          "size_rank": 16529
+        },
+        {
+          "metro": "Tampa-St. Petersburg-Clearwater, FL",
+          "city": "Town 'n' Country",
+          "state": "FL",
+          "county": "Hillsborough County",
+          "size_rank": 566
+        },
+        {
+          "metro": "Tampa-St. Petersburg-Clearwater, FL",
+          "city": "Egypt Lake-Leto",
+          "state": "FL",
+          "county": "Hillsborough County",
+          "size_rank": 1707
+        },
+        {
+          "metro": "Tampa-St. Petersburg-Clearwater, FL",
+          "city": "Greater Carrollwood",
+          "state": "FL",
+          "county": "Hillsborough County",
+          "size_rank": 1737
+        },
+        {
+          "metro": "Tampa-St. Petersburg-Clearwater, FL",
+          "city": "Timber Pines",
+          "state": "FL",
+          "county": "Hernando County",
+          "size_rank": 8970
+        },
+        {
+          "metro": "Trenton-Princeton, NJ",
+          "city": "Princeton Junction",
+          "state": "NJ",
+          "county": "Mercer County",
+          "size_rank": 3180
+        },
+        {
+          "metro": "Valdosta, GA",
+          "city": "Du Pont",
+          "state": "GA",
+          "county": "Clinch County",
+          "size_rank": 19009
+        },
+        {
+          "metro": "Virginia Beach-Norfolk-Newport News, VA-NC",
+          "city": "Maple",
+          "state": "NC",
+          "county": "Currituck County",
+          "size_rank": 27843
+        },
+        {
+          "metro": "Waco, TX",
+          "city": "Riesel",
+          "state": "TX",
+          "county": "McLennan County",
+          "size_rank": 25338
+        },
+        {
+          "metro": "Washington-Arlington-Alexandria, DC-VA-MD-WV",
+          "city": "Rose Hill",
+          "state": "VA",
+          "county": "Fairfax County",
+          "size_rank": 3748
+        },
+        {
+          "metro": "Worcester, MA-CT",
+          "city": "Baldwinville",
+          "state": "MA",
+          "county": "Worcester County",
+          "size_rank": 19157
+        },
+        {
+          "metro": "Yakima, WA",
+          "city": "Sunnyside",
+          "state": "WA",
+          "county": "Yakima County",
+          "size_rank": 2610
+        }
+      ]
+    },
+    "us_neighborhoods": {
+      "records": 20788,
+      "matched": 20752,
+      "compatibility_matches": 1,
+      "duplicate_name_matches": 17,
+      "unavailable_legacy_records": [
+        {
+          "city_group": "Akron, OH",
+          "neighborhood": "University of Ohio Akron",
+          "size_rank": 3352
+        },
+        {
+          "city_group": "Baton Rouge, LA",
+          "neighborhood": "Louisiana State University",
+          "size_rank": 3107
+        },
+        {
+          "city_group": "Baton Rouge, LA",
+          "neighborhood": "Southern University",
+          "size_rank": 5433
+        },
+        {
+          "city_group": "Boulder, CO",
+          "neighborhood": "Colorado University",
+          "size_rank": 2692
+        },
+        {
+          "city_group": "Chandler, AZ",
+          "neighborhood": "Amberwood North",
+          "size_rank": 3922
+        },
+        {
+          "city_group": "Claremont, CA",
+          "neighborhood": "The Claremont Colleges and Affiliated Institutions",
+          "size_rank": 5442
+        },
+        {
+          "city_group": "Columbus, OH",
+          "neighborhood": "The Ohio State University",
+          "size_rank": 1133
+        },
+        {
+          "city_group": "Columbus, OH",
+          "neighborhood": "Independence Village",
+          "size_rank": 2336
+        },
+        {
+          "city_group": "Columbus, OH",
+          "neighborhood": "East",
+          "size_rank": 2402
+        },
+        {
+          "city_group": "Columbus, OH",
+          "neighborhood": "Glenmeadows",
+          "size_rank": 19774
+        },
+        {
+          "city_group": "Cumming, GA",
+          "neighborhood": "Etowah",
+          "size_rank": 12426
+        },
+        {
+          "city_group": "Egypt Lake-Leto, FL",
+          "neighborhood": "Egypt Lake",
+          "size_rank": 878
+        },
+        {
+          "city_group": "Egypt Lake-Leto, FL",
+          "neighborhood": "Leto",
+          "size_rank": 1640
+        },
+        {
+          "city_group": "Greensboro, NC",
+          "neighborhood": "Guilford College",
+          "size_rank": 1382
+        },
+        {
+          "city_group": "Harrisonburg, VA",
+          "neighborhood": "James Madison University: Main Campus",
+          "size_rank": 4177
+        },
+        {
+          "city_group": "Jacksonville, FL",
+          "neighborhood": "Jacksonville University",
+          "size_rank": 9986
+        },
+        {
+          "city_group": "Lexington, KY",
+          "neighborhood": "University of Kentucky",
+          "size_rank": 3318
+        },
+        {
+          "city_group": "Miami Gardens, FL",
+          "neighborhood": "Florida Memorial University",
+          "size_rank": 13994
+        },
+        {
+          "city_group": "Minneapolis, MN",
+          "neighborhood": "Calhoun",
+          "size_rank": 3595
+        },
+        {
+          "city_group": "Minneapolis, MN",
+          "neighborhood": "West Calhoun",
+          "size_rank": 9150
+        },
+        {
+          "city_group": "Minneapolis, MN",
+          "neighborhood": "East Calhoun",
+          "size_rank": 10087
+        },
+        {
+          "city_group": "Muncie, IN",
+          "neighborhood": "Ball State University",
+          "size_rank": 3757
+        },
+        {
+          "city_group": "Muncie, IN",
+          "neighborhood": "Carlton-Ludingwood",
+          "size_rank": 16762
+        },
+        {
+          "city_group": "Pueblo, CO",
+          "neighborhood": "Colorado State University",
+          "size_rank": 10464
+        },
+        {
+          "city_group": "Rice Lake, MN",
+          "neighborhood": "Arnold",
+          "size_rank": 13980
+        },
+        {
+          "city_group": "Richmond, VA",
+          "neighborhood": "Virginia Commonwealth University",
+          "size_rank": 8624
+        },
+        {
+          "city_group": "Saint Petersburg, FL",
+          "neighborhood": "Eckerd College",
+          "size_rank": 14364
+        },
+        {
+          "city_group": "San Bernardino, CA",
+          "neighborhood": "San Andreas",
+          "size_rank": 4647
+        },
+        {
+          "city_group": "San Bernardino, CA",
+          "neighborhood": "Small Canyon",
+          "size_rank": 5706
+        },
+        {
+          "city_group": "San Bernardino, CA",
+          "neighborhood": "Valley College",
+          "size_rank": 12570
+        },
+        {
+          "city_group": "San Bernardino, CA",
+          "neighborhood": "Crossroads",
+          "size_rank": 19184
+        },
+        {
+          "city_group": "Santa Rosa, CA",
+          "neighborhood": "Santa Rosa Junior College",
+          "size_rank": 2586
+        },
+        {
+          "city_group": "Washington, DC",
+          "neighborhood": "Catholic University",
+          "size_rank": 3175
+        },
+        {
+          "city_group": "Westerville, OH",
+          "neighborhood": "Little Turtle",
+          "size_rank": 4500
+        },
+        {
+          "city_group": "Winston-Salem, NC",
+          "neighborhood": "North Carolina School of the Arts",
+          "size_rank": 18658
+        },
+        {
+          "city_group": "Yuma, AZ",
+          "neighborhood": "Sierra Monta+¦a",
+          "size_rank": 26561
+        }
+      ]
+    },
+    "regional_pages": {
+      "Bay-Area-City-Appreciation-Ranking.html": {
+        "records": 50,
+        "matched": 50
+      },
+      "Southern-CA-City-Appreciation-Ranking.html": {
+        "records": 50,
+        "matched": 50
+      }
+    }
+  }
+}

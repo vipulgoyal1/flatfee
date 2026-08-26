@@ -1,0 +1,4 @@
+exclude:
+  - config/
+  - data/
+  - scripts/

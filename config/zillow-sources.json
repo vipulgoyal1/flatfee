@@ -1,0 +1,113 @@
+{
+  "schema_version": 2,
+  "research_page": "https://www.zillow.com/research/data/",
+  "metric_policy": {
+    "zhvi_cut": "Single-family residences, smoothed, seasonally adjusted",
+    "market_snapshot": "Use single-family median sale price and all-homes median days to pending",
+    "latest_date_rule": "For each city metric, use the latest source date with a value for all 43 configured cities",
+    "zhvi_alignment_rule": "City and neighborhood ZHVI sources must share the same latest date",
+    "historical_update_rule": "Replace the complete series on every refresh because Zillow may revise historical values"
+  },
+  "sources": [
+    {
+      "id": "city_sfr_zhvi",
+      "enabled": true,
+      "filename": "City_zhvi_uc_sfr_tier_0.33_0.67_sm_sa_month.csv",
+      "url": "https://files.zillowstatic.com/research/public_csvs/zhvi/City_zhvi_uc_sfr_tier_0.33_0.67_sm_sa_month.csv",
+      "geography": "City",
+      "metric": "Zillow Home Value Index (ZHVI)",
+      "housing_type": "Single-family residences",
+      "series_type": "Smoothed, seasonally adjusted, monthly",
+      "alignment_group": "zhvi",
+      "required_columns": [
+        "RegionID",
+        "SizeRank",
+        "RegionName",
+        "RegionType",
+        "StateName",
+        "State",
+        "Metro",
+        "CountyName"
+      ]
+    },
+    {
+      "id": "neighborhood_sfr_zhvi",
+      "enabled": true,
+      "filename": "Neighborhood_zhvi_uc_sfr_sm_sa_month.csv",
+      "url": "https://files.zillowstatic.com/research/public_csvs/zhvi/Neighborhood_zhvi_uc_sfr_sm_sa_month.csv",
+      "geography": "Neighborhood",
+      "metric": "Zillow Home Value Index (ZHVI)",
+      "housing_type": "Single-family residences",
+      "series_type": "Smoothed, seasonally adjusted, monthly",
+      "alignment_group": "zhvi",
+      "required_columns": [
+        "RegionID",
+        "SizeRank",
+        "RegionName",
+        "RegionType",
+        "StateName",
+        "State",
+        "City",
+        "Metro",
+        "CountyName"
+      ]
+    },
+    {
+      "id": "city_sfr_median_sale_price",
+      "enabled": true,
+      "filename": "City_median_sale_price_uc_sfr_sm_sa_month.csv",
+      "url": "https://files.zillowstatic.com/research/public_csvs/median_sale_price/City_median_sale_price_uc_sfr_sm_sa_month.csv",
+      "geography": "City",
+      "metric": "Median sale price",
+      "housing_type": "Single-family residences",
+      "series_type": "Smoothed, seasonally adjusted, monthly",
+      "endpoint_status": "Unlisted on Zillow Research's current download menu but publicly accessible",
+      "required_columns": [
+        "RegionID",
+        "SizeRank",
+        "RegionName",
+        "RegionType",
+        "StateName",
+        "State",
+        "Metro",
+        "CountyName"
+      ]
+    },
+    {
+      "id": "city_median_days_to_pending",
+      "enabled": true,
+      "filename": "City_med_doz_pending_uc_sfrcondo_sm_month.csv",
+      "url": "https://files.zillowstatic.com/research/public_csvs/med_doz_pending/City_med_doz_pending_uc_sfrcondo_sm_month.csv",
+      "geography": "City",
+      "metric": "Median days to pending",
+      "housing_type": "All homes",
+      "series_type": "Smoothed, monthly",
+      "definition": "Days from first being shown for sale on Zillow until changing to pending; excludes the pending-to-close period",
+      "endpoint_status": "Unlisted on Zillow Research's current download menu but publicly accessible",
+      "required_columns": [
+        "RegionID",
+        "SizeRank",
+        "RegionName",
+        "RegionType",
+        "StateName",
+        "State",
+        "Metro",
+        "CountyName"
+      ]
+    }
+  ],
+  "alignment_groups": [
+    {
+      "id": "zhvi",
+      "source_ids": [
+        "city_sfr_zhvi",
+        "neighborhood_sfr_zhvi"
+      ]
+    }
+  ],
+  "endpoint_policy": [
+    "Use the official files.zillowstatic.com CSV endpoints only; do not scrape Zillow city pages.",
+    "Health-check unlisted City market endpoints on every run and preserve the last valid raw file if a refresh fails.",
+    "Keep each metric's own as-of date because Zillow publishes median sale price with a reporting lag."
+  ]
+}

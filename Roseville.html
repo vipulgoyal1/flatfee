@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="assets/dropdown/css/style.css">
   <link rel="stylesheet" href="assets/socicon/css/styles.css">
   <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="stylesheet" href="assets/theme/css/city-data.css">
   <link rel="preload" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,500,600,700,800,900,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,500,600,700,800,900,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
   <link rel="preload" href="https://fonts.googleapis.com/css?family=DM+Sans:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -381,37 +382,37 @@
         <div class="row g-3">
           <div class="col-6">
             <div class="stat-card">
-              <div class="stat-val"><span class="arrow-down">&#9660;</span>&nbsp;1.2%</div>
+              <div class="stat-val"><span class="arrow-down">&#9660;</span>&nbsp;0.0%</div>
               <div class="stat-label">YoY Price Change</div>
             </div>
           </div>
           <div class="col-6">
             <div class="stat-card">
-              <div class="stat-val"><span class="arrow-up">&#9650;</span>&nbsp;22.7%</div>
+              <div class="stat-val"><span class="arrow-up">&#9650;</span>&nbsp;7.2%</div>
               <div class="stat-label">5-Year Price Change</div>
             </div>
           </div>
           <div class="col-6">
             <div class="stat-card">
-              <div class="stat-val"><span class="arrow-up">&#9650;</span>&nbsp;64.1%</div>
+              <div class="stat-val"><span class="arrow-up">&#9650;</span>&nbsp;57.6%</div>
               <div class="stat-label">10-Year Price Change</div>
             </div>
           </div>
           <div class="col-6">
             <div class="stat-card">
-              <div class="stat-val"><span class="arrow-up">&#9650;</span>&nbsp;164.5%</div>
+              <div class="stat-val"><span class="arrow-up">&#9650;</span>&nbsp;139.7%</div>
               <div class="stat-label">25-Year Price Change</div>
             </div>
           </div>
           <div class="col-6">
             <div class="stat-card">
-              <div class="stat-val">$635,870</div>
+              <div class="stat-val">$651,137</div>
               <div class="stat-label">Median Sale Price</div>
             </div>
           </div>
           <div class="col-6">
             <div class="stat-card">
-              <div class="stat-val">30</div>
+              <div class="stat-val">14</div>
               <div class="stat-label">Median Days on Market</div>
             </div>
           </div>
@@ -635,250 +636,12 @@
 <script src="assets/dropdown/js/navbar-dropdown.js"></script>
 <script src="assets/mbr-switch-arrow/mbr-switch-arrow.js"></script>
 <script src="assets/theme/js/script.js"></script>
-<script src="assets/data/roseville_zhvi_series.js"></script>
+<script src="assets/data/city-pages/roseville.js"></script>
+<script src="assets/js/city-page-data.js"></script>
 
 <!-- Default Statcounter code -->
 <script type="text/javascript">var sc_project=13140329; var sc_invisible=1; var sc_security="04536c4a";</script>
 <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
 <noscript><div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img class="statcounter" src="https://c.statcounter.com/13140329/0/04536c4a/1/" alt="Web Analytics" referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
-
-<!-- Neighborhood Table Script -->
-<script>
-(function() {
-    const rawData = [
-        {"city": "Blue Oaks", "total_return_1y": -1.0061, "cagr_1y": -1.0061, "total_return_3y": -0.55, "cagr_3y": -0.1837, "total_return_5y": 22.8552, "cagr_5y": 4.2026, "total_return_10y": 59.5785, "cagr_10y": 4.7846, "total_return_20y": 22.7404, "cagr_20y": 1.0298, "total_return_25y": null, "cagr_25y": null, "typical_price": 697366},
-        {"city": "Fiddyment Farm", "total_return_1y": -0.1655, "cagr_1y": -0.1655, "total_return_3y": -0.04, "cagr_3y": -0.0133, "total_return_5y": 24.5511, "cagr_5y": 4.4887, "total_return_10y": 62.4178, "cagr_10y": 4.9696, "total_return_20y": null, "cagr_20y": null, "total_return_25y": null, "cagr_25y": null, "typical_price": 704593},
-        {"city": "Westpark", "total_return_1y": -1.6543, "cagr_1y": -1.6543, "total_return_3y": -2.2849, "cagr_3y": -0.7675, "total_return_5y": 20.6666, "cagr_5y": 3.8287, "total_return_10y": 56.084, "cagr_10y": 4.5528, "total_return_20y": null, "cagr_20y": null, "total_return_25y": null, "cagr_25y": null, "typical_price": 680213},
-        {"city": "Stoneridge", "total_return_1y": 1.2761, "cagr_1y": 1.2761, "total_return_3y": 4.1901, "cagr_3y": 1.3776, "total_return_5y": 30.8187, "cagr_5y": 5.5198, "total_return_10y": 65.9771, "cagr_10y": 5.1974, "total_return_20y": null, "cagr_20y": null, "total_return_25y": null, "cagr_25y": null, "typical_price": 891318},
-        {"city": "Kaseberg-Kingswood", "total_return_1y": -3.0681, "cagr_1y": -3.0681, "total_return_3y": -0.4186, "cagr_3y": -0.1397, "total_return_5y": 21.4023, "cagr_5y": 3.955, "total_return_10y": 68.1354, "cagr_10y": 5.3334, "total_return_20y": 31.4452, "cagr_20y": 1.3765, "total_return_25y": 190.3653, "cagr_25y": 4.3561, "typical_price": 571622},
-        {"city": "Quail Glen", "total_return_1y": -2.468, "cagr_1y": -2.468, "total_return_3y": -0.6245, "cagr_3y": -0.2086, "total_return_5y": 22.9552, "cagr_5y": 4.2196, "total_return_10y": 63.7982, "cagr_10y": 5.0584, "total_return_20y": 22.9541, "cagr_20y": 1.0386, "total_return_25y": 157.9188, "cagr_25y": 3.8626, "typical_price": 671744},
-        {"city": "Woodcreek Oaks", "total_return_1y": -1.8319, "cagr_1y": -1.8319, "total_return_3y": -0.1287, "cagr_3y": -0.0429, "total_return_5y": 22.8186, "cagr_5y": 4.1964, "total_return_10y": 66.7275, "cagr_10y": 5.2448, "total_return_20y": 24.0541, "cagr_20y": 1.0836, "total_return_25y": 170.1343, "cagr_25y": 4.0551, "typical_price": 616057},
-        {"city": "Highland Reserve", "total_return_1y": -2.7758, "cagr_1y": -2.7758, "total_return_3y": -1.1978, "cagr_3y": -0.4009, "total_return_5y": 21.5043, "cagr_5y": 3.9725, "total_return_10y": 61.6712, "cagr_10y": 4.9212, "total_return_20y": 18.9765, "cagr_20y": 0.8726, "total_return_25y": 153.3791, "cagr_25y": 3.7889, "typical_price": 647480},
-        {"city": "Foothills Junction", "total_return_1y": -1.077, "cagr_1y": -1.077, "total_return_3y": 0.969, "cagr_3y": 0.322, "total_return_5y": 24.0756, "cagr_5y": 4.4088, "total_return_10y": 71.1829, "cagr_10y": 5.5227, "total_return_20y": 30.1296, "cagr_20y": 1.3255, "total_return_25y": 187.1744, "cagr_25y": 4.31, "typical_price": 576283},
-        {"city": "Sun City", "total_return_1y": -2.308, "cagr_1y": -2.308, "total_return_3y": -2.6481, "cagr_3y": -0.8906, "total_return_5y": 17.8623, "cagr_5y": 3.3415, "total_return_10y": 52.6795, "cagr_10y": 4.3225, "total_return_20y": 30.4082, "cagr_20y": 1.3363, "total_return_25y": 123.443, "cagr_25y": 3.2682, "typical_price": 595693},
-        {"city": "Junction West", "total_return_1y": -0.8567, "cagr_1y": -0.8567, "total_return_3y": 0.0308, "cagr_3y": 0.0103, "total_return_5y": 23.6295, "cagr_5y": 4.3336, "total_return_10y": 66.1713, "cagr_10y": 5.2097, "total_return_20y": null, "cagr_20y": null, "total_return_25y": null, "cagr_25y": null, "typical_price": 640231},
-        {"city": "Maidu", "total_return_1y": -0.4836, "cagr_1y": -0.4836, "total_return_3y": 1.3362, "cagr_3y": 0.4434, "total_return_5y": 24.0019, "cagr_5y": 4.3964, "total_return_10y": 72.2063, "cagr_10y": 5.5857, "total_return_20y": 30.1585, "cagr_20y": 1.3266, "total_return_25y": 171.54, "cagr_25y": 4.0767, "typical_price": 678161},
-        {"city": "Stanford", "total_return_1y": -3.2293, "cagr_1y": -3.2293, "total_return_3y": -1.0195, "cagr_3y": -0.341, "total_return_5y": 22.5449, "cagr_5y": 4.1499, "total_return_10y": 63.3503, "cagr_10y": 5.0297, "total_return_20y": null, "cagr_20y": null, "total_return_25y": null, "cagr_25y": null, "typical_price": 690972},
-        {"city": "Johnson Ranch", "total_return_1y": -1.0984, "cagr_1y": -1.0984, "total_return_3y": 1.1836, "cagr_3y": 0.393, "total_return_5y": 24.4012, "cagr_5y": 4.4636, "total_return_10y": 65.7767, "cagr_10y": 5.1846, "total_return_20y": 26.847, "cagr_20y": 1.1962, "total_return_25y": 153.3678, "cagr_25y": 3.7887, "typical_price": 734889},
-        {"city": "Cresthaven", "total_return_1y": -0.9631, "cagr_1y": -0.9631, "total_return_3y": 1.0873, "cagr_3y": 0.3611, "total_return_5y": 23.3505, "cagr_5y": 4.2865, "total_return_10y": 79.0111, "cagr_10y": 5.9956, "total_return_20y": 24.0889, "cagr_20y": 1.085, "total_return_25y": 187.4895, "cagr_25y": 4.3145, "typical_price": 491278},
-        {"city": "Diamond Oaks", "total_return_1y": -1.3742, "cagr_1y": -1.3742, "total_return_3y": 0.6817, "cagr_3y": 0.2267, "total_return_5y": 23.3768, "cagr_5y": 4.291, "total_return_10y": 67.5593, "cagr_10y": 5.2972, "total_return_20y": 25.2859, "cagr_20y": 1.1335, "total_return_25y": 160.9728, "cagr_25y": 3.9115, "typical_price": 682263},
-        {"city": "Vineyard", "total_return_1y": -0.3297, "cagr_1y": -0.3297, "total_return_3y": 1.6731, "cagr_3y": 0.5546, "total_return_5y": 23.3671, "cagr_5y": 4.2893, "total_return_10y": 78.0537, "cagr_10y": 5.9388, "total_return_20y": 28.1367, "cagr_20y": 1.2474, "total_return_25y": 193.7431, "cagr_25y": 4.4044, "typical_price": 489711},
-        {"city": "Pleasant Grove", "total_return_1y": -1.8826, "cagr_1y": -1.8826, "total_return_3y": 0.3165, "cagr_3y": 0.1054, "total_return_5y": 22.995, "cagr_5y": 4.2263, "total_return_10y": 62.6929, "cagr_10y": 4.9873, "total_return_20y": 23.804, "cagr_20y": 1.0734, "total_return_25y": 148.7942, "cagr_25y": 3.7131, "typical_price": 760804},
-        {"city": "Folsom Road", "total_return_1y": -0.2634, "cagr_1y": -0.2634, "total_return_3y": -0.544, "cagr_3y": -0.1817, "total_return_5y": 18.7203, "cagr_5y": 3.4916, "total_return_10y": 73.5398, "cagr_10y": 5.6671, "total_return_20y": 24.9348, "cagr_20y": 1.1193, "total_return_25y": 209.6117, "cagr_25y": 4.6243, "typical_price": 481549},
-        {"city": "Sierra Gardens", "total_return_1y": -1.8357, "cagr_1y": -1.8357, "total_return_3y": 0.4567, "cagr_3y": 0.152, "total_return_5y": 21.8192, "cagr_5y": 4.0263, "total_return_10y": 76.919, "cagr_10y": 5.8711, "total_return_20y": 33.2522, "cagr_20y": 1.4457, "total_return_25y": 205.6993, "cagr_25y": 4.5711, "typical_price": 513418},
-        {"city": "Cirby Side", "total_return_1y": -0.9948, "cagr_1y": -0.9948, "total_return_3y": 2.7063, "cagr_3y": 0.8941, "total_return_5y": 24.2727, "cagr_5y": 4.442, "total_return_10y": 73.3473, "cagr_10y": 5.6554, "total_return_20y": 25.7667, "cagr_20y": 1.1529, "total_return_25y": 156.9336, "cagr_25y": 3.8467, "typical_price": 700007},
-        {"city": "Roseville Heights", "total_return_1y": -0.227, "cagr_1y": -0.227, "total_return_3y": 1.019, "cagr_3y": 0.3385, "total_return_5y": 21.2448, "cagr_5y": 3.928, "total_return_10y": 81.866, "cagr_10y": 6.1635, "total_return_20y": 17.269, "cagr_20y": 0.7997, "total_return_25y": 209.4638, "cagr_25y": 4.6223, "typical_price": 422078},
-        {"city": "Cirby Ranch", "total_return_1y": -1.1604, "cagr_1y": -1.1604, "total_return_3y": 1.2417, "cagr_3y": 0.4122, "total_return_5y": 23.0974, "cagr_5y": 4.2437, "total_return_10y": 70.3776, "cagr_10y": 5.473, "total_return_20y": 29.6781, "cagr_20y": 1.3079, "total_return_25y": 173.758, "cagr_25y": 4.1105, "typical_price": 625481},
-        {"city": "South Cirby", "total_return_1y": 0.6224, "cagr_1y": 0.6224, "total_return_3y": 3.4276, "cagr_3y": 1.1297, "total_return_5y": 25.7286, "cagr_5y": 4.6856, "total_return_10y": 78.8293, "cagr_10y": 5.9849, "total_return_20y": 33.5515, "cagr_20y": 1.4571, "total_return_25y": 193.927, "cagr_25y": 4.407, "typical_price": 607305},
-        {"city": "Hillcrest", "total_return_1y": -0.924, "cagr_1y": -0.924, "total_return_3y": 0.5382, "cagr_3y": 0.1791, "total_return_5y": 20.8157, "cagr_5y": 3.8543, "total_return_10y": 77.2819, "cagr_10y": 5.8928, "total_return_20y": 25.4614, "cagr_20y": 1.1406, "total_return_25y": 197.0693, "cagr_25y": 4.4514, "typical_price": 516984},
-        {"city": "Meadow Oaks", "total_return_1y": -1.2729, "cagr_1y": -1.2729, "total_return_3y": 0.7855, "cagr_3y": 0.2611, "total_return_5y": 22.4275, "cagr_5y": 4.13, "total_return_10y": 73.3562, "cagr_10y": 5.6559, "total_return_20y": 31.2092, "cagr_20y": 1.3674, "total_return_25y": 187.6375, "cagr_25y": 4.3167, "typical_price": 544799},
-        {"city": "Olympus Pointe", "total_return_1y": -2.3394, "cagr_1y": -2.3394, "total_return_3y": 0.8683, "cagr_3y": 0.2886, "total_return_5y": 25.2732, "cagr_5y": 4.6096, "total_return_10y": 62.6782, "cagr_10y": 4.9864, "total_return_20y": 26.9226, "cagr_20y": 1.1992, "total_return_25y": 162.275, "cagr_25y": 3.9322, "typical_price": 702227},
-        {"city": "Cherry Glen", "total_return_1y": -0.1632, "cagr_1y": -0.1632, "total_return_3y": 1.1818, "cagr_3y": 0.3924, "total_return_5y": 21.644, "cagr_5y": 3.9964, "total_return_10y": 88.4439, "cagr_10y": 6.5414, "total_return_20y": 27.3084, "cagr_20y": 1.2145, "total_return_25y": 224.2356, "cagr_25y": 4.8177, "typical_price": 430857},
-        {"city": "Los Cerritos", "total_return_1y": -1.0425, "cagr_1y": -1.0425, "total_return_3y": 0.4557, "cagr_3y": 0.1517, "total_return_5y": 20.6834, "cagr_5y": 3.8316, "total_return_10y": 80.1381, "cagr_10y": 6.0622, "total_return_20y": 25.1622, "cagr_20y": 1.1285, "total_return_25y": 200.4537, "cagr_25y": 4.4988, "typical_price": 472776},
-        {"city": "Sierra Vista", "total_return_1y": -2.0209, "cagr_1y": -2.0209, "total_return_3y": -1.5053, "cagr_3y": -0.5043, "total_return_5y": 17.1335, "cagr_5y": 3.2134, "total_return_10y": 72.474, "cagr_10y": 5.6021, "total_return_20y": 16.256, "cagr_20y": 0.756, "total_return_25y": 183.2944, "cagr_25y": 4.2532, "typical_price": 471586}
-    ];
-
-    const data = rawData.map((city, index) => ({ ...city, sizeRank: index + 1 }));
-    let currentSort = { column: null, direction: 'asc' };
-
-    function formatPrice(price) {
-        if (price === null) return 'N/A';
-        return '$' + price.toLocaleString();
-    }
-
-    function formatAppreciation(totalReturn, cagr) {
-        if (totalReturn === null || cagr === null) return 'N/A';
-        const sign = totalReturn >= 0 ? '+' : '';
-        const cagrSign = cagr >= 0 ? '+' : '';
-        const className = totalReturn >= 0 ? 'positive' : 'negative';
-        return `<span class="${className}">${sign}${totalReturn.toFixed(2)}%<span class="cagr">(${cagrSign}${cagr.toFixed(2)}%)</span></span>`;
-    }
-
-    function renderTable(sortedData) {
-        const tbody = document.getElementById('tableBody');
-        if (!tbody) return;
-        tbody.innerHTML = '';
-        sortedData.forEach(row => {
-            const tr = document.createElement('tr');
-            tr.innerHTML = `
-                <td class="city-name">(#${row.sizeRank}) ${row.city}</td>
-                <td class="number">${formatAppreciation(row.total_return_1y, row.cagr_1y)}</td>
-                <td class="number">${formatAppreciation(row.total_return_3y, row.cagr_3y)}</td>
-                <td class="number">${formatAppreciation(row.total_return_5y, row.cagr_5y)}</td>
-                <td class="number">${formatAppreciation(row.total_return_10y, row.cagr_10y)}</td>
-                <td class="number">${formatAppreciation(row.total_return_20y, row.cagr_20y)}</td>
-                <td class="number">${formatAppreciation(row.total_return_25y, row.cagr_25y)}</td>
-                <td class="price">${formatPrice(row.typical_price)}</td>
-            `;
-            tbody.appendChild(tr);
-        });
-    }
-
-    function syncColumnWidths() {
-        const originalHeaders = document.querySelectorAll('#originalHeader th');
-        const stickyHeaders = document.querySelectorAll('#stickyHeader th');
-        const table = document.getElementById('dataTable');
-        const stickyHeader = document.getElementById('stickyHeader');
-        if (!table || !stickyHeader) return;
-        originalHeaders.forEach((th, index) => {
-            const width = th.offsetWidth;
-            if (stickyHeaders[index]) {
-                stickyHeaders[index].style.width = width + 'px';
-                stickyHeaders[index].style.minWidth = width + 'px';
-                stickyHeaders[index].style.maxWidth = width + 'px';
-            }
-        });
-        const tableRect = table.getBoundingClientRect();
-        stickyHeader.style.width = tableRect.width + 'px';
-        stickyHeader.style.left = tableRect.left + 'px';
-    }
-
-    function updateSortIndicators(column, direction) {
-        document.querySelectorAll('#bayarea-appreciation-table th').forEach(th => {
-            th.classList.remove('sort-asc', 'sort-desc');
-        });
-        [`#originalHeader th[data-column="${column}"]`, `#stickyHeader th[data-column="${column}"]`].forEach(selector => {
-            const th = document.querySelector(selector);
-            if (th) th.classList.add(`sort-${direction}`);
-        });
-    }
-
-    function sortData(column) {
-        let direction = 'asc';
-        if (currentSort.column === column) direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
-        const sortedData = [...data].sort((a, b) => {
-            let aVal = a[column], bVal = b[column];
-            if (aVal === null && bVal === null) return 0;
-            if (aVal === null) return 1;
-            if (bVal === null) return -1;
-            if (column === 'city') {
-                return direction === 'asc' ? a.sizeRank - b.sizeRank : b.sizeRank - a.sizeRank;
-            }
-            return direction === 'asc' ? aVal - bVal : bVal - aVal;
-        });
-        updateSortIndicators(column, direction);
-        currentSort = { column, direction };
-        renderTable(sortedData);
-    }
-
-    function handleStickyHeader() {
-        const originalHeader = document.getElementById('originalHeader');
-        const stickyHeader = document.getElementById('stickyHeader');
-        if (!originalHeader || !stickyHeader) return;
-        const rect = originalHeader.getBoundingClientRect();
-        if (rect.top < 0) { stickyHeader.classList.add('visible'); syncColumnWidths(); }
-        else { stickyHeader.classList.remove('visible'); }
-    }
-
-    function initTable() {
-        let syncRaf = null;
-        const syncStickyIfVisible = () => {
-            const stickyHeader = document.getElementById('stickyHeader');
-            if (!stickyHeader || !stickyHeader.classList.contains('visible')) return;
-            if (syncRaf !== null) cancelAnimationFrame(syncRaf);
-            syncRaf = requestAnimationFrame(() => {
-                syncColumnWidths();
-                syncRaf = null;
-            });
-        };
-
-        renderTable(data);
-        document.querySelectorAll('#bayarea-appreciation-table th.sortable').forEach(th => {
-            th.addEventListener('click', () => sortData(th.dataset.column));
-        });
-        window.addEventListener('scroll', handleStickyHeader);
-        const tableContainer = document.getElementById('bayarea-appreciation-table');
-        if (tableContainer) {
-            tableContainer.addEventListener('scroll', syncStickyIfVisible, { passive: true });
-        }
-        window.addEventListener('resize', () => {
-            syncStickyIfVisible();
-        });
-        window.addEventListener('orientationchange', syncStickyIfVisible);
-        syncColumnWidths();
-        handleStickyHeader();
-    }
-
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initTable);
-    else initTable();
-})();
-</script>
-
-<!-- Chart Script -->
-<script>
-(function() {
-  const series = window.ROSEVILLE_ZHVI_SERIES;
-  const chartCanvas = document.getElementById('rosevillePriceChart');
-  if (!series || !chartCanvas || !window.Chart) return;
-  const dates = series.dates;
-  const prices = series.prices;
-  const suggestedMin = Math.floor((Math.min(...prices) * 0.85) / 10000) * 10000;
-  const ctx = chartCanvas.getContext('2d');
-  new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: dates,
-      datasets: [{
-        label: 'Price Index',
-        data: prices,
-        borderColor: '#2c5364',
-        backgroundColor: 'rgba(44, 83, 100, 0.10)',
-        borderWidth: 2, fill: true, tension: 0.4,
-        pointRadius: 0, pointHoverRadius: 5,
-        pointHoverBackgroundColor: '#d4a853',
-        pointHoverBorderColor: '#fff', pointHoverBorderWidth: 2
-      }]
-    },
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      interaction: { mode: 'index', intersect: false },
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          callbacks: {
-            title: function(context) {
-              const d = new Date(dates[context[0].dataIndex]);
-              return d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
-            },
-            label: function(context) {
-              return 'Price Index: $' + context.parsed.y.toLocaleString('en-US', { maximumFractionDigits: 0 });
-            }
-          },
-          backgroundColor: 'rgba(0,0,0,0.82)', padding: 12,
-          titleFont: { size: 14, weight: 'bold' }, bodyFont: { size: 13 }
-        }
-      },
-      scales: {
-        x: {
-          ticks: {
-            maxRotation: 45, minRotation: 45, autoSkip: false,
-            callback: function(value, index) {
-              const d = new Date(dates[index]);
-              if (index === dates.length - 1) return 'Dec 2025';
-              if (d.getMonth() === 0 && d.getFullYear() % 2 === 0) return 'Jan ' + d.getFullYear();
-              return '';
-            },
-            font: { size: 10 }
-          },
-          grid: { display: false }
-        },
-        y: {
-          suggestedMin: suggestedMin,
-          ticks: {
-            callback: function(value) {
-              if (value >= 1000000) return '$' + (value / 1000000).toFixed(1) + 'M';
-              return '$' + (value / 1000).toFixed(0) + 'K';
-            },
-            font: { size: 11 }
-          },
-          grid: { color: 'rgba(0,0,0,0.05)' }
-        }
-      }
-    }
-  });
-})();
-</script>
-
-
 </body>
 </html>
