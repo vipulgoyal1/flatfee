@@ -1,9 +1,9 @@
 # Future Zillow updates for all website HTML pages
 
 Run this workflow monthly, after Zillow publishes a new data month. It covers
-all 43 city pages, all four appreciation-ranking pages, and the appreciation
-rankings hub so dates, calculations, chart data, and ranking values remain
-consistent across the website.
+all 43 city pages, all four appreciation-ranking pages, the appreciation
+rankings hub, and `CMA.html` so dates, calculations, chart data, and ranking
+values remain consistent across the website.
 
 ## What is generated
 
@@ -18,6 +18,11 @@ Approved visible copy and neighborhood membership are protected by
 
 The shared rendering code is `assets/js/city-page-data.js`, and the shared
 styles are in `assets/theme/css/city-data.css`.
+
+`CMA.html` uses `assets/data/ca_cities_zhvi_data.js`. Unlike the 43 city-page
+assets, this file contains every California city in Zillow's city source so the
+CMA city selector retains full statewide coverage. Generate it only with
+`scripts/update_cma_data.py`; do not rebuild it from the 43-city page subset.
 
 Do not silently rewrite headings, labels, descriptions, links, FAQs, service
 copy, navigation, footers, or neighborhood names. If wording or neighborhood
@@ -52,11 +57,28 @@ Run the commands from the repository root in PowerShell.
    neighborhood rows are reported but are not added without approval. Exit
    code 2 means an error; do not write.
 
+   Also preview the full California dataset used by `CMA.html`:
+
+   ```powershell
+   python scripts/update_cma_data.py --check
+   ```
+
+   Exit code 1 is expected after a new Zillow download. Confirm that the latest
+   date matches the city ZHVI source and that California city coverage remains
+   above the generator's safety threshold. Exit code 2 means an error; do not
+   write.
+
 3. Apply the coordinated update:
 
    ```powershell
    python scripts/update_city_pages.py --write
+   python scripts/update_cma_data.py --write
    ```
+
+   In `CMA.html`, the CMA generator changes only the dataset month in the two
+   adjusted-result labels and the numeric cache version on
+   `ca_cities_zhvi_data.js?v=YYYYMM`. The cache version prevents a browser from
+   retaining the prior month's CMA data after deployment.
 
 4. Preview and apply the appreciation-ranking update. The first check should
    exit 1 when a new Zillow month is available; review its exception and flag
@@ -71,19 +93,23 @@ Run the commands from the repository root in PowerShell.
 
    ```powershell
    python scripts/update_city_pages.py --check
+   python scripts/update_cma_data.py --check
    python scripts/update_ranking_pages.py --check
    python scripts/zillow_pipeline.py validate
    python -m unittest discover -s scripts -p "test_*.py" -v
    node --check assets/js/city-page-data.js
    node --check assets/data/us_metro_city_data.js
    node --check assets/data/us_neighborhoods_data.js
+   node --check assets/data/ca_cities_zhvi_data.js
    node --check assets/js/us_city_rankings_flexible.js
    git diff --check
    git status --short
    ```
 
-   The second updater check must exit 0 with empty `changed_pages` and
-   `changed_assets` arrays. All tests and syntax checks must pass.
+   The second updater checks must exit 0. The city-page report must have empty
+   `changed_pages` and `changed_assets` arrays, and the CMA report must say
+   `asset_current: true` and `html_current: true`. All tests and syntax checks
+   must pass.
 
 6. Review the diff before publishing. At minimum, inspect San Francisco,
    Anaheim, Dublin, Los Angeles, and San Jose. Confirm that the updater changed
@@ -103,7 +129,8 @@ Run the commands from the repository root in PowerShell.
 - Raw Zillow CSVs and their download manifest live in `data/zillow/raw/` and are
   intentionally gitignored.
 - Commit `data/zillow/processed/city-pages.json`, the 43 generated city assets,
-  and the coordinated numeric HTML changes.
+  `assets/data/ca_cities_zhvi_data.js`, and the coordinated numeric HTML
+  changes.
 - `config/city-page-copy-contract.json` is an approval boundary. Change it only
   after the owner approves the corresponding visible copy or membership change.
 - Commit pipeline, configuration, shared JavaScript, or shared CSS changes only
