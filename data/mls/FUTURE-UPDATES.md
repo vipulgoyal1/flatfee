@@ -1,11 +1,15 @@
 # Future MLS updates for city pages
 
-Use this workflow after MLSListings/Aculist publishes a new month. It attempts
-all 43 configured cities, builds assets only for cities with at least 120
-single-family monthly observations, and leaves every other city page unchanged.
+City MLS charts currently use two reviewed source routes. Use Aculist for the
+cities its API covers and the dated 22-city MLSListings Matrix archive for the
+20 active cities listed in `scripts/build_matrix_city_mls_data.py`. Santa
+Barbara and Santa Clarita are intentionally excluded because their Matrix data
+was too sparse or unreliable for a citywide dashboard. Both active routes write
+the same generated asset format and use the same protected San Jose template.
 
-This workflow uses the local Windows folder below. It does not use a Google
-Drive connector or browser automation:
+All source files are stored in the local Windows folder below. Do not use a
+Google Drive connector. Matrix exports are downloaded through the signed-in
+Chrome session as described below; all build and page-update steps are local:
 
 `C:\Users\vipul\My Drive (info@goyalteam.com)\FFR\MLS Data`
 
@@ -42,8 +46,8 @@ second. The two workflows use different generated assets and copy boundaries.
   review.
 - Never fill a missing value with an estimate or silently substitute the older
   `MLS Data\Cities` spreadsheets. A source anomaly may be set to null only
-  after it is reviewed and explicitly added to `KNOWN_ANOMALIES` in
-  `scripts/build_city_mls_data.py`.
+  after it is reviewed and explicitly added to `KNOWN_ANOMALIES` in the
+  applicable Aculist or Matrix asset builder.
 
 ## Data definitions
 
@@ -64,7 +68,124 @@ average. Closed sales are summed in quarterly and yearly views; the other four
 metrics average the reported monthly values. The year-over-year sale-price
 chart is derived from median sale price.
 
-## Complete update procedure
+## MLSListings Matrix workflow for the 20 active additional cities
+
+Download and archive all 22 Matrix cities even though only 20 currently have
+published MLS dashboards:
+
+- Anaheim
+- Bakersfield
+- Chula Vista
+- Elk Grove
+- Fresno
+- Glendale
+- Huntington Beach
+- Irvine
+- Long Beach
+- Los Angeles
+- Modesto
+- Pasadena
+- Riverside
+- Roseville
+- Sacramento
+- San Diego
+- San Luis Obispo
+- Santa Ana
+- Santa Barbara (archive only; do not publish)
+- Santa Clarita (archive only; do not publish)
+- Stockton
+- Ventura
+
+Use the saved MLSListings username and password in the signed-in Chrome
+profile. This is an MLSListings login, not a Google login. In the saved Matrix
+market-statistics report, select one city at a time, `Residential / Single
+Family`, monthly grouping, January 2002 through the latest complete reported
+month, and export all ten tables. Put downloads in a staging folder where
+Chrome can download automatically. Before starting, turn off Chrome's “ask
+where to save each file” option for the session and allow multiple automatic
+downloads from MLSListings. After each city, move and rename the ten files into
+the dated city folder before starting the next city, so identical browser
+filenames cannot overwrite one another or trigger repeated save prompts:
+
+`MLS Data\Matrix-YYYY-MM-DD-22-cities\<City>\`
+
+Each city folder must contain these exact filenames:
+
+- `01 Active Listings - Dollar Volume + Number.csv`
+- `02 Contingent Pending - Dollar Volume + Number.csv`
+- `03 Days to Sell - Average + Median.csv`
+- `04 List Price - Average + Median.csv`
+- `05 Original Price - Average + Median.csv`
+- `06 Sale Price - Average + Median.csv`
+- `07 Price Per SqFt + Months of Inventory.csv`
+- `08 Sale to List + Sale to Original Price Ratios.csv`
+- `09 Closed Sales - Dollar Volume + Number.csv`
+- `10 New + Expired Listings - Number.csv`
+
+The website builder uses the median columns in files 03 and 06, the
+price-per-square-foot value in file 07, sale-to-list ratio in file 08, and
+number of sales in file 09. The other exports are retained as source evidence
+and for future chart work. Never use average as a replacement for a missing
+median.
+
+Every current archive file contains rows beginning in January 2002, but older
+rows must not be equated with usable data. A review of the current archive found
+broadly usable pre-2016 coverage across all five published metrics for Elk
+Grove, Fresno, Los Angeles, Modesto, Roseville, Sacramento, and Stockton. The
+other 15 cities have incomplete or implausible pre-2016 coverage—most often in
+days on market—and must remain at their approved website start dates unless a
+separate audit approves a metric-specific earlier start. Raw pre-2016 rows are
+retained for source evidence and future review; the builder must not publish
+them merely because they are nonblank.
+
+Build and validate the assets before changing HTML. Always pass the new dated
+source path explicitly; the script infers the latest common month and stops if
+any required city or metric has different coverage:
+
+```powershell
+$matrixDir = Join-Path $mlsStore "Matrix-$runDate-22-cities"
+python scripts\build_matrix_city_mls_data.py --source $matrixDir
+python scripts\build_matrix_city_mls_data.py --source $matrixDir --write
+```
+
+Review every validation failure against the raw CSV. Genuine isolated source
+errors may be represented only as `null` entries added deliberately to
+`KNOWN_ANOMALIES`; never interpolate them. Keep the approved shorter starts for
+Bakersfield and San Diego unless a new source review proves the older coverage
+reliable. Do not restore Santa Barbara or Santa Clarita to `TARGET_SLUGS` or
+their HTML pages without a separate source-quality review and owner approval.
+
+The approved exclusions are persistent builder rules, not one-time edits to a
+generated asset. Los Angeles days-on-market begins in January 2020 through
+`SERIES_START_MONTHS`; its other charts retain January 2016 history. The
+reviewed isolated bad cells for Bakersfield, Fresno, Sacramento, and Stockton
+remain in `KNOWN_ANOMALIES` and are emitted as gaps on every rebuild. Do not
+remove either rule merely because a later download contains the same bad
+historical values.
+
+The builder also stops on new obvious display errors: zero median days on
+market with at least 20 closed sales, a price-per-square-foot value at least
+50% away from its nearby median, or a sale-to-list value at least 12 percentage
+points away from its nearby median. These checks are review gates, not automatic
+deletion rules. Confirm a flagged value in the raw CSV before adding it to
+`KNOWN_ANOMALIES`.
+
+Then preview and apply the date-only HTML refresh:
+
+```powershell
+python scripts\install_matrix_city_pages.py
+python scripts\install_matrix_city_pages.py --write
+python scripts\install_matrix_city_pages.py
+```
+
+Because these 20 pages are installed, the first command should normally
+list only pages whose two coverage dates need updating, and the final command
+must report `Would update 0`. The updater verifies the complete MLS template,
+Zillow titles, stylesheet, and script block before changing only the coverage
+dates. It stops rather than repairing altered copy. Do not recapture the copy
+contract for a routine data update.
+
+## Aculist complete update procedure
 
 Run these commands from the repository root in PowerShell. Always pass the
 dated paths explicitly; do not rely on the example date embedded in a script's
@@ -206,6 +327,8 @@ committed. Older raw download directories may then be removed under the site's
 normal data-retention policy; never delete the generated website assets that
 are being committed.
 
-The old manually collected files under `MLS Data\Cities` are not the source for
-this workflow. They may contain different definitions, incomplete coverage, or
-bad historical values and must not be used as an automatic fallback.
+The old manually collected files under `MLS Data\Cities` are not a source for
+either workflow. They may contain different definitions, incomplete coverage,
+or bad historical values and must not be used as an automatic fallback. A
+dated `Matrix-YYYY-MM-DD-22-cities` archive is a separate reviewed source and
+must not be confused with that legacy folder.
