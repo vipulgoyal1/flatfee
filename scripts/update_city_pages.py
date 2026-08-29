@@ -99,6 +99,18 @@ NEIGHBORHOOD_COUNT_RE = re.compile(
 SCRIPT_STYLE_RE = re.compile(
     r"<(script|style)\b[^>]*>.*?</\1>", re.IGNORECASE | re.DOTALL
 )
+MLS_SECTION_RE = re.compile(
+    r'\s*(?:<!--\s*=+\s*CITY MLS DASHBOARD\s*=+\s*-->\s*)?'
+    r'<section class="sj-mls-dashboard"[^>]*>.*?</section>',
+    re.DOTALL,
+)
+MLS_SCRIPT_BLOCK_RE = re.compile(
+    r"\s*<!-- CITY MLS CHARTS -->.*?<!-- END CITY MLS CHARTS -->\s*",
+    re.DOTALL,
+)
+MLS_CSS_RE = re.compile(
+    r'\s*<link rel="stylesheet" href="assets/css/city-mls-dashboard\.css">'
+)
 
 
 def stat_value(label: str, city: dict[str, Any]) -> str:
@@ -153,6 +165,12 @@ def normalize_neighborhood_copy(block: str) -> str:
 
 
 def normalize_page_copy(text: str) -> str:
+    # The MLS dashboard is protected and updated by
+    # scripts/update_aculist_city_pages.py. Excluding only its exact owned
+    # markers keeps the independent Zillow and MLS workflows composable.
+    text = MLS_SECTION_RE.sub("\n", text)
+    text = MLS_SCRIPT_BLOCK_RE.sub("\n", text)
+    text = MLS_CSS_RE.sub("\n", text)
     text = SCRIPT_STYLE_RE.sub("", text)
     text = STAT_VALUE_RE.sub(
         lambda match: match.group("prefix") + "<DATA_VALUE>" + match.group("middle"),
@@ -162,7 +180,8 @@ def normalize_page_copy(text: str) -> str:
         lambda match: match.group("prefix") + "<DATA_COUNT>" + match.group("suffix"),
         text,
     )
-    return text.replace("\r\n", "\n")
+    text = text.replace("\r\n", "\n")
+    return re.sub(r"\n{2,}", "\n", text)
 
 
 def copy_digest(text: str) -> str:
@@ -287,12 +306,16 @@ def transform_page(
         )
         text = NEIGHBORHOOD_RE.sub(lambda _match: updated_block, text)
     else:
-        if len(neighborhood_matches) > 1:
+        if page_contract["neighborhood_section"]:
             raise UpdateError(
-                f"Expected at most one neighborhood block; found {len(neighborhood_matches)}"
+                "Approved neighborhood section has no current Zillow rows; "
+                "a routine data refresh may not remove its visible copy"
             )
         if neighborhood_matches:
-            text = NEIGHBORHOOD_RE.sub("", text)
+            raise UpdateError(
+                "Unapproved neighborhood section is present; a routine data "
+                "refresh may not remove or adopt visible copy"
+            )
 
     current_include = (
         f'<script src="assets/data/city-pages/{slug}.js"></script>{newline}{SHARED_SCRIPT}'

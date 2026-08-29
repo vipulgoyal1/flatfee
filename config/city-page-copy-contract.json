@@ -11,7 +11,7 @@
   "cities": {
     "anaheim": {
       "page": "Anaheim.html",
-      "page_copy_sha256": "a40801fbe0016545627821cd9492ffe23e88af556249a4c76c7201e6f15e4fb6",
+      "page_copy_sha256": "7a58ffa27df123dbbbab786895f670ecbb18f688bffa019fe054d96fb8647b26",
       "stats_copy_sha256": "d46824cd6fa0a9c033a67aac6ea168c3abb2e7ddd2b01d0223de9f1331ad5da2",
       "neighborhood_section": true,
       "neighborhood_copy_sha256": "0138d012e81ce99d7ca77accb70c0421316ddccb41b6c0234f03617efacd5ba6",
@@ -28,7 +28,7 @@
     },
     "bakersfield": {
       "page": "Bakersfield.html",
-      "page_copy_sha256": "69acfe9f98024e5c12b248c5742dd3b9b8f2e85a2dd3d8500ca903431499da9e",
+      "page_copy_sha256": "f14b1a4c67668340329fc13afeacd03b3a6225afbf954c54cf2418b4057055d7",
       "stats_copy_sha256": "1760d3157b8d0e9c251b67d054f8a2066274e7a964e08a1f084872ad86fcb596",
       "neighborhood_section": true,
       "neighborhood_copy_sha256": "d3c457ca7210677525232f448b791a0922bfededc8226047d9f984176b33b61b",
@@ -100,8 +100,8 @@
     },
     "berkeley": {
       "page": "Berkeley.html",
-      "page_copy_sha256": "61f67748aac319afed6fe1f2f2022d71de83088c4c603a8693e80ebf9e22deba",
-      "stats_copy_sha256": "ada5e0b3de91c00dfafd45e5c8d50e0b3193e35cdfd12e7b6fae3c7a351729f1",
+      "page_copy_sha256": "8fc80b5a312d7106c4d051c537ca4b24998e3da45711928b75e13c2a68350267",
+      "stats_copy_sha256": "ee0a5a80ecd82216c99ae7d077078639c388bc97b544b7bcba354efa271ce832",
       "neighborhood_section": true,
       "neighborhood_copy_sha256": "704a0caffbdfc2283a759cb9536cc5be89f52e766c84250a4ebbfb67509d0d53",
       "neighborhoods": [
@@ -124,7 +124,7 @@
     },
     "chula-vista": {
       "page": "Chula-Vista.html",
-      "page_copy_sha256": "5b902edac319d95d5679285591ac3f1993aacb1f95585b10d38b1734605f988c",
+      "page_copy_sha256": "9d3d15988a3e3fe90811c573c83c60dccb6876050fd4129ed7f24c041c4b6bda",
       "stats_copy_sha256": "9cfb5a7b09a49b97d01947c78922e3da5666c270acb3c56d583cd3fa4fee71d7",
       "neighborhood_section": true,
       "neighborhood_copy_sha256": "b763827fe38c3178bca5554b5dc584a1761e1da4fffa4b167654495057304448",
@@ -157,8 +157,8 @@
     },
     "concord": {
       "page": "Concord.html",
-      "page_copy_sha256": "5b8719a05b81f786091676707e953a44b32b55ca339c7cd34155e833c8101a45",
-      "stats_copy_sha256": "ac0a953b253c2a8d2fd688c8331dc8f0512125ea11fc3d89f33ed3c2f327a336",
+      "page_copy_sha256": "6bf3cb4f3d835e585578e6092e09f89cb80fb15a935605c3f2199e728fa7e938",
+      "stats_copy_sha256": "ab17a20998b6662df292b4b57a930556834f2f35c4d5fce1970e24212ba67366",
       "neighborhood_section": true,
       "neighborhood_copy_sha256": "3c76bb01e5d04e8e0510d129fe8fce61ea869fca5b290a3e0842883a96132ecb",
       "neighborhoods": [
@@ -172,8 +172,8 @@
     },
     "cupertino": {
       "page": "Cupertino.html",
-      "page_copy_sha256": "fd610b39cb900bd9936cb9ce933340960d47a50cd18e4664ebe48716fc1e8c38",
-      "stats_copy_sha256": "5bd6a96787c0ef9032438551d0b48c1744ebb7c8958c40fc4fc86cb25f14374d",
+      "page_copy_sha256": "ed46c6b4a0e036083ddcaab0097ffa414afc47b6b14fd091288d89749e9fb82c",
+      "stats_copy_sha256": "2b0feba088f59eaa58155a7ca19c91a816db6f6a1b47adf77d335c31960ad4c1",
       "neighborhood_section": true,
       "neighborhood_copy_sha256": "e4762871fbc0b8ad6ab90419b28b90bc8798c83bdf8ea0620c7df214628ff214",
       "neighborhoods": [
@@ -193,15 +193,15 @@
     },
     "dublin": {
       "page": "Dublin.html",
-      "page_copy_sha256": "7fc62b82360a2082d818f1850c97c40ed1459fc8a6de4ac34ed13b0f91a75546",
-      "stats_copy_sha256": "627424f8d6ae39f768d24727baf62b7e9528f251ce8797fabad86228ec23e0bb",
+      "page_copy_sha256": "5767a6e36f32928af651eb585359e79a54fc871e5909794c78834d9d13f28fc9",
+      "stats_copy_sha256": "5cb4e2b04a88ac92f757086545750b5d1d4f9e4ec366da530c8a73899cb5f8a6",
       "neighborhood_section": false,
       "neighborhood_copy_sha256": null,
       "neighborhoods": []
     },
     "elk-grove": {
       "page": "Elk-Grove.html",
-      "page_copy_sha256": "306745c2eeeeb1e60e0df96ed5f1defc6735399e9fd10504192ab33c8761e228",
+      "page_copy_sha256": "477be87479f0af2157a0ec56693f552a58d1b43ac36195cca000cd6d8dc12bd6",
       "stats_copy_sha256": "7fba220fd0a849dbbdc54d6899b6dfecf2f9f6e2d0a6536632b83aabdacaf969",
       "neighborhood_section": true,
       "neighborhood_copy_sha256": "e8959cf94fbf76e0946d468fa8e91a833ee3393167db38c2b5fa1769bf019c7a",
@@ -232,8 +232,8 @@
     },
     "fremont": {
       "page": "Fremont.html",
-      "page_copy_sha256": "e7ae39e2f939282d1e0505bf805ed9eb8159f391e908b1056cb84339e4ad84ae",
-      "stats_copy_sha256": "554e916147f602b4a12fea0fb20884c20a6430d7ce44de528fe7e271e8f9b5bb",
+      "page_copy_sha256": "67cc748f8404b81bf8be0f9c9b462dd90e8a10b5f4a77a1a46c0950eb8800eaf",
+      "stats_copy_sha256": "799380862262be235c38f5eda10f965a9cf3fc72aca3c396e17c992359c633f7",
       "neighborhood_section": true,
       "neighborhood_copy_sha256": "b3d62142928ebb16b1139b61f884804591608778d4803c5de087a830e5a3cdad",
       "neighborhoods": [
@@ -268,7 +268,7 @@
     },
     "fresno": {
       "page": "Fresno.html",
-      "page_copy_sha256": "57a6374cbeb7133542cc71305589ce44ba9b261a91d1dbd3d246e3143448cc81",
+      "page_copy_sha256": "c0af5c26d923b2c23f4cf8c6c30d26a968d3e66b1b19c07b88a0e23192d61bcc",
       "stats_copy_sha256": "9c12feb152c34ca369ca93decf8c44bd65380319aaa7a9b73b4cb2929482fa77",
       "neighborhood_section": true,
       "neighborhood_copy_sha256": "cd3a4d78722f0e9007992cce5e1ab706654eb79fce2b88dc9b6bb0856d1d95a8",
@@ -290,7 +290,7 @@
     },
     "glendale": {
       "page": "Glendale.html",
-      "page_copy_sha256": "b4f31322409202f55d33be83795f9e78acdf0fad123b9bc6fa841b40c123715c",
+      "page_copy_sha256": "6bb42d142a40042570a321e296d33be5829fb124ba53b90e1b19d9e7cb4c7715",
       "stats_copy_sha256": "fe5592b5e1d47aa915f6c46230f1e474dcc365470e64cb89e43295d5623c13b3",
       "neighborhood_section": true,
       "neighborhood_copy_sha256": "1d08ba0e2553f47a0c1c26f11fa1fcd305bdb789fadc3be01c4ca1f1583814a5",
@@ -332,8 +332,8 @@
     },
     "hayward": {
       "page": "Hayward.html",
-      "page_copy_sha256": "84bf7c74cc60cde3fa73a6a5039f875e05912af6f4f2eb7d3644bffcf6eaa049",
-      "stats_copy_sha256": "a0f37e9c038feb0cae3fd0ea55bc74e9c0b5936f398cea6674023b244cb97e53",
+      "page_copy_sha256": "200100000f13d0b2097c9c8fcd3d76851dd376cf65e4e3ddc1cf6cdcb46acced",
+      "stats_copy_sha256": "eacb2c1ac7751318876c3bafdf75d1c86908a4b17b5b290b6fd763afbac16a5c",
       "neighborhood_section": true,
       "neighborhood_copy_sha256": "bc37040a76ad855e2bba655eba8d0ce2bbc9ada4dccb208474a62c8e13f801d1",
       "neighborhoods": [
@@ -359,7 +359,7 @@
     },
     "huntington-beach": {
       "page": "Huntington-Beach.html",
-      "page_copy_sha256": "445ab27ddcf7c3c70921005aa4a94bef38297a5c953f9e1f3e56408feb8093bb",
+      "page_copy_sha256": "50d896681cc476fefe8aea260acb9f00df15e91834d4baf9373810da43029406",
       "stats_copy_sha256": "c6eb15c8135f5fe8a2bbeaf049c1c19056c3a43f54d3e49cb7a9939586d7b3d5",
       "neighborhood_section": true,
       "neighborhood_copy_sha256": "42a81b3c3b6dcd301927477682e834c7c51917d295f744404d8dfb438300e424",
@@ -397,7 +397,7 @@
     },
     "irvine": {
       "page": "Irvine.html",
-      "page_copy_sha256": "e9a9caae454fae8114d6ca3d152f3cea4df4cdb4215e4f411a810b5e8fa1a484",
+      "page_copy_sha256": "68ac3c4be73f9afc3625b9090903bc57676f8f86884db6f9bb063812861b61f4",
       "stats_copy_sha256": "f9b0822ae4fb870d61ff6bcdc284401181fcdd1901f299d56eb2a799e0434530",
       "neighborhood_section": true,
       "neighborhood_copy_sha256": "520ff02d2aa883d1e0921aa7b3ed9602e021cd830ccb00f1cdcc39d067438edc",
@@ -431,15 +431,15 @@
     },
     "livermore": {
       "page": "Livermore.html",
-      "page_copy_sha256": "125b8c06ea9adce349254d1b7a740de8c941ba204d6b965db0c48912abd5d42f",
-      "stats_copy_sha256": "2604129005828d920689199613b672de2955f2e48e319fc2353268894b08a001",
+      "page_copy_sha256": "4f41c781a28be67521d06b8c213cf8c8ef4aba7f8a5bb93d51df7aaaff5fcc98",
+      "stats_copy_sha256": "5677b755eba120915a62575bddcaf95cfe4b00b215a842d23ad095a1d722b84c",
       "neighborhood_section": false,
       "neighborhood_copy_sha256": null,
       "neighborhoods": []
     },
     "long-beach": {
       "page": "Long-Beach.html",
-      "page_copy_sha256": "9c7b5022cb827dca225c3cf5e3f993b3ee2d0682d94a6a034ca80bfc3dd494d4",
+      "page_copy_sha256": "559709afdea3194280ce9150a69ed325dabf1478746de139b5fb38bfea46c0fc",
       "stats_copy_sha256": "fb4741a0b59135e58ca93b7ec16dccb1dbc5daed9041405873e6c68f6afe6492",
       "neighborhood_section": true,
       "neighborhood_copy_sha256": "e8d6a2db053fbb39acd31c051d07dbcb6efe694fda92cfab3a2aa995b735f668",
@@ -491,7 +491,7 @@
     },
     "los-angeles": {
       "page": "Los-Angeles.html",
-      "page_copy_sha256": "9f4fcffd49398fbe6ba8d43cc1d8500609d9c0509cb7367703f13527560e92e5",
+      "page_copy_sha256": "969038373f77f018fe7ff76519240e3a47c128eebd271efdf350d82fd2153cdd",
       "stats_copy_sha256": "caf88290e0a7895e1baccf313061aa33e5051d6d266118f9d96577446ea78008",
       "neighborhood_section": true,
       "neighborhood_copy_sha256": "081771ac11037aac506e938fc1787e1a3c2d1874d235867c2abb0e88def95443",
@@ -550,16 +550,16 @@
     },
     "los-gatos": {
       "page": "Los-Gatos.html",
-      "page_copy_sha256": "094db63e553d9f99f7482a30303e9bbfa91748f714625ca646b66c45cbe8b31d",
-      "stats_copy_sha256": "4c90d1166e948d37aa99a1cfc47d208438f8be937123b8c980a0ba433baa0271",
+      "page_copy_sha256": "63c7bc3723d1bc1bf7e9877e6153446d56e327dd53a67a37c4fcddd621d2dc91",
+      "stats_copy_sha256": "8afb116f39877650de879df22b40976a560bf44c62235d44963357c6ad34de59",
       "neighborhood_section": false,
       "neighborhood_copy_sha256": null,
       "neighborhoods": []
     },
     "milpitas": {
       "page": "Milpitas.html",
-      "page_copy_sha256": "16133642cfe4ceeab6d06d0f1fab89a8bf9b9297d90a9986c423e8826ac1c25e",
-      "stats_copy_sha256": "fcdb6793d0b67a96cb9a2f398300e582f98b27a40d6fc8090c7eeb5379862632",
+      "page_copy_sha256": "6bf40a6b6f1ffa7f4698cf3f63b2859f8e51e337694d97e19d8c7b23b5ed7286",
+      "stats_copy_sha256": "3e8c92e0140df4d3ec94b98441cd98fbfc67ca1919044ea13a7dde0f2d6e2681",
       "neighborhood_section": true,
       "neighborhood_copy_sha256": "f196ce87f1a24ea70b42b1c3f8304d6022bdf8a7ff5b127dffa449da1778882d",
       "neighborhoods": [
@@ -568,7 +568,7 @@
     },
     "modesto": {
       "page": "Modesto.html",
-      "page_copy_sha256": "8399a1d1a9df1488f2b1a86d42ec5500d6eae4cfdae80e395653aea2a641bcec",
+      "page_copy_sha256": "f75e58b7968cff2609d360a1f5459e4590fc001920dc1a9e7634194cc4c42053",
       "stats_copy_sha256": "43c220b251a902915573203dafcfe4cb4a7d4d9aaed44df62bfb0c1f2810860b",
       "neighborhood_section": false,
       "neighborhood_copy_sha256": null,
@@ -576,8 +576,8 @@
     },
     "oakland": {
       "page": "Oakland.html",
-      "page_copy_sha256": "cc8055c2bf67bc0ad0ddc02fb801269c539067525c423526645dc7e3063c1359",
-      "stats_copy_sha256": "63ba9c9809573963a78065e505860d61f1b31e1a2d9c40c941dc5bcff9fc62e6",
+      "page_copy_sha256": "f2c4dfe3a623fc337f17270643b38058721e89a33887f323989e6f1eeaa94a1d",
+      "stats_copy_sha256": "2bb8b494568fe988e5b69475c562db8b5b6b56493c2d97d93e0f613d27af3107",
       "neighborhood_section": true,
       "neighborhood_copy_sha256": "f2ba4e8de6c3d211797e05e18eb27c2fa7cf3b7e736cc1cef0099dee8d38eed2",
       "neighborhoods": [
@@ -635,8 +635,8 @@
     },
     "palo-alto": {
       "page": "Palo-Alto.html",
-      "page_copy_sha256": "72b57593f676ff256a202b60ee8a20378ee2d91ceaaf17288a2cfb08e5124085",
-      "stats_copy_sha256": "670570f4dc95df84ef9da49acde7294da199ef1b071e2b26f2691660b7645a83",
+      "page_copy_sha256": "961d117de7bf8d2dab5342b25cc369e7b64eed538a901115dda9c7e081b3799d",
+      "stats_copy_sha256": "82eb80799fc61d9632659b08aa6c88962900687ccebc35aa758f615e68f7bf66",
       "neighborhood_section": true,
       "neighborhood_copy_sha256": "2ece969939200fa6c4276b9664ef2724f634906e0f124912a89e4acdd8cc8c38",
       "neighborhoods": [
@@ -672,7 +672,7 @@
     },
     "pasadena": {
       "page": "Pasadena.html",
-      "page_copy_sha256": "3759db9e2650f3c35cba865e92618336e9e8e8ab92776c7a0defc28da76f3f6e",
+      "page_copy_sha256": "c9d0e33791aeb97927ccae3e498ce5954b61cc01458e928984e6fd6a24768885",
       "stats_copy_sha256": "f85630fe2147c472105eef7a28bc5fc7eb11aa5454269844449234e3cddfcea2",
       "neighborhood_section": true,
       "neighborhood_copy_sha256": "dfc72b054b25e5b56f1aaa6289acfbcc5db63ccfb3fc8c2c7d813add65473fb9",
@@ -690,15 +690,15 @@
     },
     "pleasanton": {
       "page": "Pleasanton.html",
-      "page_copy_sha256": "625465330643b602ec18848f0e7635c228e15c51cf8e822421ee7eedf4b315ad",
-      "stats_copy_sha256": "9402b468324694c9080841f536384fa8080f569e3254412636e7b7704430fce0",
+      "page_copy_sha256": "db7d6a595676e4e00c6f3db82ddf4ef252acce329d3bd084d07225a371cf08b2",
+      "stats_copy_sha256": "f12e8047066a583f5efd7deaeb02c7618091b9331a14512b8ebccd25c3de8dd8",
       "neighborhood_section": false,
       "neighborhood_copy_sha256": null,
       "neighborhoods": []
     },
     "riverside": {
       "page": "Riverside.html",
-      "page_copy_sha256": "f35d4c0a5af7ff4b74b178d9471fa65c6c8b3e758ba381f3778a0503ef687144",
+      "page_copy_sha256": "5344e68d468f968c167231ea72637163314637a3a5c61e1004ec6b5720497743",
       "stats_copy_sha256": "f1dca3a0a9980f42b12047c334f0d3568af3b39f4b3a8ace7135440b47703a27",
       "neighborhood_section": true,
       "neighborhood_copy_sha256": "1c1e71681d45b8090a9efa8ad48d2ebca08b98add0cf699161470a97773cd5c5",
@@ -736,7 +736,7 @@
     },
     "roseville": {
       "page": "Roseville.html",
-      "page_copy_sha256": "e96bcd88934c3ec126771a76af743ddf27ec2ce5b4076cde860ea0e59ed4439a",
+      "page_copy_sha256": "799b0d695f13e3f4727447f53d80960eaa4133b451ecc7a59985894dbfca2972",
       "stats_copy_sha256": "aefab3994d376ee312fd115dbafc410176bc8fd103b85d6183e3128e08966e87",
       "neighborhood_section": true,
       "neighborhood_copy_sha256": "e2f38f2fef188e8551d043161830e32a6babba3d91ce2b1473a89887a97461a7",
@@ -775,7 +775,7 @@
     },
     "sacramento": {
       "page": "Sacramento.html",
-      "page_copy_sha256": "99c2b15ea508a935e14985d33b85e51b33b8f35bb90a2427b0497d5b1eff5550",
+      "page_copy_sha256": "2dcfd1c8d9ffe2ac211b85e216bb428382900fca3a63cec7bf979554bc253554",
       "stats_copy_sha256": "dd9c49e1f1340271bb8da5ff0b4414eb1b7b11118f855972b7247e3a2962c1cb",
       "neighborhood_section": true,
       "neighborhood_copy_sha256": "d4495ecb23add1e8e9ffbb7c075fdb1f1ce15b884c63e9ab0e1b1ccfd3d493d3",
@@ -834,8 +834,8 @@
     },
     "salinas": {
       "page": "Salinas.html",
-      "page_copy_sha256": "d5081750382fee5bc9b0d479c00748c643bf3509230f0797f6f2c94be0ff506c",
-      "stats_copy_sha256": "fae7cdad814aa6e2a6cf837aa7bb55c38f7f3b82b3ec85f6fb5ede49562b034c",
+      "page_copy_sha256": "c2df27dfce60cda0d865e0a6ea2c175165dd41f78c00494850e0ea15d50fcf0c",
+      "stats_copy_sha256": "c1bc895d13e1e49c6e9d054cfd7d81ba55f27a8cb1ff64beb1238622c704c1ce",
       "neighborhood_section": true,
       "neighborhood_copy_sha256": "f78d3602200de618d3d4938a7a2a672156de31ea1c06974e67d31863e0ef6c43",
       "neighborhoods": [
@@ -891,7 +891,7 @@
     },
     "san-diego": {
       "page": "San-Diego.html",
-      "page_copy_sha256": "d0100f6186dc3a34d09d851b59a928793602a051955d136c52aff04595df59ce",
+      "page_copy_sha256": "cc856f687d4745a1313cf883fc2b5716b0e341c72bbb357ba4f801b350c31414",
       "stats_copy_sha256": "a4374d0947ad294b3751b9c5b3d5c78cc8a2b2fb1317e996782e5781267aaf42",
       "neighborhood_section": true,
       "neighborhood_copy_sha256": "38131521587b263ee568428e4312996cca79426b3767dccf457b1a9d2fd7ca26",
@@ -950,8 +950,8 @@
     },
     "san-francisco": {
       "page": "San-Francisco.html",
-      "page_copy_sha256": "b1a6f20cf785e80c60f4ae02860372dda9aa79fd0931c7c2611a3784e8e3368d",
-      "stats_copy_sha256": "acbe6bc429d36c193ae207b583f9df9cdb418bb4aac9485903255751161d0ddf",
+      "page_copy_sha256": "cf4ac64a804dcc568e3d031acdf266a7c6cebaf150cb680e529e3260a003033b",
+      "stats_copy_sha256": "1ed147c9ab4f6bedd9b17de83a800f5547706f1ed715d8ebd9afbb96e6f5a8ab",
       "neighborhood_section": true,
       "neighborhood_copy_sha256": "c68a70fae12f20d9b10297bc72a468ba68e37822300ceab7f4b8c04d33bc4087",
       "neighborhoods": [
@@ -1009,8 +1009,8 @@
     },
     "san-jose": {
       "page": "San-Jose.html",
-      "page_copy_sha256": "c8b35b1514c549bdf7ec81fa30c8f9ca1003a87bf7fc02d3e307c9c20acef7c8",
-      "stats_copy_sha256": "1b4543df495658ff542082f98ea3972d1d7b082a1e38e5c5131cf64ea345231e",
+      "page_copy_sha256": "0f41f65ccf4be3a548deb117522be4da9d271683c3f610b29d6895d0735f9628",
+      "stats_copy_sha256": "0e6f1118f851e9233f87125fa6353ac7507f4f74f0c804f6510b7ca82b0c6ccd",
       "neighborhood_section": true,
       "neighborhood_copy_sha256": "9f0f0f53d23fe607bf129c84f1690612db43273ed9841a5f21d12e3cab47f207",
       "neighborhoods": [
@@ -1034,7 +1034,7 @@
     },
     "san-luis-obispo": {
       "page": "San-Luis-Obispo.html",
-      "page_copy_sha256": "01c9d05f9f8e568f97d513fbf22bcfc8cd0554fcb2957c1a94984a3115b17aaa",
+      "page_copy_sha256": "72b220ae4259ca8ad6e767de08b0ac4d37d8bdd3b8b44b30460d726933d4c5fb",
       "stats_copy_sha256": "0effd8577c806e25a7e975df3d8fcb1446e9606fc432d59f8d8ac998626d792f",
       "neighborhood_section": false,
       "neighborhood_copy_sha256": null,
@@ -1042,8 +1042,8 @@
     },
     "san-mateo": {
       "page": "San-Mateo.html",
-      "page_copy_sha256": "7a98debd9dff5cf0431fc59101d22ecf53abc04bd1aee14f5820e0d8796f6c4c",
-      "stats_copy_sha256": "cf2b042c1736a83dcc752b8e2f7bcfa15f3eb7f30d2014a02ce95c2d73f98f9c",
+      "page_copy_sha256": "615a023ab951862de473052c17ac717021bd89f889dcd47f22c922eb78cd9d33",
+      "stats_copy_sha256": "b5475b6baf0233743c124b75c84ae42f306b5b63ebfd26917d42891b5cacc099",
       "neighborhood_section": true,
       "neighborhood_copy_sha256": "efa8fadd50c474012b9c177352311c7cdeca008fe5bc886dd4ddd1e8fec2060c",
       "neighborhoods": [
@@ -1084,15 +1084,15 @@
     },
     "san-ramon": {
       "page": "San-Ramon.html",
-      "page_copy_sha256": "68e0e4f53337c81ab6bd0dbb976c3984125f7ed56c75a62c4abed0edfe66923a",
-      "stats_copy_sha256": "932c67620c310e06ba3e1d216a12ec0c7a0e41a9f6467ab510938360a04735ec",
+      "page_copy_sha256": "062e5940f579b317945cd28416e974e8c12a2e2e8b25720c49d76d1d563ad5bd",
+      "stats_copy_sha256": "e83d7a7536f41a3f53ad44853dd6857a58db42151818caf439ca441c7dac34b0",
       "neighborhood_section": false,
       "neighborhood_copy_sha256": null,
       "neighborhoods": []
     },
     "santa-ana": {
       "page": "Santa-Ana.html",
-      "page_copy_sha256": "40c17ddfbdd431d95637b863da40e559594a985cfd8eb0860bb521fa7fbdc96f",
+      "page_copy_sha256": "3a1466c3ce8c620cab9d9c14fe7b5531ab9c6f290bf37cc2c39f72ba01aa2258",
       "stats_copy_sha256": "d71792392caf192ab67ae07b243527ebe36ac9ebaeea471e99efc307709f52bb",
       "neighborhood_section": true,
       "neighborhood_copy_sha256": "302efc50577326ea73de75e3ed69b42c30514ce6665f3e5973212e39a73782c9",
@@ -1158,7 +1158,7 @@
     },
     "santa-barbara": {
       "page": "Santa-Barbara.html",
-      "page_copy_sha256": "3c9ee48b4e06103c2becd69b34a628a6e21ed368ee372376bfefc94d20ab22cb",
+      "page_copy_sha256": "d7f4bd22234b11b6ac0a17b21b0750e7d1758f4eaafb51bbade1113e22f6b845",
       "stats_copy_sha256": "d68f5ad8f7ebfe6fbce967a62147888cf688e7dda997f05caeab9c7dafd577e0",
       "neighborhood_section": true,
       "neighborhood_copy_sha256": "c26d8b2913384f2ded147ac50e98ec712535c4bb12a13e6d8ed36cff0a62c279",
@@ -1191,15 +1191,15 @@
     },
     "santa-clara": {
       "page": "Santa-Clara.html",
-      "page_copy_sha256": "3b05c25780112c4222e592d5e3b3050d62f7d0c3c7bf6855e3882fb7d5bcb214",
-      "stats_copy_sha256": "14b811a7de45531f8c902b9ba3fd5e382a59d27a1c6042b1dfba46fa5dfe409a",
+      "page_copy_sha256": "f907f84f4413313e3584e0c6d1709ac6779ac8a1e245d635b447c13ac4353726",
+      "stats_copy_sha256": "677f97ed191bf6c78eba9eb3aa3a8e19c0522f9fcfd51a11261a4ffb94d63b52",
       "neighborhood_section": false,
       "neighborhood_copy_sha256": null,
       "neighborhoods": []
     },
     "santa-clarita": {
       "page": "Santa-Clarita.html",
-      "page_copy_sha256": "743c06027a98fe394c495a6ca46e3e5d1e992c290b4f59985c4238831959e4b9",
+      "page_copy_sha256": "a6c6cd79ebb7017fc6ec9cb04accd8cf722a7ddf3c184b1a018d311d2b8d5e74",
       "stats_copy_sha256": "4867e52e9f8be3320657069a8f9323c6deff166635eb2cea564bb96e9d9406e7",
       "neighborhood_section": true,
       "neighborhood_copy_sha256": "8d98cd1c801a4ef39f91eb2c3e0e8e68505fd6463ee63709742db429b61df9a4",
@@ -1212,15 +1212,15 @@
     },
     "santa-cruz": {
       "page": "Santa-Cruz.html",
-      "page_copy_sha256": "13a549c363e0eca232a1397772ccfb2e3efa02c04a96787c14500eef666eb6bd",
-      "stats_copy_sha256": "94658f2fc65b50d29b37e1a304841f49c0aeccbe3cc4306d0f7b4c61a0862eba",
+      "page_copy_sha256": "3003a4cbec660577830090dec45c5dcc8793f4032f1b7efead89616f793211b9",
+      "stats_copy_sha256": "c03c03903424e127bd4012dec65d749f1d426a807d94680abbf7038896d4cbc9",
       "neighborhood_section": false,
       "neighborhood_copy_sha256": null,
       "neighborhoods": []
     },
     "santa-rosa": {
       "page": "Santa-Rosa.html",
-      "page_copy_sha256": "a4f1dd0bc15e1be97622a4ec7c72820cc54c773bf70009186345cf68f9a07fe3",
+      "page_copy_sha256": "b8234eea0234f7865e68e1f26b7acd5a072d74bb07afe0f51c93db9331cb65c6",
       "stats_copy_sha256": "392d5ff38bc64cc6ae37e3b0ce5993410361d6b0b8eaa0f2b73ea06b4f950c1d",
       "neighborhood_section": true,
       "neighborhood_copy_sha256": "65026388338c739e8e0c5cb9e0ae2a2894ae737bf7d8919f4c0005d449270c5a",
@@ -1244,7 +1244,7 @@
     },
     "stockton": {
       "page": "Stockton.html",
-      "page_copy_sha256": "e0eee4327fdb126b269e7f30a8d5e7a7244567f8377d88e7144694d3c12e291e",
+      "page_copy_sha256": "39dacf9753a8d3f8d0878fdf9a13d1104bb065ee4c58b9fab03266c2a69fc214",
       "stats_copy_sha256": "81bd5519e77033394ec53fd1adaf2fe80cdb4395633f4d383f2df90368541fcb",
       "neighborhood_section": true,
       "neighborhood_copy_sha256": "d8e70e8cda0f04b0fc2def12f76906854738e4393d9cc1c118192eb23a08cbbb",
@@ -1289,8 +1289,8 @@
     },
     "sunnyvale": {
       "page": "Sunnyvale.html",
-      "page_copy_sha256": "f46f97f99a5bc210b1b7b1e6f1c9585e87c62eedbb2605114b9cbdd762a47064",
-      "stats_copy_sha256": "a7e4830cf6a308ad36a47c57fd4896aeac3f537f3605c5324063b9232abbe92d",
+      "page_copy_sha256": "70214d2cb0c22f8c044bc35a062bf04189b86889d82af951410163df110fff70",
+      "stats_copy_sha256": "25f9aa48c75a3f8327368f3d0ab468269ac81ac8f602cffc68e099f14f0ae47a",
       "neighborhood_section": true,
       "neighborhood_copy_sha256": "f60d6aedcdf6394293355e73facb41b8df6a656097e6db352ca670fb328d5afb",
       "neighborhoods": [
@@ -1308,7 +1308,7 @@
     },
     "ventura": {
       "page": "Ventura.html",
-      "page_copy_sha256": "b79d30279beff78022b4eb96db7eb1d90c6f84dd9fa1f00a58cd420bb5bc31ea",
+      "page_copy_sha256": "6e45f936e298780ee883be11c57decb75e8277a09159c51cf16e211819b995af",
       "stats_copy_sha256": "70038a545b6efc4d54ced0298402976ac5b5bc23e25b7a68c80bb7fff6472c7c",
       "neighborhood_section": true,
       "neighborhood_copy_sha256": "f5702ba33261404a886b54b5a84c64e0005d23c3082ce7189a664a2af5bd4cae",

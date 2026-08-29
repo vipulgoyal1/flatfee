@@ -1,5 +1,13 @@
 # Future Zillow updates for all website HTML pages
 
+If MLS data is also being refreshed, finish this entire Zillow procedure first,
+review its diff, and then follow
+[the MLS procedure](../mls/FUTURE-UPDATES.md). The combined ownership and
+ordering rules are summarized in
+[Website data update order](../WEBSITE-DATA-UPDATES.md). The Zillow copy
+validator ignores only the exact MLS-owned dashboard and includes; the MLS
+updater protects that copy independently.
+
 Run this workflow monthly, after Zillow publishes a new data month. It covers
 all 43 city pages, all four appreciation-ranking pages, the appreciation
 rankings hub, and `CMA.html` so dates, calculations, chart data, and ranking
@@ -8,7 +16,7 @@ values remain consistent across the website.
 ## What is generated
 
 The numerical source of truth is `data/zillow/processed/city-pages.json`.
-Approved visible copy and neighborhood membership are protected by
+Approved visible copy, exact titles, and neighborhood membership are protected by
 `config/city-page-copy-contract.json`. The page updater changes only:
 
 - Numeric values inside the six existing market tiles.
@@ -113,8 +121,8 @@ Run the commands from the repository root in PowerShell.
 
 6. Review the diff before publishing. At minimum, inspect San Francisco,
    Anaheim, Dublin, Los Angeles, and San Jose. Confirm that the updater changed
-   only numbers/data and approved section omissions. No headings, labels,
-   paragraphs, or links may change. Confirm that omitted sections show no
+   only numbers/data and dates. No headings, labels, sections, paragraphs, or
+   links may change. Confirm that omitted sections show no
    unavailable message. Review each metric's source month in the updater report;
    Zillow's median sale price file can lag the other sources. Also inspect the
    Bay Area, Southern California, U.S. city, and U.S. neighborhood rankings and
@@ -152,8 +160,11 @@ Run the commands from the repository root in PowerShell.
   and order in the copy contract. Do not add newly available Zillow rows
   automatically. If an approved row disappears from Zillow, omit that data row
   and report it for review.
-- If a city has no qualifying neighborhood rows, omit the neighborhood section
-  entirely. Do not display an empty-state or unavailable message.
+- Pages already approved without a neighborhood section remain without one. If
+  an existing approved section loses all qualifying rows, the routine updater
+  stops instead of deleting its visible copy. Removing that section requires
+  an explicit owner-approved structural edit; do not display an empty-state or
+  unavailable message.
 
 If a requested definition changes, update the source configuration, pipeline,
 tests, page generator, and this document together before regenerating pages.

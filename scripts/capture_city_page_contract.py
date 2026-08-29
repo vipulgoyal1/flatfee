@@ -60,6 +60,18 @@ CITY_NAME_RE = re.compile(r'\{"city"\s*:\s*("(?:[^"\\]|\\.)*")')
 SCRIPT_STYLE_RE = re.compile(
     r"<(script|style)\b[^>]*>.*?</\1>", re.IGNORECASE | re.DOTALL
 )
+MLS_SECTION_RE = re.compile(
+    r'\s*(?:<!--\s*=+\s*CITY MLS DASHBOARD\s*=+\s*-->\s*)?'
+    r'<section class="sj-mls-dashboard"[^>]*>.*?</section>',
+    re.DOTALL,
+)
+MLS_SCRIPT_BLOCK_RE = re.compile(
+    r"\s*<!-- CITY MLS CHARTS -->.*?<!-- END CITY MLS CHARTS -->\s*",
+    re.DOTALL,
+)
+MLS_CSS_RE = re.compile(
+    r'\s*<link rel="stylesheet" href="assets/css/city-mls-dashboard\.css">'
+)
 
 
 def normalize_stats_copy(block: str) -> str:
@@ -72,10 +84,14 @@ def normalize_neighborhood_copy(block: str) -> str:
 
 
 def normalize_page_copy(text: str) -> str:
+    text = MLS_SECTION_RE.sub("\n", text)
+    text = MLS_SCRIPT_BLOCK_RE.sub("\n", text)
+    text = MLS_CSS_RE.sub("\n", text)
     text = SCRIPT_STYLE_RE.sub("", text)
     text = STAT_VALUE_RE.sub(r"\1<DATA_VALUE>\2", text)
     text = COUNT_RE.sub(r"\g<prefix><DATA_COUNT>\g<suffix>", text)
-    return text.replace("\r\n", "\n")
+    text = text.replace("\r\n", "\n")
+    return re.sub(r"\n{2,}", "\n", text)
 
 
 def digest(text: str) -> str:

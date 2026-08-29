@@ -15,8 +15,10 @@ procedure.
   rows are reported but not silently added.
 - If an approved neighborhood row is no longer available from Zillow, omit the
   data row and report it for review.
-- If a city has no approved, qualifying neighborhood rows, omit the entire
-  Neighborhood Ranking section. Do not show an unavailable message.
+- Pages whose approved contract already has no qualifying Neighborhood Ranking
+  section remain unchanged and show no unavailable message. If an existing
+  approved section later loses all qualifying rows, stop for approval instead
+  of deleting visible copy during a routine refresh.
 - Adding a new Neighborhood Ranking section requires approval because it also
   requires new visible copy.
 
@@ -45,7 +47,7 @@ being overwritten or silently adopted.
 3. Run the page updater in check mode. Review source dates, missing approved
    rows, and new Zillow rows that will not be added.
 4. Apply the update only when the proposed HTML changes are limited to numbers,
-   data includes, and approved section omissions.
+   dates, and data includes. Routine updates may not add or remove a section.
 5. Run the updater again; it must report no stale pages or assets.
 6. Run regression, JavaScript syntax, and diff checks before publishing.
 
@@ -58,7 +60,7 @@ being overwritten or silently adopted.
 - Existing neighborhood membership and display names remain unchanged unless
   explicitly approved.
 - Pages without a neighborhood section contain neither a ranking marker nor an
-  unavailable message.
+  unavailable message; routine updates may not add or remove that section.
 - No headings, labels, descriptions, links, FAQs, service copy, navigation, or
   footer text changes in the update diff.
 - San Jose's ranking paragraph and Rankings Hub sentence receive an explicit

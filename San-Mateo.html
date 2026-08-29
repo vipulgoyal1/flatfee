@@ -269,6 +269,7 @@
   background: #ffffff;
 }
 </style>
+<link rel="stylesheet" href="assets/css/city-mls-dashboard.css">
 </head>
 <body>
 
@@ -366,12 +367,12 @@
      ===================================================== -->
 <section class="sf-stats-section">
   <div class="container">
-    <h2>San Mateo Real Estate Trends</h2>
+    <h2>San Mateo Trends from Zillow</h2>
 
     <div class="row g-4">
       <!-- Chart -->
       <div class="col-lg-6">
-        <h3 class="chart-bare-title">Price Index (Historical)</h3>
+        <h3 class="chart-bare-title">Price Index (Zillow)</h3>
         <div class="chart-wrap">
           <canvas id="sanMateoPriceChart"></canvas>
         </div>
@@ -419,6 +420,92 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+
+<!-- =====================================================
+     CITY MLS DASHBOARD
+     ===================================================== -->
+<section class="sj-mls-dashboard" id="cityMlsMarketData">
+  <div class="container">
+    <h2>San Mateo Trends from MLS</h2>
+
+    <div class="mls-snapshot-grid" aria-label="San Mateo MLS latest monthly snapshot">
+      <div class="mls-snapshot-card">
+        <span class="mls-snapshot-label">Latest Data</span>
+        <strong class="mls-snapshot-value" id="sjMlsV3LatestMonth">July 2026</strong>
+      </div>
+      <div class="mls-snapshot-card">
+        <span class="mls-snapshot-label">Sale Price</span>
+        <strong class="mls-snapshot-value" id="sjMlsV3SnapshotSalePrice">—</strong>
+        <span class="mls-snapshot-change" id="sjMlsV3ChangeSalePrice">—</span>
+      </div>
+      <div class="mls-snapshot-card">
+        <span class="mls-snapshot-label">Days on Market</span>
+        <strong class="mls-snapshot-value" id="sjMlsV3SnapshotDaysOnMarket">—</strong>
+        <span class="mls-snapshot-change" id="sjMlsV3ChangeDaysOnMarket">—</span>
+      </div>
+      <div class="mls-snapshot-card">
+        <span class="mls-snapshot-label">Sale-to-List Performance</span>
+        <strong class="mls-snapshot-value" id="sjMlsV3SnapshotSaleToList">—</strong>
+        <span class="mls-snapshot-change" id="sjMlsV3ChangeSaleToList">—</span>
+      </div>
+      <div class="mls-snapshot-card">
+        <span class="mls-snapshot-label">Closed-Sales Volume</span>
+        <strong class="mls-snapshot-value" id="sjMlsV3SnapshotClosedSales">—</strong>
+        <span class="mls-snapshot-change" id="sjMlsV3ChangeClosedSales">—</span>
+      </div>
+      <div class="mls-snapshot-card">
+        <span class="mls-snapshot-label">Price per Square Foot</span>
+        <strong class="mls-snapshot-value" id="sjMlsV3SnapshotPricePerSqFt">—</strong>
+        <span class="mls-snapshot-change" id="sjMlsV3ChangePricePerSqFt">—</span>
+      </div>
+    </div>
+
+    <div class="mls-period-controls" aria-label="Select how the MLS data is grouped">
+      <span class="mls-period-label">Display data by:</span>
+      <button type="button" class="mls-period-btn active" data-sj-mls-resolution="yearly" aria-pressed="true">Yearly</button>
+      <button type="button" class="mls-period-btn" data-sj-mls-resolution="quarterly" aria-pressed="false">Quarterly</button>
+      <button type="button" class="mls-period-btn" data-sj-mls-resolution="monthly" aria-pressed="false">Monthly</button>
+    </div>
+
+    <div class="mls-chart-grid">
+      <article class="mls-chart-card">
+        <h3 class="mls-chart-title">Median Days on Market</h3>
+        <div class="mls-chart-wrap"><canvas id="sjMlsV3DaysOnMarket" role="img" aria-label="San Mateo days on market chart with yearly, quarterly, and monthly views"></canvas></div>
+      </article>
+
+      <article class="mls-chart-card">
+        <h3 class="mls-chart-title">Sale-to-List Performance</h3>
+        <div class="mls-chart-wrap"><canvas id="sjMlsV3SaleToList" role="img" aria-label="San Mateo sale-to-list performance chart with yearly, quarterly, and monthly views"></canvas></div>
+      </article>
+
+      <article class="mls-chart-card">
+        <h3 class="mls-chart-title">Median Sale Price</h3>
+        <div class="mls-chart-wrap"><canvas id="sjMlsV3SalePrice" role="img" aria-label="San Mateo sale price chart with yearly, quarterly, and monthly views"></canvas></div>
+      </article>
+
+      <article class="mls-chart-card">
+        <h3 class="mls-chart-title">Year-over-Year Median Sale Price Change</h3>
+        <div class="mls-chart-wrap"><canvas id="sjMlsV3SalePriceChange" role="img" aria-label="San Mateo year-over-year sale price change with yearly, quarterly, and monthly views"></canvas></div>
+      </article>
+
+      <article class="mls-chart-card">
+        <h3 class="mls-chart-title">Closed-Sales Volume</h3>
+        <div class="mls-chart-wrap"><canvas id="sjMlsV3ClosedSales" role="img" aria-label="San Mateo closed-sales volume chart with yearly, quarterly, and monthly views"></canvas></div>
+      </article>
+
+      <article class="mls-chart-card">
+        <h3 class="mls-chart-title">Price per Square Foot</h3>
+        <div class="mls-chart-wrap"><canvas id="sjMlsV3PricePerSqFt" role="img" aria-label="San Mateo price per square foot chart with yearly, quarterly, and monthly views"></canvas></div>
+      </article>
+    </div>
+
+    <p class="mls-dashboard-source">
+      Source: locally stored MLS data for single-family homes, January 2016 through July 2026.
+      An asterisk and gold marker identify an incomplete current period.
+    </p>
   </div>
 </section>
 
@@ -638,6 +725,11 @@
 <script src="assets/theme/js/script.js"></script>
 <script src="assets/data/city-pages/san-mateo.js"></script>
 <script src="assets/js/city-page-data.js"></script>
+
+<!-- CITY MLS CHARTS -->
+<script src="assets/data/mls/san-mateo.js"></script>
+<script src="assets/js/san-jose-mls-v3-charts.js"></script>
+<!-- END CITY MLS CHARTS -->
 
 <!-- Default Statcounter code -->
 <script type="text/javascript">var sc_project=13140329; var sc_invisible=1; var sc_security="04536c4a";</script>

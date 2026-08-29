@@ -14,6 +14,7 @@ sys.path.insert(0, str(REPO_ROOT / "scripts"))
 from update_city_pages import (  # noqa: E402
     CSS_LINK,
     SHARED_SCRIPT,
+    UpdateError,
     build_city_asset,
     copy_digest,
     normalize_page_copy,
@@ -63,8 +64,12 @@ class CityPageUpdateTests(unittest.TestCase):
                     page,
                 )
                 self.assertEqual(page.count(CSS_LINK), 1)
+                expected_canvas_count = (
+                    7 if '<section class="sj-mls-dashboard"' in page else 1
+                )
                 self.assertEqual(
-                    len(re.findall(r'<canvas[^>]+id="[^"]+"', page)), 1
+                    len(re.findall(r'<canvas[^>]+id="[^"]+"', page)),
+                    expected_canvas_count,
                 )
                 self.assertEqual(
                     page.count(f'<script src="assets/data/city-pages/{slug}.js"></script>'),
@@ -134,6 +139,46 @@ class CityPageUpdateTests(unittest.TestCase):
             "to explore more regions of California and the US.",
             page,
         )
+
+    def test_routine_refresh_cannot_remove_neighborhood_copy(self) -> None:
+        slug = "san-jose"
+        configured = next(
+            city for city in self.config["cities"] if city["slug"] == slug
+        )
+        page = (REPO_ROOT / configured["page"]).read_text(encoding="utf-8")
+        with self.assertRaisesRegex(
+            UpdateError, "routine data refresh may not remove its visible copy"
+        ):
+            transform_page(
+                page,
+                slug,
+                self.payload["cities"][slug],
+                self.payload,
+                self.copy_contract["cities"][slug],
+                [],
+            )
+
+    def test_routine_refresh_rejects_heading_change(self) -> None:
+        slug = "san-jose"
+        configured = next(
+            city for city in self.config["cities"] if city["slug"] == slug
+        )
+        page = (REPO_ROOT / configured["page"]).read_text(encoding="utf-8")
+        altered = page.replace(
+            "San Jose Trends from Zillow", "San Jose Real Estate Trends", 1
+        )
+        selected, _missing, _not_added = select_neighborhoods(
+            slug, self.payload["cities"][slug], self.copy_contract
+        )
+        with self.assertRaisesRegex(UpdateError, "Protected stats copy differs"):
+            transform_page(
+                altered,
+                slug,
+                self.payload["cities"][slug],
+                self.payload,
+                self.copy_contract["cities"][slug],
+                selected,
+            )
 
 if __name__ == "__main__":
     unittest.main()

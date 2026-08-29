@@ -1,0 +1,157 @@
+.sj-mls-dashboard {
+  padding: 58px 0 62px;
+  background: #ffffff;
+  border-bottom: 1px solid #ece8df;
+}
+
+.sj-mls-dashboard h2 {
+  margin-bottom: 0.65rem;
+  color: #1b1b1b;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 700;
+  text-align: center;
+}
+
+.mls-snapshot-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 12px;
+  margin: 1.5rem 0 1.4rem;
+}
+
+.mls-snapshot-card {
+  min-width: 0;
+  padding: 15px 14px 14px;
+  border: 1px solid #e5e0d5;
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+.mls-snapshot-label {
+  display: block;
+  min-height: 34px;
+  margin-bottom: 0.35rem;
+  color: #6d6d6d;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.mls-snapshot-value {
+  display: block;
+  color: #203f4d;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.16rem, 2vw, 1.48rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.mls-snapshot-change {
+  display: block;
+  margin-top: 0.36rem;
+  color: #777;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.71rem;
+  line-height: 1.35;
+}
+
+.mls-period-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 auto 1.65rem;
+}
+
+.mls-period-label {
+  margin-right: 4px;
+  color: #666;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.mls-period-btn {
+  min-height: 38px;
+  padding: 7px 18px;
+  border: 1px solid #d8d3c6;
+  border-radius: 999px;
+  color: #555;
+  background: #ffffff;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.mls-period-btn:hover,
+.mls-period-btn:focus-visible {
+  border-color: #b88931;
+  color: #1b1b1b;
+}
+
+.mls-period-btn.active {
+  border-color: #2c5364;
+  color: #ffffff;
+  background: #2c5364;
+}
+
+.mls-chart-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.mls-chart-card {
+  min-width: 0;
+  padding: 21px 21px 16px;
+  border: 1px solid #ece8df;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.06);
+}
+
+.mls-chart-title {
+  margin-bottom: 0.25rem;
+  color: #1b1b1b;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.18rem;
+  font-weight: 700;
+}
+
+.mls-chart-wrap {
+  position: relative;
+  height: 340px;
+}
+
+.mls-dashboard-source {
+  max-width: 940px;
+  margin: 1.8rem auto 0;
+  color: #777;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+@media (max-width: 1000px) {
+  .mls-snapshot-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 900px) {
+  .mls-chart-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 767px) {
+  .sj-mls-dashboard { padding: 44px 0 48px; }
+  .mls-snapshot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mls-period-label { width: 100%; margin: 0 0 2px; text-align: center; }
+  .mls-period-btn { min-height: 44px; }
+  .mls-chart-card { padding: 18px 14px 14px; }
+  .mls-chart-wrap { height: 300px; }
+}
