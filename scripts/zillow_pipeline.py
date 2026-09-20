@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import copy
 import hashlib
 import json
 import math
@@ -255,7 +256,9 @@ def download_sources(source_config_path: Path, raw_dir: Path, timeout: int) -> d
     return manifest
 
 
-def read_city_rows(path: Path, wanted_region_ids: set[int]) -> tuple[list[str], dict[int, dict[str, str]]]:
+def read_city_rows(
+    path: Path, wanted_region_ids: set[int], allowed_missing_ids: set[int] | None = None
+) -> tuple[list[str], dict[int, dict[str, str]]]:
     found: dict[int, dict[str, str]] = {}
     with path.open("r", encoding="utf-8-sig", newline="") as handle:
         reader = csv.DictReader(handle)
@@ -266,7 +269,7 @@ def read_city_rows(path: Path, wanted_region_ids: set[int]) -> tuple[list[str], 
                 if region_id in found:
                     raise PipelineError(f"Duplicate City RegionID {region_id} in {path.name}")
                 found[region_id] = row
-    missing = sorted(wanted_region_ids - set(found))
+    missing = sorted(wanted_region_ids - set(found) - (allowed_missing_ids or set()))
     if missing:
         raise PipelineError(f"City source is missing configured RegionIDs: {missing}")
     return dates, found
@@ -361,6 +364,31 @@ def compact_market_metric(
     }
 
 
+def retained_market_metric(
+    previous: dict[str, Any], city: dict[str, Any], key: str, source_date: str
+) -> dict[str, Any]:
+    """Keep only an explicitly approved missing metric, with its original date."""
+    if key not in city.get("retain_missing_metrics", []):
+        raise PipelineError(f"{city['name']}: retention of {key} is not approved")
+    old_city = previous.get("cities", {}).get(city["slug"], {})
+    for field in ("name", "region_id", "county", "page"):
+        if old_city.get(field) != city[field]:
+            raise PipelineError(f"{city['name']}: prior city identity mismatch ({field})")
+    metric = copy.deepcopy(old_city.get("market_snapshot", {}).get(key, {}))
+    as_of = metric.get("as_of", "")
+    series = metric.get("series", {})
+    dates, values = series.get("dates", []), series.get("values", [])
+    if (not DATE_COLUMN.fullmatch(as_of) or as_of > source_date
+            or metric.get("unit") != "USD" or metric.get("value") is None
+            or metric.get("display_value") != round(metric["value"])
+            or not dates or dates[-1] != as_of or len(dates) != len(values)
+            or not values or values[-1] != metric["value"]):
+        raise PipelineError(f"{city['name']}: invalid prior {key}; cannot retain it")
+    metric["retained_from_previous"] = True
+    metric["source_latest_date"] = source_date
+    return metric
+
+
 def build_processed_data(
     source_config_path: Path, city_config_path: Path, raw_dir: Path, output_path: Path
 ) -> dict[str, Any]:
@@ -392,7 +420,13 @@ def build_processed_data(
 
     wanted_ids = {int(city["region_id"]) for city in cities}
     city_dates, city_rows = read_city_rows(city_path, wanted_ids)
-    sale_price_dates, sale_price_rows = read_city_rows(sale_price_path, wanted_ids)
+    allowed_sale_price_ids = {
+        int(city["region_id"]) for city in cities
+        if "median_sale_price" in city.get("retain_missing_metrics", [])
+    }
+    sale_price_dates, sale_price_rows = read_city_rows(
+        sale_price_path, wanted_ids, allowed_sale_price_ids
+    )
     days_pending_dates, days_pending_rows = read_city_rows(days_pending_path, wanted_ids)
     latest_date = latest_complete_date(city_dates, city_rows.values(), "City SFR ZHVI")
     sale_price_date = latest_complete_date(
@@ -412,16 +446,32 @@ def build_processed_data(
     raw_manifest = read_json(raw_manifest_path) if raw_manifest_path.exists() else None
 
     output_cities: dict[str, Any] = {}
+    previous = read_json(output_path) if output_path.exists() else {}
+    retained_metrics = []
     expected_state = city_config.get("state", "CA")
     for city in cities:
         region_id = int(city["region_id"])
         row = city_rows[region_id]
-        sale_price_row = sale_price_rows[region_id]
+        sale_price_row = sale_price_rows.get(region_id)
         days_pending_row = days_pending_rows[region_id]
         validate_city_identity(row, city, expected_state, city_source["id"])
-        validate_city_identity(
-            sale_price_row, city, expected_state, sale_price_source["id"]
-        )
+        if sale_price_row is not None:
+            validate_city_identity(
+                sale_price_row, city, expected_state, sale_price_source["id"]
+            )
+            sale_price_metric = compact_market_metric(
+                sale_price_row, sale_price_dates, sale_price_date, "USD"
+            )
+        else:
+            sale_price_metric = retained_market_metric(
+                previous, city, "median_sale_price", sale_price_date
+            )
+            retained_metrics.append({
+                "city": city["name"], "metric": "median_sale_price",
+                "as_of": sale_price_metric["as_of"],
+                "source_latest_date": sale_price_date,
+                "reason": "Source row missing; owner-approved retention",
+            })
         validate_city_identity(
             days_pending_row, city, expected_state, days_pending_source["id"]
         )
@@ -445,9 +495,7 @@ def build_processed_data(
             "returns": return_metrics(row, city_dates, latest_date),
             "series": compact_series(row, [date for date in city_dates if date <= latest_date]),
             "market_snapshot": {
-                "median_sale_price": compact_market_metric(
-                    sale_price_row, sale_price_dates, sale_price_date, "USD"
-                ),
+                "median_sale_price": sale_price_metric,
                 "median_days_to_pending": compact_market_metric(
                     days_pending_row, days_pending_dates, days_pending_date, "days"
                 ),
@@ -492,6 +540,7 @@ def build_processed_data(
         "research_page": source_config["research_page"],
         "source_manifest": raw_manifest,
         "summary": {
+            "retained_metrics": retained_metrics,
             "city_pages": len(output_cities),
             "cities_with_complete_market_snapshot": sum(
                 1
@@ -583,6 +632,13 @@ def validate_processed_data(city_config_path: Path, output_path: Path) -> dict[s
         ):
             metric = market_snapshot.get(metric_key, {})
             metric_date = data_dates.get(source_id)
+            if metric.get("retained_from_previous"):
+                if (metric_key not in configured_city.get("retain_missing_metrics", [])
+                        or metric.get("source_latest_date") != metric_date
+                        or not DATE_COLUMN.fullmatch(metric.get("as_of", ""))
+                        or metric["as_of"] > metric_date):
+                    errors.append(f"{slug}: unapproved or invalid retained {metric_key}")
+                metric_date = metric.get("as_of")
             if metric.get("as_of") != metric_date:
                 errors.append(f"{slug}: {metric_key} date differs from shared metric date")
             if metric.get("value") is None or metric.get("display_value") is None:

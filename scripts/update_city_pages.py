@@ -259,7 +259,11 @@ def build_city_asset(
         "slug": slug,
         "name": city["name"],
         "page": city["page"],
-        "data_dates": payload["data_dates"],
+        "data_dates": {
+            **payload["data_dates"],
+            "city_sfr_median_sale_price": city["market_snapshot"]["median_sale_price"]["as_of"],
+            "city_median_days_to_pending": city["market_snapshot"]["median_days_to_pending"]["as_of"],
+        },
         "chart": {
             "dates": city["series"]["dates"],
             "prices": city["series"]["values"],

@@ -5,10 +5,10 @@ The endpoint and query shape are taken from the signed-in MLSListings
 ``Reports & Statistics`` page. The script intentionally writes to a dated
 download folder and never overwrites the existing ``MLS Data/Cities`` files.
 
-The source API dates each published month on the first day of the following
-month. Aculist's own CSV export renders that UTC timestamp in Pacific time, so
-``2026-08-01T00:00:00Z`` is the July 2026 observation. ``display_month`` below
-reproduces that convention by subtracting one day.
+Use the API's explicit reporting Period, corroborated by DateValue, Year and
+QuarterMonth. Converting a first-of-month UTC timestamp to Pacific time shifts
+it into the PREVIOUS month and must not be used as the reporting month.
+The current incomplete calendar month is archived raw but never published.
 """
 
 from __future__ import annotations
@@ -17,11 +17,12 @@ import argparse
 import csv
 import json
 import os
+import re
 import time
 import urllib.parse
 import urllib.request
 from collections import defaultdict
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 
@@ -109,9 +110,25 @@ def download_city(city_name: str) -> tuple[str, list[dict]]:
 
 
 def display_month(row: dict) -> str:
+    period = row.get("Period", "")
+    if not re.fullmatch(r"\d{4}-\d{2}", period):
+        raise ValueError(f"Invalid Aculist reporting Period: {period!r}")
+    reported = datetime.strptime(period, "%Y-%m")
     source_date = datetime.fromisoformat(row["DateValue"].replace("Z", "+00:00"))
-    displayed_date = source_date.astimezone(timezone.utc) - timedelta(days=1)
-    return displayed_date.strftime("%Y-%m")
+    if source_date.astimezone(timezone.utc).strftime("%Y-%m") != period:
+        raise ValueError(f"Aculist Period/DateValue disagree: {period}")
+    if row.get("Year") != reported.year or row.get("QuarterMonth") != reported.strftime("%B"):
+        raise ValueError(f"Aculist reporting fields disagree: {period}")
+    return period
+
+
+def latest_complete_month(today: date | None = None) -> str:
+    today = today or date.today()
+    return (today.replace(day=1) - timedelta(days=1)).strftime("%Y-%m")
+
+
+def completed_rows(rows: list[dict], through: str) -> list[dict]:
+    return [row for row in rows if display_month(row) <= through]
 
 
 def single_family_rows(rows: list[dict], expected_county: str) -> list[dict]:
@@ -213,7 +230,14 @@ def main() -> None:
         default=Path(os.environ.get("FFR_ACULIST_OUTPUT", DEFAULT_OUTPUT)),
     )
     parser.add_argument("--delay", type=float, default=0.12)
+    parser.add_argument("--through-month", default=latest_complete_month(),
+                        help="Last complete reporting month, YYYY-MM; never a current/future month")
+    parser.add_argument("--from-archive", type=Path,
+                        help="Rebuild normalized CSVs from an existing raw-api.json archive without redownloading")
     args = parser.parse_args()
+    datetime.strptime(args.through_month, "%Y-%m")
+    if args.through_month > latest_complete_month():
+        parser.error("--through-month cannot include an incomplete current/future month")
 
     args.output.mkdir(parents=True, exist_ok=True)
     available: list[dict] = []
@@ -222,14 +246,23 @@ def main() -> None:
     validation_warnings: list[str] = []
 
     for index, city in enumerate(configured_cities(), start=1):
-        uri, rows = download_city(city["name"])
+        if args.from_archive:
+            raw_path = args.from_archive / city["name"] / "raw-api.json"
+            archived = json.loads(raw_path.read_text(encoding="utf-8")) if raw_path.exists() else {}
+            uri, rows = archived.get("source_url", api_uri(city["name"])), archived.get("value", [])
+        else:
+            uri, rows = download_city(city["name"])
         if not rows:
             unavailable.append(city["name"])
             print(f"[{index:02d}/43] unavailable: {city['name']}")
             time.sleep(args.delay)
             continue
 
-        sfr_rows = single_family_rows(rows, city["county"])
+        all_sfr_rows = single_family_rows(rows, city["county"])
+        sfr_rows = completed_rows(all_sfr_rows, args.through_month)
+        if not sfr_rows:
+            unavailable.append(city["name"])
+            continue
         city_errors, city_warnings = validate_rows(city["name"], sfr_rows)
         validation_errors.extend(city_errors)
         validation_warnings.extend(city_warnings)
@@ -259,6 +292,7 @@ def main() -> None:
                 "latest_display_month": latest_display,
                 "first_source_period": sfr_rows[0]["Period"],
                 "latest_source_period": sfr_rows[-1]["Period"],
+                "incomplete_or_later_rows_excluded": len(all_sfr_rows) - len(sfr_rows),
             }
         )
         print(
@@ -273,9 +307,12 @@ def main() -> None:
         "api": API_URL,
         "property_type": SOURCE_CLASS,
         "date_note": (
-            "Display month is DateValue minus one day, matching Aculist's own "
-            "CSV export in Pacific time."
+            "Display month is the explicit API Period, validated against UTC "
+            "DateValue, Year and QuarterMonth. No timezone month shift. "
+            "Current incomplete month is excluded from normalized CSVs."
         ),
+        "through_month": args.through_month,
+        "raw_archive_source": str(args.from_archive) if args.from_archive else None,
         "available_count": len(available),
         "available": available,
         "unavailable_count": len(unavailable),

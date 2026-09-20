@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import sys
 import unittest
+import csv
+from datetime import datetime
 from pathlib import Path
 
 
@@ -12,11 +14,13 @@ sys.path.insert(0, str(REPO_ROOT / "scripts"))
 
 from update_ranking_pages import (  # noqa: E402
     CITY_ASSET,
+    CITY_SOURCE,
     CITY_PREFIX,
     DEFAULT_TOP_CITY_MAX_SIZE_RANK,
     HUB_PAGE,
     MANIFEST_PATH,
     NEIGHBORHOOD_ASSET,
+    NEIGHBORHOOD_SOURCE,
     NEIGHBORHOOD_PREFIX,
     REGIONAL_PAGES,
     build_update,
@@ -74,15 +78,20 @@ class RankingPageUpdateTests(unittest.TestCase):
         self.assertGreater(len(top_rows), 100)
         self.assertTrue(all(row["typical_price"] is not None for row in top_rows))
 
-    def test_shared_july_2026_endpoint(self) -> None:
-        self.assertEqual(self.manifest["as_of"], "2026-07-31")
-        self.assertEqual(self.manifest["sources"]["city_sfr_zhvi"]["latest_date"], "2026-07-31")
-        self.assertEqual(
-            self.manifest["sources"]["neighborhood_sfr_zhvi"]["latest_date"],
-            "2026-07-31",
-        )
+    def test_shared_latest_source_endpoint(self) -> None:
+        endpoints = []
+        for path in (CITY_SOURCE, NEIGHBORHOOD_SOURCE):
+            with path.open(encoding="utf-8-sig", newline="") as handle:
+                fields = next(csv.reader(handle))
+            endpoints.append(max(field for field in fields if field[:4].isdigit()))
+        self.assertEqual(endpoints[0], endpoints[1])
+        expected = endpoints[0]
+        self.assertEqual(self.manifest["as_of"], expected)
+        self.assertEqual(self.manifest["sources"]["city_sfr_zhvi"]["latest_date"], expected)
+        self.assertEqual(self.manifest["sources"]["neighborhood_sfr_zhvi"]["latest_date"], expected)
         self.assertIn(MANIFEST_PATH, self.outputs)
-        self.assertIn("Data updated through Jul 31, 2026.", self.outputs[HUB_PAGE])
+        label = datetime.strptime(expected, "%Y-%m-%d").strftime("%b %d, %Y")
+        self.assertIn(f"Data updated through {label}.", self.outputs[HUB_PAGE])
 
 
 if __name__ == "__main__":

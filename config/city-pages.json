@@ -20,7 +20,7 @@
     {"slug": "long-beach", "page": "Long-Beach.html", "region_id": 46298, "name": "Long Beach", "county": "Los Angeles County"},
     {"slug": "los-angeles", "page": "Los-Angeles.html", "region_id": 12447, "name": "Los Angeles", "county": "Los Angeles County"},
     {"slug": "los-gatos", "page": "Los-Gatos.html", "region_id": 19100, "name": "Los Gatos", "county": "Santa Clara County"},
-    {"slug": "milpitas", "page": "Milpitas.html", "region_id": 39798, "name": "Milpitas", "county": "Santa Clara County"},
+    {"slug": "milpitas", "page": "Milpitas.html", "region_id": 39798, "name": "Milpitas", "county": "Santa Clara County", "retain_missing_metrics": ["median_sale_price"]},
     {"slug": "modesto", "page": "Modesto.html", "region_id": 25934, "name": "Modesto", "county": "Stanislaus County"},
     {"slug": "oakland", "page": "Oakland.html", "region_id": 13072, "name": "Oakland", "county": "Alameda County"},
     {"slug": "palo-alto", "page": "Palo-Alto.html", "region_id": 26374, "name": "Palo Alto", "county": "Santa Clara County"},

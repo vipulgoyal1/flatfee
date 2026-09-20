@@ -1,6 +1,7 @@
 import json
 import sys
 import unittest
+import tempfile
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -11,6 +12,9 @@ from zillow_pipeline import (
     latest_complete_date,
     parse_number,
     return_metrics,
+    retained_market_metric,
+    read_city_rows,
+    PipelineError,
 )
 
 
@@ -75,6 +79,49 @@ class ZillowPipelineTests(unittest.TestCase):
         self.assertIsNone(parse_number(""))
         self.assertIsNone(parse_number(None))
         self.assertEqual(parse_number("123.45"), 123.45)
+
+    def retained_fixture(self):
+        city = {"slug": "milpitas", "name": "Milpitas", "region_id": 39798,
+                "county": "Santa Clara County", "page": "Milpitas.html",
+                "retain_missing_metrics": ["median_sale_price"]}
+        metric = {"as_of": "2026-06-30", "value": 1307366.0,
+                  "display_value": 1307366, "unit": "USD",
+                  "series": {"dates": ["2026-06-30"], "values": [1307366.0]}}
+        previous = {"cities": {"milpitas": {**city, "market_snapshot": {
+            "median_sale_price": metric}}}}
+        return city, previous, metric
+
+    def test_approved_retention_keeps_value_date_and_does_not_mutate_previous(self):
+        city, previous, original = self.retained_fixture()
+        retained = retained_market_metric(previous, city, "median_sale_price", "2026-07-31")
+        self.assertEqual(retained["value"], 1307366.0)
+        self.assertEqual(retained["as_of"], "2026-06-30")
+        self.assertEqual(retained["source_latest_date"], "2026-07-31")
+        self.assertTrue(retained["retained_from_previous"])
+        self.assertNotIn("retained_from_previous", original)
+        # Repeated builds must keep the same dated source, not move its date forward.
+        previous["cities"]["milpitas"]["market_snapshot"]["median_sale_price"] = retained
+        self.assertEqual(retained_market_metric(previous, city, "median_sale_price", "2026-08-31")["as_of"], "2026-06-30")
+
+    def test_retention_requires_approval_identity_and_valid_prior_series(self):
+        city, previous, metric = self.retained_fixture()
+        for changed in ({**city, "retain_missing_metrics": []}, {**city, "region_id": 123}):
+            with self.assertRaises(PipelineError):
+                retained_market_metric(previous, changed, "median_sale_price", "2026-07-31")
+        metric["series"]["values"] = [1]
+        with self.assertRaises(PipelineError):
+            retained_market_metric(previous, city, "median_sale_price", "2026-07-31")
+
+    def test_missing_city_exception_does_not_hold_back_other_city_dates(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "source.csv"
+            path.write_text("RegionID,2026-06-30,2026-07-31\n123,100,200\n", encoding="utf-8")
+            dates, rows = read_city_rows(path, {123, 39798}, {39798})
+            self.assertEqual(latest_complete_date(dates, rows.values(), "sale price"), "2026-07-31")
+            with self.assertRaises(PipelineError):
+                read_city_rows(path, {123, 39798, 456}, {39798})
+            with self.assertRaises(PipelineError):
+                read_city_rows(path, {123, 39798})
 
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "as_of": "2026-07-31",
+  "as_of": "2026-08-31",
   "periods_years": [
     1,
     3,
@@ -12,23 +12,23 @@
   "sources": {
     "city_sfr_zhvi": {
       "path": "data/zillow/raw/City_zhvi_uc_sfr_tier_0.33_0.67_sm_sa_month.csv",
-      "sha256": "347b5787f64480d87425a7c04d77695bb2acb27601bef11020dc6c9181c4deae",
-      "rows": 21363,
+      "sha256": "f187d904d2545d9260b061c76029963ee6a43c397c39c7fc99117897b899977f",
+      "rows": 21354,
       "first_date": "2000-01-31",
-      "latest_date": "2026-07-31"
+      "latest_date": "2026-08-31"
     },
     "neighborhood_sfr_zhvi": {
       "path": "data/zillow/raw/Neighborhood_zhvi_uc_sfr_sm_sa_month.csv",
-      "sha256": "5eac751f36df5a819432627a78230fc17c423d2fdabe2e9ef1dd9891c8d84321",
-      "rows": 23924,
+      "sha256": "470e5cd001dd7b9b2270f21e07c134dbf9206bfae6016d3db9c934a08930700d",
+      "rows": 23925,
       "first_date": "2000-01-31",
-      "latest_date": "2026-07-31"
+      "latest_date": "2026-08-31"
     }
   },
   "outputs": {
     "us_cities": {
       "records": 16968,
-      "matched": 16904,
+      "matched": 16897,
       "compatibility_matches": 1,
       "unavailable_legacy_records": [
         {
@@ -172,6 +172,20 @@
           "size_rank": 16189
         },
         {
+          "metro": "Flint, MI",
+          "city": "Vienna",
+          "state": "MI",
+          "county": "Genesee County",
+          "size_rank": 4458
+        },
+        {
+          "metro": "Gadsden, AL",
+          "city": "Sardis City",
+          "state": "AL",
+          "county": "Etowah County",
+          "size_rank": 16385
+        },
+        {
           "metro": "Goldsboro, NC",
           "city": "Mar-Mac",
           "state": "NC",
@@ -284,6 +298,20 @@
           "size_rank": 5259
         },
         {
+          "metro": "Myrtle Beach-Conway-North Myrtle Beach, SC-NC",
+          "city": "Saint James",
+          "state": "NC",
+          "county": "Brunswick County",
+          "size_rank": 6700
+        },
+        {
+          "metro": "New York-Newark-Jersey City, NY-NJ-PA",
+          "city": "Long Valley",
+          "state": "NJ",
+          "county": "Morris County",
+          "size_rank": 4072
+        },
+        {
           "metro": "New York-Newark-Jersey City, NY-NJ-PA",
           "city": "Fort Salonga",
           "state": "NY",
@@ -326,6 +354,13 @@
           "size_rank": 16677
         },
         {
+          "metro": "Orlando-Kissimmee-Sanford, FL",
+          "city": "Wedgefield",
+          "state": "FL",
+          "county": "Orange County",
+          "size_rank": 7040
+        },
+        {
           "metro": "Portland-Vancouver-Hillsboro, OR-WA",
           "city": "Jennings Lodge",
           "state": "OR",
@@ -338,6 +373,13 @@
           "state": "RI",
           "county": "Providence County",
           "size_rank": 10292
+        },
+        {
+          "metro": "Richmond, VA",
+          "city": "East Highland Park",
+          "state": "VA",
+          "county": "Henrico County",
+          "size_rank": 3686
         },
         {
           "metro": "Rockford, IL",
@@ -438,6 +480,13 @@
           "size_rank": 3180
         },
         {
+          "metro": "Union City, TN",
+          "city": "Samburg",
+          "state": "TN",
+          "county": "Obion County",
+          "size_rank": 28521
+        },
+        {
           "metro": "Valdosta, GA",
           "city": "Du Pont",
           "state": "GA",
@@ -483,7 +532,7 @@
     },
     "us_neighborhoods": {
       "records": 20788,
-      "matched": 20752,
+      "matched": 20750,
       "compatibility_matches": 1,
       "duplicate_name_matches": 17,
       "unavailable_legacy_records": [
@@ -506,6 +555,11 @@
           "city_group": "Boulder, CO",
           "neighborhood": "Colorado University",
           "size_rank": 2692
+        },
+        {
+          "city_group": "Bourne, MA",
+          "neighborhood": "Buzzards Bay",
+          "size_rank": 7514
         },
         {
           "city_group": "Chandler, AZ",
@@ -566,6 +620,11 @@
           "city_group": "Jacksonville, FL",
           "neighborhood": "Jacksonville University",
           "size_rank": 9986
+        },
+        {
+          "city_group": "Knoxville, TN",
+          "neighborhood": "Kingston Pike",
+          "size_rank": 6799
         },
         {
           "city_group": "Lexington, KY",

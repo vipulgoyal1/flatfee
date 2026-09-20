@@ -59,10 +59,11 @@ SERIES_CONFIG = {
 
 # These are visibly invalid values in Aculist's average-price-per-square-foot
 # field, not market moves. They remain null; no replacement is invented.
+# Dates are explicit Aculist reporting periods, not timezone-shifted labels.
 KNOWN_ANOMALIES = {
-    "berkeley": {"pricePerSqFt": {"2019-07"}},
-    "oakland": {"pricePerSqFt": {"2018-07", "2018-08", "2019-02"}},
-    "san-francisco": {"pricePerSqFt": {"2017-05"}},
+    "berkeley": {"pricePerSqFt": {"2019-08"}},
+    "oakland": {"pricePerSqFt": {"2018-08", "2018-09", "2019-03"}},
+    "san-francisco": {"pricePerSqFt": {"2017-06"}},
 }
 
 FOLDER_ALIASES = {
