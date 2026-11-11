@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "as_of": "2026-08-31",
+  "as_of": "2026-09-30",
   "periods_years": [
     1,
     3,
@@ -12,23 +12,23 @@
   "sources": {
     "city_sfr_zhvi": {
       "path": "data/zillow/raw/City_zhvi_uc_sfr_tier_0.33_0.67_sm_sa_month.csv",
-      "sha256": "f187d904d2545d9260b061c76029963ee6a43c397c39c7fc99117897b899977f",
-      "rows": 21354,
+      "sha256": "f5d11f775239d4bc55c747c0a037337ffdd12422f85e0b952d44818d6b8f697c",
+      "rows": 21349,
       "first_date": "2000-01-31",
-      "latest_date": "2026-08-31"
+      "latest_date": "2026-09-30"
     },
     "neighborhood_sfr_zhvi": {
       "path": "data/zillow/raw/Neighborhood_zhvi_uc_sfr_sm_sa_month.csv",
-      "sha256": "470e5cd001dd7b9b2270f21e07c134dbf9206bfae6016d3db9c934a08930700d",
-      "rows": 23925,
+      "sha256": "81259649ec6949625bf98914ad31a3c4320178578184f2cca0fc5a5a164fd09f",
+      "rows": 23924,
       "first_date": "2000-01-31",
-      "latest_date": "2026-08-31"
+      "latest_date": "2026-09-30"
     }
   },
   "outputs": {
     "us_cities": {
       "records": 16968,
-      "matched": 16897,
+      "matched": 16893,
       "compatibility_matches": 1,
       "unavailable_legacy_records": [
         {
@@ -37,6 +37,13 @@
           "state": "AK",
           "county": "Matanuska Susitna Borough",
           "size_rank": 5423
+        },
+        {
+          "metro": "Asheville, NC",
+          "city": "Barker Heights",
+          "state": "NC",
+          "county": "Henderson County",
+          "size_rank": 17943
         },
         {
           "metro": "Athens, TX",
@@ -107,6 +114,13 @@
           "state": "CA",
           "county": "Butte County",
           "size_rank": 30062
+        },
+        {
+          "metro": "Columbia, SC",
+          "city": "Forest Acres",
+          "state": "SC",
+          "county": "Richland County",
+          "size_rank": 4683
         },
         {
           "metro": "Columbia, SC",
@@ -184,6 +198,13 @@
           "state": "AL",
           "county": "Etowah County",
           "size_rank": 16385
+        },
+        {
+          "metro": "Glenwood Springs, CO",
+          "city": "Carbondale",
+          "state": "CO",
+          "county": "Garfield County",
+          "size_rank": 5622
         },
         {
           "metro": "Goldsboro, NC",
@@ -389,6 +410,13 @@
           "size_rank": 25609
         },
         {
+          "metro": "Roswell, NM",
+          "city": "Mayhill",
+          "state": "NM",
+          "county": "Chaves County",
+          "size_rank": 22577
+        },
+        {
           "metro": "Salem, OR",
           "city": "Hayesville",
           "state": "OR",
@@ -532,7 +560,7 @@
     },
     "us_neighborhoods": {
       "records": 20788,
-      "matched": 20750,
+      "matched": 20742,
       "compatibility_matches": 1,
       "duplicate_name_matches": 17,
       "unavailable_legacy_records": [
@@ -565,6 +593,11 @@
           "city_group": "Chandler, AZ",
           "neighborhood": "Amberwood North",
           "size_rank": 3922
+        },
+        {
+          "city_group": "Charleston, SC",
+          "neighborhood": "Charlestowne",
+          "size_rank": 16075
         },
         {
           "city_group": "Claremont, CA",
@@ -628,8 +661,43 @@
         },
         {
           "city_group": "Lexington, KY",
+          "neighborhood": "Southland-Deerfield-Open Gates",
+          "size_rank": 2214
+        },
+        {
+          "city_group": "Lexington, KY",
+          "neighborhood": "Gardenside-Colony",
+          "size_rank": 3031
+        },
+        {
+          "city_group": "Lexington, KY",
           "neighborhood": "University of Kentucky",
           "size_rank": 3318
+        },
+        {
+          "city_group": "Lexington, KY",
+          "neighborhood": "Masterson",
+          "size_rank": 4811
+        },
+        {
+          "city_group": "Lexington, KY",
+          "neighborhood": "Brookhaven-Lansdowne",
+          "size_rank": 5273
+        },
+        {
+          "city_group": "Memphis, TN",
+          "neighborhood": "East Memphis-Colonial-Yorkshire",
+          "size_rank": 40
+        },
+        {
+          "city_group": "Memphis, TN",
+          "neighborhood": "White Haven-Coro Lake",
+          "size_rank": 58
+        },
+        {
+          "city_group": "Memphis, TN",
+          "neighborhood": "River Oaks-Kirby-Balmoral",
+          "size_rank": 251
         },
         {
           "city_group": "Miami Gardens, FL",
